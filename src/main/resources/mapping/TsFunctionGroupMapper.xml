@@ -1,0 +1,212 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.xmsmartcity.mapper.TsFunctionGroupMapper" >
+  <resultMap id="BaseResultMap" type="com.xmsmartcity.pojo.TsFunctionGroup" >
+    <id column="id" property="id" jdbcType="VARCHAR" />
+    <result column="group_name" property="groupName" jdbcType="VARCHAR" />
+    <result column="dept_id" property="deptId" jdbcType="VARCHAR" />
+    <result column="dept_code" property="deptCode" jdbcType="VARCHAR" />
+    <result column="dept_name" property="deptName" jdbcType="VARCHAR" />
+    <result column="pid" property="pid" jdbcType="VARCHAR" />
+    <result column="level" property="level" jdbcType="INTEGER" />
+    <result column="create_name" property="createName" jdbcType="VARCHAR" />
+    <result column="create_by" property="createBy" jdbcType="VARCHAR" />
+    <result column="create_date" property="createDate" jdbcType="TIMESTAMP" />
+    <result column="update_name" property="updateName" jdbcType="VARCHAR" />
+    <result column="update_by" property="updateBy" jdbcType="VARCHAR" />
+    <result column="update_date" property="updateDate" jdbcType="TIMESTAMP" />
+    <result column="sys_org_code" property="sysOrgCode" jdbcType="VARCHAR" />
+    <result column="sys_company_code" property="sysCompanyCode" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, group_name, dept_id, dept_code, dept_name, pid, level, create_name, create_by, 
+    create_date, update_name, update_by, update_date, sys_org_code, sys_company_code
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from t_s_function_group
+    where id = #{id,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from t_s_function_group
+    where id = #{id,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.xmsmartcity.pojo.TsFunctionGroup" >
+    insert into t_s_function_group (id, group_name, dept_id, 
+      dept_code, dept_name, pid, 
+      level, create_name, create_by, 
+      create_date, update_name, update_by, 
+      update_date, sys_org_code, sys_company_code
+      )
+    values (#{id,jdbcType=VARCHAR}, #{groupName,jdbcType=VARCHAR}, #{deptId,jdbcType=VARCHAR}, 
+      #{deptCode,jdbcType=VARCHAR}, #{deptName,jdbcType=VARCHAR}, #{pid,jdbcType=VARCHAR}, 
+      #{level,jdbcType=INTEGER}, #{createName,jdbcType=VARCHAR}, #{createBy,jdbcType=VARCHAR}, 
+      #{createDate,jdbcType=TIMESTAMP}, #{updateName,jdbcType=VARCHAR}, #{updateBy,jdbcType=VARCHAR}, 
+      #{updateDate,jdbcType=TIMESTAMP}, #{sysOrgCode,jdbcType=VARCHAR}, #{sysCompanyCode,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.xmsmartcity.pojo.TsFunctionGroup" >
+    insert into t_s_function_group
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="groupName != null" >
+        group_name,
+      </if>
+      <if test="deptId != null" >
+        dept_id,
+      </if>
+      <if test="deptCode != null" >
+        dept_code,
+      </if>
+      <if test="deptName != null" >
+        dept_name,
+      </if>
+      <if test="pid != null" >
+        pid,
+      </if>
+      <if test="level != null" >
+        level,
+      </if>
+      <if test="createName != null" >
+        create_name,
+      </if>
+      <if test="createBy != null" >
+        create_by,
+      </if>
+      <if test="createDate != null" >
+        create_date,
+      </if>
+      <if test="updateName != null" >
+        update_name,
+      </if>
+      <if test="updateBy != null" >
+        update_by,
+      </if>
+      <if test="updateDate != null" >
+        update_date,
+      </if>
+      <if test="sysOrgCode != null" >
+        sys_org_code,
+      </if>
+      <if test="sysCompanyCode != null" >
+        sys_company_code,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=VARCHAR},
+      </if>
+      <if test="groupName != null" >
+        #{groupName,jdbcType=VARCHAR},
+      </if>
+      <if test="deptId != null" >
+        #{deptId,jdbcType=VARCHAR},
+      </if>
+      <if test="deptCode != null" >
+        #{deptCode,jdbcType=VARCHAR},
+      </if>
+      <if test="deptName != null" >
+        #{deptName,jdbcType=VARCHAR},
+      </if>
+      <if test="pid != null" >
+        #{pid,jdbcType=VARCHAR},
+      </if>
+      <if test="level != null" >
+        #{level,jdbcType=INTEGER},
+      </if>
+      <if test="createName != null" >
+        #{createName,jdbcType=VARCHAR},
+      </if>
+      <if test="createBy != null" >
+        #{createBy,jdbcType=VARCHAR},
+      </if>
+      <if test="createDate != null" >
+        #{createDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateName != null" >
+        #{updateName,jdbcType=VARCHAR},
+      </if>
+      <if test="updateBy != null" >
+        #{updateBy,jdbcType=VARCHAR},
+      </if>
+      <if test="updateDate != null" >
+        #{updateDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="sysOrgCode != null" >
+        #{sysOrgCode,jdbcType=VARCHAR},
+      </if>
+      <if test="sysCompanyCode != null" >
+        #{sysCompanyCode,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.xmsmartcity.pojo.TsFunctionGroup" >
+    update t_s_function_group
+    <set >
+      <if test="groupName != null" >
+        group_name = #{groupName,jdbcType=VARCHAR},
+      </if>
+      <if test="deptId != null" >
+        dept_id = #{deptId,jdbcType=VARCHAR},
+      </if>
+      <if test="deptCode != null" >
+        dept_code = #{deptCode,jdbcType=VARCHAR},
+      </if>
+      <if test="deptName != null" >
+        dept_name = #{deptName,jdbcType=VARCHAR},
+      </if>
+      <if test="pid != null" >
+        pid = #{pid,jdbcType=VARCHAR},
+      </if>
+      <if test="level != null" >
+        level = #{level,jdbcType=INTEGER},
+      </if>
+      <if test="createName != null" >
+        create_name = #{createName,jdbcType=VARCHAR},
+      </if>
+      <if test="createBy != null" >
+        create_by = #{createBy,jdbcType=VARCHAR},
+      </if>
+      <if test="createDate != null" >
+        create_date = #{createDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateName != null" >
+        update_name = #{updateName,jdbcType=VARCHAR},
+      </if>
+      <if test="updateBy != null" >
+        update_by = #{updateBy,jdbcType=VARCHAR},
+      </if>
+      <if test="updateDate != null" >
+        update_date = #{updateDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="sysOrgCode != null" >
+        sys_org_code = #{sysOrgCode,jdbcType=VARCHAR},
+      </if>
+      <if test="sysCompanyCode != null" >
+        sys_company_code = #{sysCompanyCode,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.xmsmartcity.pojo.TsFunctionGroup" >
+    update t_s_function_group
+    set group_name = #{groupName,jdbcType=VARCHAR},
+      dept_id = #{deptId,jdbcType=VARCHAR},
+      dept_code = #{deptCode,jdbcType=VARCHAR},
+      dept_name = #{deptName,jdbcType=VARCHAR},
+      pid = #{pid,jdbcType=VARCHAR},
+      level = #{level,jdbcType=INTEGER},
+      create_name = #{createName,jdbcType=VARCHAR},
+      create_by = #{createBy,jdbcType=VARCHAR},
+      create_date = #{createDate,jdbcType=TIMESTAMP},
+      update_name = #{updateName,jdbcType=VARCHAR},
+      update_by = #{updateBy,jdbcType=VARCHAR},
+      update_date = #{updateDate,jdbcType=TIMESTAMP},
+      sys_org_code = #{sysOrgCode,jdbcType=VARCHAR},
+      sys_company_code = #{sysCompanyCode,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=VARCHAR}
+  </update>
+</mapper>

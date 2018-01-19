@@ -1,0 +1,188 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.xmsmartcity.mapper.TsFunctionGroupRelMapper" >
+  <resultMap id="BaseResultMap" type="com.xmsmartcity.pojo.TsFunctionGroupRel" >
+    <id column="id" property="id" jdbcType="VARCHAR" />
+    <result column="group_id" property="groupId" jdbcType="VARCHAR" />
+    <result column="auth_id" property="authId" jdbcType="VARCHAR" />
+    <result column="operation" property="operation" jdbcType="VARCHAR" />
+    <result column="datarule" property="datarule" jdbcType="VARCHAR" />
+    <result column="create_name" property="createName" jdbcType="VARCHAR" />
+    <result column="create_by" property="createBy" jdbcType="VARCHAR" />
+    <result column="create_date" property="createDate" jdbcType="TIMESTAMP" />
+    <result column="update_name" property="updateName" jdbcType="VARCHAR" />
+    <result column="update_by" property="updateBy" jdbcType="VARCHAR" />
+    <result column="update_date" property="updateDate" jdbcType="TIMESTAMP" />
+    <result column="sys_org_code" property="sysOrgCode" jdbcType="VARCHAR" />
+    <result column="sys_company_code" property="sysCompanyCode" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, group_id, auth_id, operation, datarule, create_name, create_by, create_date, 
+    update_name, update_by, update_date, sys_org_code, sys_company_code
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from t_s_function_group_rel
+    where id = #{id,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from t_s_function_group_rel
+    where id = #{id,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.xmsmartcity.pojo.TsFunctionGroupRel" >
+    insert into t_s_function_group_rel (id, group_id, auth_id, 
+      operation, datarule, create_name, 
+      create_by, create_date, update_name, 
+      update_by, update_date, sys_org_code, 
+      sys_company_code)
+    values (#{id,jdbcType=VARCHAR}, #{groupId,jdbcType=VARCHAR}, #{authId,jdbcType=VARCHAR}, 
+      #{operation,jdbcType=VARCHAR}, #{datarule,jdbcType=VARCHAR}, #{createName,jdbcType=VARCHAR}, 
+      #{createBy,jdbcType=VARCHAR}, #{createDate,jdbcType=TIMESTAMP}, #{updateName,jdbcType=VARCHAR}, 
+      #{updateBy,jdbcType=VARCHAR}, #{updateDate,jdbcType=TIMESTAMP}, #{sysOrgCode,jdbcType=VARCHAR}, 
+      #{sysCompanyCode,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.xmsmartcity.pojo.TsFunctionGroupRel" >
+    insert into t_s_function_group_rel
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="groupId != null" >
+        group_id,
+      </if>
+      <if test="authId != null" >
+        auth_id,
+      </if>
+      <if test="operation != null" >
+        operation,
+      </if>
+      <if test="datarule != null" >
+        datarule,
+      </if>
+      <if test="createName != null" >
+        create_name,
+      </if>
+      <if test="createBy != null" >
+        create_by,
+      </if>
+      <if test="createDate != null" >
+        create_date,
+      </if>
+      <if test="updateName != null" >
+        update_name,
+      </if>
+      <if test="updateBy != null" >
+        update_by,
+      </if>
+      <if test="updateDate != null" >
+        update_date,
+      </if>
+      <if test="sysOrgCode != null" >
+        sys_org_code,
+      </if>
+      <if test="sysCompanyCode != null" >
+        sys_company_code,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=VARCHAR},
+      </if>
+      <if test="groupId != null" >
+        #{groupId,jdbcType=VARCHAR},
+      </if>
+      <if test="authId != null" >
+        #{authId,jdbcType=VARCHAR},
+      </if>
+      <if test="operation != null" >
+        #{operation,jdbcType=VARCHAR},
+      </if>
+      <if test="datarule != null" >
+        #{datarule,jdbcType=VARCHAR},
+      </if>
+      <if test="createName != null" >
+        #{createName,jdbcType=VARCHAR},
+      </if>
+      <if test="createBy != null" >
+        #{createBy,jdbcType=VARCHAR},
+      </if>
+      <if test="createDate != null" >
+        #{createDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateName != null" >
+        #{updateName,jdbcType=VARCHAR},
+      </if>
+      <if test="updateBy != null" >
+        #{updateBy,jdbcType=VARCHAR},
+      </if>
+      <if test="updateDate != null" >
+        #{updateDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="sysOrgCode != null" >
+        #{sysOrgCode,jdbcType=VARCHAR},
+      </if>
+      <if test="sysCompanyCode != null" >
+        #{sysCompanyCode,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.xmsmartcity.pojo.TsFunctionGroupRel" >
+    update t_s_function_group_rel
+    <set >
+      <if test="groupId != null" >
+        group_id = #{groupId,jdbcType=VARCHAR},
+      </if>
+      <if test="authId != null" >
+        auth_id = #{authId,jdbcType=VARCHAR},
+      </if>
+      <if test="operation != null" >
+        operation = #{operation,jdbcType=VARCHAR},
+      </if>
+      <if test="datarule != null" >
+        datarule = #{datarule,jdbcType=VARCHAR},
+      </if>
+      <if test="createName != null" >
+        create_name = #{createName,jdbcType=VARCHAR},
+      </if>
+      <if test="createBy != null" >
+        create_by = #{createBy,jdbcType=VARCHAR},
+      </if>
+      <if test="createDate != null" >
+        create_date = #{createDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateName != null" >
+        update_name = #{updateName,jdbcType=VARCHAR},
+      </if>
+      <if test="updateBy != null" >
+        update_by = #{updateBy,jdbcType=VARCHAR},
+      </if>
+      <if test="updateDate != null" >
+        update_date = #{updateDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="sysOrgCode != null" >
+        sys_org_code = #{sysOrgCode,jdbcType=VARCHAR},
+      </if>
+      <if test="sysCompanyCode != null" >
+        sys_company_code = #{sysCompanyCode,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.xmsmartcity.pojo.TsFunctionGroupRel" >
+    update t_s_function_group_rel
+    set group_id = #{groupId,jdbcType=VARCHAR},
+      auth_id = #{authId,jdbcType=VARCHAR},
+      operation = #{operation,jdbcType=VARCHAR},
+      datarule = #{datarule,jdbcType=VARCHAR},
+      create_name = #{createName,jdbcType=VARCHAR},
+      create_by = #{createBy,jdbcType=VARCHAR},
+      create_date = #{createDate,jdbcType=TIMESTAMP},
+      update_name = #{updateName,jdbcType=VARCHAR},
+      update_by = #{updateBy,jdbcType=VARCHAR},
+      update_date = #{updateDate,jdbcType=TIMESTAMP},
+      sys_org_code = #{sysOrgCode,jdbcType=VARCHAR},
+      sys_company_code = #{sysCompanyCode,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=VARCHAR}
+  </update>
+</mapper>

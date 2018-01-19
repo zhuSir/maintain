@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.xmsmartcity.mapper.TsRoleUserMapper" >
+  <resultMap id="BaseResultMap" type="com.xmsmartcity.pojo.TsRoleUser" >
+    <id column="ID" property="id" jdbcType="VARCHAR" />
+    <result column="roleid" property="roleid" jdbcType="VARCHAR" />
+    <result column="userid" property="userid" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    ID, roleid, userid
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from t_s_role_user
+    where ID = #{id,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from t_s_role_user
+    where ID = #{id,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.xmsmartcity.pojo.TsRoleUser" >
+    insert into t_s_role_user (ID, roleid, userid
+      )
+    values (#{id,jdbcType=VARCHAR}, #{roleid,jdbcType=VARCHAR}, #{userid,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.xmsmartcity.pojo.TsRoleUser" >
+    insert into t_s_role_user
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        ID,
+      </if>
+      <if test="roleid != null" >
+        roleid,
+      </if>
+      <if test="userid != null" >
+        userid,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=VARCHAR},
+      </if>
+      <if test="roleid != null" >
+        #{roleid,jdbcType=VARCHAR},
+      </if>
+      <if test="userid != null" >
+        #{userid,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.xmsmartcity.pojo.TsRoleUser" >
+    update t_s_role_user
+    <set >
+      <if test="roleid != null" >
+        roleid = #{roleid,jdbcType=VARCHAR},
+      </if>
+      <if test="userid != null" >
+        userid = #{userid,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where ID = #{id,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.xmsmartcity.pojo.TsRoleUser" >
+    update t_s_role_user
+    set roleid = #{roleid,jdbcType=VARCHAR},
+      userid = #{userid,jdbcType=VARCHAR}
+    where ID = #{id,jdbcType=VARCHAR}
+  </update>
+</mapper>

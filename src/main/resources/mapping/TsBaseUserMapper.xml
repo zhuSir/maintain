@@ -1,0 +1,184 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.xmsmartcity.mapper.TsBaseUserMapper" >
+  <resultMap id="BaseResultMap" type="com.xmsmartcity.pojo.TsBaseUser" >
+    <id column="ID" property="id" jdbcType="VARCHAR" />
+    <result column="activitiSync" property="activitisync" jdbcType="SMALLINT" />
+    <result column="browser" property="browser" jdbcType="VARCHAR" />
+    <result column="password" property="password" jdbcType="VARCHAR" />
+    <result column="realname" property="realname" jdbcType="VARCHAR" />
+    <result column="status" property="status" jdbcType="SMALLINT" />
+    <result column="userkey" property="userkey" jdbcType="VARCHAR" />
+    <result column="username" property="username" jdbcType="VARCHAR" />
+    <result column="departid" property="departid" jdbcType="VARCHAR" />
+    <result column="delete_flag" property="deleteFlag" jdbcType="SMALLINT" />
+  </resultMap>
+  <resultMap id="ResultMapWithBLOBs" type="com.xmsmartcity.pojo.TsBaseUser" extends="BaseResultMap" >
+    <result column="signature" property="signature" jdbcType="LONGVARBINARY" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    ID, activitiSync, browser, password, realname, status, userkey, username, departid, 
+    delete_flag
+  </sql>
+  <sql id="Blob_Column_List" >
+    signature
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="ResultMapWithBLOBs" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from t_s_base_user
+    where ID = #{id,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from t_s_base_user
+    where ID = #{id,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.xmsmartcity.pojo.TsBaseUser" >
+    insert into t_s_base_user (ID, activitiSync, browser, 
+      password, realname, status, 
+      userkey, username, departid, 
+      delete_flag, signature)
+    values (#{id,jdbcType=VARCHAR}, #{activitisync,jdbcType=SMALLINT}, #{browser,jdbcType=VARCHAR}, 
+      #{password,jdbcType=VARCHAR}, #{realname,jdbcType=VARCHAR}, #{status,jdbcType=SMALLINT}, 
+      #{userkey,jdbcType=VARCHAR}, #{username,jdbcType=VARCHAR}, #{departid,jdbcType=VARCHAR}, 
+      #{deleteFlag,jdbcType=SMALLINT}, #{signature,jdbcType=LONGVARBINARY})
+  </insert>
+  <insert id="insertSelective" parameterType="com.xmsmartcity.pojo.TsBaseUser" >
+    insert into t_s_base_user
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        ID,
+      </if>
+      <if test="activitisync != null" >
+        activitiSync,
+      </if>
+      <if test="browser != null" >
+        browser,
+      </if>
+      <if test="password != null" >
+        password,
+      </if>
+      <if test="realname != null" >
+        realname,
+      </if>
+      <if test="status != null" >
+        status,
+      </if>
+      <if test="userkey != null" >
+        userkey,
+      </if>
+      <if test="username != null" >
+        username,
+      </if>
+      <if test="departid != null" >
+        departid,
+      </if>
+      <if test="deleteFlag != null" >
+        delete_flag,
+      </if>
+      <if test="signature != null" >
+        signature,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=VARCHAR},
+      </if>
+      <if test="activitisync != null" >
+        #{activitisync,jdbcType=SMALLINT},
+      </if>
+      <if test="browser != null" >
+        #{browser,jdbcType=VARCHAR},
+      </if>
+      <if test="password != null" >
+        #{password,jdbcType=VARCHAR},
+      </if>
+      <if test="realname != null" >
+        #{realname,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null" >
+        #{status,jdbcType=SMALLINT},
+      </if>
+      <if test="userkey != null" >
+        #{userkey,jdbcType=VARCHAR},
+      </if>
+      <if test="username != null" >
+        #{username,jdbcType=VARCHAR},
+      </if>
+      <if test="departid != null" >
+        #{departid,jdbcType=VARCHAR},
+      </if>
+      <if test="deleteFlag != null" >
+        #{deleteFlag,jdbcType=SMALLINT},
+      </if>
+      <if test="signature != null" >
+        #{signature,jdbcType=LONGVARBINARY},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.xmsmartcity.pojo.TsBaseUser" >
+    update t_s_base_user
+    <set >
+      <if test="activitisync != null" >
+        activitiSync = #{activitisync,jdbcType=SMALLINT},
+      </if>
+      <if test="browser != null" >
+        browser = #{browser,jdbcType=VARCHAR},
+      </if>
+      <if test="password != null" >
+        password = #{password,jdbcType=VARCHAR},
+      </if>
+      <if test="realname != null" >
+        realname = #{realname,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null" >
+        status = #{status,jdbcType=SMALLINT},
+      </if>
+      <if test="userkey != null" >
+        userkey = #{userkey,jdbcType=VARCHAR},
+      </if>
+      <if test="username != null" >
+        username = #{username,jdbcType=VARCHAR},
+      </if>
+      <if test="departid != null" >
+        departid = #{departid,jdbcType=VARCHAR},
+      </if>
+      <if test="deleteFlag != null" >
+        delete_flag = #{deleteFlag,jdbcType=SMALLINT},
+      </if>
+      <if test="signature != null" >
+        signature = #{signature,jdbcType=LONGVARBINARY},
+      </if>
+    </set>
+    where ID = #{id,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.xmsmartcity.pojo.TsBaseUser" >
+    update t_s_base_user
+    set activitiSync = #{activitisync,jdbcType=SMALLINT},
+      browser = #{browser,jdbcType=VARCHAR},
+      password = #{password,jdbcType=VARCHAR},
+      realname = #{realname,jdbcType=VARCHAR},
+      status = #{status,jdbcType=SMALLINT},
+      userkey = #{userkey,jdbcType=VARCHAR},
+      username = #{username,jdbcType=VARCHAR},
+      departid = #{departid,jdbcType=VARCHAR},
+      delete_flag = #{deleteFlag,jdbcType=SMALLINT},
+      signature = #{signature,jdbcType=LONGVARBINARY}
+    where ID = #{id,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.xmsmartcity.pojo.TsBaseUser" >
+    update t_s_base_user
+    set activitiSync = #{activitisync,jdbcType=SMALLINT},
+      browser = #{browser,jdbcType=VARCHAR},
+      password = #{password,jdbcType=VARCHAR},
+      realname = #{realname,jdbcType=VARCHAR},
+      status = #{status,jdbcType=SMALLINT},
+      userkey = #{userkey,jdbcType=VARCHAR},
+      username = #{username,jdbcType=VARCHAR},
+      departid = #{departid,jdbcType=VARCHAR},
+      delete_flag = #{deleteFlag,jdbcType=SMALLINT}
+    where ID = #{id,jdbcType=VARCHAR}
+  </update>
+</mapper>

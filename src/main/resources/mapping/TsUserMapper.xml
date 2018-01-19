@@ -1,0 +1,199 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.xmsmartcity.mapper.TsUserMapper" >
+  <resultMap id="BaseResultMap" type="com.xmsmartcity.pojo.TsUser" >
+    <id column="id" property="id" jdbcType="VARCHAR" />
+    <result column="email" property="email" jdbcType="VARCHAR" />
+    <result column="mobilePhone" property="mobilephone" jdbcType="VARCHAR" />
+    <result column="officePhone" property="officephone" jdbcType="VARCHAR" />
+    <result column="signatureFile" property="signaturefile" jdbcType="VARCHAR" />
+    <result column="update_name" property="updateName" jdbcType="VARCHAR" />
+    <result column="update_date" property="updateDate" jdbcType="TIMESTAMP" />
+    <result column="update_by" property="updateBy" jdbcType="VARCHAR" />
+    <result column="create_name" property="createName" jdbcType="VARCHAR" />
+    <result column="create_date" property="createDate" jdbcType="TIMESTAMP" />
+    <result column="create_by" property="createBy" jdbcType="VARCHAR" />
+    <result column="portrait" property="portrait" jdbcType="VARCHAR" />
+    <result column="imsign" property="imsign" jdbcType="VARCHAR" />
+    <result column="dev_flag" property="devFlag" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, email, mobilePhone, officePhone, signatureFile, update_name, update_date, update_by, 
+    create_name, create_date, create_by, portrait, imsign, dev_flag
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from t_s_user
+    where id = #{id,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from t_s_user
+    where id = #{id,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.xmsmartcity.pojo.TsUser" >
+    insert into t_s_user (id, email, mobilePhone, 
+      officePhone, signatureFile, update_name, 
+      update_date, update_by, create_name, 
+      create_date, create_by, portrait, 
+      imsign, dev_flag)
+    values (#{id,jdbcType=VARCHAR}, #{email,jdbcType=VARCHAR}, #{mobilephone,jdbcType=VARCHAR}, 
+      #{officephone,jdbcType=VARCHAR}, #{signaturefile,jdbcType=VARCHAR}, #{updateName,jdbcType=VARCHAR}, 
+      #{updateDate,jdbcType=TIMESTAMP}, #{updateBy,jdbcType=VARCHAR}, #{createName,jdbcType=VARCHAR}, 
+      #{createDate,jdbcType=TIMESTAMP}, #{createBy,jdbcType=VARCHAR}, #{portrait,jdbcType=VARCHAR}, 
+      #{imsign,jdbcType=VARCHAR}, #{devFlag,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.xmsmartcity.pojo.TsUser" >
+    insert into t_s_user
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="email != null" >
+        email,
+      </if>
+      <if test="mobilephone != null" >
+        mobilePhone,
+      </if>
+      <if test="officephone != null" >
+        officePhone,
+      </if>
+      <if test="signaturefile != null" >
+        signatureFile,
+      </if>
+      <if test="updateName != null" >
+        update_name,
+      </if>
+      <if test="updateDate != null" >
+        update_date,
+      </if>
+      <if test="updateBy != null" >
+        update_by,
+      </if>
+      <if test="createName != null" >
+        create_name,
+      </if>
+      <if test="createDate != null" >
+        create_date,
+      </if>
+      <if test="createBy != null" >
+        create_by,
+      </if>
+      <if test="portrait != null" >
+        portrait,
+      </if>
+      <if test="imsign != null" >
+        imsign,
+      </if>
+      <if test="devFlag != null" >
+        dev_flag,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=VARCHAR},
+      </if>
+      <if test="email != null" >
+        #{email,jdbcType=VARCHAR},
+      </if>
+      <if test="mobilephone != null" >
+        #{mobilephone,jdbcType=VARCHAR},
+      </if>
+      <if test="officephone != null" >
+        #{officephone,jdbcType=VARCHAR},
+      </if>
+      <if test="signaturefile != null" >
+        #{signaturefile,jdbcType=VARCHAR},
+      </if>
+      <if test="updateName != null" >
+        #{updateName,jdbcType=VARCHAR},
+      </if>
+      <if test="updateDate != null" >
+        #{updateDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateBy != null" >
+        #{updateBy,jdbcType=VARCHAR},
+      </if>
+      <if test="createName != null" >
+        #{createName,jdbcType=VARCHAR},
+      </if>
+      <if test="createDate != null" >
+        #{createDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createBy != null" >
+        #{createBy,jdbcType=VARCHAR},
+      </if>
+      <if test="portrait != null" >
+        #{portrait,jdbcType=VARCHAR},
+      </if>
+      <if test="imsign != null" >
+        #{imsign,jdbcType=VARCHAR},
+      </if>
+      <if test="devFlag != null" >
+        #{devFlag,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.xmsmartcity.pojo.TsUser" >
+    update t_s_user
+    <set >
+      <if test="email != null" >
+        email = #{email,jdbcType=VARCHAR},
+      </if>
+      <if test="mobilephone != null" >
+        mobilePhone = #{mobilephone,jdbcType=VARCHAR},
+      </if>
+      <if test="officephone != null" >
+        officePhone = #{officephone,jdbcType=VARCHAR},
+      </if>
+      <if test="signaturefile != null" >
+        signatureFile = #{signaturefile,jdbcType=VARCHAR},
+      </if>
+      <if test="updateName != null" >
+        update_name = #{updateName,jdbcType=VARCHAR},
+      </if>
+      <if test="updateDate != null" >
+        update_date = #{updateDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateBy != null" >
+        update_by = #{updateBy,jdbcType=VARCHAR},
+      </if>
+      <if test="createName != null" >
+        create_name = #{createName,jdbcType=VARCHAR},
+      </if>
+      <if test="createDate != null" >
+        create_date = #{createDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createBy != null" >
+        create_by = #{createBy,jdbcType=VARCHAR},
+      </if>
+      <if test="portrait != null" >
+        portrait = #{portrait,jdbcType=VARCHAR},
+      </if>
+      <if test="imsign != null" >
+        imsign = #{imsign,jdbcType=VARCHAR},
+      </if>
+      <if test="devFlag != null" >
+        dev_flag = #{devFlag,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.xmsmartcity.pojo.TsUser" >
+    update t_s_user
+    set email = #{email,jdbcType=VARCHAR},
+      mobilePhone = #{mobilephone,jdbcType=VARCHAR},
+      officePhone = #{officephone,jdbcType=VARCHAR},
+      signatureFile = #{signaturefile,jdbcType=VARCHAR},
+      update_name = #{updateName,jdbcType=VARCHAR},
+      update_date = #{updateDate,jdbcType=TIMESTAMP},
+      update_by = #{updateBy,jdbcType=VARCHAR},
+      create_name = #{createName,jdbcType=VARCHAR},
+      create_date = #{createDate,jdbcType=TIMESTAMP},
+      create_by = #{createBy,jdbcType=VARCHAR},
+      portrait = #{portrait,jdbcType=VARCHAR},
+      imsign = #{imsign,jdbcType=VARCHAR},
+      dev_flag = #{devFlag,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=VARCHAR}
+  </update>
+</mapper>

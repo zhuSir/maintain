@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.xmsmartcity.mapper.TsRoleFunctionMapper" >
+  <resultMap id="BaseResultMap" type="com.xmsmartcity.pojo.TsRoleFunction" >
+    <id column="ID" property="id" jdbcType="VARCHAR" />
+    <result column="operation" property="operation" jdbcType="VARCHAR" />
+    <result column="functionid" property="functionid" jdbcType="VARCHAR" />
+    <result column="roleid" property="roleid" jdbcType="VARCHAR" />
+    <result column="datarule" property="datarule" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    ID, operation, functionid, roleid, datarule
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from t_s_role_function
+    where ID = #{id,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from t_s_role_function
+    where ID = #{id,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.xmsmartcity.pojo.TsRoleFunction" >
+    insert into t_s_role_function (ID, operation, functionid, 
+      roleid, datarule)
+    values (#{id,jdbcType=VARCHAR}, #{operation,jdbcType=VARCHAR}, #{functionid,jdbcType=VARCHAR}, 
+      #{roleid,jdbcType=VARCHAR}, #{datarule,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.xmsmartcity.pojo.TsRoleFunction" >
+    insert into t_s_role_function
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        ID,
+      </if>
+      <if test="operation != null" >
+        operation,
+      </if>
+      <if test="functionid != null" >
+        functionid,
+      </if>
+      <if test="roleid != null" >
+        roleid,
+      </if>
+      <if test="datarule != null" >
+        datarule,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=VARCHAR},
+      </if>
+      <if test="operation != null" >
+        #{operation,jdbcType=VARCHAR},
+      </if>
+      <if test="functionid != null" >
+        #{functionid,jdbcType=VARCHAR},
+      </if>
+      <if test="roleid != null" >
+        #{roleid,jdbcType=VARCHAR},
+      </if>
+      <if test="datarule != null" >
+        #{datarule,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.xmsmartcity.pojo.TsRoleFunction" >
+    update t_s_role_function
+    <set >
+      <if test="operation != null" >
+        operation = #{operation,jdbcType=VARCHAR},
+      </if>
+      <if test="functionid != null" >
+        functionid = #{functionid,jdbcType=VARCHAR},
+      </if>
+      <if test="roleid != null" >
+        roleid = #{roleid,jdbcType=VARCHAR},
+      </if>
+      <if test="datarule != null" >
+        datarule = #{datarule,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where ID = #{id,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.xmsmartcity.pojo.TsRoleFunction" >
+    update t_s_role_function
+    set operation = #{operation,jdbcType=VARCHAR},
+      functionid = #{functionid,jdbcType=VARCHAR},
+      roleid = #{roleid,jdbcType=VARCHAR},
+      datarule = #{datarule,jdbcType=VARCHAR}
+    where ID = #{id,jdbcType=VARCHAR}
+  </update>
+</mapper>

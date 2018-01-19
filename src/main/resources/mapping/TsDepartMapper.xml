@@ -1,0 +1,171 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.xmsmartcity.mapper.TsDepartMapper" >
+  <resultMap id="BaseResultMap" type="com.xmsmartcity.pojo.TsDepart" >
+    <id column="ID" property="id" jdbcType="VARCHAR" />
+    <result column="departname" property="departname" jdbcType="VARCHAR" />
+    <result column="parentdepartid" property="parentdepartid" jdbcType="VARCHAR" />
+    <result column="org_code" property="orgCode" jdbcType="VARCHAR" />
+    <result column="org_type" property="orgType" jdbcType="VARCHAR" />
+    <result column="mobile" property="mobile" jdbcType="VARCHAR" />
+    <result column="fax" property="fax" jdbcType="VARCHAR" />
+    <result column="address" property="address" jdbcType="VARCHAR" />
+    <result column="depart_order" property="departOrder" jdbcType="VARCHAR" />
+  </resultMap>
+  <resultMap id="ResultMapWithBLOBs" type="com.xmsmartcity.pojo.TsDepart" extends="BaseResultMap" >
+    <result column="description" property="description" jdbcType="LONGVARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    ID, departname, parentdepartid, org_code, org_type, mobile, fax, address, depart_order
+  </sql>
+  <sql id="Blob_Column_List" >
+    description
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="ResultMapWithBLOBs" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from t_s_depart
+    where ID = #{id,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from t_s_depart
+    where ID = #{id,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.xmsmartcity.pojo.TsDepart" >
+    insert into t_s_depart (ID, departname, parentdepartid, 
+      org_code, org_type, mobile, 
+      fax, address, depart_order, 
+      description)
+    values (#{id,jdbcType=VARCHAR}, #{departname,jdbcType=VARCHAR}, #{parentdepartid,jdbcType=VARCHAR}, 
+      #{orgCode,jdbcType=VARCHAR}, #{orgType,jdbcType=VARCHAR}, #{mobile,jdbcType=VARCHAR}, 
+      #{fax,jdbcType=VARCHAR}, #{address,jdbcType=VARCHAR}, #{departOrder,jdbcType=VARCHAR}, 
+      #{description,jdbcType=LONGVARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.xmsmartcity.pojo.TsDepart" >
+    insert into t_s_depart
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        ID,
+      </if>
+      <if test="departname != null" >
+        departname,
+      </if>
+      <if test="parentdepartid != null" >
+        parentdepartid,
+      </if>
+      <if test="orgCode != null" >
+        org_code,
+      </if>
+      <if test="orgType != null" >
+        org_type,
+      </if>
+      <if test="mobile != null" >
+        mobile,
+      </if>
+      <if test="fax != null" >
+        fax,
+      </if>
+      <if test="address != null" >
+        address,
+      </if>
+      <if test="departOrder != null" >
+        depart_order,
+      </if>
+      <if test="description != null" >
+        description,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=VARCHAR},
+      </if>
+      <if test="departname != null" >
+        #{departname,jdbcType=VARCHAR},
+      </if>
+      <if test="parentdepartid != null" >
+        #{parentdepartid,jdbcType=VARCHAR},
+      </if>
+      <if test="orgCode != null" >
+        #{orgCode,jdbcType=VARCHAR},
+      </if>
+      <if test="orgType != null" >
+        #{orgType,jdbcType=VARCHAR},
+      </if>
+      <if test="mobile != null" >
+        #{mobile,jdbcType=VARCHAR},
+      </if>
+      <if test="fax != null" >
+        #{fax,jdbcType=VARCHAR},
+      </if>
+      <if test="address != null" >
+        #{address,jdbcType=VARCHAR},
+      </if>
+      <if test="departOrder != null" >
+        #{departOrder,jdbcType=VARCHAR},
+      </if>
+      <if test="description != null" >
+        #{description,jdbcType=LONGVARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.xmsmartcity.pojo.TsDepart" >
+    update t_s_depart
+    <set >
+      <if test="departname != null" >
+        departname = #{departname,jdbcType=VARCHAR},
+      </if>
+      <if test="parentdepartid != null" >
+        parentdepartid = #{parentdepartid,jdbcType=VARCHAR},
+      </if>
+      <if test="orgCode != null" >
+        org_code = #{orgCode,jdbcType=VARCHAR},
+      </if>
+      <if test="orgType != null" >
+        org_type = #{orgType,jdbcType=VARCHAR},
+      </if>
+      <if test="mobile != null" >
+        mobile = #{mobile,jdbcType=VARCHAR},
+      </if>
+      <if test="fax != null" >
+        fax = #{fax,jdbcType=VARCHAR},
+      </if>
+      <if test="address != null" >
+        address = #{address,jdbcType=VARCHAR},
+      </if>
+      <if test="departOrder != null" >
+        depart_order = #{departOrder,jdbcType=VARCHAR},
+      </if>
+      <if test="description != null" >
+        description = #{description,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    where ID = #{id,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.xmsmartcity.pojo.TsDepart" >
+    update t_s_depart
+    set departname = #{departname,jdbcType=VARCHAR},
+      parentdepartid = #{parentdepartid,jdbcType=VARCHAR},
+      org_code = #{orgCode,jdbcType=VARCHAR},
+      org_type = #{orgType,jdbcType=VARCHAR},
+      mobile = #{mobile,jdbcType=VARCHAR},
+      fax = #{fax,jdbcType=VARCHAR},
+      address = #{address,jdbcType=VARCHAR},
+      depart_order = #{departOrder,jdbcType=VARCHAR},
+      description = #{description,jdbcType=LONGVARCHAR}
+    where ID = #{id,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.xmsmartcity.pojo.TsDepart" >
+    update t_s_depart
+    set departname = #{departname,jdbcType=VARCHAR},
+      parentdepartid = #{parentdepartid,jdbcType=VARCHAR},
+      org_code = #{orgCode,jdbcType=VARCHAR},
+      org_type = #{orgType,jdbcType=VARCHAR},
+      mobile = #{mobile,jdbcType=VARCHAR},
+      fax = #{fax,jdbcType=VARCHAR},
+      address = #{address,jdbcType=VARCHAR},
+      depart_order = #{departOrder,jdbcType=VARCHAR}
+    where ID = #{id,jdbcType=VARCHAR}
+  </update>
+</mapper>
