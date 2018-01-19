@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 @Controller
 public class UserController {
 
+    //我也参与了这个项目
     @RequestMapping(value="/user",method = RequestMethod.GET)
     @ResponseBody
     private String user(){
