@@ -19,5 +19,8 @@ public class UserController {
         return "json";
     }
 
+    private String xixi(){
+        return "";
+    }
     //测试
 }
