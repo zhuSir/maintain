@@ -1,6 +1,6 @@
-package main.java.com.xmsmartcity.mapper;
+package com.xmsmartcity.mapper;
 
-import main.java.com.xmsmartcity.pojo.User;
+import com.xmsmartcity.pojo.User;
 
 public interface UserMapper {
     int deleteByPrimaryKey(String id);

@@ -1,4 +1,4 @@
-package main.java.com.xmsmartcity.pojo;
+package com.xmsmartcity.pojo;
 
 public class User {
     private String id;
