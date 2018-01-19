@@ -31,6 +31,8 @@ public class TsUser {
 
     private String devFlag;
 
+    private  String password;
+
     public String getId() {
         return id;
     }
@@ -141,5 +143,13 @@ public class TsUser {
 
     public void setDevFlag(String devFlag) {
         this.devFlag = devFlag == null ? null : devFlag.trim();
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
     }
 }
