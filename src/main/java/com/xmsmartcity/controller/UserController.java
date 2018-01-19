@@ -28,4 +28,11 @@ public class UserController {
     private String cbytest(){
          return "cby";
     }
+
+
+    private String laokiTest(){
+        return "lly";
+    }
+
+
 }
