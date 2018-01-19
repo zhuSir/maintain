@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 @Controller
 public class UserController {
 
-    //我也参与了这个项目   啦啦啦
+    //我也参与了这个项目
     @RequestMapping(value="/user",method = RequestMethod.GET)
     @ResponseBody
     private String user(){
@@ -24,4 +24,8 @@ public class UserController {
     //测试
     //账号bonelvxin@163.com提交测试
     //张莹--------------------测试代码合并
+
+    private String cbytest(){
+         return "cby";
+    }
 }
