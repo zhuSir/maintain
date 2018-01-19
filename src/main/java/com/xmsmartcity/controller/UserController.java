@@ -14,6 +14,8 @@ public class UserController {
     @RequestMapping(value="/user",method = RequestMethod.GET)
     @ResponseBody
     private String user(){
+
+
         return "json";
     }
 
