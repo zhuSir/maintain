@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.xmsmartcity.mapper.TsMaintainMapper" >
+  <resultMap id="BaseResultMap" type="com.xmsmartcity.pojo.TsMaintain" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="fault_id" property="faultId" jdbcType="INTEGER" />
+    <result column="maintain_code" property="maintainCode" jdbcType="VARCHAR" />
+    <result column="company_id" property="companyId" jdbcType="INTEGER" />
+    <result column="project_id" property="projectId" jdbcType="INTEGER" />
+    <result column="fault_user_id" property="faultUserId" jdbcType="INTEGER" />
+    <result column="equip_id" property="equipId" jdbcType="INTEGER" />
+    <result column="finash_date" property="finashDate" jdbcType="TIMESTAMP" />
+    <result column="maintain_user_id" property="maintainUserId" jdbcType="INTEGER" />
+    <result column="remark_reason" property="remarkReason" jdbcType="VARCHAR" />
+    <result column="maintain_type" property="maintainType" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, fault_id, maintain_code, company_id, project_id, fault_user_id, equip_id, finash_date, 
+    maintain_user_id, remark_reason, maintain_type
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from t_s_maintain
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from t_s_maintain
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.xmsmartcity.pojo.TsMaintain" >
+    insert into t_s_maintain (id, fault_id, maintain_code, 
+      company_id, project_id, fault_user_id, 
+      equip_id, finash_date, maintain_user_id, 
+      remark_reason, maintain_type)
+    values (#{id,jdbcType=INTEGER}, #{faultId,jdbcType=INTEGER}, #{maintainCode,jdbcType=VARCHAR}, 
+      #{companyId,jdbcType=INTEGER}, #{projectId,jdbcType=INTEGER}, #{faultUserId,jdbcType=INTEGER}, 
+      #{equipId,jdbcType=INTEGER}, #{finashDate,jdbcType=TIMESTAMP}, #{maintainUserId,jdbcType=INTEGER}, 
+      #{remarkReason,jdbcType=VARCHAR}, #{maintainType,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.xmsmartcity.pojo.TsMaintain" >
+    insert into t_s_maintain
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="faultId != null" >
+        fault_id,
+      </if>
+      <if test="maintainCode != null" >
+        maintain_code,
+      </if>
+      <if test="companyId != null" >
+        company_id,
+      </if>
+      <if test="projectId != null" >
+        project_id,
+      </if>
+      <if test="faultUserId != null" >
+        fault_user_id,
+      </if>
+      <if test="equipId != null" >
+        equip_id,
+      </if>
+      <if test="finashDate != null" >
+        finash_date,
+      </if>
+      <if test="maintainUserId != null" >
+        maintain_user_id,
+      </if>
+      <if test="remarkReason != null" >
+        remark_reason,
+      </if>
+      <if test="maintainType != null" >
+        maintain_type,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="faultId != null" >
+        #{faultId,jdbcType=INTEGER},
+      </if>
+      <if test="maintainCode != null" >
+        #{maintainCode,jdbcType=VARCHAR},
+      </if>
+      <if test="companyId != null" >
+        #{companyId,jdbcType=INTEGER},
+      </if>
+      <if test="projectId != null" >
+        #{projectId,jdbcType=INTEGER},
+      </if>
+      <if test="faultUserId != null" >
+        #{faultUserId,jdbcType=INTEGER},
+      </if>
+      <if test="equipId != null" >
+        #{equipId,jdbcType=INTEGER},
+      </if>
+      <if test="finashDate != null" >
+        #{finashDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="maintainUserId != null" >
+        #{maintainUserId,jdbcType=INTEGER},
+      </if>
+      <if test="remarkReason != null" >
+        #{remarkReason,jdbcType=VARCHAR},
+      </if>
+      <if test="maintainType != null" >
+        #{maintainType,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.xmsmartcity.pojo.TsMaintain" >
+    update t_s_maintain
+    <set >
+      <if test="faultId != null" >
+        fault_id = #{faultId,jdbcType=INTEGER},
+      </if>
+      <if test="maintainCode != null" >
+        maintain_code = #{maintainCode,jdbcType=VARCHAR},
+      </if>
+      <if test="companyId != null" >
+        company_id = #{companyId,jdbcType=INTEGER},
+      </if>
+      <if test="projectId != null" >
+        project_id = #{projectId,jdbcType=INTEGER},
+      </if>
+      <if test="faultUserId != null" >
+        fault_user_id = #{faultUserId,jdbcType=INTEGER},
+      </if>
+      <if test="equipId != null" >
+        equip_id = #{equipId,jdbcType=INTEGER},
+      </if>
+      <if test="finashDate != null" >
+        finash_date = #{finashDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="maintainUserId != null" >
+        maintain_user_id = #{maintainUserId,jdbcType=INTEGER},
+      </if>
+      <if test="remarkReason != null" >
+        remark_reason = #{remarkReason,jdbcType=VARCHAR},
+      </if>
+      <if test="maintainType != null" >
+        maintain_type = #{maintainType,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.xmsmartcity.pojo.TsMaintain" >
+    update t_s_maintain
+    set fault_id = #{faultId,jdbcType=INTEGER},
+      maintain_code = #{maintainCode,jdbcType=VARCHAR},
+      company_id = #{companyId,jdbcType=INTEGER},
+      project_id = #{projectId,jdbcType=INTEGER},
+      fault_user_id = #{faultUserId,jdbcType=INTEGER},
+      equip_id = #{equipId,jdbcType=INTEGER},
+      finash_date = #{finashDate,jdbcType=TIMESTAMP},
+      maintain_user_id = #{maintainUserId,jdbcType=INTEGER},
+      remark_reason = #{remarkReason,jdbcType=VARCHAR},
+      maintain_type = #{maintainType,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

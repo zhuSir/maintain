@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.xmsmartcity.mapper.TsFaultMapper" >
+  <resultMap id="BaseResultMap" type="com.xmsmartcity.pojo.TsFault" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="fault_code" property="faultCode" jdbcType="VARCHAR" />
+    <result column="company_id" property="companyId" jdbcType="INTEGER" />
+    <result column="project_id" property="projectId" jdbcType="INTEGER" />
+    <result column="maintain_id" property="maintainId" jdbcType="INTEGER" />
+    <result column="remark_reason" property="remarkReason" jdbcType="VARCHAR" />
+    <result column="fault_type" property="faultType" jdbcType="VARCHAR" />
+    <result column="fault_user_id" property="faultUserId" jdbcType="INTEGER" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, fault_code, company_id, project_id, maintain_id, remark_reason, fault_type, fault_user_id
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from t_s_fault
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from t_s_fault
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.xmsmartcity.pojo.TsFault" >
+    insert into t_s_fault (id, fault_code, company_id, 
+      project_id, maintain_id, remark_reason, 
+      fault_type, fault_user_id)
+    values (#{id,jdbcType=INTEGER}, #{faultCode,jdbcType=VARCHAR}, #{companyId,jdbcType=INTEGER}, 
+      #{projectId,jdbcType=INTEGER}, #{maintainId,jdbcType=INTEGER}, #{remarkReason,jdbcType=VARCHAR}, 
+      #{faultType,jdbcType=VARCHAR}, #{faultUserId,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" parameterType="com.xmsmartcity.pojo.TsFault" >
+    insert into t_s_fault
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="faultCode != null" >
+        fault_code,
+      </if>
+      <if test="companyId != null" >
+        company_id,
+      </if>
+      <if test="projectId != null" >
+        project_id,
+      </if>
+      <if test="maintainId != null" >
+        maintain_id,
+      </if>
+      <if test="remarkReason != null" >
+        remark_reason,
+      </if>
+      <if test="faultType != null" >
+        fault_type,
+      </if>
+      <if test="faultUserId != null" >
+        fault_user_id,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="faultCode != null" >
+        #{faultCode,jdbcType=VARCHAR},
+      </if>
+      <if test="companyId != null" >
+        #{companyId,jdbcType=INTEGER},
+      </if>
+      <if test="projectId != null" >
+        #{projectId,jdbcType=INTEGER},
+      </if>
+      <if test="maintainId != null" >
+        #{maintainId,jdbcType=INTEGER},
+      </if>
+      <if test="remarkReason != null" >
+        #{remarkReason,jdbcType=VARCHAR},
+      </if>
+      <if test="faultType != null" >
+        #{faultType,jdbcType=VARCHAR},
+      </if>
+      <if test="faultUserId != null" >
+        #{faultUserId,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.xmsmartcity.pojo.TsFault" >
+    update t_s_fault
+    <set >
+      <if test="faultCode != null" >
+        fault_code = #{faultCode,jdbcType=VARCHAR},
+      </if>
+      <if test="companyId != null" >
+        company_id = #{companyId,jdbcType=INTEGER},
+      </if>
+      <if test="projectId != null" >
+        project_id = #{projectId,jdbcType=INTEGER},
+      </if>
+      <if test="maintainId != null" >
+        maintain_id = #{maintainId,jdbcType=INTEGER},
+      </if>
+      <if test="remarkReason != null" >
+        remark_reason = #{remarkReason,jdbcType=VARCHAR},
+      </if>
+      <if test="faultType != null" >
+        fault_type = #{faultType,jdbcType=VARCHAR},
+      </if>
+      <if test="faultUserId != null" >
+        fault_user_id = #{faultUserId,jdbcType=INTEGER},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.xmsmartcity.pojo.TsFault" >
+    update t_s_fault
+    set fault_code = #{faultCode,jdbcType=VARCHAR},
+      company_id = #{companyId,jdbcType=INTEGER},
+      project_id = #{projectId,jdbcType=INTEGER},
+      maintain_id = #{maintainId,jdbcType=INTEGER},
+      remark_reason = #{remarkReason,jdbcType=VARCHAR},
+      fault_type = #{faultType,jdbcType=VARCHAR},
+      fault_user_id = #{faultUserId,jdbcType=INTEGER}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>
