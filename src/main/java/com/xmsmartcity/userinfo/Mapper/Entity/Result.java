@@ -1,4 +1,4 @@
-package com.xmsmartcity.Userinfo.Mapper.Entity;
+package com.xmsmartcity.userinfo.Mapper.Entity;
 
 /**
  * Created by lingyun on 2018/1/19.

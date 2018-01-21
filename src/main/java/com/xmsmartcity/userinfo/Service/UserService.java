@@ -1,6 +1,6 @@
-package com.xmsmartcity.Userinfo.Service;
+package com.xmsmartcity.userinfo.Service;
 
-import com.xmsmartcity.Userinfo.Mapper.Entity.Result;
+import com.xmsmartcity.userinfo.Mapper.Entity.Result;
 import com.xmsmartcity.mapper.TsUserMapper;
 import com.xmsmartcity.pojo.TsUser;
 import org.springframework.beans.factory.annotation.Autowired;

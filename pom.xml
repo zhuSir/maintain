@@ -9,7 +9,7 @@
 	<packaging>jar</packaging>
 
 	<name>maintain</name>
-	<description>Maintain project for Spring Boot</description>
+	<description>maintain project for Spring Boot</description>
 
 	<parent>
 		<groupId>org.springframework.boot</groupId>

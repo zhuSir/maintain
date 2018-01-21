@@ -1,7 +1,6 @@
-package com.xmsmartcity.Userinfo.Service;
+package com.xmsmartcity.userinfo.Service;
 
-import com.mysql.cj.x.protobuf.MysqlxDatatypes;
-import com.xmsmartcity.Userinfo.Mapper.Entity.Result;
+import com.xmsmartcity.userinfo.Mapper.Entity.Result;
 
 /**
  * Created by lingyun on 2018/1/19.

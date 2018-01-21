@@ -9390,7 +9390,7 @@ var ReactFiberCommitWork = function (config, captureError) {
     }
   }
 
-  // User-originating errors (lifecycles and refs) should not interrupt
+  // user-originating errors (lifecycles and refs) should not interrupt
   // deletion, so don't let them throw. Host-originating errors should
   // interrupt deletion, so it's okay
   function commitUnmount(current) {
