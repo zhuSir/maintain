@@ -30,7 +30,7 @@ var DengluBtn = React.createClass({
         };
 
 //window.open("../../base/index.html");
-window.open("UserList.html");
+        window.open("userlist.html");
 
         $.ajax({
             type: "POST",
