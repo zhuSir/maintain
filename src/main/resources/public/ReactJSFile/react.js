@@ -430,7 +430,7 @@ module.exports = BeforeInputEventPlugin;
 'use strict';
 
 /**
- * CSS properties which accept numbers but are not in units of "px".
+ * css properties which accept numbers but are not in units of "px".
  */
 
 var isUnitlessNumber = {
@@ -690,7 +690,7 @@ if ("development" !== 'production') {
 }
 
 /**
- * Operations for dealing with CSS properties.
+ * Operations for dealing with css properties.
  */
 var CSSPropertyOperations = {
 
@@ -701,7 +701,7 @@ var CSSPropertyOperations = {
    *   "width:200px;height:0;"
    *
    * Undefined values are ignored so that declarative programming is easier.
-   * The result should be HTML-escaped before insertion into the DOM.
+   * The result should be html-escaped before insertion into the DOM.
    *
    * @param {object} styles
    * @param {ReactDOMComponent} component
@@ -1021,7 +1021,7 @@ var newValueProp = {
 /**
  * (For IE <=11) Starts tracking propertychange events on the passed-in element
  * and override the value property so that we can distinguish user events from
- * value changes in JS.
+ * value changes in js.
  */
 function startWatchingForValueChange(target, targetInst) {
   activeElement = target;
@@ -1101,7 +1101,7 @@ function handleEventsForInputEventIE(topLevelType, target, targetInst) {
     // appears to fire in all of the remaining cases so we catch those and
     // forward the event if the value has changed
     // In either case, we don't want to call the event handler if the value
-    // is changed from JS so we redefine a setter for `.value` that updates
+    // is changed from js so we redefine a setter for `.value` that updates
     // our activeElementValue variable, allowing us to ignore those changes
     //
     // stopWatching() should be a noop here but we call it just in case we
@@ -2049,7 +2049,7 @@ var Danger = {
   dangerouslyReplaceNodeWithMarkup: function (oldChild, markup) {
     !ExecutionEnvironment.canUseDOM ? "development" !== 'production' ? invariant(false, 'dangerouslyReplaceNodeWithMarkup(...): Cannot render markup in a ' + 'worker thread. Make sure `window` and `document` are available ' + 'globally before requiring React when unit testing or use ' + 'ReactDOMServer.renderToString() for server rendering.') : invariant(false) : void 0;
     !markup ? "development" !== 'production' ? invariant(false, 'dangerouslyReplaceNodeWithMarkup(...): Missing markup.') : invariant(false) : void 0;
-    !(oldChild.nodeName !== 'HTML') ? "development" !== 'production' ? invariant(false, 'dangerouslyReplaceNodeWithMarkup(...): Cannot replace markup of the ' + '<html> node. This is because browser quirks make this unreliable ' + 'and/or slow. If you want to render to the root you must use ' + 'server rendering. See ReactDOMServer.renderToString().') : invariant(false) : void 0;
+    !(oldChild.nodeName !== 'html') ? "development" !== 'production' ? invariant(false, 'dangerouslyReplaceNodeWithMarkup(...): Cannot replace markup of the ' + '<html> node. This is because browser quirks make this unreliable ' + 'and/or slow. If you want to render to the root you must use ' + 'server rendering. See ReactDOMServer.renderToString().') : invariant(false) : void 0;
 
     if (typeof markup === 'string') {
       var newChild = createNodesFromMarkup(markup, emptyFunction)[0];
@@ -5567,7 +5567,7 @@ var ReactCompositeComponentMixin = {
     ReactInstanceMap.set(inst, this);
 
     if ("development" !== 'production') {
-      // Since plain JS classes are defined without any special initialization
+      // Since plain js classes are defined without any special initialization
       // logic, we can not catch common errors early. Therefore, we have to
       // catch them here, at initialization time, instead.
       "development" !== 'production' ? warning(!inst.getInitialState || inst.getInitialState.isReactClassApproved, 'getInitialState was defined on %s, a plain JavaScript class. ' + 'This is only supported for classes created using React.createClass. ' + 'Did you mean to define a state property instead?', this.getName() || 'a component') : void 0;
@@ -6264,7 +6264,7 @@ if ("development" !== 'production') {
     // information on preventing compatibility mode
     var ieCompatibilityMode = document.documentMode && document.documentMode < 8;
 
-    "development" !== 'production' ? warning(!ieCompatibilityMode, 'Internet Explorer is running in compatibility mode; please add the ' + 'following tag to your HTML to prevent this from happening: ' + '<meta http-equiv="X-UA-Compatible" content="IE=edge" />') : void 0;
+    "development" !== 'production' ? warning(!ieCompatibilityMode, 'Internet Explorer is running in compatibility mode; please add the ' + 'following tag to your html to prevent this from happening: ' + '<meta http-equiv="X-UA-Compatible" content="IE=edge" />') : void 0;
 
     var expectedFeatures = [
     // shims
@@ -6585,7 +6585,7 @@ function postUpdateSelectWrapper() {
   ReactDOMSelect.postUpdateWrapper(this);
 }
 
-// For HTML, certain tags should omit their close tag. We keep a whitelist for
+// For html, certain tags should omit their close tag. We keep a whitelist for
 // those special-case tags.
 
 var omittedCloseTags = {
@@ -6613,7 +6613,7 @@ var newlineEatingTags = {
   'textarea': true
 };
 
-// For HTML, certain tags cannot have children. This has the same purpose as
+// For html, certain tags cannot have children. This has the same purpose as
 // `omittedCloseTags` except that `menuitem` should still have its closing tag.
 
 var voidElementTags = _assign({
@@ -6621,7 +6621,7 @@ var voidElementTags = _assign({
 }, omittedCloseTags);
 
 // We accept any tag to be rendered but since this gets injected into arbitrary
-// HTML, we want to make sure that it's a safe tag.
+// html, we want to make sure that it's a safe tag.
 // http://www.w3.org/TR/REC-xml/#NT-Name
 
 var VALID_TAG_REGEX = /^[a-zA-Z][a-zA-Z:_\.\-\d]*$/; // Simplified subset
@@ -6738,7 +6738,7 @@ ReactDOMComponent.Mixin = {
 
     assertValidProps(this, props);
 
-    // We create tags in the namespace of their parent container, except HTML
+    // We create tags in the namespace of their parent container, except html
     // tags get no namespace.
     var namespaceURI;
     var parentTag;
@@ -7619,7 +7619,7 @@ var ReactElementValidator = _dereq_(61);
 var mapObject = _dereq_(161);
 
 /**
- * Create a factory that creates HTML tag elements.
+ * Create a factory that creates html tag elements.
  *
  * @param {string} tag Tag name (e.g. `div`).
  * @private
@@ -7632,7 +7632,7 @@ function createDOMFactory(tag) {
 }
 
 /**
- * Creates a mapping from supported HTML tags to `ReactDOMComponent` classes.
+ * Creates a mapping from supported html tags to `ReactDOMComponent` classes.
  * This is also accessible via `React.DOM`.
  *
  * @public
@@ -13283,7 +13283,7 @@ var invariant = _dereq_(156);
 
 /**
  * @param {ReactElement} element
- * @return {string} the HTML markup
+ * @return {string} the html markup
  */
 function renderToStringImpl(element, makeStaticMarkup) {
   var transaction;
@@ -13913,7 +13913,7 @@ var NS = {
 
 // We use attributes for everything SVG so let's avoid some duplication and run
 // code instead.
-// The following are all specified in the HTML config already so we exclude here.
+// The following are all specified in the html config already so we exclude here.
 // - class (as className)
 // - color
 // - height
@@ -14915,7 +14915,7 @@ var SimpleEventPlugin = {
       case topLevelTypes.topTimeUpdate:
       case topLevelTypes.topVolumeChange:
       case topLevelTypes.topWaiting:
-        // HTML Events
+        // html Events
         // @see http://www.w3.org/TR/html5/index.html#events-0
         EventConstructor = SyntheticEvent;
         break;
@@ -16314,8 +16314,8 @@ var styleWarnings = {};
  * should be logical (no hyphens), as specified
  * in `CSSProperty.isUnitlessNumber`.
  *
- * @param {string} name CSS property name such as `topMargin`.
- * @param {*} value CSS property value such as `10px`.
+ * @param {string} name css property name such as `topMargin`.
+ * @param {*} value css property value such as `10px`.
  * @param {ReactDOMComponent} component
  * @return {string} Normalized style value with dimensions applied.
  */
@@ -16323,10 +16323,10 @@ function dangerousStyleValue(name, value, component) {
   // Note that we've removed escapeTextForBrowser() calls here since the
   // whole string will be escaped when the attribute is injected into
   // the markup. If you provide unsafe user data here they can inject
-  // arbitrary CSS which may be problematic (I couldn't repro this):
+  // arbitrary css which may be problematic (I couldn't repro this):
   // https://www.owasp.org/index.php/XSS_Filter_Evasion_Cheat_Sheet
   // http://www.thespanner.co.uk/2007/11/26/ultimate-xss-css-injection/
-  // This is not an XSS hole but instead a potential CSS injection issue
+  // This is not an XSS hole but instead a potential css injection issue
   // which has lead to a greater discussion about how we're going to
   // trust URLs moving forward. See #2115901
 
@@ -16357,7 +16357,7 @@ function dangerousStyleValue(name, value, component) {
           }
         }
         if (!warned) {
-          "development" !== 'production' ? warning(false, 'a `%s` tag (owner: `%s`) was passed a numeric string value ' + 'for CSS property `%s` (value: `%s`) which will be treated ' + 'as a unitless number in a future version of React.', component._currentElement.type, ownerName || 'unknown', name, value) : void 0;
+          "development" !== 'production' ? warning(false, 'a `%s` tag (owner: `%s`) was passed a numeric string value ' + 'for css property `%s` (value: `%s`) which will be treated ' + 'as a unitless number in a future version of React.', component._currentElement.type, ownerName || 'unknown', name, value) : void 0;
         }
       }
     }
@@ -18250,7 +18250,7 @@ var camelize = _dereq_(143);
 var msPattern = /^-ms-/;
 
 /**
- * Camelcases a hyphenated CSS property name, for example:
+ * Camelcases a hyphenated css property name, for example:
  *
  *   > camelizeStyleName('background-color')
  *   < "backgroundColor"
@@ -18491,7 +18491,7 @@ function getNodeName(markup) {
  * <script> element that is rendered. If no `handleScript` function is supplied,
  * an exception is thrown if any <script> elements are rendered.
  *
- * @param {string} markup A string of valid HTML markup.
+ * @param {string} markup A string of valid html markup.
  * @param {?function} handleScript Invoked once for each rendered <script>.
  * @return {array<DOMElement|DOMTextNode>} An array of rendered nodes.
  */
@@ -18548,7 +18548,7 @@ function makeEmptyFunction(arg) {
 /**
  * This function accepts and discards inputs; it has no side effects. This is
  * primarily useful idiomatically for overridable function endpoints which
- * always need to be callable, since JS lacks a null-call idiom ala Cocoa.
+ * always need to be callable, since js lacks a null-call idiom ala Cocoa.
  */
 function emptyFunction() {}
 
@@ -18802,7 +18802,7 @@ var _uppercasePattern = /([A-Z])/g;
  *   > hyphenate('backgroundColor')
  *   < "background-color"
  *
- * For CSS style names, use `hyphenateStyleName` instead which works properly
+ * For css style names, use `hyphenateStyleName` instead which works properly
  * with all vendor prefixes, including `ms`.
  *
  * @param {string} string
@@ -18832,7 +18832,7 @@ var hyphenate = _dereq_(154);
 var msPattern = /^ms-/;
 
 /**
- * Hyphenates a camelcased CSS property name, for example:
+ * Hyphenates a camelcased css property name, for example:
  *
  *   > hyphenateStyleName('backgroundColor')
  *   < "background-color"

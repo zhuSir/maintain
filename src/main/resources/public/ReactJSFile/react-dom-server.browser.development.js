@@ -264,7 +264,7 @@ function shouldAttributeAcceptBooleanValue(name) {
 /**
  * Checks to see if a property name is within the list of properties
  * reserved for internal React operations. These properties should
- * not be set on an HTML element.
+ * not be set on an html element.
  *
  * @private
  * @param {string} name
@@ -467,7 +467,7 @@ function makeEmptyFunction(arg) {
 /**
  * This function accepts and discards inputs; it has no side effects. This is
  * primarily useful idiomatically for overridable function endpoints which
- * always need to be callable, since JS lacks a null-call idiom ala Cocoa.
+ * always need to be callable, since js lacks a null-call idiom ala Cocoa.
  */
 var emptyFunction = function emptyFunction() {};
 
@@ -519,7 +519,7 @@ var _uppercasePattern = /([A-Z])/g;
  *   > hyphenate('backgroundColor')
  *   < "background-color"
  *
- * For CSS style names, use `hyphenateStyleName` instead which works properly
+ * For css style names, use `hyphenateStyleName` instead which works properly
  * with all vendor prefixes, including `ms`.
  *
  * @param {string} string
@@ -547,7 +547,7 @@ var hyphenate_1 = hyphenate;
 var msPattern = /^ms-/;
 
 /**
- * Hyphenates a camelcased CSS property name, for example:
+ * Hyphenates a camelcased css property name, for example:
  *
  *   > hyphenateStyleName('backgroundColor')
  *   < "background-color"
@@ -760,9 +760,9 @@ var REACT_FRAGMENT_TYPE = hasSymbol ? Symbol['for']('react.fragment') : 0xeacb;
 var matchHtmlRegExp = /["'&<>]/;
 
 /**
- * Escapes special characters and HTML entities in a given html string.
+ * Escapes special characters and html entities in a given html string.
  *
- * @param  {string} string HTML string to escape for later insertion
+ * @param  {string} string html string to escape for later insertion
  * @return {string}
  * @public
  */
@@ -1005,7 +1005,7 @@ var ReactControlledValuePropTypes = {
   };
 }
 
-// For HTML, certain tags should omit their close tag. We keep a whitelist for
+// For html, certain tags should omit their close tag. We keep a whitelist for
 // those special-case tags.
 
 var omittedCloseTags = {
@@ -1026,7 +1026,7 @@ var omittedCloseTags = {
   wbr: true
 };
 
-// For HTML, certain tags cannot have children. This has the same purpose as
+// For html, certain tags cannot have children. This has the same purpose as
 // `omittedCloseTags` except that `menuitem` should still have its closing tag.
 
 var voidElementTags = _assign({
@@ -1054,7 +1054,7 @@ function assertValidProps(tag, props, getStack) {
 }
 
 /**
- * CSS properties which accept numbers but are not in units of "px".
+ * css properties which accept numbers but are not in units of "px".
  */
 var isUnitlessNumber = {
   animationIterationCount: true,
@@ -1131,18 +1131,18 @@ Object.keys(isUnitlessNumber).forEach(function (prop) {
  * should be logical (no hyphens), as specified
  * in `CSSProperty.isUnitlessNumber`.
  *
- * @param {string} name CSS property name such as `topMargin`.
- * @param {*} value CSS property value such as `10px`.
+ * @param {string} name css property name such as `topMargin`.
+ * @param {*} value css property value such as `10px`.
  * @return {string} Normalized style value with dimensions applied.
  */
 function dangerousStyleValue(name, value, isCustomProperty) {
   // Note that we've removed escapeTextForBrowser() calls here since the
   // whole string will be escaped when the attribute is injected into
   // the markup. If you provide unsafe user data here they can inject
-  // arbitrary CSS which may be problematic (I couldn't repro this):
+  // arbitrary css which may be problematic (I couldn't repro this):
   // https://www.owasp.org/index.php/XSS_Filter_Evasion_Cheat_Sheet
   // http://www.thespanner.co.uk/2007/11/26/ultimate-xss-css-injection/
-  // This is not an XSS hole but instead a potential CSS injection issue
+  // This is not an XSS hole but instead a potential css injection issue
   // which has lead to a greater discussion about how we're going to
   // trust URLs moving forward. See #2115901
 
@@ -1225,7 +1225,7 @@ var camelize_1 = camelize;
 var msPattern$1 = /^-ms-/;
 
 /**
- * Camelcases a hyphenated CSS property name, for example:
+ * Camelcases a hyphenated css property name, for example:
  *
  *   > camelizeStyleName('background-color')
  *   < "backgroundColor"
@@ -1545,11 +1545,11 @@ var possibleRegistrationNames = {};
  * @see {EventPluginHub.injection.injectEventPluginsByName}
  */
 
-// When adding attributes to the HTML or SVG whitelist, be sure to
+// When adding attributes to the html or SVG whitelist, be sure to
 // also add them to this module to ensure casing and incorrect name
 // warnings.
 var possibleStandardNames = {
-  // HTML
+  // html
   accept: 'accept',
   acceptcharset: 'acceptCharset',
   'accept-charset': 'acceptCharset',
@@ -2262,7 +2262,7 @@ function getComponentName(type) {
 }
 
 // We accept any tag to be rendered but since this gets injected into arbitrary
-// HTML, we want to make sure that it's a safe tag.
+// html, we want to make sure that it's a safe tag.
 // http://www.w3.org/TR/REC-xml/#NT-Name
 var VALID_TAG_REGEX = /^[a-zA-Z][a-zA-Z:_\.\-\d]*$/; // Simplified subset
 var validatedTagCache = {};
@@ -2578,7 +2578,7 @@ var ReactDOMServerRenderer = function () {
     var flatChildren = flattenTopLevelChildren(children);
 
     var topFrame = {
-      // Assume all trees start in the HTML namespace (not totally true, but
+      // Assume all trees start in the html namespace (not totally true, but
       // this is what we did historically)
       domNamespace: Namespaces.html,
       children: flatChildren,
@@ -2707,7 +2707,7 @@ var ReactDOMServerRenderer = function () {
       if (namespace === Namespaces.html) {
         // Should this check be gated by parent namespace? Not sure we want to
         // allow <SVG> or <mATH>.
-        warning_1(tag === element.type, '<%s /> is using uppercase HTML. Always use lowercase HTML tags ' + 'in React.', element.type);
+        warning_1(tag === element.type, '<%s /> is using uppercase html. Always use lowercase html tags ' + 'in React.', element.type);
       }
     }
 
@@ -2887,7 +2887,7 @@ var ReactDOMServerRenderer = function () {
 }();
 
 /**
- * Render a ReactElement to its initial HTML. This should only be used on the
+ * Render a ReactElement to its initial html. This should only be used on the
  * server.
  * See https://reactjs.org/docs/react-dom-server.html#rendertostring
  */

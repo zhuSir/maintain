@@ -284,7 +284,7 @@ function makeEmptyFunction(arg) {
 /**
  * This function accepts and discards inputs; it has no side effects. This is
  * primarily useful idiomatically for overridable function endpoints which
- * always need to be callable, since JS lacks a null-call idiom ala Cocoa.
+ * always need to be callable, since js lacks a null-call idiom ala Cocoa.
  */
 var emptyFunction = function emptyFunction() {};
 

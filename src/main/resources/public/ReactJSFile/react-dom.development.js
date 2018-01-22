@@ -266,7 +266,7 @@ function shouldAttributeAcceptBooleanValue(name) {
 /**
  * Checks to see if a property name is within the list of properties
  * reserved for internal React operations. These properties should
- * not be set on an HTML element.
+ * not be set on an html element.
  *
  * @private
  * @param {string} name
@@ -842,7 +842,7 @@ function makeEmptyFunction(arg) {
 /**
  * This function accepts and discards inputs; it has no side effects. This is
  * primarily useful idiomatically for overridable function endpoints which
- * always need to be callable, since JS lacks a null-call idiom ala Cocoa.
+ * always need to be callable, since js lacks a null-call idiom ala Cocoa.
  */
 var emptyFunction = function emptyFunction() {};
 
@@ -2556,7 +2556,7 @@ function isTextInputElement(elem) {
 }
 
 /**
- * HTML nodeType values that represent the type of the node
+ * html nodeType values that represent the type of the node
  */
 
 var ELEMENT_NODE = 1;
@@ -2809,7 +2809,7 @@ if (ExecutionEnvironment_1.canUseDOM) {
 /**
  * (For IE <=9) Starts tracking propertychange events on the passed-in element
  * and override the value property so that we can distinguish user events from
- * value changes in JS.
+ * value changes in js.
  */
 function startWatchingForValueChange(target, targetInst) {
   activeElement = target;
@@ -2850,7 +2850,7 @@ function handleEventsForInputEventPolyfill(topLevelType, target, targetInst) {
     // appears to fire in all of the remaining cases so we catch those and
     // forward the event if the value has changed
     // In either case, we don't want to call the event handler if the value
-    // is changed from JS so we redefine a setter for `.value` that updates
+    // is changed from js so we redefine a setter for `.value` that updates
     // our activeElementValue variable, allowing us to ignore those changes
     //
     // stopWatching() should be a noop here but we call it just in case we
@@ -5180,7 +5180,7 @@ var SimpleEventPlugin = {
             warning_1(false, 'SimpleEventPlugin: Unhandled event type, `%s`. This warning ' + 'is likely caused by a bug in React. Please file an issue.', topLevelType);
           }
         }
-        // HTML Events
+        // html Events
         // @see http://www.w3.org/TR/html5/index.html#events-0
         EventConstructor = SyntheticEvent$1;
         break;
@@ -10283,7 +10283,7 @@ function logCapturedError(capturedError) {
     var combinedMessage = '' + componentNameMessage + componentStack + '\n\n' + ('' + errorBoundaryMessage);
 
     // In development, we provide our own message with just the component stack.
-    // We don't include the original error message and JS stack because the browser
+    // We don't include the original error message and js stack because the browser
     // has already printed it. Even if the application swallows the error, it is still
     // displayed by the browser thanks to the DEV-only fake event trick in ReactErrorUtils.
     console.error(combinedMessage);
@@ -13025,7 +13025,7 @@ var setTextContent = function (node, text) {
 };
 
 /**
- * CSS properties which accept numbers but are not in units of "px".
+ * css properties which accept numbers but are not in units of "px".
  */
 var isUnitlessNumber = {
   animationIterationCount: true,
@@ -13102,18 +13102,18 @@ Object.keys(isUnitlessNumber).forEach(function (prop) {
  * should be logical (no hyphens), as specified
  * in `CSSProperty.isUnitlessNumber`.
  *
- * @param {string} name CSS property name such as `topMargin`.
- * @param {*} value CSS property value such as `10px`.
+ * @param {string} name css property name such as `topMargin`.
+ * @param {*} value css property value such as `10px`.
  * @return {string} Normalized style value with dimensions applied.
  */
 function dangerousStyleValue(name, value, isCustomProperty) {
   // Note that we've removed escapeTextForBrowser() calls here since the
   // whole string will be escaped when the attribute is injected into
   // the markup. If you provide unsafe user data here they can inject
-  // arbitrary CSS which may be problematic (I couldn't repro this):
+  // arbitrary css which may be problematic (I couldn't repro this):
   // https://www.owasp.org/index.php/XSS_Filter_Evasion_Cheat_Sheet
   // http://www.thespanner.co.uk/2007/11/26/ultimate-xss-css-injection/
-  // This is not an XSS hole but instead a potential CSS injection issue
+  // This is not an XSS hole but instead a potential css injection issue
   // which has lead to a greater discussion about how we're going to
   // trust URLs moving forward. See #2115901
 
@@ -13146,7 +13146,7 @@ var _uppercasePattern = /([A-Z])/g;
  *   > hyphenate('backgroundColor')
  *   < "background-color"
  *
- * For CSS style names, use `hyphenateStyleName` instead which works properly
+ * For css style names, use `hyphenateStyleName` instead which works properly
  * with all vendor prefixes, including `ms`.
  *
  * @param {string} string
@@ -13174,7 +13174,7 @@ var hyphenate_1 = hyphenate;
 var msPattern = /^ms-/;
 
 /**
- * Hyphenates a camelcased CSS property name, for example:
+ * Hyphenates a camelcased css property name, for example:
  *
  *   > hyphenateStyleName('backgroundColor')
  *   < "background-color"
@@ -13239,7 +13239,7 @@ var camelize_1 = camelize;
 var msPattern$1 = /^-ms-/;
 
 /**
- * Camelcases a hyphenated CSS property name, for example:
+ * Camelcases a hyphenated css property name, for example:
  *
  *   > camelizeStyleName('background-color')
  *   < "backgroundColor"
@@ -13342,7 +13342,7 @@ var warnValidStyle = emptyFunction_1;
 var warnValidStyle$1 = warnValidStyle;
 
 /**
- * Operations for dealing with CSS properties.
+ * Operations for dealing with css properties.
  */
 
 /**
@@ -13403,7 +13403,7 @@ function setValueForStyles(node, styles, getStack) {
   }
 }
 
-// For HTML, certain tags should omit their close tag. We keep a whitelist for
+// For html, certain tags should omit their close tag. We keep a whitelist for
 // those special-case tags.
 
 var omittedCloseTags = {
@@ -13424,7 +13424,7 @@ var omittedCloseTags = {
   wbr: true
 };
 
-// For HTML, certain tags cannot have children. This has the same purpose as
+// For html, certain tags cannot have children. This has the same purpose as
 // `omittedCloseTags` except that `menuitem` should still have its closing tag.
 
 var voidElementTags = _assign({
@@ -13635,11 +13635,11 @@ function validateProperties$1(type, props) {
   }
 }
 
-// When adding attributes to the HTML or SVG whitelist, be sure to
+// When adding attributes to the html or SVG whitelist, be sure to
 // also add them to this module to ensure casing and incorrect name
 // warnings.
 var possibleStandardNames = {
-  // HTML
+  // html
   accept: 'accept',
   acceptcharset: 'acceptCharset',
   'accept-charset': 'acceptCharset',
@@ -14313,7 +14313,7 @@ var getStack = emptyFunction_1.thatReturns('');
     validateProperties$2(type, props, /* canUseEventSystem */true);
   };
 
-  // HTML parsing normalizes CR and CRLF to LF.
+  // html parsing normalizes CR and CRLF to LF.
   // It also can turn \u0000 into \uFFFD inside attributes.
   // https://www.w3.org/TR/html5/single-page.html#preprocessing-the-input-stream
   // If we have a mismatch, it might be caused by that.
@@ -14372,7 +14372,7 @@ var getStack = emptyFunction_1.thatReturns('');
     }
   };
 
-  // Parse the HTML and read it back to normalize the HTML string so that it
+  // Parse the html and read it back to normalize the html string so that it
   // can be used for comparison.
   var normalizeHTML = function (parent, html) {
     // We could have created a separate document here to avoid
@@ -14522,7 +14522,7 @@ function updateDOMProperties(domElement, updatePayload, wasCustomComponentTag, i
 }
 
 function createElement$1(type, props, rootContainerElement, parentNamespace) {
-  // We create tags in the namespace of their parent container, except HTML
+  // We create tags in the namespace of their parent container, except html
   var ownerDocument = getOwnerDocumentFromRootContainer(rootContainerElement);
   var domElement;
   var namespaceURI = parentNamespace;
@@ -14534,7 +14534,7 @@ function createElement$1(type, props, rootContainerElement, parentNamespace) {
       var isCustomComponentTag = isCustomComponent(type, props);
       // Should this check be gated by parent namespace? Not sure we want to
       // allow <SVG> or <mATH>.
-      warning_1(isCustomComponentTag || type === type.toLowerCase(), '<%s /> is using uppercase HTML. Always use lowercase HTML tags ' + 'in React.', type);
+      warning_1(isCustomComponentTag || type === type.toLowerCase(), '<%s /> is using uppercase html. Always use lowercase html tags ' + 'in React.', type);
     }
 
     if (type === 'script') {
@@ -14986,10 +14986,10 @@ function diffHydratedProperties$1(domElement, tag, rawProps, parentNamespace, ro
     var nextProp = rawProps[propKey];
     if (propKey === CHILDREN) {
       // For text content children we compare against textContent. This
-      // might match additional HTML that is hidden when we read it using
+      // might match additional html that is hidden when we read it using
       // textContent. E.g. "foo" will match "f<span>oo</span>" but that still
       // satisfies our requirement. Our requirement is not to produce perfect
-      // HTML and attributes. Ideally we should preserve structure but it's
+      // html and attributes. Ideally we should preserve structure but it's
       // ok not to if the visible content is still enough to indicate what
       // even listeners these nodes might be wired up to.
       // TODO: Warn if there is more than a single textNode as a child.
@@ -15134,7 +15134,7 @@ function warnForDeletedHydratableElement$1(parentNode, child) {
       return;
     }
     didWarnInvalidHydration = true;
-    warning_1(false, 'Did not expect server HTML to contain a <%s> in <%s>.', child.nodeName.toLowerCase(), parentNode.nodeName.toLowerCase());
+    warning_1(false, 'Did not expect server html to contain a <%s> in <%s>.', child.nodeName.toLowerCase(), parentNode.nodeName.toLowerCase());
   }
 }
 
@@ -15144,7 +15144,7 @@ function warnForDeletedHydratableText$1(parentNode, child) {
       return;
     }
     didWarnInvalidHydration = true;
-    warning_1(false, 'Did not expect server HTML to contain the text node "%s" in <%s>.', child.nodeValue, parentNode.nodeName.toLowerCase());
+    warning_1(false, 'Did not expect server html to contain the text node "%s" in <%s>.', child.nodeValue, parentNode.nodeName.toLowerCase());
   }
 }
 
@@ -15154,7 +15154,7 @@ function warnForInsertedHydratedElement$1(parentNode, tag, props) {
       return;
     }
     didWarnInvalidHydration = true;
-    warning_1(false, 'Expected server HTML to contain a matching <%s> in <%s>.', tag, parentNode.nodeName.toLowerCase());
+    warning_1(false, 'Expected server html to contain a matching <%s> in <%s>.', tag, parentNode.nodeName.toLowerCase());
   }
 }
 
@@ -15162,7 +15162,7 @@ function warnForInsertedHydratedText$1(parentNode, text) {
   {
     if (text === '') {
       // We expect to insert empty text nodes since they're not represented in
-      // the HTML.
+      // the html.
       // TODO: Remove this special case if we can just avoid inserting empty
       // text nodes.
       return;
@@ -15171,7 +15171,7 @@ function warnForInsertedHydratedText$1(parentNode, text) {
       return;
     }
     didWarnInvalidHydration = true;
-    warning_1(false, 'Expected server HTML to contain a matching text node for "%s" in <%s>.', text, parentNode.nodeName.toLowerCase());
+    warning_1(false, 'Expected server html to contain a matching text node for "%s" in <%s>.', text, parentNode.nodeName.toLowerCase());
   }
 }
 
@@ -15752,7 +15752,7 @@ var DOMRenderer = reactReconciler({
     },
     canHydrateTextInstance: function (instance, text) {
       if (text === '' || instance.nodeType !== TEXT_NODE) {
-        // Empty strings are not parsed by HTML so there won't be a correct match here.
+        // Empty strings are not parsed by html so there won't be a correct match here.
         return null;
       }
       // This has now been refined to a text node.
@@ -15890,7 +15890,7 @@ function renderSubtreeIntoContainer(parentComponent, children, container, forceH
     {
       if (shouldHydrate && !forceHydrate && !warnedAboutHydrateAPI) {
         warnedAboutHydrateAPI = true;
-        lowPriorityWarning$1(false, 'render(): Calling ReactDOM.render() to hydrate server-rendered markup ' + 'will stop working in React v17. Replace the ReactDOM.render() call ' + 'with ReactDOM.hydrate() if you want React to attach to the server HTML.');
+        lowPriorityWarning$1(false, 'render(): Calling ReactDOM.render() to hydrate server-rendered markup ' + 'will stop working in React v17. Replace the ReactDOM.render() call ' + 'with ReactDOM.hydrate() if you want React to attach to the server html.');
       }
     }
     var newRoot = DOMRenderer.createContainer(container, shouldHydrate);
