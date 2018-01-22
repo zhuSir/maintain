@@ -1,0 +1,317 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.xmsmartcity.mapper.TpProjectMapper" >
+  <resultMap id="BaseResultMap" type="com.xmsmartcity.pojo.TpProject" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="name" property="name" jdbcType="VARCHAR" />
+    <result column="dep_id" property="depId" jdbcType="INTEGER" />
+    <result column="bid_state" property="bidState" jdbcType="INTEGER" />
+    <result column="lat" property="lat" jdbcType="REAL" />
+    <result column="lng" property="lng" jdbcType="REAL" />
+    <result column="provice" property="provice" jdbcType="VARCHAR" />
+    <result column="city" property="city" jdbcType="VARCHAR" />
+    <result column="area" property="area" jdbcType="VARCHAR" />
+    <result column="addr" property="addr" jdbcType="VARCHAR" />
+    <result column="owener_unit_id" property="owenerUnitId" jdbcType="INTEGER" />
+    <result column="construct_unit _id" property="constructUnitId" jdbcType="INTEGER" />
+    <result column="mark" property="mark" jdbcType="VARCHAR" />
+    <result column="plan_start_date" property="planStartDate" jdbcType="TIMESTAMP" />
+    <result column="plan_end_date" property="planEndDate" jdbcType="TIMESTAMP" />
+    <result column="caption" property="caption" jdbcType="VARCHAR" />
+    <result column="manager_id" property="managerId" jdbcType="INTEGER" />
+    <result column="project_state" property="projectState" jdbcType="INTEGER" />
+    <result column="audit_state" property="auditState" jdbcType="INTEGER" />
+    <result column="audit_person_id" property="auditPersonId" jdbcType="INTEGER" />
+    <result column="audit_date" property="auditDate" jdbcType="TIMESTAMP" />
+    <result column="create_person_id" property="createPersonId" jdbcType="INTEGER" />
+    <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
+    <result column="update_time" property="updateTime" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, name, dep_id, bid_state, lat, lng, provice, city, area, addr, owener_unit_id, 
+    "construct_unit _id", mark, plan_start_date, plan_end_date, caption, manager_id, 
+    project_state, audit_state, audit_person_id, audit_date, create_person_id, create_time, 
+    update_time
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from t_p_project
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from t_p_project
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.xmsmartcity.pojo.TpProject" >
+    insert into t_p_project (id, name, dep_id, 
+      bid_state, lat, lng, provice, 
+      city, area, addr, owener_unit_id, 
+      "construct_unit _id", mark, plan_start_date, 
+      plan_end_date, caption, manager_id, 
+      project_state, audit_state, audit_person_id, 
+      audit_date, create_person_id, create_time, 
+      update_time)
+    values (#{id,jdbcType=INTEGER}, #{name,jdbcType=VARCHAR}, #{depId,jdbcType=INTEGER}, 
+      #{bidState,jdbcType=INTEGER}, #{lat,jdbcType=REAL}, #{lng,jdbcType=REAL}, #{provice,jdbcType=VARCHAR}, 
+      #{city,jdbcType=VARCHAR}, #{area,jdbcType=VARCHAR}, #{addr,jdbcType=VARCHAR}, #{owenerUnitId,jdbcType=INTEGER}, 
+      #{constructUnitId,jdbcType=INTEGER}, #{mark,jdbcType=VARCHAR}, #{planStartDate,jdbcType=TIMESTAMP}, 
+      #{planEndDate,jdbcType=TIMESTAMP}, #{caption,jdbcType=VARCHAR}, #{managerId,jdbcType=INTEGER}, 
+      #{projectState,jdbcType=INTEGER}, #{auditState,jdbcType=INTEGER}, #{auditPersonId,jdbcType=INTEGER}, 
+      #{auditDate,jdbcType=TIMESTAMP}, #{createPersonId,jdbcType=INTEGER}, #{createTime,jdbcType=TIMESTAMP}, 
+      #{updateTime,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="com.xmsmartcity.pojo.TpProject" >
+    insert into t_p_project
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="name != null" >
+        name,
+      </if>
+      <if test="depId != null" >
+        dep_id,
+      </if>
+      <if test="bidState != null" >
+        bid_state,
+      </if>
+      <if test="lat != null" >
+        lat,
+      </if>
+      <if test="lng != null" >
+        lng,
+      </if>
+      <if test="provice != null" >
+        provice,
+      </if>
+      <if test="city != null" >
+        city,
+      </if>
+      <if test="area != null" >
+        area,
+      </if>
+      <if test="addr != null" >
+        addr,
+      </if>
+      <if test="owenerUnitId != null" >
+        owener_unit_id,
+      </if>
+      <if test="constructUnitId != null" >
+        "construct_unit _id",
+      </if>
+      <if test="mark != null" >
+        mark,
+      </if>
+      <if test="planStartDate != null" >
+        plan_start_date,
+      </if>
+      <if test="planEndDate != null" >
+        plan_end_date,
+      </if>
+      <if test="caption != null" >
+        caption,
+      </if>
+      <if test="managerId != null" >
+        manager_id,
+      </if>
+      <if test="projectState != null" >
+        project_state,
+      </if>
+      <if test="auditState != null" >
+        audit_state,
+      </if>
+      <if test="auditPersonId != null" >
+        audit_person_id,
+      </if>
+      <if test="auditDate != null" >
+        audit_date,
+      </if>
+      <if test="createPersonId != null" >
+        create_person_id,
+      </if>
+      <if test="createTime != null" >
+        create_time,
+      </if>
+      <if test="updateTime != null" >
+        update_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="name != null" >
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="depId != null" >
+        #{depId,jdbcType=INTEGER},
+      </if>
+      <if test="bidState != null" >
+        #{bidState,jdbcType=INTEGER},
+      </if>
+      <if test="lat != null" >
+        #{lat,jdbcType=REAL},
+      </if>
+      <if test="lng != null" >
+        #{lng,jdbcType=REAL},
+      </if>
+      <if test="provice != null" >
+        #{provice,jdbcType=VARCHAR},
+      </if>
+      <if test="city != null" >
+        #{city,jdbcType=VARCHAR},
+      </if>
+      <if test="area != null" >
+        #{area,jdbcType=VARCHAR},
+      </if>
+      <if test="addr != null" >
+        #{addr,jdbcType=VARCHAR},
+      </if>
+      <if test="owenerUnitId != null" >
+        #{owenerUnitId,jdbcType=INTEGER},
+      </if>
+      <if test="constructUnitId != null" >
+        #{constructUnitId,jdbcType=INTEGER},
+      </if>
+      <if test="mark != null" >
+        #{mark,jdbcType=VARCHAR},
+      </if>
+      <if test="planStartDate != null" >
+        #{planStartDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="planEndDate != null" >
+        #{planEndDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="caption != null" >
+        #{caption,jdbcType=VARCHAR},
+      </if>
+      <if test="managerId != null" >
+        #{managerId,jdbcType=INTEGER},
+      </if>
+      <if test="projectState != null" >
+        #{projectState,jdbcType=INTEGER},
+      </if>
+      <if test="auditState != null" >
+        #{auditState,jdbcType=INTEGER},
+      </if>
+      <if test="auditPersonId != null" >
+        #{auditPersonId,jdbcType=INTEGER},
+      </if>
+      <if test="auditDate != null" >
+        #{auditDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createPersonId != null" >
+        #{createPersonId,jdbcType=INTEGER},
+      </if>
+      <if test="createTime != null" >
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null" >
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.xmsmartcity.pojo.TpProject" >
+    update t_p_project
+    <set >
+      <if test="name != null" >
+        name = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="depId != null" >
+        dep_id = #{depId,jdbcType=INTEGER},
+      </if>
+      <if test="bidState != null" >
+        bid_state = #{bidState,jdbcType=INTEGER},
+      </if>
+      <if test="lat != null" >
+        lat = #{lat,jdbcType=REAL},
+      </if>
+      <if test="lng != null" >
+        lng = #{lng,jdbcType=REAL},
+      </if>
+      <if test="provice != null" >
+        provice = #{provice,jdbcType=VARCHAR},
+      </if>
+      <if test="city != null" >
+        city = #{city,jdbcType=VARCHAR},
+      </if>
+      <if test="area != null" >
+        area = #{area,jdbcType=VARCHAR},
+      </if>
+      <if test="addr != null" >
+        addr = #{addr,jdbcType=VARCHAR},
+      </if>
+      <if test="owenerUnitId != null" >
+        owener_unit_id = #{owenerUnitId,jdbcType=INTEGER},
+      </if>
+      <if test="constructUnitId != null" >
+        "construct_unit _id" = #{constructUnitId,jdbcType=INTEGER},
+      </if>
+      <if test="mark != null" >
+        mark = #{mark,jdbcType=VARCHAR},
+      </if>
+      <if test="planStartDate != null" >
+        plan_start_date = #{planStartDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="planEndDate != null" >
+        plan_end_date = #{planEndDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="caption != null" >
+        caption = #{caption,jdbcType=VARCHAR},
+      </if>
+      <if test="managerId != null" >
+        manager_id = #{managerId,jdbcType=INTEGER},
+      </if>
+      <if test="projectState != null" >
+        project_state = #{projectState,jdbcType=INTEGER},
+      </if>
+      <if test="auditState != null" >
+        audit_state = #{auditState,jdbcType=INTEGER},
+      </if>
+      <if test="auditPersonId != null" >
+        audit_person_id = #{auditPersonId,jdbcType=INTEGER},
+      </if>
+      <if test="auditDate != null" >
+        audit_date = #{auditDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createPersonId != null" >
+        create_person_id = #{createPersonId,jdbcType=INTEGER},
+      </if>
+      <if test="createTime != null" >
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null" >
+        update_time = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.xmsmartcity.pojo.TpProject" >
+    update t_p_project
+    set name = #{name,jdbcType=VARCHAR},
+      dep_id = #{depId,jdbcType=INTEGER},
+      bid_state = #{bidState,jdbcType=INTEGER},
+      lat = #{lat,jdbcType=REAL},
+      lng = #{lng,jdbcType=REAL},
+      provice = #{provice,jdbcType=VARCHAR},
+      city = #{city,jdbcType=VARCHAR},
+      area = #{area,jdbcType=VARCHAR},
+      addr = #{addr,jdbcType=VARCHAR},
+      owener_unit_id = #{owenerUnitId,jdbcType=INTEGER},
+      "construct_unit _id" = #{constructUnitId,jdbcType=INTEGER},
+      mark = #{mark,jdbcType=VARCHAR},
+      plan_start_date = #{planStartDate,jdbcType=TIMESTAMP},
+      plan_end_date = #{planEndDate,jdbcType=TIMESTAMP},
+      caption = #{caption,jdbcType=VARCHAR},
+      manager_id = #{managerId,jdbcType=INTEGER},
+      project_state = #{projectState,jdbcType=INTEGER},
+      audit_state = #{auditState,jdbcType=INTEGER},
+      audit_person_id = #{auditPersonId,jdbcType=INTEGER},
+      audit_date = #{auditDate,jdbcType=TIMESTAMP},
+      create_person_id = #{createPersonId,jdbcType=INTEGER},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      update_time = #{updateTime,jdbcType=TIMESTAMP}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>
