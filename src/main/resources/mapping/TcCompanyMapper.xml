@@ -1,0 +1,210 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.xmsmartcity.mapper.TcCompanyMapper" >
+  <resultMap id="BaseResultMap" type="com.xmsmartcity.pojo.TcCompany" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="name" property="name" jdbcType="VARCHAR" />
+    <result column="manager_name" property="managerName" jdbcType="VARCHAR" />
+    <result column="manager_phone" property="managerPhone" jdbcType="VARCHAR" />
+    <result column="level" property="level" jdbcType="VARCHAR" />
+    <result column="mark" property="mark" jdbcType="VARCHAR" />
+    <result column="lat" property="lat" jdbcType="REAL" />
+    <result column="lng" property="lng" jdbcType="REAL" />
+    <result column="province" property="province" jdbcType="VARCHAR" />
+    <result column="city" property="city" jdbcType="VARCHAR" />
+    <result column="area" property="area" jdbcType="VARCHAR" />
+    <result column="addr" property="addr" jdbcType="VARCHAR" />
+    <result column="create_person_id" property="createPersonId" jdbcType="INTEGER" />
+    <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
+    <result column="update_time" property="updateTime" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, name, manager_name, manager_phone, level, mark, lat, lng, province, city, area, 
+    addr, create_person_id, create_time, update_time
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from t_c_company
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from t_c_company
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.xmsmartcity.pojo.TcCompany" >
+    insert into t_c_company (id, name, manager_name, 
+      manager_phone, level, mark, 
+      lat, lng, province, city, 
+      area, addr, create_person_id, 
+      create_time, update_time)
+    values (#{id,jdbcType=INTEGER}, #{name,jdbcType=VARCHAR}, #{managerName,jdbcType=VARCHAR}, 
+      #{managerPhone,jdbcType=VARCHAR}, #{level,jdbcType=VARCHAR}, #{mark,jdbcType=VARCHAR}, 
+      #{lat,jdbcType=REAL}, #{lng,jdbcType=REAL}, #{province,jdbcType=VARCHAR}, #{city,jdbcType=VARCHAR}, 
+      #{area,jdbcType=VARCHAR}, #{addr,jdbcType=VARCHAR}, #{createPersonId,jdbcType=INTEGER}, 
+      #{createTime,jdbcType=TIMESTAMP}, #{updateTime,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="com.xmsmartcity.pojo.TcCompany" >
+    insert into t_c_company
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="name != null" >
+        name,
+      </if>
+      <if test="managerName != null" >
+        manager_name,
+      </if>
+      <if test="managerPhone != null" >
+        manager_phone,
+      </if>
+      <if test="level != null" >
+        level,
+      </if>
+      <if test="mark != null" >
+        mark,
+      </if>
+      <if test="lat != null" >
+        lat,
+      </if>
+      <if test="lng != null" >
+        lng,
+      </if>
+      <if test="province != null" >
+        province,
+      </if>
+      <if test="city != null" >
+        city,
+      </if>
+      <if test="area != null" >
+        area,
+      </if>
+      <if test="addr != null" >
+        addr,
+      </if>
+      <if test="createPersonId != null" >
+        create_person_id,
+      </if>
+      <if test="createTime != null" >
+        create_time,
+      </if>
+      <if test="updateTime != null" >
+        update_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="name != null" >
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="managerName != null" >
+        #{managerName,jdbcType=VARCHAR},
+      </if>
+      <if test="managerPhone != null" >
+        #{managerPhone,jdbcType=VARCHAR},
+      </if>
+      <if test="level != null" >
+        #{level,jdbcType=VARCHAR},
+      </if>
+      <if test="mark != null" >
+        #{mark,jdbcType=VARCHAR},
+      </if>
+      <if test="lat != null" >
+        #{lat,jdbcType=REAL},
+      </if>
+      <if test="lng != null" >
+        #{lng,jdbcType=REAL},
+      </if>
+      <if test="province != null" >
+        #{province,jdbcType=VARCHAR},
+      </if>
+      <if test="city != null" >
+        #{city,jdbcType=VARCHAR},
+      </if>
+      <if test="area != null" >
+        #{area,jdbcType=VARCHAR},
+      </if>
+      <if test="addr != null" >
+        #{addr,jdbcType=VARCHAR},
+      </if>
+      <if test="createPersonId != null" >
+        #{createPersonId,jdbcType=INTEGER},
+      </if>
+      <if test="createTime != null" >
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null" >
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.xmsmartcity.pojo.TcCompany" >
+    update t_c_company
+    <set >
+      <if test="name != null" >
+        name = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="managerName != null" >
+        manager_name = #{managerName,jdbcType=VARCHAR},
+      </if>
+      <if test="managerPhone != null" >
+        manager_phone = #{managerPhone,jdbcType=VARCHAR},
+      </if>
+      <if test="level != null" >
+        level = #{level,jdbcType=VARCHAR},
+      </if>
+      <if test="mark != null" >
+        mark = #{mark,jdbcType=VARCHAR},
+      </if>
+      <if test="lat != null" >
+        lat = #{lat,jdbcType=REAL},
+      </if>
+      <if test="lng != null" >
+        lng = #{lng,jdbcType=REAL},
+      </if>
+      <if test="province != null" >
+        province = #{province,jdbcType=VARCHAR},
+      </if>
+      <if test="city != null" >
+        city = #{city,jdbcType=VARCHAR},
+      </if>
+      <if test="area != null" >
+        area = #{area,jdbcType=VARCHAR},
+      </if>
+      <if test="addr != null" >
+        addr = #{addr,jdbcType=VARCHAR},
+      </if>
+      <if test="createPersonId != null" >
+        create_person_id = #{createPersonId,jdbcType=INTEGER},
+      </if>
+      <if test="createTime != null" >
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null" >
+        update_time = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.xmsmartcity.pojo.TcCompany" >
+    update t_c_company
+    set name = #{name,jdbcType=VARCHAR},
+      manager_name = #{managerName,jdbcType=VARCHAR},
+      manager_phone = #{managerPhone,jdbcType=VARCHAR},
+      level = #{level,jdbcType=VARCHAR},
+      mark = #{mark,jdbcType=VARCHAR},
+      lat = #{lat,jdbcType=REAL},
+      lng = #{lng,jdbcType=REAL},
+      province = #{province,jdbcType=VARCHAR},
+      city = #{city,jdbcType=VARCHAR},
+      area = #{area,jdbcType=VARCHAR},
+      addr = #{addr,jdbcType=VARCHAR},
+      create_person_id = #{createPersonId,jdbcType=INTEGER},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      update_time = #{updateTime,jdbcType=TIMESTAMP}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>
