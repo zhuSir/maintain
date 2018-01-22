@@ -29,7 +29,8 @@ var DengluBtn = React.createClass({
             password:$("#pswInput").val()
         };
 
-
+//window.open("../../base/index.html");
+window.open("UserList.html");
 
         $.ajax({
             type: "POST",
@@ -40,7 +41,7 @@ var DengluBtn = React.createClass({
                 alert("success");
             },
             error:function(err){
-                alert("success");
+                alert("error");
 
             }
         });
