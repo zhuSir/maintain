@@ -161,4 +161,11 @@
       maintain_type = #{maintainType,jdbcType=VARCHAR}
     where id = #{id,jdbcType=INTEGER}
   </update>
+  <!--  -->
+  <select id="selectList" resultMap="BaseResultMap" parameterType="java.lang.Integer">
+    select
+      <include refid="Base_Column_List" />
+    from t_s_maintain WHERE fault_user_id = #{userId}
+  </select>
+
 </mapper>

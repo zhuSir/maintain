@@ -1,17 +1,11 @@
 package com.xmsmartcity.mapper;
 
 import com.xmsmartcity.pojo.TsMaintain;
+import org.springframework.stereotype.Repository;
 
-public interface TsMaintainMapper {
-    int deleteByPrimaryKey(Integer id);
+import java.util.List;
 
-    int insert(TsMaintain record);
-
-    int insertSelective(TsMaintain record);
-
-    TsMaintain selectByPrimaryKey(Integer id);
-
-    int updateByPrimaryKeySelective(TsMaintain record);
-
-    int updateByPrimaryKey(TsMaintain record);
+@Repository
+public interface TsMaintainMapper extends BaseDao<TsMaintain>{
+    List<TsMaintain> selectList(Integer userId);
 }
