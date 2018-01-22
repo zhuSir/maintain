@@ -2,9 +2,73 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <meta http-equiv="Access-Control-Allow-Origin" content="*">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>首页</title>
+    <link rel="stylesheet" href="../../Public/reset.css">
+    <link rel="stylesheet" type="text/css" href="../../Public/bootStrapJS/bootstrap.min.css"/>
+    <link rel="stylesheet" href="index.css">
+    <script src="../../Public/jquery-2.1.1.js" type="text/javascript" charset="utf-8"></script>
+    <script src="../../Public/bootStrapJS/bootstrap.min.js" type="text/javascript" charset="utf-8"></script>
+    <script src="index.js"></script>
 </head>
 <body>
+    <div class="contents">
+        <div class="sidebar">
+            <h5><span class="glyphicon glyphicon-inbox"></span> 维保管理</h5>
 
+            <div class="page-sidebar">
+                <ul>
+                    <li >
+                        <p class="first">项目管理 <span class="caret"></span></p>
+                        <ul>
+                            <li>
+                                <p>创建项目</p>
+                            </li>
+                            <li>
+                                <p>项目列表</p>
+                            </li>
+                        </ul>
+                    </li>
+                    <li >
+                        <p class="first">维保管理 <span class="caret"></span></p>
+                        <ul>
+                            <li>
+                                <p>保修单</p>
+                            </li>
+                            <li>
+                                <p>维修单</p>
+                            </li>
+                            <li>
+                                <p>巡检单</p>
+                            </li>
+                            <li>
+                                <p>统计单</p>
+                            </li>
+                            <li>
+                                <p>设备管理</p>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <header>
+            <div class="person">
+                <div class="btn-group">
+                    <button class="btn btn-default btn-lg dropdown-toggle" type="button" data-toggle="dropdown">
+                        基础信息<span class="caret"></span>
+                    </button>
+                    <ul class="dropdown-menu">
+                       <li><a href="">公司部门</a></li>
+                       <li><a href="">人员管理</a></li>
+                       <li><a href="">角色分配</a></li>
+                       <li><a href="">授权管理</a></li>
+                    </ul>
+                </div>
+            </div>
+        </header>
+    </div>
 </body>
 </html>
