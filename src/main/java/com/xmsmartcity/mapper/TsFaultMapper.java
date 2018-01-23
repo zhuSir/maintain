@@ -6,5 +6,5 @@ import java.util.List;
 import java.util.Map;
 
 public interface TsFaultMapper extends BaseDao<TsFault>{
-    List<Map> selectList();
+    List<Map<String,Object>> selectList();
 }

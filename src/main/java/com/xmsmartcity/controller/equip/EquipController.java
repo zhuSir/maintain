@@ -28,6 +28,7 @@ public class EquipController {
     @ResponseBody
     public CommonObjReturn getEquipList(@RequestBody CommonObjParam objparam, HttpServletRequest request, HttpServletResponse response){
         //这是注释
+        //你才是注释
         List<TeEquip> list=equipService.selectEquipList();
         System.out.print("ddddddd");
         CommonObjReturn commonObjReturn=new CommonObjReturn();

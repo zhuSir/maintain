@@ -141,7 +141,7 @@
   </update>
 
   <!-- 查询报障单列表 -->
-  <select id="selectList" resultType="map" resultMap="">
+  <select id="selectList" resultType="map">
     select
       <include refid="Base_Column_List" />
     from t_s_fault

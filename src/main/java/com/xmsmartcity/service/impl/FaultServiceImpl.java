@@ -25,21 +25,21 @@ public class FaultServiceImpl extends BaseServiceImpl<TsFault> implements FaultS
     private TsFaultMapper dao;
 
     @Override
-    public List<List<Object>> selectList() {
-        List<Map> result = dao.selectList();
-        List<List<Object>> res = new ArrayList<List<Object>>();
-        for(Map obj : result){
-            List<Object> resObj = new ArrayList<Object>();
-            resObj.add(obj.get("fault_code"));
-            resObj.add(obj.get("company_id"));
-            resObj.add(obj.get("project_id"));
-            resObj.add(obj.get("createtime"));
-            resObj.add(obj.get("remark_reason"));
-            resObj.add(obj.get("fault_type"));
-            resObj.add(obj.get("fault_user_id"));
-            resObj.add(obj.get("equip_id"));
-            res.add(resObj);
-        }
-        return res;
+    public List<Map<String,Object>> selectList() {
+        List<Map<String,Object>> result = dao.selectList();
+//        List<List<Object>> res = new ArrayList<List<Object>>();
+//        for(Map obj : result){
+//            List<Object> resObj = new ArrayList<Object>();
+//            resObj.add(obj.get("fault_code"));
+//            resObj.add(obj.get("company_id"));
+//            resObj.add(obj.get("project_id"));
+//            resObj.add(obj.get("createtime"));
+//            resObj.add(obj.get("remark_reason"));
+//            resObj.add(obj.get("fault_type"));
+//            resObj.add(obj.get("fault_user_id"));
+//            resObj.add(obj.get("equip_id"));
+//            res.add(resObj);
+//        }
+        return result;
     }
 }
