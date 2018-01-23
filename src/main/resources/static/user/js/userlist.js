@@ -2,14 +2,23 @@
 var BgDiv = React.createClass({
     render: function() {
         return (
-            <div className="bg test row">
-                <table className="table table-hover">
-                    <caption>悬停表格布局</caption>
+            <div className="bg test row leftAndRight15 top15">
+                <div className="col-xs-12">
+                    <button type="button" className="btn btn-info leftAndRight15">邀请成员</button>
+                    <button type="button" className="btn btn-info leftAndRight15">邀请成员</button>
+                    <button type="button" className="btn btn-info leftAndRight15">邀请成员</button>
+                    <button type="button" className="btn btn-info leftAndRight15">邀请成员</button>
+                    <button type="button" className="btn btn-info leftAndRight15">邀请成员</button>
+
+                </div>
+                <table className="table table-striped top15">
                     <thead>
                     <tr>
                         <th>姓名</th>
                         <th>手机号</th>
                         <th>职位</th>
+                        <th>部门</th>
+                        <th>编辑</th>
                     </tr>
                     </thead>
                     <tbody>
@@ -17,11 +26,37 @@ var BgDiv = React.createClass({
                         <td>张也</td>
                         <td>15738039217</td>
                         <td>喂饱</td>
+                        <td>研发部</td>
+                        <td>
+                            <EditBtn/>
+                        </td>
                     </tr>
                     <tr>
                         <td>啊哈哈</td>
                         <td>15738039217</td>
                         <td>保障</td>
+                        <td>技术部</td>
+                        <td>
+                            <EditBtn/>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>啊哈哈</td>
+                        <td>15738039217</td>
+                        <td>保障</td>
+                        <td>技术部</td>
+                        <td>
+                            <EditBtn/>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>啊哈哈</td>
+                        <td>15738039217</td>
+                        <td>保障</td>
+                        <td>技术部</td>
+                        <td>
+                            <EditBtn/>
+                        </td>
                     </tr>
                     </tbody>
 
@@ -30,7 +65,15 @@ var BgDiv = React.createClass({
         )
     }
 });
-
+var EditBtn = React.createClass({
+    render: function() {
+        return (
+          <div>
+              <button className="btn btn-info">移除</button>
+          </div>
+        )
+    }
+});
 ReactDOM.render(
     <BgDiv />,
     document.getElementById('userList')
