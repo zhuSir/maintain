@@ -2,16 +2,9 @@ package com.xmsmartcity.mapper;
 
 import com.xmsmartcity.pojo.TsFault;
 
-public interface TsFaultMapper {
-    int deleteByPrimaryKey(Integer id);
+import java.util.List;
+import java.util.Map;
 
-    int insert(TsFault record);
-
-    int insertSelective(TsFault record);
-
-    TsFault selectByPrimaryKey(Integer id);
-
-    int updateByPrimaryKeySelective(TsFault record);
-
-    int updateByPrimaryKey(TsFault record);
+public interface TsFaultMapper extends BaseDao<TsFault>{
+    List<Map> selectList();
 }

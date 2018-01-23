@@ -1,5 +1,7 @@
 package com.xmsmartcity.pojo;
 
+import java.util.Date;
+
 public class TsFault {
     private Integer id;
 
@@ -9,11 +11,13 @@ public class TsFault {
 
     private Integer projectId;
 
-    private Integer maintainId;
-
     private String remarkReason;
 
     private String faultType;
+
+    private Date createtime;
+
+    private Integer equipId;
 
     private Integer faultUserId;
 
@@ -49,14 +53,6 @@ public class TsFault {
         this.projectId = projectId;
     }
 
-    public Integer getMaintainId() {
-        return maintainId;
-    }
-
-    public void setMaintainId(Integer maintainId) {
-        this.maintainId = maintainId;
-    }
-
     public String getRemarkReason() {
         return remarkReason;
     }
@@ -71,6 +67,22 @@ public class TsFault {
 
     public void setFaultType(String faultType) {
         this.faultType = faultType == null ? null : faultType.trim();
+    }
+
+    public Date getCreatetime() {
+        return createtime;
+    }
+
+    public void setCreatetime(Date createtime) {
+        this.createtime = createtime;
+    }
+
+    public Integer getEquipId() {
+        return equipId;
+    }
+
+    public void setEquipId(Integer equipId) {
+        this.equipId = equipId;
     }
 
     public Integer getFaultUserId() {
