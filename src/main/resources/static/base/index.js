@@ -11,7 +11,7 @@ function page(o) {
     switch(i) {
         //用户列表
         case 1:
-            window.iframepage.location = "../user/login.html";
+            window.iframepage.location = "../user/html/login.html";
             break;
         //工作面板——初始页
         case 2:
