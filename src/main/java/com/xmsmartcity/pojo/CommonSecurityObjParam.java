@@ -4,10 +4,7 @@ import java.io.Serializable;
 
 /**
  * 通用json请求报文 - security层接口对象
- * 
- * @author wuhy
- * 
- * 
+ *
  */
 
 public class CommonSecurityObjParam implements Serializable{
