@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
+import java.util.Map;
 
 /**
  * Created by Owner on 2018/1/22 0022.
@@ -24,8 +25,8 @@ public class FaultController {
     }
 
     @RequestMapping(value = "/list")
-    public List<List<Object>> faultList(){
-        List<List<Object>> results = service.selectList();
+    public List<Map<String,Object>> faultList(){
+        List<Map<String,Object>> results = service.selectList();
         return results;
     }
 

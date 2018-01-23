@@ -7,60 +7,22 @@ ReactDOM.render(
             <table id="table_id_example" className="display">
             <thead>
                 <tr>
-                    <th>Column1</th>
-                    <th>Column2</th>
-                    <th>Column1</th>
-                    <th>Column2</th>
-                    <th>Column1</th>
-                    <th>Column2</th>
-                    <th>Column1</th>
-                    <th>Column2</th>
+                    <th>报障单号</th>
+                    <th>项目名称</th>
+                    <th>紧急情况</th>
+                    <th>设备名称</th>
+                    <th>报障备注</th>
+                    <th>创建时间</th>
+                    <th>报障人名称</th>
                 </tr>
             </thead>
             <tbody>
-                <tr>
-                    <td>Row1Data1</td>
-                    <td>Row1Data2</td>
-                    <td>Row1Data1</td>
-                    <td>Row1Data2</td>
-                    <td>Row1Data1</td>
-                    <td>Row1Data2</td>
-                    <td>Row1Data1</td>
-                    <td>Row1Data2</td>
-                </tr>
             </tbody>
             </table>
         </div>
     </div>,
     document.getElementById('body')
 );
-
-// var
-
-var data = [
-    [
-        "Tiger Nixon",
-        "System Architect",
-        "Edinburgh",
-        "5421",
-        "2011/04/25",
-        "$3,120",
-        "2011/07/25",
-        "$5,300"
-    ],
-    [
-        "Garrett Winters",
-        "Director",
-        "Edinburgh",
-        "8422",
-        "2011/07/25",
-        "$5,300",
-        "2011/07/25",
-        "$5,300"
-    ]
-];
-
-data = [["1",1,1,1516740176000,"1","1",1,3]];
 
 $(document).ready( function () {
     var table = $('#table_id_example').dataTable({
@@ -97,8 +59,17 @@ $(document).ready( function () {
             }
         },
         ajax : {
-            url:"/fault/list"
-        }
-        // data : data
+            url:"/fault/list",
+            dataSrc: ''
+        },
+        columns: [
+            { data: 'fault_code' },
+            { data: 'company_id' },
+            { data: 'project_id' },
+            { data: 'createtime' },
+            { data: 'remark_reason' },
+            { data: 'fault_type' },
+            { data: 'fault_user_id' }
+        ]
     });
 });
