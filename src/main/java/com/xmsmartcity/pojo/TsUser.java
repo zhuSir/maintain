@@ -3,13 +3,11 @@ package com.xmsmartcity.pojo;
 import java.util.Date;
 
 public class TsUser {
-    private String id;
+    private Integer id;
 
     private String email;
 
     private String mobilephone;
-
-    private String officephone;
 
     private String signaturefile;
 
@@ -17,13 +15,13 @@ public class TsUser {
 
     private Date updateDate;
 
-    private String updateBy;
+    private Integer updateBy;
 
     private String createName;
 
     private Date createDate;
 
-    private String createBy;
+    private Integer createBy;
 
     private String portrait;
 
@@ -31,14 +29,16 @@ public class TsUser {
 
     private String devFlag;
 
-    private  String password;
+    private Integer level;
 
-    public String getId() {
+    private Integer companyid;
+
+    public Integer getId() {
         return id;
     }
 
-    public void setId(String id) {
-        this.id = id == null ? null : id.trim();
+    public void setId(Integer id) {
+        this.id = id;
     }
 
     public String getEmail() {
@@ -55,14 +55,6 @@ public class TsUser {
 
     public void setMobilephone(String mobilephone) {
         this.mobilephone = mobilephone == null ? null : mobilephone.trim();
-    }
-
-    public String getOfficephone() {
-        return officephone;
-    }
-
-    public void setOfficephone(String officephone) {
-        this.officephone = officephone == null ? null : officephone.trim();
     }
 
     public String getSignaturefile() {
@@ -89,12 +81,12 @@ public class TsUser {
         this.updateDate = updateDate;
     }
 
-    public String getUpdateBy() {
+    public Integer getUpdateBy() {
         return updateBy;
     }
 
-    public void setUpdateBy(String updateBy) {
-        this.updateBy = updateBy == null ? null : updateBy.trim();
+    public void setUpdateBy(Integer updateBy) {
+        this.updateBy = updateBy;
     }
 
     public String getCreateName() {
@@ -113,12 +105,12 @@ public class TsUser {
         this.createDate = createDate;
     }
 
-    public String getCreateBy() {
+    public Integer getCreateBy() {
         return createBy;
     }
 
-    public void setCreateBy(String createBy) {
-        this.createBy = createBy == null ? null : createBy.trim();
+    public void setCreateBy(Integer createBy) {
+        this.createBy = createBy;
     }
 
     public String getPortrait() {
@@ -145,11 +137,19 @@ public class TsUser {
         this.devFlag = devFlag == null ? null : devFlag.trim();
     }
 
-    public String getPassword() {
-        return password;
+    public Integer getLevel() {
+        return level;
     }
 
-    public void setPassword(String password) {
-        this.password = password;
+    public void setLevel(Integer level) {
+        this.level = level;
+    }
+
+    public Integer getCompanyid() {
+        return companyid;
+    }
+
+    public void setCompanyid(Integer companyid) {
+        this.companyid = companyid;
     }
 }
