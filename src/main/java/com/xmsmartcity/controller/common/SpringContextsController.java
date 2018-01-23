@@ -1,9 +1,5 @@
 /*
- * 
  * 这个类实现了通过名称获取springBean实例的方法
- * 
- * 吴宏宇
- * 
  * */
 package com.xmsmartcity.controller.common;
 
