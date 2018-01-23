@@ -3,6 +3,7 @@ package com.xmsmartcity.mapper;
 import com.xmsmartcity.pojo.TsFunctionGroup;
 
 public interface TsFunctionGroupMapper {
+
     int deleteByPrimaryKey(String id);
 
     int insert(TsFunctionGroup record);
@@ -14,4 +15,6 @@ public interface TsFunctionGroupMapper {
     int updateByPrimaryKeySelective(TsFunctionGroup record);
 
     int updateByPrimaryKey(TsFunctionGroup record);
+
+
 }
