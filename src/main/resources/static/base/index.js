@@ -1,8 +1,8 @@
 $(function(){
     $('#iframepage').load(function(){
-        var ch=$('#iframepage').contents().find('body').height();
+        var ch=$('#iframepage').contents().find('body.document').height();
         console.log(ch);
-        $('#iframepage').height(ch+100);
+        $('#iframepage').height(ch+200);
     })
 })
 function page(o) {

@@ -4,18 +4,15 @@ var BgDiv = React.createClass({
         return (
             <div className="bg test row bgImage">
 
-            <div className="col-sm-4 "></div>
-            <div className="col-sm-4 centerDivBG ">
-
-            <h5 className="text-center top25">登录</h5>
-
-            <input className="top25 input-group form-control" placeholder="手机号" id="phoneInput"></input>
-            <input type="password" className="top25 input-group form-control" placeholder="密码" id="pswInput"></input>
-            <DengluBtn/>
-              <Zhuce/>
-
-            </div>
-            <div className="col-sm-4 "></div>
+                     <div className="col-sm-4 "></div>
+                    <div className="col-sm-4 centerDivBG ">
+                        <h5 className="text-center top25">登录</h5>
+                        <input className="top25 input-group form-control" placeholder="手机号" id="phoneInput"></input>
+                        <input type="password" className="top25 input-group form-control" placeholder="密码" id="pswInput"></input>
+                        <DengluBtn/>
+                        <Zhuce/>
+                 </div>
+                 <div className="col-sm-4 "></div>
             </div>
         )
     }
