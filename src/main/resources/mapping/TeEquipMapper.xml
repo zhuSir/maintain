@@ -1,0 +1,289 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.xmsmartcity.mapper.TeEquipMapper" >
+  <resultMap id="BaseResultMap" type="com.xmsmartcity.pojo.TeEquip" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="equip_name" property="equipName" jdbcType="VARCHAR" />
+    <result column="equip_code" property="equipCode" jdbcType="VARCHAR" />
+    <result column="equip_model" property="equipModel" jdbcType="VARCHAR" />
+    <result column="equip_firm" property="equipFirm" jdbcType="VARCHAR" />
+    <result column="equip_type_id" property="equipTypeId" jdbcType="INTEGER" />
+    <result column="equip_detail" property="equipDetail" jdbcType="VARCHAR" />
+    <result column="lng" property="lng" jdbcType="VARCHAR" />
+    <result column="lat" property="lat" jdbcType="VARCHAR" />
+    <result column="province" property="province" jdbcType="VARCHAR" />
+    <result column="city" property="city" jdbcType="VARCHAR" />
+    <result column="area" property="area" jdbcType="VARCHAR" />
+    <result column="address" property="address" jdbcType="VARCHAR" />
+    <result column="put_use_time" property="putUseTime" jdbcType="TIMESTAMP" />
+    <result column="guarantee_period" property="guaranteePeriod" jdbcType="TIMESTAMP" />
+    <result column="is_del" property="isDel" jdbcType="INTEGER" />
+    <result column="createtime" property="createtime" jdbcType="TIMESTAMP" />
+    <result column="creat_user_id" property="creatUserId" jdbcType="INTEGER" />
+    <result column="updatetime" property="updatetime" jdbcType="TIMESTAMP" />
+    <result column="update_user_id" property="updateUserId" jdbcType="INTEGER" />
+    <result column="remark" property="remark" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, equip_name, equip_code, equip_model, equip_firm, equip_type_id, equip_detail, 
+    lng, lat, province, city, area, address, put_use_time, guarantee_period, is_del, 
+    createtime, creat_user_id, updatetime, update_user_id, remark
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from t_e_equip
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from t_e_equip
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.xmsmartcity.pojo.TeEquip" >
+    insert into t_e_equip (id, equip_name, equip_code, 
+      equip_model, equip_firm, equip_type_id, 
+      equip_detail, lng, lat, 
+      province, city, area, 
+      address, put_use_time, guarantee_period, 
+      is_del, createtime, creat_user_id, 
+      updatetime, update_user_id, remark
+      )
+    values (#{id,jdbcType=INTEGER}, #{equipName,jdbcType=VARCHAR}, #{equipCode,jdbcType=VARCHAR}, 
+      #{equipModel,jdbcType=VARCHAR}, #{equipFirm,jdbcType=VARCHAR}, #{equipTypeId,jdbcType=INTEGER}, 
+      #{equipDetail,jdbcType=VARCHAR}, #{lng,jdbcType=VARCHAR}, #{lat,jdbcType=VARCHAR}, 
+      #{province,jdbcType=VARCHAR}, #{city,jdbcType=VARCHAR}, #{area,jdbcType=VARCHAR}, 
+      #{address,jdbcType=VARCHAR}, #{putUseTime,jdbcType=TIMESTAMP}, #{guaranteePeriod,jdbcType=TIMESTAMP}, 
+      #{isDel,jdbcType=INTEGER}, #{createtime,jdbcType=TIMESTAMP}, #{creatUserId,jdbcType=INTEGER}, 
+      #{updatetime,jdbcType=TIMESTAMP}, #{updateUserId,jdbcType=INTEGER}, #{remark,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.xmsmartcity.pojo.TeEquip" >
+    insert into t_e_equip
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="equipName != null" >
+        equip_name,
+      </if>
+      <if test="equipCode != null" >
+        equip_code,
+      </if>
+      <if test="equipModel != null" >
+        equip_model,
+      </if>
+      <if test="equipFirm != null" >
+        equip_firm,
+      </if>
+      <if test="equipTypeId != null" >
+        equip_type_id,
+      </if>
+      <if test="equipDetail != null" >
+        equip_detail,
+      </if>
+      <if test="lng != null" >
+        lng,
+      </if>
+      <if test="lat != null" >
+        lat,
+      </if>
+      <if test="province != null" >
+        province,
+      </if>
+      <if test="city != null" >
+        city,
+      </if>
+      <if test="area != null" >
+        area,
+      </if>
+      <if test="address != null" >
+        address,
+      </if>
+      <if test="putUseTime != null" >
+        put_use_time,
+      </if>
+      <if test="guaranteePeriod != null" >
+        guarantee_period,
+      </if>
+      <if test="isDel != null" >
+        is_del,
+      </if>
+      <if test="createtime != null" >
+        createtime,
+      </if>
+      <if test="creatUserId != null" >
+        creat_user_id,
+      </if>
+      <if test="updatetime != null" >
+        updatetime,
+      </if>
+      <if test="updateUserId != null" >
+        update_user_id,
+      </if>
+      <if test="remark != null" >
+        remark,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="equipName != null" >
+        #{equipName,jdbcType=VARCHAR},
+      </if>
+      <if test="equipCode != null" >
+        #{equipCode,jdbcType=VARCHAR},
+      </if>
+      <if test="equipModel != null" >
+        #{equipModel,jdbcType=VARCHAR},
+      </if>
+      <if test="equipFirm != null" >
+        #{equipFirm,jdbcType=VARCHAR},
+      </if>
+      <if test="equipTypeId != null" >
+        #{equipTypeId,jdbcType=INTEGER},
+      </if>
+      <if test="equipDetail != null" >
+        #{equipDetail,jdbcType=VARCHAR},
+      </if>
+      <if test="lng != null" >
+        #{lng,jdbcType=VARCHAR},
+      </if>
+      <if test="lat != null" >
+        #{lat,jdbcType=VARCHAR},
+      </if>
+      <if test="province != null" >
+        #{province,jdbcType=VARCHAR},
+      </if>
+      <if test="city != null" >
+        #{city,jdbcType=VARCHAR},
+      </if>
+      <if test="area != null" >
+        #{area,jdbcType=VARCHAR},
+      </if>
+      <if test="address != null" >
+        #{address,jdbcType=VARCHAR},
+      </if>
+      <if test="putUseTime != null" >
+        #{putUseTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="guaranteePeriod != null" >
+        #{guaranteePeriod,jdbcType=TIMESTAMP},
+      </if>
+      <if test="isDel != null" >
+        #{isDel,jdbcType=INTEGER},
+      </if>
+      <if test="createtime != null" >
+        #{createtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="creatUserId != null" >
+        #{creatUserId,jdbcType=INTEGER},
+      </if>
+      <if test="updatetime != null" >
+        #{updatetime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateUserId != null" >
+        #{updateUserId,jdbcType=INTEGER},
+      </if>
+      <if test="remark != null" >
+        #{remark,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.xmsmartcity.pojo.TeEquip" >
+    update t_e_equip
+    <set >
+      <if test="equipName != null" >
+        equip_name = #{equipName,jdbcType=VARCHAR},
+      </if>
+      <if test="equipCode != null" >
+        equip_code = #{equipCode,jdbcType=VARCHAR},
+      </if>
+      <if test="equipModel != null" >
+        equip_model = #{equipModel,jdbcType=VARCHAR},
+      </if>
+      <if test="equipFirm != null" >
+        equip_firm = #{equipFirm,jdbcType=VARCHAR},
+      </if>
+      <if test="equipTypeId != null" >
+        equip_type_id = #{equipTypeId,jdbcType=INTEGER},
+      </if>
+      <if test="equipDetail != null" >
+        equip_detail = #{equipDetail,jdbcType=VARCHAR},
+      </if>
+      <if test="lng != null" >
+        lng = #{lng,jdbcType=VARCHAR},
+      </if>
+      <if test="lat != null" >
+        lat = #{lat,jdbcType=VARCHAR},
+      </if>
+      <if test="province != null" >
+        province = #{province,jdbcType=VARCHAR},
+      </if>
+      <if test="city != null" >
+        city = #{city,jdbcType=VARCHAR},
+      </if>
+      <if test="area != null" >
+        area = #{area,jdbcType=VARCHAR},
+      </if>
+      <if test="address != null" >
+        address = #{address,jdbcType=VARCHAR},
+      </if>
+      <if test="putUseTime != null" >
+        put_use_time = #{putUseTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="guaranteePeriod != null" >
+        guarantee_period = #{guaranteePeriod,jdbcType=TIMESTAMP},
+      </if>
+      <if test="isDel != null" >
+        is_del = #{isDel,jdbcType=INTEGER},
+      </if>
+      <if test="createtime != null" >
+        createtime = #{createtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="creatUserId != null" >
+        creat_user_id = #{creatUserId,jdbcType=INTEGER},
+      </if>
+      <if test="updatetime != null" >
+        updatetime = #{updatetime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateUserId != null" >
+        update_user_id = #{updateUserId,jdbcType=INTEGER},
+      </if>
+      <if test="remark != null" >
+        remark = #{remark,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.xmsmartcity.pojo.TeEquip" >
+    update t_e_equip
+    set equip_name = #{equipName,jdbcType=VARCHAR},
+      equip_code = #{equipCode,jdbcType=VARCHAR},
+      equip_model = #{equipModel,jdbcType=VARCHAR},
+      equip_firm = #{equipFirm,jdbcType=VARCHAR},
+      equip_type_id = #{equipTypeId,jdbcType=INTEGER},
+      equip_detail = #{equipDetail,jdbcType=VARCHAR},
+      lng = #{lng,jdbcType=VARCHAR},
+      lat = #{lat,jdbcType=VARCHAR},
+      province = #{province,jdbcType=VARCHAR},
+      city = #{city,jdbcType=VARCHAR},
+      area = #{area,jdbcType=VARCHAR},
+      address = #{address,jdbcType=VARCHAR},
+      put_use_time = #{putUseTime,jdbcType=TIMESTAMP},
+      guarantee_period = #{guaranteePeriod,jdbcType=TIMESTAMP},
+      is_del = #{isDel,jdbcType=INTEGER},
+      createtime = #{createtime,jdbcType=TIMESTAMP},
+      creat_user_id = #{creatUserId,jdbcType=INTEGER},
+      updatetime = #{updatetime,jdbcType=TIMESTAMP},
+      update_user_id = #{updateUserId,jdbcType=INTEGER},
+      remark = #{remark,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+
+  <select id="selectEquipList" resultMap="BaseResultMap">
+      SELECT
+          <include refid="Base_Column_List" />
+      from t_e_equip
+  </select>
+</mapper>
