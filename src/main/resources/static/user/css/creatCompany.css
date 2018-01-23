@@ -1,0 +1,29 @@
+.bgimage
+{
+    background-image: url("../images/bg3.jpg");
+    height: 600px;
+}
+
+
+.baseW
+{
+    width: 300px;
+    margin-left: 200px;
+    margin-top: 200px;
+}
+ .centerBG
+ {
+     background-color: #71dd8a;
+     margin-top: 80px;
+     height: 400px;
+ }
+
+ .top20{
+     margin-top: 20px;
+ }
+.leftAndRight20
+ {
+
+    margin-bottom: 40px;
+
+}
