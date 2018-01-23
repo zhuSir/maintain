@@ -15,7 +15,7 @@ function page(o) {
             break;
         //工作面板——初始页
         case 2:
-            window.iframepage.location = "";
+            window.iframepage.location = "../user/html/register.html";
             break;
         //报修管理——我的报修单
         case 3:

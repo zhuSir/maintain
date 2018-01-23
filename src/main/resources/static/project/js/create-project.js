@@ -53,10 +53,25 @@ var Project = React.createClass({
                     <div className="prostatus">
                         <p className="navbar-text">项目状态：<span className="">未开工</span></p>
                     </div>
-                    <footer className="navbar navbar-default navbar-fixed-bottom">
+
+
+                    <div className="btn-group">
+                        <button type="button" className="btn btn-default dropdown-toggle" data-toggle="dropdown" onclick={this.showClick}>
+                            Action <span class="caret"></span>
+                        </button>
+                        <ul className="dropdown-menu" role="menu">
+                            <li><a href="#">Action</a></li>
+                            <li><a href="#">Another action</a></li>
+                            <li><a href="#">Something else here</a></li>
+                            <li className="divider"></li>
+                            <li><a href="#">Separated link</a></li>
+                        </ul>
+                    </div>
+
+                    <div className="admin">
                         <p className="navbar-text">审核人：<span className="auditor">张朝阳</span></p>
                         <p className="navbar-text">审核日期：<span className="auditor-date">2017-12-29</span></p>
-                    </footer>
+                    </div>
 
                 </div>
             </div>

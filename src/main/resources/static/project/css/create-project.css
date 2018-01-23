@@ -2,13 +2,13 @@ body{
     width:100%;
     height: 100%;
     position: absolute;
+    background: #c0c2cb;
 }
 #example{
     width: 100%;
     height: 100%;
     position: absolute;
     background: #c0c2cb;
-    border: 1px solid #666666;
 }
 .container{
     width:100%;
@@ -44,13 +44,13 @@ body{
 .reference p{
     line-height: 48px;
     float: left;
-    width:100%S;
+    width:100%;
 }
 .discribe{
     background: white;
     border-radius: 3px;
-    float: left;
-    width:30%;
+    float: right;
+    width: 80%;
     height:80px;
     border: 1px solid #666666;
     margin-left: 20px;
@@ -59,12 +59,15 @@ body{
     white-space: nowrap;
 }
 .date{
-    width: 50%;
+    width: 100%;
     min-width: 200px;
-    height: 60px;
+    height: 100%;
     margin-top: 10px;
     border: 1px solid #666666;
     margin-left: 20px;
+}
+.date p:nth-child(2){
+    float: right;
 }
 .date h6{
     float: left;
@@ -80,4 +83,18 @@ body{
 .prostatus{
     float: right;
     margin-right: 20%;
+}
+.btn-group{
+    float: right;
+    margin-left: 20%;
+    margin-top: -10%;
+}
+.admin{
+    position: relative;
+    bottom: 0;
+    float: right;
+    margin-top: 30%;
+}
+.admin p{
+    display: block;
 }
