@@ -1,8 +1,12 @@
 package com.xmsmartcity.mapper;
 
 import com.xmsmartcity.pojo.TpProject;
+import org.springframework.stereotype.Repository;
 
-public interface TpProjectMapper {
+import java.util.List;
+
+@Repository
+public interface TpProjectMapper extends BaseDao<TpProject>{
     int deleteByPrimaryKey(Integer id);
 
     int insert(TpProject record);
@@ -14,4 +18,9 @@ public interface TpProjectMapper {
     int updateByPrimaryKeySelective(TpProject record);
 
     int updateByPrimaryKey(TpProject record);
+
+    List<TpProject> selectProjectByName(String name);
+
+    List<TpProject> selectAllProject();
+
 }
