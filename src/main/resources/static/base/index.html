@@ -1,0 +1,625 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard | Nifty - Admin Template</title>
+
+
+    <!--Open Sans Font [ OPTIONAL ]-->
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700' rel='stylesheet' type='text/css'>
+
+
+    <!--Bootstrap Stylesheet [ REQUIRED ]-->
+    <link href="../public/nifty/demo/css/bootstrap.min.css" rel="stylesheet">
+
+
+    <!--Nifty Stylesheet [ REQUIRED ]-->
+    <link href="../public/nifty/demo/css/nifty.min.css" rel="stylesheet">
+
+
+    <!--Nifty Premium Icon [ DEMONSTRATION ]-->
+    <link href="../public/nifty/demo/css/demo/nifty-demo-icons.min.css" rel="stylesheet">
+
+
+    <!--Demo [ DEMONSTRATION ]-->
+    <link href="../public/nifty/demo/css/demo/nifty-demo.min.css" rel="stylesheet">
+
+
+
+    <!--Morris.js [ OPTIONAL ]-->
+    <link href="../public/nifty/demo/plugins/morris-js/morris.min.css" rel="stylesheet">
+
+
+    <!--Magic Checkbox [ OPTIONAL ]-->
+    <link href="../public/nifty/demo/plugins/magic-check/css/magic-check.min.css" rel="stylesheet">
+
+
+
+    <!--Pace - Page Load Progress Par [OPTIONAL]-->
+    <link href="../public/nifty/demo/plugins/pace/pace.min.css" rel="stylesheet">
+    <script src="../public/nifty/demo/plugins/pace/pace.min.js"></script>
+
+
+    <!--jQuery [ REQUIRED ]-->
+    <script src="../public/nifty/demo/js/jquery.min.js"></script>
+
+
+    <!--BootstrapJS [ RECOMMENDED ]-->
+    <script src="../public/nifty/demo/js/bootstrap.min.js"></script>
+
+
+    <!--NiftyJS [ RECOMMENDED ]-->
+    <script src="../public/nifty/demo/js/nifty.min.js"></script>
+
+
+    <!--Demo script [ DEMONSTRATION ]-->
+    <script src="../public/nifty/demo/js/demo/nifty-demo.min.js"></script>
+
+
+    <!--Morris.js [ OPTIONAL ]-->
+    <script src="../public/nifty/demo/plugins/morris-js/morris.min.js"></script>
+    <script src="../public/nifty/demo/plugins/morris-js/raphael-js/raphael.min.js"></script>
+
+    <!--Sparkline [ OPTIONAL ]-->
+    <script src="../public/nifty/demo/plugins/sparkline/jquery.sparkline.min.js"></script>
+    <!--Specify page [ SAMPLE ]-->
+    <script src="../public/nifty/demo/js/demo/dashboard.js"></script>
+
+</head>
+
+<!--TIPS-->
+<!--You may remove all ID or Class names which contain "demo-", they are only used for demonstration. -->
+<body>
+<div id="container" class="effect aside-float aside-bright mainnav-lg">
+
+    <!--NAVBAR-->
+    <!--===================================================-->
+    <header id="navbar">
+        <div id="navbar-container" class="boxed">
+
+            <!--Brand logo & name-->
+            <!--================================-->
+            <div class="navbar-header">
+                <a href="" class="navbar-brand">
+                    <img src="../public/nifty/demo/img/logo.png" alt="Nifty Logo" class="brand-icon">
+                    <div class="brand-title">
+                        <span class="brand-text">维保管理</span>
+                    </div>
+                </a>
+            </div>
+            <!--================================-->
+            <!--End brand logo & name-->
+
+
+            <!--Navbar Dropdown-->
+            <!--================================-->
+            <div class="navbar-content clearfix">
+                <ul class="nav navbar-top-links pull-left">
+
+                    <!--Navigation toogle button-->
+                    <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+                    <li class="tgl-menu-btn">
+                        <a class="mainnav-toggle" href="#">
+                            <i class="demo-pli-view-list"></i>
+                        </a>
+                    </li>
+                    <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+                    <!--End Navigation toogle button-->
+
+                    <li class="dropdown">
+                        <a href="#" data-toggle="dropdown" class="dropdown-toggle">
+                            <i class="demo-pli-bell"></i>
+                            <span class="badge badge-header badge-danger"></span>
+                        </a>
+
+                        <!--Notification dropdown menu-->
+
+                    </li>
+                    <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+                    <!--End notifications dropdown-->
+
+
+
+                    <!--Mega dropdown-->
+                    <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+                    <li class="mega-dropdown">
+                        <a href="#" class="mega-dropdown-toggle">
+                            <i class="demo-pli-layout-grid"></i>
+                        </a>
+
+                    </li>
+                    <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+                    <!--End mega dropdown-->
+
+                </ul>
+                <ul class="nav navbar-top-links pull-right">
+
+                    <!--Language selector-->
+                    <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+                    <li class="dropdown">
+                        <a id="demo-lang-switch" class="lang-selector dropdown-toggle" href="#" data-toggle="dropdown">
+                                <span class="lang-selected">
+                                    <img class="lang-flag" src="../public/nifty/demo/img/flags/united-kingdom.png" alt="English">
+                                </span>
+                        </a>
+
+                        <!--Language selector menu-->
+                        <ul class="head-list dropdown-menu">
+                            <li>
+                                <!--English-->
+                                <a href="#" class="active">
+                                    <img class="lang-flag" src="../public/nifty/demo/img/flags/united-kingdom.png" alt="English">
+                                    <span class="lang-id">EN</span>
+                                    <span class="lang-name">English</span>
+                                </a>
+                            </li>
+                            <li>
+                                <!--France-->
+                                <a href="#">
+                                    <img class="lang-flag" src="../public/nifty/demo/img/flags/france.png" alt="France">
+                                    <span class="lang-id">FR</span>
+                                    <span class="lang-name">Fran&ccedil;ais</span>
+                                </a>
+                            </li>
+                            <li>
+                                <!--Germany-->
+                                <a href="#">
+                                    <img class="lang-flag" src="../public/nifty/demo/img/flags/germany.png" alt="Germany">
+                                    <span class="lang-id">DE</span>
+                                    <span class="lang-name">Deutsch</span>
+                                </a>
+                            </li>
+                            <li>
+                                <!--Italy-->
+                                <a href="#">
+                                    <img class="lang-flag" src="../public/nifty/demo/img/flags/italy.png" alt="Italy">
+                                    <span class="lang-id">IT</span>
+                                    <span class="lang-name">Italiano</span>
+                                </a>
+                            </li>
+                            <li>
+                                <!--Spain-->
+                                <a href="#">
+                                    <img class="lang-flag" src="../public/nifty/demo/img/flags/spain.png" alt="Spain">
+                                    <span class="lang-id">ES</span>
+                                    <span class="lang-name">Espa&ntilde;ol</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                    <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+                    <!--End language selector-->
+
+
+
+                    <!--User dropdown-->
+                    <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+                    <li id="dropdown-user" class="dropdown">
+                        <a href="#" data-toggle="dropdown" class="dropdown-toggle text-right">
+                                <span class="ic-user pull-right">
+                                    <!--<img class="img-circle img-user media-object" src="img/profile-photos/1.png" alt="Profile Picture">-->
+                                    <i class="demo-pli-male"></i>
+                                </span>
+                            <div class="username hidden-xs">张三</div>
+                        </a>
+
+
+                        <div class="dropdown-menu dropdown-menu-md dropdown-menu-right panel-default">
+
+                            <!-- User dropdown menu -->
+                            <ul class="head-list">
+                                <li>
+                                    <a href="#"<span class="glyphicon glyphicon-th-large"></span>&nbsp公司</a>
+                                </li>
+                                <li>
+                                    <a href="#"><i class="demo-pli-male icon-lg icon-fw"></i> 人员</a>
+                                </li>
+                                <li>
+                                    <a href="#"><i class="demo-pli-gear icon-lg icon-fw"></i> 设置角色</a>
+                                </li>
+                                <li>
+                                    <a href="#"><span class="glyphicon glyphicon-asterisk"></span>&nbsp &nbsp 授权</a>
+                                </li>
+                                <!--<li>
+                                    <a href="#"><i class="demo-pli-computer-secure icon-lg icon-fw"></i> Lock screen</a>
+                                </li>-->
+                            </ul>
+
+                            <!-- Dropdown footer -->
+                            <div class="pad-all text-right">
+                                <a href="" class="btn btn-primary">
+                                    <i class="demo-pli-unlock"></i> 退出
+                                </a>
+                            </div>
+                        </div>
+                    </li>
+                    <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+                    <!--End user dropdown-->
+
+                    <li>
+                        <a href="#" class="aside-toggle navbar-aside-icon">
+                            <i class="pci-ver-dots"></i>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+            <!--================================-->
+            <!--End Navbar Dropdown-->
+
+        </div>
+    </header>
+    <!--===================================================-->
+    <!--END NAVBAR-->
+
+    <div class="boxed">
+
+        <!--CONTENT CONTAINER-->
+        <!--===================================================-->
+        <div id="content-container">
+            <div id="page-head">
+
+                <!--Page Title-->
+                <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+                <div id="page-title">
+                    <h1 class="page-header text-overflow">管理</h1>
+
+                    <!--Searchbox-->
+                    <div class="searchbox">
+                        <div class="input-group custom-search-form">
+                            <input type="text" class="form-control" placeholder="请输入搜索内容..">
+                            <span class="input-group-btn">
+                                    <button class="text-muted" type="button"><i class="demo-pli-magnifi-glass"></i></button>
+                                </span>
+                        </div>
+                    </div>
+                </div>
+                <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+                <!--End page title-->
+            </div>
+
+
+            <!--Page content-->
+            <div id="Page-content">
+
+            </div>
+            <!--===================================================-->
+
+            <!--===================================================-->
+            <!--End page content-->
+
+        </div>
+        <!--===================================================-->
+        <!--END CONTENT CONTAINER-->
+
+
+
+        <!--ASIDE-->
+        <!--===================================================-->
+
+        <!--===================================================-->
+        <!--END ASIDE-->
+
+
+        <!--MAIN NAVIGATION-->
+        <!--===================================================-->
+        <nav id="mainnav-container">
+            <div id="mainnav">
+
+                <!--Menu-->
+                <!--================================-->
+                <div id="mainnav-menu-wrap">
+                    <div class="nano">
+                        <div class="nano-content">
+
+                            <!--Profile Widget-->
+                            <!--================================-->
+                            <div id="mainnav-profile" class="mainnav-profile">
+                                <div class="profile-wrap text-center">
+                                    <div class="pad-btm">
+                                        <img class="img-circle img-md" src="../public/nifty/demo/img/profile-photos/1.png" alt="Profile Picture">
+                                    </div>
+                                    <a href="#profile-nav" class="box-block" data-toggle="collapse" aria-expanded="false">
+                                            <span class="pull-right dropdown-toggle">
+                                                <i class="dropdown-caret"></i>
+                                            </span>
+                                        <p class="mnp-name">张三</p>
+                                        <span class="mnp-desc">aaron.cha@themeon.net</span>
+                                    </a>
+                                </div>
+                                <div id="profile-nav" class="collapse list-group bg-trans">
+                                    <a href="#" class="list-group-item">
+                                        &nbsp<span class="glyphicon glyphicon-th-large"></span>&nbsp&nbsp公司
+                                    </a>
+                                    <a href="#" class="list-group-item">
+                                        <i class="demo-pli-male icon-lg icon-fw"></i>人员
+                                    </a>
+                                    <a href="#" class="list-group-item">
+                                        <i class="demo-pli-gear icon-lg icon-fw"></i> 设置角色
+                                    </a>
+                                    <a href="#" class="list-group-item">
+                                        <span class="glyphicon glyphicon-asterisk"></span>&nbsp &nbsp 授权
+                                    </a>
+                                </div>
+                            </div>
+
+
+                            <!--Shortcut buttons-->
+                            <!--================================-->
+                           <!-- <div id="mainnav-shortcut">
+                                <ul class="list-unstyled shortcut-wrap">
+                                    <li class="col-xs-3" data-content="My Profile">
+                                        <a class="shortcut-grid" href="#">
+                                            <div class="icon-wrap icon-wrap-sm icon-circle bg-trans-dark">
+                                                <i class="demo-psi-male"></i>
+                                            </div>
+                                        </a>
+                                    </li>
+                                    <li class="col-xs-3" data-content="Messages">
+                                        <a class="shortcut-grid" href="#">
+                                            <div class="icon-wrap icon-wrap-sm icon-circle bg-trans-dark">
+                                                <i class="demo-psi-speech-bubble-3"></i>
+                                            </div>
+                                        </a>
+                                    </li>
+                                    <li class="col-xs-3" data-content="Activity">
+                                        <a class="shortcut-grid" href="#">
+                                            <div class="icon-wrap icon-wrap-sm icon-circle bg-trans-dark">
+                                                <i class="demo-psi-thunder"></i>
+                                            </div>
+                                        </a>
+                                    </li>
+                                    <li class="col-xs-3" data-content="Lock Screen">
+                                        <a class="shortcut-grid" href="#">
+                                            <div class="icon-wrap icon-wrap-sm icon-circle bg-trans-dark">
+                                                <i class="demo-psi-lock-2"></i>
+                                            </div>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>-->
+                            <!--================================-->
+                            <!--End shortcut buttons-->
+
+
+                            <ul id="mainnav-menu" class="list-group">
+
+                                <!--Category name-->
+                                <li class="list-header">管理</li>
+
+                                <!--Menu list item-->
+                                <li class="active-sub">
+                                    <a href="#">
+                                        <i class="demo-psi-home"></i>
+                                        <span class="menu-title">项目管理</span>
+                                        <i class="arrow"></i>
+                                    </a>
+
+                                    <!--Submenu-->
+                                    <ul class="collapse in">
+                                        <li class="active-link"><a href="../public/nifty/demo/index.html">创建项目</a></li>
+                                        <li><a href="../public/nifty/demo/dashboard-2.html">项目基础信息</a></li>
+                                        <li><a href="../public/nifty/demo/dashboard-3.html">项目信息</a></li>
+
+                                    </ul>
+                                </li>
+
+                                <!--Menu list item-->
+                                <li>
+                                    <a href="#">
+                                        <i class="demo-psi-split-vertical-2"></i>
+                                        <span class="menu-title">维保管理</span>
+                                        <i class="arrow"></i>
+                                    </a>
+
+                                    <!--Submenu-->
+                                    <ul class="collapse">
+                                        <li><a href="../public/nifty/demo/layouts-collapsed-navigation.html">保修单</a></li>
+                                        <li><a href="../public/nifty/demo/layouts-offcanvas-navigation.html">巡检单</a></li>
+                                        <li><a href="../public/nifty/demo/layouts-offcanvas-slide-in-navigation.html">巡检单</a></li>
+                                        <li><a href="../public/nifty/demo/layouts-offcanvas-revealing-navigation.html">统计</a></li>
+                                        <li class="list-divider"></li>
+                                        <li><a href="../public/nifty/demo/layouts-aside-right-side.html">设备管理</a></li>
+
+                                    </ul>
+                                </li>
+
+                                <!--Menu list item-->
+
+                                <li class="list-divider"></li>
+
+                                <!--Category name-->
+                                <li class="list-header">Components</li>
+
+                                <!--Menu list item-->
+
+
+                                <!--Menu list item-->
+
+                                <li class="list-divider"></li>
+
+                                <!--Category name-->
+
+
+
+
+
+
+
+                                <!--Menu list item-->
+                              <!--  <li>
+                                    <a href="#">
+                                        <i class="demo-psi-mail"></i>
+                                        <span class="menu-title">Email</span>
+                                        <i class="arrow"></i>
+                                    </a>
+
+                                    &lt;!&ndash;Submenu&ndash;&gt;
+                                    <ul class="collapse">
+                                        <li><a href="../public/nifty/demo/mailbox.html">Inbox</a></li>
+                                        <li><a href="../public/nifty/demo/mailbox-message.html">View Message</a></li>
+                                        <li><a href="../public/nifty/demo/mailbox-compose.html">Compose Message</a></li>
+                                        <li><a href="../public/nifty/demo/mailbox-templates.html">Email Templates</a></li>
+
+                                    </ul>
+                                </li>-->
+
+
+                                <!--Menu list item-->
+                               <!-- <li>
+                                    <a href="#">
+                                        <i class="demo-psi-tactic"></i>
+                                        <span class="menu-title">Menu Level</span>
+                                        <i class="arrow"></i>
+                                    </a>
+
+                                    &lt;!&ndash;Submenu&ndash;&gt;
+                                    <ul class="collapse">
+                                        <li><a href="#">Second Level Item</a></li>
+                                        <li><a href="#">Second Level Item</a></li>
+                                        <li><a href="#">Second Level Item</a></li>
+                                        <li class="list-divider"></li>
+                                        <li>
+                                            <a href="#">Third Level<i class="arrow"></i></a>
+
+                                            &lt;!&ndash;Submenu&ndash;&gt;
+                                            <ul class="collapse">
+                                                <li><a href="#">Third Level Item</a></li>
+                                                <li><a href="#">Third Level Item</a></li>
+                                                <li><a href="#">Third Level Item</a></li>
+                                                <li><a href="#">Third Level Item</a></li>
+                                            </ul>
+                                        </li>
+                                        <li>
+                                            <a href="#">Third Level<i class="arrow"></i></a>
+
+                                            &lt;!&ndash;Submenu&ndash;&gt;
+                                            <ul class="collapse">
+                                                <li><a href="page-blank2.html">Third Level Item 3</a></li>
+                                                <li><a href="#">Third Level Item</a></li>
+                                                <li><a href="#">Third Level Item</a></li>
+                                                <li class="list-divider"></li>
+                                                <li><a href="#">Third Level Item</a></li>
+                                                <li><a href="#">Third Level Item</a></li>
+                                            </ul>
+                                        </li>
+                                    </ul>
+                                </li>
+-->
+
+                               <!-- <li class="list-divider"></li>
+
+                                &lt;!&ndash;Category name&ndash;&gt;
+
+                                <li>
+                                    <a href="#">
+                                        <i class="demo-psi-medal-2"></i>
+                                        <span class="menu-title">
+												PREMIUM ICONS
+												<span class="label label-danger pull-right">BEST</span>
+											</span>
+                                    </a>
+
+                                    &lt;!&ndash;Submenu&ndash;&gt;
+                                    <ul class="collapse">
+                                        <li><a href="../public/nifty/demo/premium-line-icons.html">Line Icons Pack</a></li>
+                                        <li><a href="../public/nifty/demo/premium-solid-icons.html">Solid Icons Pack</a></li>
+
+                                    </ul>
+                                </li>
+
+                                &lt;!&ndash;Menu list item&ndash;&gt;
+                                <li>
+                                    <a href="../public/nifty/demo/helper-classes.html">
+                                        <i class="demo-psi-inbox-full"></i>
+                                        <span class="menu-title">Helper Classes</span>
+                                    </a>
+                                </li>
+                        </ul>
+-->
+
+                            <!--Widget-->
+                            <!--================================-->
+
+                            <!--================================-->
+                            <!--End widget-->
+
+                        </div>
+                    </div>
+                </div>
+                <!--================================-->
+                <!--End menu-->
+
+            </div>
+        </nav>
+        <!--===================================================-->
+        <!--END MAIN NAVIGATION-->
+
+    </div>
+
+
+
+    <!-- FOOTER -->
+    <!--===================================================-->
+    <footer id="footer">
+
+        <!-- Visible when footer positions are fixed -->
+        <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+        <div class="show-fixed pad-rgt pull-right">
+            You have <a href="#" class="text-main"><span class="badge badge-danger">3</span> pending action.</a>
+        </div>
+
+
+
+        <!-- Visible when footer positions are static -->
+        <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+        <div class="hide-fixed pull-right pad-rgt">
+            14GB of <strong>512GB</strong> Free.
+        </div>
+
+
+
+        <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+        <!-- Remove the class "show-fixed" and "hide-fixed" to make the content always appears. -->
+        <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+
+        <!--<p class="pad-lft">&#0169; 2017 Your Company</p>-->
+
+
+
+    </footer>
+    <!--===================================================-->
+    <!-- END FOOTER -->
+
+
+    <!-- SCROLL PAGE BUTTON -->
+    <!--===================================================-->
+    <button class="scroll-top btn">
+        <i class="pci-chevron chevron-up"></i>
+    </button>
+    <!--===================================================-->
+
+
+
+</div>
+<!--===================================================-->
+<!-- END OF CONTAINER -->
+
+
+
+
+
+
+<!-- SETTINGS - DEMO PURPOSE ONLY -->
+<!--===================================================-->
+
+
+<button id="demo-set-btn" class="btn"><i class="demo-psi-gear fa-spin"></i></button>
+
+<!--===================================================-->
+<!-- END SETTINGS -->
+
+
+</body>
+</html>
