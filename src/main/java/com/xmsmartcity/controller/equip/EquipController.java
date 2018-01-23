@@ -28,6 +28,7 @@ public class EquipController {
     @ResponseBody
     public CommonObjReturn getEquipList(@RequestBody CommonObjParam objparam, HttpServletRequest request, HttpServletResponse response){
         List<TeEquip> list=equipService.selectEquipList();
+        System.out.print("ddddddd");
         CommonObjReturn commonObjReturn=new CommonObjReturn();
         commonObjReturn.setData(list);
         commonObjReturn.setResult("true");
