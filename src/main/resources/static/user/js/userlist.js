@@ -5,10 +5,7 @@ var BgDiv = React.createClass({
             <div className="bg test row leftAndRight15 top15">
                 <div className="col-xs-12">
                     <button type="button" className="btn btn-info leftAndRight15">邀请成员</button>
-                    <button type="button" className="btn btn-info leftAndRight15">邀请成员</button>
-                    <button type="button" className="btn btn-info leftAndRight15">邀请成员</button>
-                    <button type="button" className="btn btn-info leftAndRight15">邀请成员</button>
-                    <button type="button" className="btn btn-info leftAndRight15">邀请成员</button>
+                    <button type="button" className="btn btn-info leftAndRight15">创建组</button>
 
                 </div>
                 <table className="table table-striped top15">
