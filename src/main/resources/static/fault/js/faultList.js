@@ -5,6 +5,7 @@ ReactDOM.render(
         </div>
         <div className="panel-body">
             <table id="table_id_example" className="display">
+            <button type="button" className="btn btn-success" data-toggle="modal" data-target="#faultModel">添加报障</button>
             <thead>
                 <tr>
                     <th>报障单号</th>
@@ -20,6 +21,7 @@ ReactDOM.render(
             </tbody>
             </table>
         </div>
+        <FaultModel/>
     </div>,
     document.getElementById('body')
 );
@@ -63,13 +65,13 @@ $(document).ready( function () {
             dataSrc: ''
         },
         columns: [
-            { data: 'fault_code' },
-            { data: 'company_id' },
-            { data: 'project_id' },
+            { data: 'faultCode' },
+            { data: 'projectName' },
+            { data: 'faultType' },
+            { data: 'equipName' },
+            { data: 'remarkReason' },
             { data: 'createtime' },
-            { data: 'remark_reason' },
-            { data: 'fault_type' },
-            { data: 'fault_user_id' }
+            { data: 'username' }
         ]
     });
 });
