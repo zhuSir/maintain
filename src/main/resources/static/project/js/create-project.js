@@ -1,4 +1,4 @@
-var HelloMessage = React.createClass({
+/*var HelloMessage = React.createClass({
     render: function() {
         return <h1>Hello {this.props.name}</h1>;
     }
@@ -7,8 +7,8 @@ var HelloMessage = React.createClass({
 ReactDOM.render(
 <HelloMessage name="Runoob" />,
     document.getElementById('example')
-);
-/*
+);*/
+
 var project = React.createClass({
     render: function() {
         return(
@@ -25,11 +25,11 @@ var project = React.createClass({
                     </div>
                 </div>
             </div>
-        );
+        )
     }
 });
 ReactDOM.render(
 <project />,
     document.getElementById('example')
 );
-*/
+
