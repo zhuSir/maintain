@@ -1,18 +1,12 @@
 package com.xmsmartcity.mapper;
 
-
+import com.sun.xml.internal.rngom.parse.host.Base;
 import com.xmsmartcity.pojo.TsUser;
+import org.springframework.stereotype.Repository;
 
+@Repository
 public interface TsUserMapper extends BaseDao<TsUser>{
-    int deleteByPrimaryKey(Integer id);
 
-    int insert(TsUser record);
+    TsUser selectUser(String phone);
 
-    int insertSelective(TsUser record);
-
-    TsUser selectByPrimaryKey(Integer id);
-
-    int updateByPrimaryKeySelective(TsUser record);
-
-    int updateByPrimaryKey(TsUser record);
 }
