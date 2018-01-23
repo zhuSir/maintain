@@ -2,16 +2,17 @@
 var BgDiv = React.createClass({
     render: function() {
         return (
-            <div className="bg test row">
+            <div className="bg test row bgImage">
 
             <div className="col-sm-4 "></div>
             <div className="col-sm-4 centerDivBG ">
 
             <h5 className="text-center top25">登录</h5>
-            <input className="top25 input-group " placeholder="手机号" id="phoneInput"></input>
-            <input type="password" className="top25 input-group " placeholder="密码" id="pswInput"></input>
-            <DengluBtn/>
 
+            <input className="top25 input-group form-control" placeholder="手机号" id="phoneInput"></input>
+            <input type="password" className="top25 input-group form-control" placeholder="密码" id="pswInput"></input>
+            <DengluBtn/>
+              <Zhuce/>
 
             </div>
             <div className="col-sm-4 "></div>
@@ -30,7 +31,7 @@ var DengluBtn = React.createClass({
         };
 
 //window.open("../../base/index.html");
-        window.open("userlist.html");
+        window.open("../../base/index.html");
 
         $.ajax({
             type: "POST",
@@ -47,7 +48,18 @@ var DengluBtn = React.createClass({
         });
     },
     render: function() {
-        return <p onClick={this.gotoOther} className="top25 text-center test">点击我登录</p>;
+        return <p onClick={this.gotoOther} className="btn btn-default col-sm-12 top25 text-center test">登录</p>;
+    }
+});
+
+var Zhuce = React.createClass({
+
+    gotoOther:function (event) {
+
+       window.open("register.html");
+    },
+    render: function() {
+        return <p onClick={this.gotoOther} className="btn btn-default col-sm-12 text-center test">注册</p>;
     }
 });
 
