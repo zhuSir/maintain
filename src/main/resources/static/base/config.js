@@ -4,7 +4,9 @@
 
 var config = {
     //用户注册
-    register:  "/userinfo/register"
+    register:  "/userinfo/register",
+    //用户登陆
+    login:  "/userinfo/login"
 
 
 };

@@ -7,4 +7,5 @@ import com.xmsmartcity.pojo.TsUser;
  */
 public interface UserService extends  BaseService<TsUser> {
     public String addUser(TsUser tsUser);
+    public String selectUser(TsUser tsUser);
 }

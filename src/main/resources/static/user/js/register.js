@@ -20,7 +20,7 @@ $(function () {
                 success: function (res) {
                     if(res.code==0){
                         alert(res.info);
-                        window.open("login.html");
+                        window.location.href="login.html";
                     }else {
                         alert(res.info);
                     }
@@ -39,10 +39,17 @@ function canSure(name, phone, password) {
         alert("手机号码不能为空");
         return false;
     }
+
     if (!name || name == "") {
         alert("名字不能为空");
         return false;
     }
+
+    if (!(/^1[34578]\d{9}$/.test(phone))) {
+        alert("手机号码有误，请重填");
+        return false;
+    }
+
     if (!chineseReg.test(name)) {
         alert('请输入中文名字');
         return false;
