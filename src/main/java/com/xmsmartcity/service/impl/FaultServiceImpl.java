@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import java.util.Map;
 
@@ -41,5 +42,12 @@ public class FaultServiceImpl extends BaseServiceImpl<TsFault> implements FaultS
 //            res.add(resObj);
 //        }
         return result;
+    }
+
+    @Override
+    public int saveFaultInfo(TsFault object) {
+        object.setCreatetime(new Date());
+        int res = dao.insertSelective(object);
+        return res;
     }
 }

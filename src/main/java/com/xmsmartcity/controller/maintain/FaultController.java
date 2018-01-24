@@ -1,5 +1,6 @@
 package com.xmsmartcity.controller.maintain;
 
+import com.xmsmartcity.pojo.TsFault;
 import com.xmsmartcity.service.FaultService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -20,8 +21,9 @@ public class FaultController {
     private FaultService service;
 
     @RequestMapping(value = "/add")
-    public int addFault(){
-        return 1;
+    public int addFault(TsFault object){
+        int res = service.saveFaultInfo(object);
+        return res;
     }
 
     @RequestMapping(value = "/list")
