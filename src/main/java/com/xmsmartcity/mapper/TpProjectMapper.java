@@ -7,20 +7,9 @@ import java.util.List;
 
 @Repository
 public interface TpProjectMapper extends BaseDao<TpProject>{
-    int deleteByPrimaryKey(Integer id);
-
-    int insert(TpProject record);
-
-    int insertSelective(TpProject record);
-
-    TpProject selectByPrimaryKey(Integer id);
-
-    int updateByPrimaryKeySelective(TpProject record);
-
-    int updateByPrimaryKey(TpProject record);
 
     List<TpProject> selectProjectByName(String name);
 
-    List<TpProject> selectAllProject();
+    List<TpProject> selectAllProject(int uId);
 
 }

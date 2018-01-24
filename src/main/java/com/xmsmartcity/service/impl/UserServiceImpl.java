@@ -26,23 +26,44 @@ public class UserServiceImpl extends BaseServiceImpl<TsUser> implements UserServ
     public String addUser(TsUser tsUser) {
         JSONObject json = new JSONObject();
         if (null == tsUser || "".equals(tsUser)) {//参数不存在
-            json.put("code",1);
-            json.put("info","用户名或手机号不存在");
+            json.put("code", 1);
+            json.put("info", "用户名或手机号不存在");
         } else {//参数存在，判断是否重复创建
             String phone = tsUser.getMobilephone();
             TsUser tsUserReturn = dao.selectUser(phone);
-            if (tsUserReturn == null || StringUtils.isEmpty(tsUserReturn.getMobilephone())){//未注册
+            if (tsUserReturn == null || StringUtils.isEmpty(tsUserReturn.getMobilephone())) {//未注册
                 int insert = dao.insertSelective(tsUser);
-                if (insert!=0){
-                    json.put("code",0);
-                    json.put("info","注册成功");
-                }else {
-                    json.put("code",1);
-                    json.put("info","注册失败");
+                if (insert != 0) {
+                    json.put("code", 0);
+                    json.put("info", "注册成功");
+                } else {
+                    json.put("code", 1);
+                    json.put("info", "注册失败");
                 }
-            }else {//已注册
-                json.put("code",1);
-                json.put("info","该用户已注册");
+            } else {//已注册
+                json.put("code", 1);
+                json.put("info", "该用户已注册");
+            }
+        }
+        return json.toJSONString();
+    }
+
+    @Override
+    public String selectUser(TsUser tsUser) {
+        JSONObject json = new JSONObject();
+        if (null == tsUser || "".equals(tsUser)) {//参数不存在
+            json.put("code", 1);
+            json.put("info", "手机号或密码不存在");
+        } else {//参数存在，判断是否重复创建
+            String phone = tsUser.getMobilephone();
+            String password = tsUser.getPassword();
+            TsUser tsUserReturn = dao.selectUser(phone);
+            if (tsUserReturn != null&&phone.equals(tsUserReturn.getMobilephone())&& password.equals(tsUserReturn.getPassword())){
+                json.put("code", 0);
+                json.put("info", "登陆成功");
+            }else {
+                json.put("code", 1);
+                json.put("info", "手机号或密码错误");
             }
         }
         return json.toJSONString();

@@ -5,6 +5,14 @@ import com.xmsmartcity.pojo.TsUser;
 /**
  * Created by zhangzhifu on 2018/1/23.
  */
-public interface UserService extends  BaseService<TsUser> {
+public interface UserService extends BaseService<TsUser> {
+    /*
+     * 添加用户
+     */
     public String addUser(TsUser tsUser);
+
+    /*
+     * 查询用户
+     */
+    public String selectUser(TsUser tsUser);
 }

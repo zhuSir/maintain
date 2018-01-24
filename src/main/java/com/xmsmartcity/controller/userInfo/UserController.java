@@ -19,6 +19,7 @@ public class UserController {
 
     @Autowired
     UserService userService;
+
     /**
      * 注册接口
      * @return
@@ -29,5 +30,14 @@ public class UserController {
         return result;
     }
 
+    /**
+     * 登陆接口
+     * @return
+     */
+    @RequestMapping(value="/login",method = RequestMethod.POST)
+    private String login(TsUser tsUser){
+        String result = userService.selectUser(tsUser);
+        return result;
+    }
 
 }

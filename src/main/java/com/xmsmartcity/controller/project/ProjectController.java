@@ -6,6 +6,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.List;
+
 /**
  * @Author: EzerXie
  * @Description:
@@ -21,7 +23,7 @@ public class ProjectController {
     private ProjectService projectService;
 
     @RequestMapping(value = "/insert")
-    public String insertProject(TpProject project){
+    public String insertProject(TpProject project,String date1,String date2){
         projectService.insertProject(project);
         return null;
     }
@@ -30,6 +32,11 @@ public class ProjectController {
     public String delectProject(int id){
         projectService.delectProject(id);
         return null;
+    }
+
+    @RequestMapping(value = "/select")
+    public List<TpProject> selectProject(int uId){
+        return projectService.selectAllProject(uId);
     }
 
 }

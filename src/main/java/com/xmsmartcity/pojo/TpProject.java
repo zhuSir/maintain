@@ -9,6 +9,8 @@ public class TpProject {
 
     private Integer depId;
 
+    private String depName;
+
     private Integer bidState;
 
     private Float lat;
@@ -24,8 +26,10 @@ public class TpProject {
     private String addr;
 
     private Integer owenerUnitId;
+    private String owenerUnitName;
 
     private Integer constructUnitId;
+    private String constructUnitName;
 
     private String mark;
 
@@ -37,15 +41,19 @@ public class TpProject {
 
     private Integer managerId;
 
+    private String managerName;
+
     private Integer projectState;
 
     private Integer auditState;
 
     private Integer auditPersonId;
+    private String auditPersonName;
 
     private Date auditDate;
 
     private Integer createPersonId;
+    private String createPersonName;
 
     private Date createTime;
 
@@ -241,5 +249,53 @@ public class TpProject {
 
     public void setUpdateTime(Date updateTime) {
         this.updateTime = updateTime;
+    }
+
+    public String getDepName() {
+        return depName;
+    }
+
+    public void setDepName(String depName) {
+        this.depName = depName;
+    }
+
+    public String getOwenerUnitName() {
+        return owenerUnitName;
+    }
+
+    public void setOwenerUnitName(String owenerUnitName) {
+        this.owenerUnitName = owenerUnitName;
+    }
+
+    public String getConstructUnitName() {
+        return constructUnitName;
+    }
+
+    public void setConstructUnitName(String constructUnitName) {
+        this.constructUnitName = constructUnitName;
+    }
+
+    public String getManagerName() {
+        return managerName;
+    }
+
+    public void setManagerName(String managerName) {
+        this.managerName = managerName;
+    }
+
+    public String getAuditPersonName() {
+        return auditPersonName;
+    }
+
+    public void setAuditPersonName(String auditPersonName) {
+        this.auditPersonName = auditPersonName;
+    }
+
+    public String getCreatePersonName() {
+        return createPersonName;
+    }
+
+    public void setCreatePersonName(String createPersonName) {
+        this.createPersonName = createPersonName;
     }
 }
