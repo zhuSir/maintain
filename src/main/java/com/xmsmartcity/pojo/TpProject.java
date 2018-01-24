@@ -40,9 +40,8 @@ public class TpProject {
     private String caption;
 
     private Integer managerId;
-    private String managerName;
 
-    private String managetName;
+    private String managerName;
 
     private Integer projectState;
 
@@ -258,14 +257,6 @@ public class TpProject {
 
     public void setDepName(String depName) {
         this.depName = depName;
-    }
-
-    public String getManagetName() {
-        return managetName;
-    }
-
-    public void setManagetName(String managetName) {
-        this.managetName = managetName;
     }
 
     public String getOwenerUnitName() {
