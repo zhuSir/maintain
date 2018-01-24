@@ -27,7 +27,7 @@ var DengluBtn = React.createClass({
         if (canSure(mobilephone, password)) {
             var data = {
                 mobilephone,
-                password
+                password: hex_md5(password)
             };
 
             $.ajax({
@@ -36,10 +36,11 @@ var DengluBtn = React.createClass({
                 data: data,
                 dataType: "json",
                 success: function (res) {
-                    if (res.code==0){
+                    if (res.code == 0) {
                         window.location.href = "../../base/index.html";
+                    } else {
+                        alert(res.info);
                     }
-                    alert(res.info);
                 },
                 error: function (err) {
                     alert("登陆失败");

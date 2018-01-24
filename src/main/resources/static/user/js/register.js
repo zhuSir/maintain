@@ -9,7 +9,7 @@ $(function () {
             var data = {
                 mobilephone,
                 createName,
-                password
+                password:hex_md5(password)
             };
 
             $.ajax({
