@@ -1,3 +1,25 @@
 table{
-
+    width:100%;
+    height: auto;
+    background: #2a85a0;
+}
+table thead{
+    width:100%;
+    background: #ffe8a1;
+    height: auto;
+}
+table th{
+    text-align: center;
+}
+thead tr{
+    height: 45px;
+    border-top: ;1px solid #666666;
+    line-height: 45px;
+}
+thead tr:nth-last-child(){
+    border-bottom:1px solid #666666;
+}
+table td{
+    width: 25%;
+    text-align: center;
 }
