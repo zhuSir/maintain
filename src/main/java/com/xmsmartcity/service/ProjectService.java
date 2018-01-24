@@ -22,7 +22,7 @@ public interface ProjectService extends BaseService<TpProject> {
     public String updateProject(TpProject project);
 
     //查询/搜索 项目
-    public List<TpProject> selectProjectByName(String name);
+    public List<TpProject> selectAllProject(int uId);
 
 
 }
