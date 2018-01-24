@@ -12,14 +12,16 @@ $(function () {
 
         $.ajax({
             type: "POST",
-            url: zydUrl.userlogin,
+            url: config.register,
             data: data,
             dataType: "json",
             success: function (data) {
-                alert("success");
+                console.log(data);
+                // alert("success");
             },
             error: function (err) {
-                alert("error");
+                // alert("error");
+                console.log(data);
             }
         });
     });
