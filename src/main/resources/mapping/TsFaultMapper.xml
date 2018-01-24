@@ -144,7 +144,7 @@
   <select id="selectList" resultType="map">
     SELECT
         f.fault_code as faultCode,f.fault_type as faultType,f.createtime,f.id as faultId,f.remark_reason remarkReason
-        ,c.`name` as companyId,p.`name` as projectName,u.username,e.equip_name as equipName
+        ,c.`name` as companyId,p.`name` as projectName,u.username,IFNULL(e.equip_name,'') equipName
     FROM
         t_s_fault f
     INNER JOIN t_c_company c ON f.company_id = c.id

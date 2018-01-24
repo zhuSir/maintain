@@ -4,8 +4,8 @@ ReactDOM.render(
             <h3 className="panel-title">报障单列表</h3>
         </div>
         <div className="panel-body">
-            <table id="table_id_example" className="display">
             <button type="button" className="btn btn-success" data-toggle="modal" data-target="#faultModel">添加报障</button>
+            <table id="table_id_example" className="display">
             <thead>
                 <tr>
                     <th>报障单号</th>
@@ -62,6 +62,9 @@ $(document).ready( function () {
         },
         ajax : {
             url:"/fault/list",
+            data : {
+                id : 1
+            },
             dataSrc: ''
         },
         columns: [
