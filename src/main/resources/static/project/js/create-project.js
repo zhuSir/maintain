@@ -20,7 +20,10 @@ var Projects=React.createClass({
     },
 
     render:function () {
+        var datas=this.state.Projects.map(function(item){
+            return (
 
+            )
     }
 })
 var Project = React.createClass({
