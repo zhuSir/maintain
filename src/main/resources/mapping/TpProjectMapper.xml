@@ -15,7 +15,7 @@
         <result column="addr" property="addr" jdbcType="VARCHAR"/>
         <result column="owener_unit_id" property="owenerUnitId" jdbcType="INTEGER"/>
         <result column="owenerUnitName" property="owenerUnitName" jdbcType="VARCHAR"/>
-        <result column="construct_unit _id" property="constructUnitId" jdbcType="INTEGER"/>
+        <result column="construct_unit_id" property="constructUnitId" jdbcType="INTEGER"/>
         <result column="constructUnitName" property="constructUnitName" jdbcType="VARCHAR"/>
         <result column="mark" property="mark" jdbcType="VARCHAR"/>
         <result column="plan_start_date" property="planStartDate" jdbcType="TIMESTAMP"/>
@@ -104,7 +104,7 @@
                 owener_unit_id,
             </if>
             <if test="constructUnitId != null">
-                "construct_unit _id",
+                construct_unit_id,
             </if>
             <if test="mark != null">
                 mark,
