@@ -45,4 +45,10 @@ public class UserController {
         return res;
     }
 
+    @RequestMapping(value="/byphone")
+    public TsUser selectById(String phone){
+        TsUser result = userService.selectByPhone(phone);
+        return result;
+    }
+
 }
