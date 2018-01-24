@@ -4,13 +4,14 @@
 
 var network = "http://";
 
-var host = "";
+var host = "120.42.47.82:3306/simple_dweibao";
 
 var config = {
 
     host: host,
 
-    register: network + host + ""
+    //用户注册
+    register: network + host + "/userinfo/register"
 
 
 };
