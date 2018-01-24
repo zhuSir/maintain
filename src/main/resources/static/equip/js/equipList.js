@@ -1,41 +1,19 @@
+
+var tableTitleList = [{text: "设备名称"}, {text: "型号"}, {text: "编号"}, {text: "厂家"}, {text: "投入时间"}, {text: "保修时间"}, {text: "使用地点"}, {text: "设备类别"}];
+
 ReactDOM.render(
     <div className="panel panel-success">
         <div className="panel-heading">
             <h3 className="panel-title">设备列表</h3>
         </div>
         <div className="panel-body">
-            <table id="table_id_example" className="display">
-            <thead>
-                <tr>
-                    <th>Column1</th>
-                    <th>Column2</th>
-                    <th>Column1</th>
-                    <th>Column2</th>
-                    <th>Column1</th>
-                    <th>Column2</th>
-                    <th>Column1</th>
-                    <th>Column2</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>Row1Data1</td>
-                    <td>Row1Data2</td>
-                    <td>Row1Data1</td>
-                    <td>Row1Data2</td>
-                    <td>Row1Data1</td>
-                    <td>Row1Data2</td>
-                    <td>Row1Data1</td>
-                    <td>Row1Data2</td>
-                </tr>
-            </tbody>
-            </table>
+            <button type="button" className="btn btn-success" data-toggle="modal" data-target="#equipModel">添加设备
+            </button>
+            <DataTable tableTitleList={tableTitleList} dataTableId="table_id_example"/>
         </div>
     </div>,
     document.getElementById('body')
 );
-
-// var
 
 var data = [
     [
@@ -60,9 +38,7 @@ var data = [
     ]
 ];
 
-data = [["1",1,1,1516740176000,"1","1",1,3]];
-
-$(document).ready( function () {
+$(document).ready(function () {
     var table = $('#table_id_example').dataTable({
         "responsive": true,
         "lengthChange": false,
@@ -96,33 +72,57 @@ $(document).ready( function () {
                 "next": '<i className="demo-psi-arrow-right"></i>'
             }
         },
-        ajax : {
-            url:"/common",
-            type: "post",
-            contentType : "application/json; charset=utf-8",
-            data : JSON.stringify({
-                "funcName" : "getEquipList",                       //controller 中的方法名
-                "serviceName" : "equipController",           //controller 注解名称
-                "serialNumber" : guid(),                    //请求流水
-                "userAccount" : "122222222",                    //用户账户
-                "reqSysCode" : "A02",                       //请求生成端 A01-web ,A02-app, A03-微信
-                "reqTime" : new Date().Format("yyyy-MM-dd hh:mm:ss.S"),                      //请求时间
-                "data" : {
-                    //请求传递的消息报文主体，格式不做控制
-                },
-                "security":{                                //安全层
+        ajax: function (data, callback, settings) {
+            //封装请求参数
+            console.log(data);
+            var param = {};
+            param.limit = data.length;//页面显示记录条数，在页面显示每页显示多少项的时候
+            param.start = data.start;//开始的记录序号
+            param.page = (data.start / data.length) + 1;//当前页码
+            console.log(param);
+            var postData = JSON.stringify({
+                "funcName": "getEquipList",                       //controller 中的方法名
+                "serviceName": "equipController",           //controller 注解名称
+                "serialNumber": guid(),                    //请求流水
+                "userAccount": "122222222",                    //用户账户
+                "reqSysCode": "A02",                       //请求生成端 A01-web ,A02-app, A03-微信
+                "reqTime": new Date().Format("yyyy-MM-dd hh:mm:ss.S"),                      //请求时间
+                "data": param,
+                "security": {                                //安全层
                     //访问令牌，如果没有这个需要先访问authController中的login来获取
-                    "accessTocken" : "",
-                    "smsCode":"",
-                    "emailCode":"",
-                    "deviceId":"",
-                    "usbKey":"",
-                    "imageCode":"",
-                    "codeKey":""
+                    "accessTocken": ""
                 }
             })
-
-        }
+            //ajax请求数据
+            $.ajax({
+                type: "post",
+                url: "/common",
+                cache: false, //禁用缓存
+                contentType: "application/json; charset=utf-8",
+                data: postData, //传入组装的参数
+                dataType: "json",
+                success: function (result) {
+                    console.log(result);
+                    var returnData = {};
+                    var rtData = result.data;
+                    returnData.draw = data.draw;//这里直接自行返回了draw计数器,应该由后台返回
+                    returnData.recordsTotal = result.recordsTotal;//返回数据全部记录
+                    returnData.recordsFiltered = result.recordsFiltered;//后台不实现过滤功能，每次查询均视作全部结果
+                    returnData.data = rtData;//返回的数据列表
+                    callback(returnData);
+                }
+            });
+        },
+        columns: [
+            {data: 'equipName'},
+            {data: 'equipModel'},
+            {data: 'equipCode'},
+            {data: 'equipFirm'},
+            {data: 'putUseTime'},
+            {data: 'guaranteePeriod'},
+            {data: 'province'},
+            {data: 'equipTypeId'}
+        ]
         // data : data
     });
 });
