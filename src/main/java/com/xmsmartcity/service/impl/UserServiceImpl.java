@@ -10,6 +10,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
 
+import java.util.List;
+import java.util.Map;
+
 /**
  * Created by zhangzhifu on 2018/1/23.
  */
@@ -67,5 +70,11 @@ public class UserServiceImpl extends BaseServiceImpl<TsUser> implements UserServ
             }
         }
         return json.toJSONString();
+    }
+
+    @Override
+    public List<Map<String, Object>> selectList(String phone,String name) {
+        List<Map<String,Object>> result = dao.selectList(phone,name);
+        return result;
     }
 }

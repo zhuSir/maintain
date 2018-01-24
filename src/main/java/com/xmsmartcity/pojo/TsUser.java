@@ -35,6 +35,12 @@ public class TsUser {
 
     private Integer companyid;
 
+    private String companyName;
+
+    private Integer groupid;
+
+    private String groupName;
+
     public Integer getId() {
         return id;
     }
@@ -161,5 +167,29 @@ public class TsUser {
 
     public void setCompanyid(Integer companyid) {
         this.companyid = companyid;
+    }
+
+    public String getCompanyName() {
+        return companyName;
+    }
+
+    public void setCompanyName(String companyName) {
+        this.companyName = companyName == null ? null : companyName.trim();
+    }
+
+    public Integer getGroupid() {
+        return groupid;
+    }
+
+    public void setGroupid(Integer groupid) {
+        this.groupid = groupid;
+    }
+
+    public String getGroupName() {
+        return groupName;
+    }
+
+    public void setGroupName(String groupName) {
+        this.groupName = groupName == null ? null : groupName.trim();
     }
 }

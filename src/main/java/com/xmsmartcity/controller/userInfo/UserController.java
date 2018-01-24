@@ -3,11 +3,10 @@ package com.xmsmartcity.controller.userInfo;
 import com.xmsmartcity.pojo.TsUser;
 import com.xmsmartcity.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
+import java.util.Map;
 
 /**
  * 用户操作
@@ -38,6 +37,12 @@ public class UserController {
     private String login(TsUser tsUser){
         String result = userService.selectUser(tsUser);
         return result;
+    }
+
+    @GetMapping("/list")
+    public List selectList(String phone,String name){
+        List<Map<String,Object>> res = userService.selectList(phone,name);
+        return res;
     }
 
 }
