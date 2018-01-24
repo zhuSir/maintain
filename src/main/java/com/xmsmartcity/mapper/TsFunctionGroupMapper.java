@@ -19,6 +19,7 @@ public interface TsFunctionGroupMapper {
     int updateByPrimaryKey(TsFunctionGroup record);
 
 
-    //获取所有列表
-    List<TsFunctionGroup> getCompanyAllGroupList(String conpantID);
+
+    //获取组列表
+    List<TsFunctionGroup> getGroupList(String conpantID);
 }
