@@ -1,55 +1,52 @@
 
+
+
+
 var ListUi=React.createClass({
+    getInitialState: function() {
+        return {
+            groupList : []
+        };
+    },
+    componentDidMount: function() {
+        this.serverRequest = $.post("/user/getGroupList",{sonGroupID:"2"}, function (result) {
+            this.setState({
+                groupList : result
+            });
+        }.bind(this));
+    },
 
 
-    componentDidMount:function(){
 
-        alert('加载数据的方法')
+    componentWillUnmount: function() {
+        this.serverRequest.abort();
     },
 
     render:function(){
+        var list=this.state.groupList.map(function(item){
+            return (
+            <li className="list-group-item">{item.groupName}</li>
+        )
+    })
         return (
             <div className="panel-group" id="accordion">
                 <div className="col-sm-12 top15">
-                    if (2==3)
-                    {
-                        <ModelPush/>
-                    }
-
                 </div>
                 <div className="panel panel-default top40">
                     <div className="panel-heading">
                         <h4 className="panel-title">
-                            <a data-toggle="collapse" data-parent="#accordion"
-                               >
+                            <a data-toggle="collapse" data-parent="#accordion">
                                 银江公司
                             </a>
-
-                                <button className="btn btn-default">创建子部门</button>
-
+                            <ModelPush/>
                         </h4>
-                    </div>
-                    <div id="collapse" className="panel-collapse collapse in">
-                        <div className="panel-body">
 
-                            <div className="panel-heading">
-                                <h4 className="panel-title">
-                                    <a data-toggle="collapse" data-parent="#collapse"
-                                       href="#collapseOne">技术研发部
-                                    </a>
-                                </h4>
-
-                            </div>
-                            <div id="collapseOne" className="panel-collapse collapse in">
-                                <ul className="list-group">
-                                 <li className="list-group-item">张莹动
-                                    <button className="">换部门</button>
-                                    <button className="">移除</button>
-                                  </li>
-                                </ul>
-                            </div>
-                        </div>
                     </div>
+
+                    <ul className="list-group">
+                        {list}
+                    </ul>
+
                 </div>
             </div>
 
@@ -58,6 +55,8 @@ var ListUi=React.createClass({
     }
 
 });
+
+
 //创建部门的按钮
 var EditBtn=React.createClass({
 
@@ -74,8 +73,8 @@ var ModelPush = React.createClass({
     render:function() {
         return (
             <div>
-                <button className="btn btn-default" data-toggle="modal" data-target="#myModal">
-                    创建组
+                  <button className="btn btn-default top15" data-toggle="modal" data-target="#myModal">
+                   创建组
                 </button>
                 <div className="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
                      aria-hidden="true">
@@ -145,4 +144,3 @@ ReactDOM.render(
     document.getElementById('group')
 
 );
-c
