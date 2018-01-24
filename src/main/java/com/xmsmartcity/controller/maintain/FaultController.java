@@ -25,7 +25,8 @@ public class FaultController {
     }
 
     @RequestMapping(value = "/list")
-    public List<Map<String,Object>> faultList(){
+    public List<Map<String,Object>> faultList(String id){
+        System.out.println(id);
         List<Map<String,Object>> results = service.selectList();
         return results;
     }

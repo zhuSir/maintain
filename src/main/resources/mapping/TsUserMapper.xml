@@ -16,11 +16,12 @@
     <result column="imsign" property="imsign" jdbcType="VARCHAR" />
     <result column="dev_flag" property="devFlag" jdbcType="VARCHAR" />
     <result column="level" property="level" jdbcType="INTEGER" />
+    <result column="password" property="password" jdbcType="VARCHAR" />
     <result column="companyID" property="companyid" jdbcType="INTEGER" />
   </resultMap>
   <sql id="Base_Column_List" >
     id, email, mobilePhone, signatureFile, update_name, update_date, update_by, create_name, 
-    create_date, create_by, portrait, imsign, dev_flag, level, companyID
+    create_date, create_by, portrait, imsign, dev_flag, level, password, companyID
   </sql>
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
     select 
@@ -37,14 +38,14 @@
       signatureFile, update_name, update_date, 
       update_by, create_name, create_date, 
       create_by, portrait, imsign, 
-      dev_flag, level, companyID
-      )
+      dev_flag, level, password, 
+      companyID)
     values (#{id,jdbcType=INTEGER}, #{email,jdbcType=VARCHAR}, #{mobilephone,jdbcType=VARCHAR}, 
       #{signaturefile,jdbcType=VARCHAR}, #{updateName,jdbcType=VARCHAR}, #{updateDate,jdbcType=TIMESTAMP}, 
       #{updateBy,jdbcType=INTEGER}, #{createName,jdbcType=VARCHAR}, #{createDate,jdbcType=TIMESTAMP}, 
       #{createBy,jdbcType=INTEGER}, #{portrait,jdbcType=VARCHAR}, #{imsign,jdbcType=VARCHAR}, 
-      #{devFlag,jdbcType=VARCHAR}, #{level,jdbcType=INTEGER}, #{companyid,jdbcType=INTEGER}
-      )
+      #{devFlag,jdbcType=VARCHAR}, #{level,jdbcType=INTEGER}, #{password,jdbcType=VARCHAR}, 
+      #{companyid,jdbcType=INTEGER})
   </insert>
   <insert id="insertSelective" parameterType="com.xmsmartcity.pojo.TsUser" >
     insert into t_s_user
@@ -90,6 +91,9 @@
       </if>
       <if test="level != null" >
         level,
+      </if>
+      <if test="password != null" >
+        password,
       </if>
       <if test="companyid != null" >
         companyID,
@@ -138,6 +142,9 @@
       <if test="level != null" >
         #{level,jdbcType=INTEGER},
       </if>
+      <if test="password != null" >
+        #{password,jdbcType=VARCHAR},
+      </if>
       <if test="companyid != null" >
         #{companyid,jdbcType=INTEGER},
       </if>
@@ -185,6 +192,9 @@
       <if test="level != null" >
         level = #{level,jdbcType=INTEGER},
       </if>
+      <if test="password != null" >
+        password = #{password,jdbcType=VARCHAR},
+      </if>
       <if test="companyid != null" >
         companyID = #{companyid,jdbcType=INTEGER},
       </if>
@@ -206,7 +216,17 @@
       imsign = #{imsign,jdbcType=VARCHAR},
       dev_flag = #{devFlag,jdbcType=VARCHAR},
       level = #{level,jdbcType=INTEGER},
+      password = #{password,jdbcType=VARCHAR},
       companyID = #{companyid,jdbcType=INTEGER}
     where id = #{id,jdbcType=INTEGER}
   </update>
+
+  <!--查询用户-->
+  <select id="selectUser" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select
+    <include refid="Base_Column_List" />
+    from t_s_user
+    where mobilephone = #{mobilephone,jdbcType=VARCHAR}
+  </select>
+
 </mapper>

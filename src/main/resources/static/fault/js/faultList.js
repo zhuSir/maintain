@@ -4,6 +4,7 @@ ReactDOM.render(
             <h3 className="panel-title">报障单列表</h3>
         </div>
         <div className="panel-body">
+            <button type="button" className="btn btn-success" data-toggle="modal" data-target="#faultModel">添加报障</button>
             <table id="table_id_example" className="display">
             <thead>
                 <tr>
@@ -20,6 +21,7 @@ ReactDOM.render(
             </tbody>
             </table>
         </div>
+        <FaultModel/>
     </div>,
     document.getElementById('body')
 );
@@ -60,16 +62,19 @@ $(document).ready( function () {
         },
         ajax : {
             url:"/fault/list",
+            data : {
+                id : 1
+            },
             dataSrc: ''
         },
         columns: [
-            { data: 'fault_code' },
-            { data: 'company_id' },
-            { data: 'project_id' },
+            { data: 'faultCode' },
+            { data: 'projectName' },
+            { data: 'faultType' },
+            { data: 'equipName' },
+            { data: 'remarkReason' },
             { data: 'createtime' },
-            { data: 'remark_reason' },
-            { data: 'fault_type' },
-            { data: 'fault_user_id' }
+            { data: 'username' }
         ]
     });
 });

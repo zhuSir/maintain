@@ -107,7 +107,8 @@ $(document).ready( function () {
                 "userAccount" : "122222222",                    //用户账户
                 "reqSysCode" : "A02",                       //请求生成端 A01-web ,A02-app, A03-微信
                 "reqTime" : new Date().Format("yyyy-MM-dd hh:mm:ss.S"),                      //请求时间
-                "data" : {                                //请求传递的消息报文主体，格式不做控制
+                "data" : {
+                    //请求传递的消息报文主体，格式不做控制
                 },
                 "security":{                                //安全层
                     //访问令牌，如果没有这个需要先访问authController中的login来获取

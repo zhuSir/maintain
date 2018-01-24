@@ -31,6 +31,8 @@ public class TsUser {
 
     private Integer level;
 
+    private String password;
+
     private Integer companyid;
 
     public Integer getId() {
@@ -143,6 +145,14 @@ public class TsUser {
 
     public void setLevel(Integer level) {
         this.level = level;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password == null ? null : password.trim();
     }
 
     public Integer getCompanyid() {

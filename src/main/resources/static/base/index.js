@@ -15,15 +15,15 @@ function page(o) {
             break;
         //工作面板——初始页
         case 2:
-            window.iframepage.location = "../user/html/register.html";
+            window.iframepage.location = "../user/html/userlist.html";
             break;
         //报修管理——我的报修单
         case 3:
-            window.iframepage.location = "";
+            window.iframepage.location = "../user/html/companygroup.html";
             break;
         //报修管理——我的签到
         case 4:
-            window.iframepage.location = "";
+            window.iframepage.location = "../user/html/permission.html";
             break;
         //我的消息——企业消息
         case 5:
