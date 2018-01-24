@@ -19,6 +19,7 @@ public class UserController {
 
     @Autowired
     UserService userService;
+
     /**
      * 注册接口
      * @return
