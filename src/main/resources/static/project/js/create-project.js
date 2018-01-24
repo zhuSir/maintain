@@ -24,18 +24,45 @@ var Projects=React.createClass({
     }
 })
 var Project = React.createClass({
+    getInitialState: function() {
+        return {
+            Projects : []
+        };
+
+    },
+    componentDidMount: function() {
+        this.serverRequest = $.post("localhost:8080/project/select","uId:1",  function (result) {
+            this.setState({
+                Projects : result.data
+            });
+
+
+        }.bind(this));
+    },
+
+    render:function(){
+        var list=this.state.groupList.map(function(item){
+            return (
+                <li className="list-group-item">
+                <p className="navbar-text">项目编号: {item.id} <span className="numberl" id="numberl">03</span> </p>
+             </li>
+            )
+        })
+
+
+
+
+
     render: function() {
         return (<div className="container">
         <div className="main">
             <h3>项目详情</h3>
             <div className="wrap">
                 <ul className="list-group">
-                    <li className="list-group-item">
-                        <p className="navbar-text">项目编号:  <span className="numberl" id="numberl">03</span> </p>
-                    </li>
+                    {list}
                     <li className="list-group-item">
                         <p className="navbar-text">项目名称:  <span className="proname" id="proname">维修管理</span> </p>
-                    </li>
+                </li>
                     <li className="list-group-item">
                         <p className="navbar-text">公司名称:  <span className="comname" id="comname">小康建材</span> </p>
                     </li>

@@ -22,4 +22,9 @@ public interface TsFunctionGroupMapper {
 
     //获取组列表
     List<TsFunctionGroup> getGroupList(String conpantID);
+
+    String companyInviteMenber(String phone,String companyID);
+
+
+
 }
