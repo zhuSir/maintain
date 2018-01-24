@@ -18,12 +18,24 @@
     <result column="sys_org_code" property="sysOrgCode" jdbcType="VARCHAR" />
     <result column="sys_company_code" property="sysCompanyCode" jdbcType="VARCHAR" />
   </resultMap>
+
+  <resultMap id="seleteGruopList" type="com.xmsmartcity.pojo.TsFunctionGroup" >
+     <id column="id" property="id" jdbcType="VARCHAR" />
+      <result column="group_name" property="groupName" jdbcType="VARCHAR" />
+     <result column="dept_id" property="deptId" jdbcType="VARCHAR" />
+    <result column="pid" property="pid" jdbcType="VARCHAR" />
+
+  </resultMap>
+  <sql id="seleteGruop_List">
+      id, group_name, dept_id,pid
+  </sql>
+
   <sql id="Base_Column_List" >
-    id, group_name, dept_id, dept_code, dept_name, pid, level, create_name, create_by, 
+    id, group_name, dept_id, dept_code, dept_name, pid, level, create_name, create_by,
     create_date, update_name, update_by, update_date, sys_org_code, sys_company_code
   </sql>
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
-    select 
+    select
     <include refid="Base_Column_List" />
     from t_s_function_group
     where id = #{id,jdbcType=VARCHAR}
@@ -33,7 +45,7 @@
     where id = #{id,jdbcType=VARCHAR}
   </delete>
   <insert id="insert" parameterType="com.xmsmartcity.pojo.TsFunctionGroup" >
-    insert into t_s_function_group (id, group_name, dept_id, 
+    insert into t_s_function_group (id, group_name, dept_id,
       dept_code, dept_name, pid, 
       level, create_name, create_by, 
       create_date, update_name, update_by, 
@@ -209,4 +221,13 @@
       sys_company_code = #{sysCompanyCode,jdbcType=VARCHAR}
     where id = #{id,jdbcType=VARCHAR}
   </update>
+
+
+  <select id="getCompanyAllGroupList" parameterType="java.lang.String" resultMap="seleteGruopList" >
+    select
+    <include refid="seleteGruop_List" />
+    from t_s_function_group
+    where pid = #{id}
+  </select>
+
 </mapper>

@@ -23,7 +23,7 @@ public class UserController {
      * 注册接口
      * @return
      */
-    @RequestMapping(value="/register",method = RequestMethod.GET)
+    @RequestMapping(value="/register",method = RequestMethod.POST)
     private String register(TsUser tsUser){
         String result = userService.addUser(tsUser);
         return result;
