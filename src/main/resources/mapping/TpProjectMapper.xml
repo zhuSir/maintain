@@ -35,7 +35,7 @@
     </resultMap>
     <sql id="Base_Column_List">
     id, name, dep_id, bid_state, lat, lng, provice, city, area, addr, owener_unit_id, 
-    "construct_unit_id", mark, plan_start_date, plan_end_date, caption, manager_id,
+    construct_unit_id, mark, plan_start_date, plan_end_date, caption, manager_id,
     project_state, audit_state, audit_person_id, audit_date, create_person_id, create_time, 
     update_time
   </sql>
@@ -68,9 +68,9 @@
       #{updateTime,jdbcType=TIMESTAMP})
   </insert>
     <insert id="insertSelective" parameterType="com.xmsmartcity.pojo.TpProject">
-        <selectKey resultType="java.lang.Integer" order="AFTER" keyProperty="id">
-            SELECT LAST_INSERT_ID()
-        </selectKey>
+        <!--<selectKey resultType="java.lang.Integer" order="AFTER" keyProperty="id">-->
+            <!--SELECT LAST_INSERT_ID()-->
+        <!--</selectKey>-->
         insert into t_p_project
         <trim prefix="(" suffix=")" suffixOverrides=",">
             <if test="id != null">
