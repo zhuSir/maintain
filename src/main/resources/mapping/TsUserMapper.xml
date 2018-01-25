@@ -278,7 +278,7 @@
     select
     <include refid="Base_Column_List" />
     from t_s_user
-    where companyID = #{companyID}
+    where companyID = #{companyID} AND companyID!=0
   </select>
 
   <!-- 查询列表 -->
@@ -304,6 +304,6 @@
       update t_s_user
     set companyID = #{companyID},
     where  id=#{userId}
-          </update>
+   </update>
 
 </mapper>

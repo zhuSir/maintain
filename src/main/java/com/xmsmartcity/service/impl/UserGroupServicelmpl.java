@@ -16,9 +16,9 @@ import java.util.List;
  */
 
 @Service("UserGroupService")
-public class UserGrouplmpl extends BaseServiceImpl<TsFunctionGroup> implements UserGroupService {
+public class UserGroupServicelmpl extends BaseServiceImpl<TsFunctionGroup> implements UserGroupService {
 
-    public UserGrouplmpl(BaseDao<TsFunctionGroup> dao) {
+    public UserGroupServicelmpl(BaseDao<TsFunctionGroup> dao) {
 
         super(dao);
     }
@@ -91,7 +91,12 @@ public class UserGrouplmpl extends BaseServiceImpl<TsFunctionGroup> implements U
         return json.toString();
     }
 
-      @Override
+    @Override
+    public int insertBackID(TsFunctionGroup record) {
+        return 0;
+    }
+
+    @Override
     public List<TsFunctionGroup> getGroupList(String id ) {
         List<TsFunctionGroup> result = dao.getGroupList(id);
         return result;

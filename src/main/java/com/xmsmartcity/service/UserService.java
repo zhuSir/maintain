@@ -1,5 +1,6 @@
 package com.xmsmartcity.service;
 
+import com.alibaba.fastjson.JSONObject;
 import com.xmsmartcity.pojo.TsUser;
 
 import java.util.List;
@@ -26,7 +27,7 @@ public interface UserService extends BaseService<TsUser> {
      * @param companyID
      * @return
      */
-    String selectUserList(String companyID);
+    List<Map<String,Object>> selectUserList(String companyID);
 
     /*
     * phone查询用户

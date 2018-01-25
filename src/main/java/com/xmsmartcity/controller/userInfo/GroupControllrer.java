@@ -1,6 +1,7 @@
 package com.xmsmartcity.controller.userInfo;
 
 
+import com.alibaba.fastjson.JSONObject;
 import com.xmsmartcity.pojo.TsFunctionGroup;
 import com.xmsmartcity.service.UserGroupService;
 import com.xmsmartcity.service.UserService;
@@ -9,6 +10,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.web.bind.annotation.*;
 import com.xmsmartcity.pojo.TsFunctionGroup;
 import java.util.List;
+import java.util.Map;
 
 /**
  * Created by welleast on 2018/1/23.
@@ -29,9 +31,7 @@ public class GroupControllrer {
      */
     @RequestMapping(value="/user/creatcompany",method = RequestMethod.POST)
     private String creatGroup(String companyName,String reatUserName,String reatUserID){
-
         String resault =  ser.creatGroup(companyName,reatUserName,reatUserID);
-
         return resault;
     }
 
@@ -41,9 +41,7 @@ public class GroupControllrer {
      */
     @RequestMapping(value="/user/creatGroup",method = RequestMethod.POST)
     private String creatGroup(String groupname,String companyID,String reatUserName,String reatUserID){
-
          String resault =  ser.insertGroup(groupname,companyID,reatUserName,reatUserID);
-
         return resault;
     }
 
@@ -75,16 +73,15 @@ public class GroupControllrer {
      * @param companyID
      * @return
      */
-    @RequestMapping(value="/user/companyMemberList",method = RequestMethod.POST)
-    private String listCompanyMember(String companyID){
-        String result = userService.selectUserList(companyID);
+    @RequestMapping(value="/user/listCompanyMember",method = RequestMethod.POST)
+    private List<Map<String,Object>> listCompanyMember(String companyID){
+        List<Map<String,Object>> result = userService.selectUserList(companyID);
         return result;
     }
 
     //邀请组成员
     @RequestMapping(value = "/user/invitePeopleGroup",method = RequestMethod.POST)
     public Object invitePeopleGroup(String phone,String companyID,String groupID){
-
         Object  result = userService.invitePeopleGroup(phone,companyID,groupID);
         return result;
     }
