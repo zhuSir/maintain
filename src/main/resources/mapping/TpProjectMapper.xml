@@ -35,7 +35,7 @@
     </resultMap>
     <sql id="Base_Column_List">
     id, name, dep_id, bid_state, lat, lng, provice, city, area, addr, owener_unit_id, 
-    "construct_unit _id", mark, plan_start_date, plan_end_date, caption, manager_id, 
+    "construct_unit_id", mark, plan_start_date, plan_end_date, caption, manager_id,
     project_state, audit_state, audit_person_id, audit_date, create_person_id, create_time, 
     update_time
   </sql>
@@ -53,7 +53,7 @@
     insert into t_p_project (id, name, dep_id, 
       bid_state, lat, lng, provice, 
       city, area, addr, owener_unit_id, 
-      "construct_unit _id", mark, plan_start_date, 
+      construct_unit_id, mark, plan_start_date,
       plan_end_date, caption, manager_id, 
       project_state, audit_state, audit_person_id, 
       audit_date, create_person_id, create_time, 
@@ -252,7 +252,7 @@
                 owener_unit_id = #{owenerUnitId,jdbcType=INTEGER},
             </if>
             <if test="constructUnitId != null">
-                "construct_unit _id" = #{constructUnitId,jdbcType=INTEGER},
+                construct_unit_id = #{constructUnitId,jdbcType=INTEGER},
             </if>
             <if test="mark != null">
                 mark = #{mark,jdbcType=VARCHAR},
@@ -297,7 +297,6 @@
     update t_p_project
     set name = #{name,jdbcType=VARCHAR},
       dep_id = #{depId,jdbcType=INTEGER},
-      dep_name  = #()
       bid_state = #{bidState,jdbcType=INTEGER},
       lat = #{lat,jdbcType=REAL},
       lng = #{lng,jdbcType=REAL},
@@ -306,7 +305,7 @@
       area = #{area,jdbcType=VARCHAR},
       addr = #{addr,jdbcType=VARCHAR},
       owener_unit_id = #{owenerUnitId,jdbcType=INTEGER},
-      "construct_unit _id" = #{constructUnitId,jdbcType=INTEGER},
+      construct_unit_id = #{constructUnitId,jdbcType=INTEGER},
       mark = #{mark,jdbcType=VARCHAR},
       plan_start_date = #{planStartDate,jdbcType=TIMESTAMP},
       plan_end_date = #{planEndDate,jdbcType=TIMESTAMP},
@@ -345,7 +344,7 @@
     LEFT JOIN t_s_function_group AS B ON A.dep_id = B.id
     LEFT JOIN t_s_base_user AS C ON A.manager_id = C.ID
     LEFT JOIN t_c_company AS D ON A.owener_unit_id = D.id
-    LEFT JOIN t_c_company AS F ON A.`construct_unit _id` = F.id
+    LEFT JOIN t_c_company AS F ON A.`construct_unit_id` = F.id
     LEFT JOIN t_s_base_user AS G ON A.create_person_id = G.ID
     LEFT JOIN t_s_base_user AS H ON A.manager_id = H.ID
     LEFT JOIN t_s_base_user AS I ON A.audit_person_id = I.ID
