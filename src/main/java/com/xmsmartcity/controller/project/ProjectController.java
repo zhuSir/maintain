@@ -1,6 +1,8 @@
 package com.xmsmartcity.controller.project;
 
+import com.xmsmartcity.pojo.BaseResponse;
 import com.xmsmartcity.pojo.TpProject;
+import com.xmsmartcity.service.FaultService;
 import com.xmsmartcity.service.ProjectService;
 import org.apache.ibatis.annotations.Param;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,7 +12,6 @@ import org.springframework.web.bind.annotation.RestController;
 import javax.validation.constraints.NotNull;
 import java.sql.Timestamp;
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -28,35 +29,48 @@ public class ProjectController {
     @Autowired
     private ProjectService projectService;
 
+    @Autowired
+    FaultService faultService;
+
     @RequestMapping(value = "/insert")
-    public String insertProject(String uId,TpProject project,@Param("startData") String startData, @Param("endDate") String endDate) {
+    public BaseResponse<TpProject> insertProject(String uId,TpProject project,@Param("startData") String startData, @Param("endDate") String endDate) {
+        BaseResponse<TpProject> baseResponse = new BaseResponse<>();
         try {
             if(uId==null||uId.equals("")){
-                return "参数错误,创建失败";
+                baseResponse.setInfo("参数错误,创建失败");
+                return baseResponse;
             }
             if(project.getName()==null||"".equals(project.getName())){
-                return "参数错误,创建失败";
+                baseResponse.setInfo("参数错误,创建失败");
+                return baseResponse;
             }
             if(project.getDepId()==null||project.getDepId().equals("")){
-                return "参数错误,创建失败";
+                baseResponse.setInfo("参数错误,创建失败");
+                return baseResponse;
             }
             if(project.getOwenerUnitId()==null||project.getOwenerUnitId().equals("")){
-                return "参数错误,创建失败";
+                baseResponse.setInfo("参数错误,创建失败");
+                return baseResponse;
             }
             if(project.getConstructUnitId()==null||project.getConstructUnitId().equals("")){
-                return "参数错误,创建失败";
+                baseResponse.setInfo("参数错误,创建失败");
+                return baseResponse;
             }
             if(startData==null||startData.equals("")){
-                return "参数错误,创建失败";
+                baseResponse.setInfo("参数错误,创建失败");
+                return baseResponse;
             }
             if(endDate==null||endDate.equals("")){
-                return "参数错误,创建失败";
+                baseResponse.setInfo("参数错误,创建失败");
+                return baseResponse;
             }
             if(project.getManagerId()==null||project.getManagerId().equals("")){
-                return "参数错误,创建失败";
+                baseResponse.setInfo("参数错误,创建失败");
+                return baseResponse;
             }
             if(project.getAuditPersonId()==null||project.getAuditPersonId().equals("")){
-                return "参数错误,创建失败";
+                baseResponse.setInfo("参数错误,创建失败");
+                return baseResponse;
             }
             Date date = new Date();
             SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
@@ -70,49 +84,64 @@ public class ProjectController {
             project.setCreatePersonId(Integer.parseInt(uId));
             String s = projectService.insertProject(project);
             if("-1".equals(s)){
-                return "创建失败";
+                baseResponse.setInfo("服务器错误,创建失败");
+                return baseResponse;
             }
-            return "创建成功";
+            baseResponse.setCode(Integer.parseInt(s));
+            baseResponse.setData(project);
+            return baseResponse;
         }catch (Exception e){
-            return "创建失败";
+            baseResponse.setInfo("参数错误,创建失败");
+            return baseResponse;
         }
     }
 
     @RequestMapping(value = "/delect")
     public String delectProject(int id) {
-        projectService.delectProject(id);
-        return null;
+        String delectResult = "";
+        delectResult = projectService.delectProject(id);
+        return delectResult;
     }
 
     @RequestMapping(value = "/update")
-    public String updateProject(TpProject project,@Param("startData") String startData, @Param("endDate") String endDate){
+    public BaseResponse<TpProject> updateProject(TpProject project,@Param("startData") String startData, @Param("endDate") String endDate){
+        BaseResponse<TpProject> baseResponse = new BaseResponse<>();
         try {
             if(project.getId()<=0){
-                return "参数错误,修改失败";
+                baseResponse.setInfo("参数错误,修改失败");
+                return baseResponse;
             }
             if(project.getName()==null||"".equals(project.getName())){
-                return "参数错误,修改失败";
+                baseResponse.setInfo("参数错误,修改失败");
+                return baseResponse;
             }
             if(project.getDepId()==null||project.getDepId().equals("")){
-                return "参数错误,修改失败";
+                baseResponse.setInfo("参数错误,修改失败");
+                return baseResponse;
             }
             if(project.getOwenerUnitId()==null||project.getOwenerUnitId().equals("")){
-                return "参数错误,修改失败";
+                baseResponse.setInfo("参数错误,修改失败");
+                return baseResponse;
             }
             if(project.getConstructUnitId()==null||project.getConstructUnitId().equals("")){
-                return "参数错误,修改失败";
+                baseResponse.setInfo("参数错误,修改失败");
+                return baseResponse;
             }
             if(startData==null||startData.equals("")){
-                return "参数错误,修改失败";
+                baseResponse.setInfo("参数错误,修改失败");
+                return baseResponse;
             }
             if(endDate==null||endDate.equals("")){
-                return "参数错误,修改失败";
+                baseResponse.setInfo("参数错误,修改失败");
+                return baseResponse;
             }
             if(project.getManagerId()==null||project.getManagerId().equals("")){
-                return "参数错误,修改失败";
+                baseResponse.setInfo("参数错误,修改失败");
+                return baseResponse;
             }
             if(project.getAuditPersonId()==null||project.getAuditPersonId().equals("")){
-                return "参数错误,修改失败";
+                baseResponse.setInfo("参数错误,修改失败");
+                return baseResponse;
             }
             Date date = new Date();
             SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
@@ -125,26 +154,35 @@ public class ProjectController {
             project.setPlanEndDate(timestamp);
             String s = projectService.updateProject(project);
             if("-1".equals(s)){
-                return "修改失败";
+                baseResponse.setInfo("服务器错误,修改失败");
+                return baseResponse;
             }
-            return "修改成功";
+            baseResponse.setCode(1);
+            baseResponse.setData(project);
+            return baseResponse;
         }catch (Exception e){
-            return "修改失败";
+            baseResponse.setInfo("参数错误,修改失败");
+            return baseResponse;
         }
     }
 
     @RequestMapping(value = "/select")
-    public List<TpProject> selectProject(@NotNull String uId) {
+    public BaseResponse<List<TpProject>> selectProject(@NotNull String uId) {
+        BaseResponse<List<TpProject>> listBaseResponse = new BaseResponse<>();
         if (uId != null) {
             try {
                 int userId = Integer.parseInt(uId);
                 List<TpProject> tpProjects = projectService.selectAllProject(userId);
-                return tpProjects;
+                listBaseResponse.setCode(1);
+                listBaseResponse.setData(tpProjects);
+                return listBaseResponse;
             }catch (Exception e){
-                return new ArrayList<TpProject>();
+                listBaseResponse.setInfo("服务器错误");
+                return listBaseResponse;
             }
         } else {
-            return new ArrayList<TpProject>();
+            listBaseResponse.setInfo("参数错误");
+            return listBaseResponse;
         }
     }
 
