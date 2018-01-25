@@ -7,7 +7,7 @@ import com.xmsmartcity.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.web.bind.annotation.*;
-
+import com.xmsmartcity.pojo.TsFunctionGroup;
 import java.util.List;
 
 /**
@@ -50,13 +50,16 @@ public class GroupControllrer {
     //获取子组的列表
     @RequestMapping(value="/user/getGroupList",method = RequestMethod.POST)
     private List getGroupList(String sonGroupID){
+
         List<TsFunctionGroup> result  = ser.getGroupList(sonGroupID);
+
         return result;
     }
 
     //获取公司的详情
     @RequestMapping(value="/user/getCompanyInfo",method = RequestMethod.POST)
     private TsFunctionGroup getcompanyInfo(String companyID){
+
         TsFunctionGroup result  = ser.getcompanyInfo(companyID);
         return result;
     }
