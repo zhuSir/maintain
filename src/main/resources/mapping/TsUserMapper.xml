@@ -284,4 +284,12 @@
     AND create_name = #{name}
   </select>
 
+  <!-- 邀请人进入的公司-->
+  <update id="invitePeopleGroup"  parameterType="map">
+    update t_s_user
+    set companyID = #{companyID},
+		groupid = #{groupID}
+    where  mobilePhone=#{phone} AND companyID=0
+  </update>
+
 </mapper>
