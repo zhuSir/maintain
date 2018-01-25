@@ -4,11 +4,13 @@
 
 var config = {
     //用户注册
-    register:  "/userinfo/register",
+    register: "/userinfo/register",
     //用户登陆
-    login:  "/userinfo/login",
+    login: "/userinfo/login",
     //id获取用户
-    getUserById:  "/userinfo/getUserById"
+    getUserById: "/userinfo/getUserById",
+    //公司id获取用户列表
+    getCompanyMemberList: "/user/companyMemberList"
 
 
 };

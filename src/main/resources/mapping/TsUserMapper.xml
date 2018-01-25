@@ -273,6 +273,14 @@
     where id = #{id,jdbcType=INTEGER}
   </select>
 
+  <!--公司id查询用户-->
+  <select id="selectUserList" parameterType="map" resultType="map" >
+    select
+    <include refid="Base_Column_List" />
+    from t_s_user
+    where companyID = #{companyID}
+  </select>
+
   <!-- 查询列表 -->
   <select id="selectList" parameterType="map" resultType="map">
     select

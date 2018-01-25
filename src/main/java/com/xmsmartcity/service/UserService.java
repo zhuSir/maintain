@@ -21,6 +21,13 @@ public interface UserService extends BaseService<TsUser> {
 
     List<Map<String,Object>> selectList(String phone, String name);
 
+    /**
+     * 公司Id获取成员
+     * @param companyID
+     * @return
+     */
+    String selectUserList(String companyID);
+
     /*
     * phone查询用户
     */
