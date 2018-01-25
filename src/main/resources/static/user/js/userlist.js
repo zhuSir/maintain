@@ -22,7 +22,7 @@ var ModelPush = React.createClass({
                                 </h4>
                             </div>
                             <div className="modal-body">
-                                <input type="number" className="form-control" placeholder="手机号" id="groupName"></input>
+                                <input type="text" className="form-control" placeholder="手机号" id="groupName"></input>
 
                             </div>
                             <div className="modal-footer">
