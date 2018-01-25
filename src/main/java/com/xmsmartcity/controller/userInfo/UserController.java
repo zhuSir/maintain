@@ -39,12 +39,27 @@ public class UserController {
         return result;
     }
 
+    /**
+     * id获取用户接口
+     * @return
+     */
+    @RequestMapping(value="/getUserById",method = RequestMethod.POST)
+    private TsUser getUserById(String userId){
+        Integer id = Integer.valueOf(userId);
+        TsUser result = userService.selectUserById(id);
+        return result;
+    }
+
     @GetMapping("/list")
     public List selectList(String phone,String name){
         List<Map<String,Object>> res = userService.selectList(phone,name);
         return res;
     }
 
+    /**
+     * 用户手机查询名称接口
+     * @return
+     */
     @RequestMapping(value="/byphone")
     public TsUser selectById(String phone){
         TsUser result = userService.selectByPhone(phone);

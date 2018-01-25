@@ -83,4 +83,9 @@ public class UserServiceImpl extends BaseServiceImpl<TsUser> implements UserServ
     public TsUser selectByPhone(String phone) {
         return dao.selectUser(phone);
     }
+
+    @Override
+    public TsUser selectUserById(int userId) {
+        return dao.selectUserById(userId);
+    }
 }
