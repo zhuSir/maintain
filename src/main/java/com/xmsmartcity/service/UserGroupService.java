@@ -11,8 +11,12 @@ import java.util.Map;
  */
 public interface UserGroupService extends BaseService<TsFunctionGroup> {
 
-    //创建公司以及组
-    public String insertGroup(String groupname);
+
+    //创建公司
+    public String creatGroup(String companyName,String reatUserName,String reatUserID);
+
+    //创建组
+    public String insertGroup(String groupname ,String companyID,String reatUserName,String reatUserID);
 
 
 

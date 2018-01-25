@@ -31,14 +31,42 @@ public class UserGrouplmpl extends BaseServiceImpl<TsFunctionGroup> implements U
     @Autowired
     private TsUserMapper userdao;
 
+    //创建公司
     @Override
-    public String insertGroup(String groupname) {
-        //        要判断是创建父组还是子组，取决于father_id是否为0
+    public String creatGroup(String companyName,String reatUserName,String reatUserID) {
+        TsFunctionGroup group = new TsFunctionGroup();
+        group.setGroupName(companyName);
+        group.setPid("0");
+        group.setCreateName(reatUserName);//创建人
+        group.setCreateBy(reatUserID);// 创建人
+        JSONObject json = new JSONObject();
+        int result = dao.insert(group);
+        if (result == 1) {
+            //创建成功
+            json.put("code", 0);
+            json.put("info", "创建成功");
+
+        } else
+        {
+            //创建失败
+            json.put("code", 1);
+            json.put("info", "创建失败");
+
+        }
+
+        return json.toString();
+    }
+
+
+    //创建组
+    @Override
+    public String insertGroup(String groupname,String companyID,String reatUserName,String reatUserID) {
 
         TsFunctionGroup group = new TsFunctionGroup();
         group.setGroupName(groupname);
-        group.setPid("2");
-
+        group.setPid(companyID);
+        group.setCreateName(reatUserName);//创建人
+        group.setCreateBy(reatUserID);// 创建人
         JSONObject json = new JSONObject();
         int result = dao.insert(group);
 

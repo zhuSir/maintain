@@ -26,17 +26,29 @@ public class GroupControllrer {
     @Autowired
     private   UserGroupService ser;
 
+    @Autowired
+    UserService userService;
 
+    /**
+     * 创建公司
+     * @return
+     */
+    @RequestMapping(value="/user/creatcompany",method = RequestMethod.POST)
+    private String creatGroup(String companyName,String reatUserName,String reatUserID){
 
+        String resault =  ser.creatGroup(companyName,reatUserName,reatUserID);
+
+        return resault;
+    }
 
     /**
      * 创建组
      * @return
      */
-    @RequestMapping(value="user/creatGroup",method = RequestMethod.POST)
-    private String creatGroup(String groupname){
+    @RequestMapping(value="/user/creatGroup",method = RequestMethod.POST)
+    private String creatGroup(String groupname,String companyID,String reatUserName,String reatUserID){
 
-         String resault =  ser.insertGroup(groupname);
+         String resault =  ser.insertGroup(groupname,companyID,reatUserName,reatUserID);
 
         return resault;
     }
@@ -63,6 +75,14 @@ public class GroupControllrer {
     {
         String  result = ser.companyInviteMenber(phone,companyID);
 
+        return result;
+    }
+
+    //邀请组成员
+    @RequestMapping(value = "/user/invitePeopleGroup",method = RequestMethod.POST)
+    public Object invitePeopleGroup(String phone,String companyID,String groupID){
+
+        Object  result = userService.invitePeopleGroup(phone,companyID,groupID);
         return result;
     }
 

@@ -1,72 +1,30 @@
-var Projectlist= React.createClass({
-    render: function() {
-        return (
-            <div className="container">
-                {/*<table>
-                    <thead>
-                        <tr>
-                            <th>项目名称</th>
-                            <th>项目状态</th>
-                            <th >
-                                <p className=" btn btn-default col-sm-12 top25 text-center test" onClick={this.edit}>编辑</p>
-                            </th>
-                            <th >
-                                <p className=" btn btn-default col-sm-12 top25 text-center test" onClick={this.delete}>删除</p>
-                            </th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                        </tr>
-                    </tbody>
-                </table>*/}
-                <div className="panel panel-default">
-                    <div className="panel-heading">项目列表</div>
-                    <div className="panel-body">
-                        <p>...</p>
-                    </div>
-                    <!-- Table -->
-                    <table className="table">
-                        <tr>
-                            <th>项目名称</th>
-                            <th>项目状态</th>
-                        </tr>
-                    </table>
-                </div>
-            </div>
-        )
-    }
-})
 //创建项目弹框
 var Mask=React.createClass({
     render:function(){
         return(
             <div>
-                <div className="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
-                    <div className="modal-dialog" role="document">
+                <button className=" btn btn-default col-sm-12 top25 text-center test create" data-toggle="modal" data-target="#myModal" >创建项目</button>
+                <div className="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                    <div className="modal-dialog">
                         <div className="modal-content">
                             <div className="modal-header">
-                                <button type="button" className="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                                <h4 className="modal-title" id="exampleModalLabel">输入信息</h4>
+                                <button type="button" className="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                                <h4 className="modal-title" id="myModalLabel">创建项目</h4>
                             </div>
                             <div className="modal-body">
-                                <form>
-                                    <div className="form-group">
-                                        <label for="recipient-name" className="control-label">Recipient:</label>
-                                        <input type="text" className="form-control" id="recipient-name"/>
-                                    </div>
-                                    <div className="form-group">
-                                        <label for="message-text" className="control-label">Message:</label>
-                                        <textarea className="form-control" id="message-text"></textarea>
-                                    </div>
+                                <form action="" className="bs-example bs-example-form">
+                                    <input type="text" className="form-control" id="comname" placeholder="归属公司"/><br/>
+                                    <input type="text" className="form-control" id="addres" placeholder="地址"/><br/>
+                                    <input type="text" className="form-control" id="yezbuild" placeholder="业主单位"/><br/>
+                                    <input type="text" className="form-control" id="department" placeholder="归属部门"/><br/>
+                                    <input type="text" className="form-control" id="discribe" placeholder="备注"/><br/>
+                                    <input type="text" className="form-control" id="begindate" placeholder="计划开始时间"/><br/>
+                                    <input type="text" className="form-control" id="endate" placeholder="计划结束时间"/><br/>
                                 </form>
                             </div>
-                            <div class="modal-footer">
+                            <div className="modal-footer">
                                 <button type="button" className="btn btn-default" data-dismiss="modal">关闭</button>
-                                <button type="button" className="btn btn-primary">发送</button>
+                                <button type="button" className="btn btn-primary">提交更改</button>
                             </div>
                         </div>
                     </div>
@@ -75,13 +33,43 @@ var Mask=React.createClass({
         )
     }
 })
-//创建项目按钮点击事件
-var Diji=React.createClass({
-    create:function(even){
-        $("#exampleModal").modal("show");
-    }
-    render:function(){
-        <button className=" btn btn-default col-sm-12 top25 text-center test" onClick={this.create}>创建项目</button>
+ var Create=React.createClass({
+
+ })
+var Projectlist= React.createClass({
+    render: function() {
+        return (
+            <div>
+                <Mask/>
+                <div className="container">
+                    <table className="table">
+                        <thead>
+                        <tr>
+                            <th>项目名称</th>
+                            <th>
+                               项目状态
+                            </th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>1</td>
+                                <td>Anna</td>
+                            </tr>
+                            <tr>
+                                <td>2</td>
+                                <td>Debbie</td>
+                            </tr>
+                            <tr>
+                                <td>3</td>
+                                <td>John</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+               {/* <button className=" btn btn-default col-sm-12 top25 text-center test click" onClick={this.create}>创建项目</button>*/}
+            </div>
+        )
     }
 })
 ReactDOM.render(
