@@ -1,42 +1,36 @@
 
 var tableTitleList = [{text: "设备名称"}, {text: "型号"}, {text: "编号"}, {text: "厂家"}, {text: "投入时间"}, {text: "保修时间"}, {text: "使用地点"}, {text: "设备类别"}];
 
+
+var Table=React.createClass({
+    //初始化 相当于构造函数
+    addEquip:function (event) {
+        layer.open({
+            type: 2,
+            area: ['680px', '90%'],
+            content:"equipDetail.html"
+        })
+    },
+    render: function () {
+        return(
+            <div className="panel panel-success">
+                <div className="panel-heading">
+                    <h3 className="panel-title">设备列表</h3>
+                </div>
+                <div className="panel-body">
+                    <button type="button" className="btn btn-success" onClick={this.addEquip}>添加设备
+                    </button>
+                    <DataTable tableTitleList={tableTitleList} dataTableId="table_id_example"/>
+                </div>
+            </div>
+        );
+    }
+});
+
 ReactDOM.render(
-    <div className="panel panel-success">
-        <div className="panel-heading">
-            <h3 className="panel-title">设备列表</h3>
-        </div>
-        <div className="panel-body">
-            <button type="button" className="btn btn-success" data-toggle="modal" data-target="#equipModel">添加设备
-            </button>
-            <DataTable tableTitleList={tableTitleList} dataTableId="table_id_example"/>
-        </div>
-    </div>,
+    <Table />,
     document.getElementById('body')
 );
-
-var data = [
-    [
-        "Tiger Nixon",
-        "System Architect",
-        "Edinburgh",
-        "5421",
-        "2011/04/25",
-        "$3,120",
-        "2011/07/25",
-        "$5,300"
-    ],
-    [
-        "Garrett Winters",
-        "Director",
-        "Edinburgh",
-        "8422",
-        "2011/07/25",
-        "$5,300",
-        "2011/07/25",
-        "$5,300"
-    ]
-];
 
 $(document).ready(function () {
     var table = $('#table_id_example').dataTable({
@@ -74,12 +68,10 @@ $(document).ready(function () {
         },
         ajax: function (data, callback, settings) {
             //封装请求参数
-            console.log(data);
             var param = {};
             param.limit = data.length;//页面显示记录条数，在页面显示每页显示多少项的时候
             param.start = data.start;//开始的记录序号
             param.page = (data.start / data.length) + 1;//当前页码
-            console.log(param);
             var postData = JSON.stringify({
                 "funcName": "getEquipList",                       //controller 中的方法名
                 "serviceName": "equipController",           //controller 注解名称
@@ -102,7 +94,6 @@ $(document).ready(function () {
                 data: postData, //传入组装的参数
                 dataType: "json",
                 success: function (result) {
-                    console.log(result);
                     var returnData = {};
                     var rtData = result.data;
                     returnData.draw = data.draw;//这里直接自行返回了draw计数器,应该由后台返回
@@ -123,6 +114,5 @@ $(document).ready(function () {
             {data: 'province'},
             {data: 'equipTypeId'}
         ]
-        // data : data
     });
 });

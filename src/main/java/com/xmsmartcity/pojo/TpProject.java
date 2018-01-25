@@ -1,10 +1,13 @@
 package com.xmsmartcity.pojo;
 
+import com.sun.istack.internal.Nullable;
+
 import java.sql.Timestamp;
-import java.util.Date;
 
 public class TpProject {
-    private Integer id;
+
+    @Nullable
+    private Integer id ;
 
     private String name;
 

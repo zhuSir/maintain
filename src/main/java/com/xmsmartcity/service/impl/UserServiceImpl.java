@@ -63,6 +63,7 @@ public class UserServiceImpl extends BaseServiceImpl<TsUser> implements UserServ
             TsUser tsUserReturn = dao.selectUser(phone);
             if (tsUserReturn != null&&phone.equals(tsUserReturn.getMobilephone())&& password.equals(tsUserReturn.getPassword())){
                 json.put("code", 0);
+                json.put("data",tsUserReturn);
                 json.put("info", "登陆成功");
             }else {
                 json.put("code", 1);
@@ -81,5 +82,10 @@ public class UserServiceImpl extends BaseServiceImpl<TsUser> implements UserServ
     @Override
     public TsUser selectByPhone(String phone) {
         return dao.selectUser(phone);
+    }
+
+    @Override
+    public TsUser selectUserById(int userId) {
+        return dao.selectUserById(userId);
     }
 }

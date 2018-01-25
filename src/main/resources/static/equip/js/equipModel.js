@@ -1,29 +1,3 @@
-var ProjectList = React.createClass({
-
-    getInitialState: function () {
-        return {
-            projectList: []
-        };
-    },
-
-    componentDidMount: function () {
-        this.serverRequest = $.post("/project/list", function (result) {
-            var lastGist = result[0];
-            this.setState({
-                projectList: result.data
-            });
-        }.bind(this));
-    },
-
-    componentWillUnmount: function () {
-        this.serverRequest.abort();
-    },
-
-    render: function () {
-        //TODO foreach project list
-    }
-})
-
 var EquipModel = React.createClass({
     getInitialState: function () {
         return {
@@ -96,4 +70,7 @@ var EquipModel = React.createClass({
             </div>
         );
     }
-})
+});
+ReactDOM.render(
+    <EquipModel/>,document.getElementById("itemBody")
+);
