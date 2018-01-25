@@ -20,12 +20,12 @@
     <result column="father_id" property="fatherId" jdbcType="INTEGER" />
   </resultMap>
   <sql id="Base_Column_List" >
-    id, group_name, dept_id, dept_code, dept_name, pid, level, create_name, create_by, 
-    create_date, update_name, update_by, update_date, sys_org_code, sys_company_code, 
+    id, group_name, dept_id, dept_code, dept_name, pid, level, create_name, create_by,
+    create_date, update_name, update_by, update_date, sys_org_code, sys_company_code,
     father_id
   </sql>
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
-    select 
+    select
     <include refid="Base_Column_List" />
     from t_s_function_group
     where id = #{id,jdbcType=INTEGER}
@@ -35,18 +35,32 @@
     where id = #{id,jdbcType=INTEGER}
   </delete>
   <insert id="insert" parameterType="com.xmsmartcity.pojo.TsFunctionGroup" >
-    insert into t_s_function_group (id, group_name, dept_id, 
-      dept_code, dept_name, pid, 
-      level, create_name, create_by, 
-      create_date, update_name, update_by, 
-      update_date, sys_org_code, sys_company_code, 
-      father_id)
-    values (#{id,jdbcType=INTEGER}, #{groupName,jdbcType=VARCHAR}, #{deptId,jdbcType=INTEGER}, 
-      #{deptCode,jdbcType=VARCHAR}, #{deptName,jdbcType=VARCHAR}, #{pid,jdbcType=VARCHAR}, 
-      #{level,jdbcType=INTEGER}, #{createName,jdbcType=VARCHAR}, #{createBy,jdbcType=INTEGER}, 
-      #{createDate,jdbcType=TIMESTAMP}, #{updateName,jdbcType=VARCHAR}, #{updateBy,jdbcType=VARCHAR}, 
-      #{updateDate,jdbcType=TIMESTAMP}, #{sysOrgCode,jdbcType=VARCHAR}, #{sysCompanyCode,jdbcType=VARCHAR}, 
-      #{fatherId,jdbcType=INTEGER})
+  insert into t_s_function_group (id, group_name, dept_id,
+  dept_code, dept_name, pid,
+  level, create_name, create_by,
+  create_date, update_name, update_by,
+  update_date, sys_org_code, sys_company_code,
+  father_id)
+  values (#{id,jdbcType=INTEGER}, #{groupName,jdbcType=VARCHAR}, #{deptId,jdbcType=INTEGER},
+  #{deptCode,jdbcType=VARCHAR}, #{deptName,jdbcType=VARCHAR}, #{pid,jdbcType=VARCHAR},
+  #{level,jdbcType=INTEGER}, #{createName,jdbcType=VARCHAR}, #{createBy,jdbcType=INTEGER},
+  #{createDate,jdbcType=TIMESTAMP}, #{updateName,jdbcType=VARCHAR}, #{updateBy,jdbcType=VARCHAR},
+  #{updateDate,jdbcType=TIMESTAMP}, #{sysOrgCode,jdbcType=VARCHAR}, #{sysCompanyCode,jdbcType=VARCHAR},
+  #{fatherId,jdbcType=INTEGER})
+</insert>
+  <insert id="insertBackID" parameterType="com.xmsmartcity.pojo.TsFunctionGroup" >
+    insert into t_s_function_group (id, group_name, dept_id,
+    dept_code, dept_name, pid,
+    level, create_name, create_by,
+    create_date, update_name, update_by,
+    update_date, sys_org_code, sys_company_code,
+    father_id)
+    values (#{id,jdbcType=INTEGER}, #{groupName,jdbcType=VARCHAR}, #{deptId,jdbcType=INTEGER},
+    #{deptCode,jdbcType=VARCHAR}, #{deptName,jdbcType=VARCHAR}, #{pid,jdbcType=VARCHAR},
+    #{level,jdbcType=INTEGER}, #{createName,jdbcType=VARCHAR}, #{createBy,jdbcType=INTEGER},
+    #{createDate,jdbcType=TIMESTAMP}, #{updateName,jdbcType=VARCHAR}, #{updateBy,jdbcType=VARCHAR},
+    #{updateDate,jdbcType=TIMESTAMP}, #{sysOrgCode,jdbcType=VARCHAR}, #{sysCompanyCode,jdbcType=VARCHAR},
+    #{fatherId,jdbcType=INTEGER})
   </insert>
   <insert id="insertSelective" parameterType="com.xmsmartcity.pojo.TsFunctionGroup" >
     insert into t_s_function_group

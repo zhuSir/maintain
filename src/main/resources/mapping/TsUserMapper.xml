@@ -300,4 +300,10 @@
     where  mobilePhone=#{phone} AND companyID=0
   </update>
 
+  <update id="updateUserCompanyInfo" parameterType="map">
+      update t_s_user
+    set companyID = #{companyID},
+    where  id=#{userId}
+          </update>
+
 </mapper>
