@@ -221,4 +221,20 @@
       father_id = #{fatherId,jdbcType=INTEGER}
     where id = #{id,jdbcType=INTEGER}
   </update>
+
+  <resultMap id="seleteGruopList" type="com.xmsmartcity.pojo.TsFunctionGroup" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="group_name" property="groupName" jdbcType="VARCHAR" />
+    <result column="dept_id" property="deptId" jdbcType="VARCHAR" />
+    <result column="pid" property="pid" jdbcType="VARCHAR" />
+
+  </resultMap>
+
+  <select id="getGroupList" parameterType="java.lang.String" resultMap="seleteGruopList" >
+    select
+    id,group_name,dept_id,pid
+    from t_s_function_group
+    where pid = #{id}
+  </select>
+
 </mapper>
