@@ -12,7 +12,7 @@ ReactDOM.render(
                     <p className="subTitle">姓名：<span>张志福</span></p>
                     <p className="subTitle">公司：<span>厦门银江智慧城市股份有限公司</span></p>
                     <p className="subTitle">部门：<span>研发部</span></p>
-                    <p className="subTitle">手机号：<span>15880239410</span></p>
+                    <p className="subTitle">手机：<span>15880239410</span></p>
                 </div>
             </div>
             <div className="col-md-4">
