@@ -32,6 +32,14 @@ body{
     margin-left: 20px;
     clear: both;
 }
+.list-group{
+    height: auto;
+    width: 100%;
+    float: left;
+}
+.list-group li{
+    height: 66px;
+}
 .container .main h5 span{
     width:10%;
     border-bottom: 1px solid #666666;
@@ -50,6 +58,7 @@ body{
     background: white;
     border-radius: 3px;
     float: right;
+    margin-right: 9%;
     width: 80%;
     height:80px;
     border: 1px solid #666666;
@@ -64,7 +73,6 @@ body{
     height: 100%;
     margin-top: 10px;
     border: 1px solid #666666;
-    margin-left: 20px;
 }
 .date p:nth-child(2){
     float: right;
@@ -84,10 +92,11 @@ body{
     float: right;
     margin-right: 20%;
 }
-.btn-group{
+.guanli{
     float: right;
-    margin-left: 20%;
+    margin-right: 20%;
     margin-top: -10%;
+    min-width: 40px;
 }
 .admin{
     position: relative;
@@ -97,4 +106,17 @@ body{
 }
 .admin p{
     display: block;
+}
+.list-group li:nth-child(6){
+    height: 150px;
+}
+.list-group li:nth-child(7){
+    height: 100px;
+}
+.edit{
+    width:8%;
+    float: right;
+    margin-right: 10%;
+    margin-top: -10%;
+    min-width: 40px;
 }
