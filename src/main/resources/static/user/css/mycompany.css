@@ -1,0 +1,19 @@
+
+
+.titleHeight
+{
+    height: 70px;
+    /*background-color: #71dd8a;*/
+    text-align:center;
+
+}
+.btnArr
+{
+    background-color: #9fcdff;
+    margin-left: 15px;
+}
+.top15
+{
+    margin-top: 15px;
+    margin-bottom: 15px;
+}

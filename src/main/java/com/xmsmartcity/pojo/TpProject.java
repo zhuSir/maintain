@@ -1,5 +1,6 @@
 package com.xmsmartcity.pojo;
 
+import java.sql.Timestamp;
 import java.util.Date;
 
 public class TpProject {
@@ -33,9 +34,9 @@ public class TpProject {
 
     private String mark;
 
-    private Date planStartDate;
+    private Timestamp planStartDate;
 
-    private Date planEndDate;
+    private Timestamp planEndDate;
 
     private String caption;
 
@@ -50,14 +51,14 @@ public class TpProject {
     private Integer auditPersonId;
     private String auditPersonName;
 
-    private Date auditDate;
+    private Timestamp auditDate;
 
     private Integer createPersonId;
     private String createPersonName;
 
-    private Date createTime;
+    private Timestamp createTime;
 
-    private Date updateTime;
+    private Timestamp updateTime;
 
     public Integer getId() {
         return id;
@@ -163,19 +164,19 @@ public class TpProject {
         this.mark = mark == null ? null : mark.trim();
     }
 
-    public Date getPlanStartDate() {
+    public Timestamp getPlanStartDate() {
         return planStartDate;
     }
 
-    public void setPlanStartDate(Date planStartDate) {
+    public void setPlanStartDate(Timestamp planStartDate) {
         this.planStartDate = planStartDate;
     }
 
-    public Date getPlanEndDate() {
+    public Timestamp getPlanEndDate() {
         return planEndDate;
     }
 
-    public void setPlanEndDate(Date planEndDate) {
+    public void setPlanEndDate(Timestamp planEndDate) {
         this.planEndDate = planEndDate;
     }
 
@@ -219,11 +220,11 @@ public class TpProject {
         this.auditPersonId = auditPersonId;
     }
 
-    public Date getAuditDate() {
+    public Timestamp getAuditDate() {
         return auditDate;
     }
 
-    public void setAuditDate(Date auditDate) {
+    public void setAuditDate(Timestamp auditDate) {
         this.auditDate = auditDate;
     }
 
@@ -235,19 +236,19 @@ public class TpProject {
         this.createPersonId = createPersonId;
     }
 
-    public Date getCreateTime() {
+    public Timestamp getCreateTime() {
         return createTime;
     }
 
-    public void setCreateTime(Date createTime) {
+    public void setCreateTime(Timestamp createTime) {
         this.createTime = createTime;
     }
 
-    public Date getUpdateTime() {
+    public Timestamp getUpdateTime() {
         return updateTime;
     }
 
-    public void setUpdateTime(Date updateTime) {
+    public void setUpdateTime(Timestamp updateTime) {
         this.updateTime = updateTime;
     }
 
@@ -297,5 +298,41 @@ public class TpProject {
 
     public void setCreatePersonName(String createPersonName) {
         this.createPersonName = createPersonName;
+    }
+
+    @Override
+    public String toString() {
+        return "TpProject{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", depId=" + depId +
+                ", depName='" + depName + '\'' +
+                ", bidState=" + bidState +
+                ", lat=" + lat +
+                ", lng=" + lng +
+                ", provice='" + provice + '\'' +
+                ", city='" + city + '\'' +
+                ", area='" + area + '\'' +
+                ", addr='" + addr + '\'' +
+                ", owenerUnitId=" + owenerUnitId +
+                ", owenerUnitName='" + owenerUnitName + '\'' +
+                ", constructUnitId=" + constructUnitId +
+                ", constructUnitName='" + constructUnitName + '\'' +
+                ", mark='" + mark + '\'' +
+                ", planStartDate=" + planStartDate +
+                ", planEndDate=" + planEndDate +
+                ", caption='" + caption + '\'' +
+                ", managerId=" + managerId +
+                ", managerName='" + managerName + '\'' +
+                ", projectState=" + projectState +
+                ", auditState=" + auditState +
+                ", auditPersonId=" + auditPersonId +
+                ", auditPersonName='" + auditPersonName + '\'' +
+                ", auditDate=" + auditDate +
+                ", createPersonId=" + createPersonId +
+                ", createPersonName='" + createPersonName + '\'' +
+                ", createTime=" + createTime +
+                ", updateTime=" + updateTime +
+                '}';
     }
 }

@@ -3,6 +3,7 @@ package com.xmsmartcity.pojo;
 import java.util.Date;
 
 public class TsFault {
+
     private Integer id;
 
     private String faultCode;
@@ -21,6 +22,22 @@ public class TsFault {
 
     private Integer faultUserId;
 
+    private String maintainPhone;
+
+    private String maintainName;
+
+    public String getMaintainPhone() {
+        return maintainPhone;
+    }
+    public void setMaintainPhone(String maintainPhone) {
+        this.maintainPhone = maintainPhone;
+    }
+    public String getMaintainName() {
+        return maintainName;
+    }
+    public void setMaintainName(String maintainName) {
+        this.maintainName = maintainName;
+    }
     public Integer getId() {
         return id;
     }

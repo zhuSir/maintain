@@ -12,12 +12,14 @@ public interface UserService extends BaseService<TsUser> {
     /*
      * 添加用户
      */
-    public String addUser(TsUser tsUser);
+    String addUser(TsUser tsUser);
 
     /*
      * 查询用户
      */
-    public String selectUser(TsUser tsUser);
+    String selectUser(TsUser tsUser);
 
-    public List<Map<String,Object>> selectList(String phone,String name);
+    List<Map<String,Object>> selectList(String phone, String name);
+
+    TsUser selectByPhone(String phone);
 }

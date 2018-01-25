@@ -10,6 +10,7 @@ import java.util.Map;
  */
 public interface FaultService extends BaseService<TsFault>{
 
-    public List<Map<String,Object>> selectList();
+    List<Map<String,Object>> selectList();
 
+    int saveFaultInfo(TsFault object);
 }

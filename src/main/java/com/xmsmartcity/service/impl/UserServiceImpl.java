@@ -78,4 +78,9 @@ public class UserServiceImpl extends BaseServiceImpl<TsUser> implements UserServ
         List<Map<String,Object>> result = dao.selectList(phone,name);
         return result;
     }
+
+    @Override
+    public TsUser selectByPhone(String phone) {
+        return dao.selectUser(phone);
+    }
 }
