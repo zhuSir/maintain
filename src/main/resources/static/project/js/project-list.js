@@ -146,22 +146,20 @@ var Cofirm =React.createClass({
 /*编辑项目操作*/
 var Edits=React.createClass({
     edits:function(){
-        $('#meModal').modal('hide')
-        var name= $(".modal-body form input").val();
         var pname=$('#pname').val();
         var pstates=$("#pstates").val();
-        if(name==0)
+        if((pname==0 && pstates==0) && (pname==null & pstates==null))
         {
             alert("输入框为空，请输入！");
             return;
         }else{
+            $('#meModal').modal('hide')
             $('.pname').html(pname);
             $('.state').html(pstates);
         }
-
     },
     render:function(){
-        return <p onClick={this.Edits}  className="btn btn-primary" id="edis">
+        return <p onClick={this.edits}  className="btn btn-primary" id="edis">
              确定
         </p>
     }
@@ -174,7 +172,7 @@ var Projectlist= React.createClass({
     },
     componentDidMount: function() {
         console.log("Box的componentDidMount调用");
-        this.serverRequest = $.post("/project/getGroupList",{uId:"1"}, function (result) {
+        this.serverRequest = $.post("/project/select",{uId:"1"}, function (result) {
             this.setState({
                 groupList : result
             });
@@ -190,10 +188,26 @@ var Projectlist= React.createClass({
                 <tr className="listgroup-item">{list.groupName}</tr>
             )
         })
+        var data={
+            uId:1
+        }
+        $.ajax({
+            type: "POST",
+            url: "/project/select",
+            data: data,
+            success: function(data){
+                alert("请求成功");
+                console.log(data)
+
+            },
+            error:function(err){
+                alert(err);
+            }
+        });
         return (
             <div>
                 <div className="container">
-                    <table className="table">
+                    <table className="table" id="tables">
                         <thead>
                         <tr>
                             <th>项目名称</th>
