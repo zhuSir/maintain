@@ -6,6 +6,7 @@ import com.xmsmartcity.pojo.TcCompany;
 import com.xmsmartcity.pojo.TpProject;
 import com.xmsmartcity.service.CompanyService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 
@@ -15,6 +16,7 @@ import java.util.List;
  * @Date: Created on 11:41 2018/1/25
  * @Modified By:
  */
+@Service("companyService")
 public class CompanyServiceImpl extends BaseServiceImpl<TcCompany> implements CompanyService {
 
     public CompanyServiceImpl(BaseDao<TcCompany> dao) {
@@ -26,22 +28,35 @@ public class CompanyServiceImpl extends BaseServiceImpl<TcCompany> implements Co
 
     @Override
     public String insertCompany(TcCompany company) {
-        int insert = dao.insert(company);
-        return insert+"";
+        int insert = dao.insertSelective(company);
+        if (insert == -1)
+            return insert + "";
+        else return company.getId() + "";
     }
 
     @Override
-    public String delectCompany(int pId) {
+    public TcCompany insertCompany2(TcCompany company) {
+        int insert = dao.insertSelective(company);
+        if (insert == -1)
+            return null;
+        else return company;
+    }
+
+    @Override
+    public String delectCompany(int cId) {
         return null;
     }
 
     @Override
     public String updateCompany(TcCompany company) {
-        return null;
+        int update = dao.updateByPrimaryKeySelective(company);
+        return update + "";
     }
 
     @Override
-    public List<TpProject> selectAllCompany(int uId) {
-        return null;
+    public List<TcCompany> selectAllCompany(int uId) {
+        List<TcCompany> tcCompanies = dao.selectAllCompany(uId);
+        return tcCompanies;
     }
+
 }
