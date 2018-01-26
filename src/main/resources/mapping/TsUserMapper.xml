@@ -302,7 +302,7 @@
 
   <update id="updateUserCompanyInfo" parameterType="map">
       update t_s_user
-    set companyID = #{companyID},
+    set companyID = #{companyID}
     where  id=#{userId}
    </update>
 

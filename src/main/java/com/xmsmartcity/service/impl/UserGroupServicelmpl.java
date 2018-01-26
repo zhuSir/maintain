@@ -32,7 +32,7 @@ public class UserGroupServicelmpl extends BaseServiceImpl<TsFunctionGroup> imple
 
     //创建公司
     @Override
-    public String creatGroup(String companyName,String reatUserName,String reatUserID) {
+    public Object creatGroup(String companyName,String reatUserName,String reatUserID) {
         TsFunctionGroup group = new TsFunctionGroup();
         group.setGroupName(companyName);
         group.setPid("0");
@@ -40,15 +40,26 @@ public class UserGroupServicelmpl extends BaseServiceImpl<TsFunctionGroup> imple
         group.setCreateBy(Integer.parseInt(reatUserID));// 创建人
         JSONObject json = new JSONObject();
 
-       String id = dao.insertBackID(group);
+        int res = dao.insertBackID(group);
 
-                String sss= "ddd";
-        if (Integer.parseInt(id)>0) {
+
+        if (res==1) {
             //创建成功
-            String companyID = id;
-            json.put("code", 0);
-            json.put("info", "创建成功");
-            json.put("companyID",companyID);
+
+
+            int updateUserINfo =userdao.updateUserCompanyInfo(reatUserID,group.getId());
+            int aaaaa=3;
+            if (updateUserINfo==1)
+            {
+                json.put("code", 0);
+                json.put("info", "创建成功");
+                json.put("companyID",group.getId());
+            }else
+            {
+                json.put("code", 1);
+                json.put("info", "创建失败");
+            }
+
             //修改创建人的个人信息增加
 
         } else
@@ -59,7 +70,7 @@ public class UserGroupServicelmpl extends BaseServiceImpl<TsFunctionGroup> imple
 
         }
 
-        return json.toString();
+        return json;
     }
 
 
@@ -73,9 +84,9 @@ public class UserGroupServicelmpl extends BaseServiceImpl<TsFunctionGroup> imple
         group.setCreateName(reatUserName);//创建人
         group.setCreateBy(Integer.parseInt(reatUserID));// 创建人
         JSONObject json = new JSONObject();
-        String result = dao.insert(group);
+        int result = dao.insert(group);
 
-        if (Integer.parseInt(result) > 0) {
+        if (result > 0) {
             //创建成功
             json.put("code", 0);
             json.put("info", "创建成功");

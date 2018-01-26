@@ -30,8 +30,10 @@ public class GroupControllrer {
      * @return
      */
     @RequestMapping(value="/user/creatcompany",method = RequestMethod.POST)
-    private String creatGroup(String companyName,String reatUserName,String reatUserID){
-        String resault =  ser.creatGroup(companyName,reatUserName,reatUserID);
+    private Object creatGroup(String companyName,String reatUserName,String reatUserID){
+
+        Object resault =  ser.creatGroup(companyName,reatUserName,reatUserID);
+
         return resault;
     }
 

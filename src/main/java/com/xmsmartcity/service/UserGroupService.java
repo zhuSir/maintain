@@ -10,7 +10,7 @@ public interface UserGroupService extends BaseService<TsFunctionGroup> {
 
 
     //创建公司
-    public String creatGroup(String companyName,String reatUserName,String reatUserID);
+    public Object creatGroup(String companyName,String reatUserName,String reatUserID);
 
     //创建组
     public String insertGroup(String groupname ,String companyID,String reatUserName,String reatUserID);

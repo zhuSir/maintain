@@ -79,7 +79,7 @@ var ListUi=React.createClass({
         };
     },
     componentDidMount: function() {
-        this.serverRequest = $.post("/user/getGroupList",{sonGroupID:"2"}, function (result) {
+        this.serverRequest = $.post("/user/getGroupList",{sonGroupID:Cookies.get("companyId")}, function (result) {
             this.setState({
                 groupList : result
             });

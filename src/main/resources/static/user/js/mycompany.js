@@ -1,7 +1,7 @@
 
 
 
-//创建公司的按钮
+
 var ContentUI=React.createClass({
 
     getInitialState: function() {
@@ -10,7 +10,7 @@ var ContentUI=React.createClass({
         };
     },
     componentDidMount: function() {
-        this.serverRequest = $.post("/user/getCompanyInfo",{companyID:"1"}, function (result) {
+        this.serverRequest = $.post("/user/getCompanyInfo",{companyID:Cookies.get("companyId")}, function (result) {
             this.setState({
                 companyInfo : result
             });
@@ -98,7 +98,10 @@ var CommitBtnGroup = React.createClass({
             url: "/user/creatcompany",
             data: data,
             success: function(data){
-                alert("创建成功");
+
+                alert(data.companyID);
+                Cookies.set('companyId', data.companyID, {expires: 7, path: '/'});
+
             },
             error:function(err){
                 alert("error");

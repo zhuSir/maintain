@@ -6,9 +6,9 @@ import java.util.List;
 public interface TsFunctionGroupMapper {
     int deleteByPrimaryKey(Integer id);
 
-    String insert(TsFunctionGroup record);
+    int insert(TsFunctionGroup record);
 
-    String insertBackID(TsFunctionGroup record);
+    int insertBackID(TsFunctionGroup record);
 
 
     int insertSelective(TsFunctionGroup record);
