@@ -57,7 +57,7 @@ public class UserServiceImpl extends BaseServiceImpl<TsUser> implements UserServ
         if (null == tsUser || "".equals(tsUser)) {//参数不存在
             json.put("code", 1);
             json.put("info", "手机号或密码不存在");
-        } else {//参数存在，判断是否重复创建
+        } else {//参(String phone,String companyID,String groupID)数存在，判断是否重复创建
             String phone = tsUser.getMobilephone();
             String password = tsUser.getPassword();
             TsUser tsUserReturn = dao.selectUser(phone);
@@ -80,9 +80,62 @@ public class UserServiceImpl extends BaseServiceImpl<TsUser> implements UserServ
     }
 
     @Override
+    public List<Map<String,Object>> selectUserList(String companyID) {
+        return dao.selectUserList(companyID);
+    }
+
+    @Override
     public TsUser selectByPhone(String phone) {
         return dao.selectUser(phone);
     }
+
+
+
+    //邀请用户 进入到组
+    @Override
+    public Object invitePeopleGroup(String phone, String companyID, String groupID) {
+
+        JSONObject json = new JSONObject();
+    if (phone==null|| companyID==null|| groupID==null)
+    {
+        json.put("code", 1);
+        json.put("info", "缺少参数");
+    }else
+    {
+        TsUser tsUserReturn = dao.selectUser(phone);
+        if (tsUserReturn==null)
+        {
+            json.put("code", 0);
+            json.put("info", "没有此用户");
+        }else if(tsUserReturn.getCompanyid()>0)
+        {
+            json.put("code", 0);
+            json.put("info", "用户已有公司");
+        }
+        else
+        {
+            int result = dao.invitePeopleGroup(phone,companyID,groupID);
+            if (result==1)
+            {
+                json.put("code", 0);
+                json.put("info", "邀请成功");
+            }
+            else
+            {
+                json.put("code", 1);
+                json.put("info", "邀请失败");
+            }
+        }
+
+
+
+    }
+
+
+        return json;
+    }
+
+
 
     @Override
     public TsUser selectUserById(int userId) {

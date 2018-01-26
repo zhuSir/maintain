@@ -1,4 +1,74 @@
 
+//弹窗
+var ModelPushInval = React.createClass({
+
+
+    render:function() {
+        return (
+            <div>
+                <div className="modal fade" id="myModal1" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+                     aria-hidden="true">
+                    <div className="modal-dialog">
+                        <div className="modal-content">
+                            <div className="modal-header">
+                                <button type="button" className="close" data-dismiss="modal" aria-hidden="true">
+                                    &times;
+                                </button>
+                                <h4 className="modal-title" id="myModalLabel">
+                                    邀请组成员
+                                </h4>
+                            </div>
+                            <div className="modal-body">
+                                <input type="text" className="form-control" placeholder="手机号" id="invitPhone"></input>
+                            </div>
+                            <div className="modal-footer">
+                                <button type="button" className="btn btn-default" data-dismiss="modal">关闭
+                                </button>
+                        <CommitBtnInval/>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        )
+    }
+
+
+});
+var CommitBtnInval = React.createClass({
+
+    commit:function(){
+        $('#myModal1').modal('hide')
+
+        if($("#invitPhone").val().length==0)
+        {
+            alert("手机号为空");
+            return;
+        }
+        $.ajax({
+            type: "POST",
+            url: "/user/invitePeopleGroup",
+            data: {phone:$("#invitPhone").val(),companyID:2,groupID:2},
+            success: function(data){
+                alert(data.info);
+            },
+            error:function(err){
+                alert("邀请失败");
+            }
+        });
+
+
+
+
+
+
+    },
+    render:function(){
+        return <p onClick={this.commit}  className="btn btn-primary" id="commitYaoqing">
+            邀请
+        </p>
+    }
+})
 
 
 
@@ -16,8 +86,6 @@ var ListUi=React.createClass({
         }.bind(this));
     },
 
-
-
     componentWillUnmount: function() {
         this.serverRequest.abort();
     },
@@ -25,7 +93,11 @@ var ListUi=React.createClass({
     render:function(){
         var list=this.state.groupList.map(function(item){
             return (
-            <li className="list-group-item">{item.groupName}</li>
+            <li  className="list-group-item leftw"><a href="#">{item.groupName}</a>
+                <button className="btn btn-default leftw">查看权限</button>
+                <button className=" btn btn-default leftw"data-toggle="modal" data-target="#myModal1">邀请成员</button>
+                <ModelPushInval/>
+            </li>
         )
     })
         return (
@@ -38,7 +110,7 @@ var ListUi=React.createClass({
                             <a data-toggle="collapse" data-parent="#accordion">
                                 银江公司
                             </a>
-                            <ModelPush/>
+                            <ModelPushCreatGroup/>
                         </h4>
 
                     </div>
@@ -68,15 +140,15 @@ var EditBtn=React.createClass({
 });
 
 //弹窗
-var ModelPush = React.createClass({
+var ModelPushCreatGroup = React.createClass({
 
     render:function() {
         return (
             <div>
-                  <button className="btn btn-default top15" data-toggle="modal" data-target="#myModal">
+                  <button className="btn btn-default top15" data-toggle="modal" data-target="#myModalgroup">
                    创建组
                 </button>
-                <div className="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+                <div className="modal fade" id="myModalgroup" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
                      aria-hidden="true">
                     <div className="modal-dialog">
                         <div className="modal-content">
@@ -95,7 +167,7 @@ var ModelPush = React.createClass({
                             <div className="modal-footer">
                                 <button type="button" className="btn btn-default" data-dismiss="modal">关闭
                                 </button>
-                                 <CommitBtn/>
+                                 <CommitBtnGroup/>
                             </div>
                         </div>
                     </div>
@@ -105,10 +177,10 @@ var ModelPush = React.createClass({
     }
 
 });
-var CommitBtn = React.createClass({
+var CommitBtnGroup = React.createClass({
 
     commit:function(){
-        $('#myModal').modal('hide')
+        $('#myModalgroup').modal('hide')
 
         var name= $("#groupName").val();
         if(name.length==0)
@@ -116,17 +188,23 @@ var CommitBtn = React.createClass({
             alert("请输入名字");
             return;
         }
+        //String groupname,String companyID,String reatUserName,String reatUserID
+        var  data={
+            groupname:name,
+            companyID:Cookies.get("companyId"),
+            reatUserName:Cookies.get("userName"),
+            reatUserID:Cookies.get("userId")
+        }
+
         $.ajax({
             type: "POST",
             url: "/user/creatGroup",
-            data: {groupname:name},
+            data: data,
             success: function(data){
-                alert("success");
+                alert("创建成功");
             },
             error:function(err){
-
-                alert(err.key);
-
+                alert("创建失败");
             }
         });
 

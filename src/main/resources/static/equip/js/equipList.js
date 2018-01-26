@@ -1,18 +1,17 @@
-
 var tableTitleList = [{text: "设备名称"}, {text: "型号"}, {text: "编号"}, {text: "厂家"}, {text: "投入时间"}, {text: "保修时间"}, {text: "使用地点"}, {text: "设备类别"}];
 
 
-var Table=React.createClass({
+var Table = React.createClass({
     //初始化 相当于构造函数
-    addEquip:function (event) {
+    addEquip: function (event) {
         layer.open({
             type: 2,
             area: ['680px', '90%'],
-            content:"equipDetail.html"
+            content: "equipDetail.html"
         })
     },
     render: function () {
-        return(
+        return (
             <div className="panel panel-success">
                 <div className="panel-heading">
                     <h3 className="panel-title">设备列表</h3>

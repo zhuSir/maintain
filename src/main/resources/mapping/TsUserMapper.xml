@@ -273,6 +273,14 @@
     where id = #{id,jdbcType=INTEGER}
   </select>
 
+  <!--公司id查询用户-->
+  <select id="selectUserList" parameterType="map" resultType="map" >
+    select
+    <include refid="Base_Column_List" />
+    from t_s_user
+    where companyID = #{companyID} AND companyID!=0
+  </select>
+
   <!-- 查询列表 -->
   <select id="selectList" parameterType="map" resultType="map">
     select
@@ -283,5 +291,19 @@
     mobilePhone = #{phone}
     AND create_name = #{name}
   </select>
+
+  <!-- 邀请人进入的公司-->
+  <update id="invitePeopleGroup"  parameterType="map">
+    update t_s_user
+    set companyID = #{companyID},
+		groupid = #{groupID}
+    where  mobilePhone=#{phone} AND companyID=0
+  </update>
+
+  <update id="updateUserCompanyInfo" parameterType="map">
+      update t_s_user
+    set companyID = #{companyID},
+    where  id=#{userId}
+   </update>
 
 </mapper>

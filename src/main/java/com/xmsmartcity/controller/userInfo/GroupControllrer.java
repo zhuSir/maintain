@@ -2,17 +2,13 @@ package com.xmsmartcity.controller.userInfo;
 
 
 import com.alibaba.fastjson.JSONObject;
-import com.xmsmartcity.mapper.TsUserMapper;
 import com.xmsmartcity.pojo.TsFunctionGroup;
-import com.xmsmartcity.pojo.TsUser;
 import com.xmsmartcity.service.UserGroupService;
 import com.xmsmartcity.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
-
-import java.util.HashMap;
+import com.xmsmartcity.pojo.TsFunctionGroup;
 import java.util.List;
 import java.util.Map;
 
@@ -26,27 +22,35 @@ public class GroupControllrer {
     @Autowired
     private   UserGroupService ser;
 
+    @Autowired
+    UserService userService;
 
-
+    /**
+     * 创建公司
+     * @return
+     */
+    @RequestMapping(value="/user/creatcompany",method = RequestMethod.POST)
+    private String creatGroup(String companyName,String reatUserName,String reatUserID){
+        String resault =  ser.creatGroup(companyName,reatUserName,reatUserID);
+        return resault;
+    }
 
     /**
      * 创建组
      * @return
      */
-    @RequestMapping(value="user/creatGroup",method = RequestMethod.POST)
-    private String creatGroup(String groupname){
-
-         String resault =  ser.insertGroup(groupname);
-
+    @RequestMapping(value="/user/creatGroup",method = RequestMethod.POST)
+    private String creatGroup(String groupname,String companyID,String reatUserName,String reatUserID){
+         String resault =  ser.insertGroup(groupname,companyID,reatUserName,reatUserID);
         return resault;
     }
-
 
     //获取子组的列表
     @RequestMapping(value="/user/getGroupList",method = RequestMethod.POST)
     private List getGroupList(String sonGroupID){
 
         List<TsFunctionGroup> result  = ser.getGroupList(sonGroupID);
+
         return result;
     }
 
@@ -59,10 +63,26 @@ public class GroupControllrer {
     }
 
     @GetMapping(value = "/user/companyInviteMember")
-    private String companyInviteMenber(String phone,String companyID)
-    {
+    private String companyInviteMenber(String phone,String companyID){
         String  result = ser.companyInviteMenber(phone,companyID);
+        return result;
+    }
 
+    /**
+     * 获取公司成员
+     * @param companyID
+     * @return
+     */
+    @RequestMapping(value="/user/listCompanyMember",method = RequestMethod.POST)
+    private List<Map<String,Object>> listCompanyMember(String companyID){
+        List<Map<String,Object>> result = userService.selectUserList(companyID);
+        return result;
+    }
+
+    //邀请组成员
+    @RequestMapping(value = "/user/invitePeopleGroup",method = RequestMethod.POST)
+    public Object invitePeopleGroup(String phone,String companyID,String groupID){
+        Object  result = userService.invitePeopleGroup(phone,companyID,groupID);
         return result;
     }
 
