@@ -55,7 +55,7 @@ var Mask=React.createClass({
                             </div>
                             <div className="modal-footer">
                                 <button type="button" className="btn btn-default" data-dismiss="modal">关闭</button>
-                                <button type="button" className="btn btn-primary">提交更改</button>
+                                <button type="button" className="btn btn-primary " id="confirm" onClick={this.confirm}>提交更改</button>
                             </div>
                         </div>
                     </div>
@@ -93,15 +93,14 @@ var ContentUI = React.createClass({
         };
     },
     componentDidMount: function() {
+        console.log("UI的componentDidMount调用")
         this.serverRequest = $.post("localhost:8080/project/select","uId:1",  function (result) {
             this.setState({
                 Projects : result
             });
 
-        }.bind(this));
+        }.bind(this))
     },
-
-
     render: function() {
         return (<div className="container">
         <div className="main">
@@ -154,7 +153,7 @@ var ContentUI = React.createClass({
     }
 });
 ReactDOM.render(
-    <ContentUI />,
+    <ContentUI url="localhost:8080/project/select"/>,
     document.getElementById('example')
 );
 /*
