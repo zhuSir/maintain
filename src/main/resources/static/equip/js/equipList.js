@@ -3,14 +3,7 @@ var tableTitleList = [{text: "设备名称"}, {text: "型号"}, {text: "编号"}
 
 
 var Table=React.createClass({
-    //初始化 相当于构造函数
-    addEquip:function (event) {
-        layer.open({
-            type: 2,
-            area: ['680px', '90%'],
-            content:"equipDetail.html"
-        })
-    },
+
     render: function () {
         return(
             <div className="panel panel-success">
@@ -18,10 +11,11 @@ var Table=React.createClass({
                     <h3 className="panel-title">设备列表</h3>
                 </div>
                 <div className="panel-body">
-                    <button type="button" className="btn btn-success" onClick={this.addEquip}>添加设备
+                    <button type="button" className="btn btn-success" data-toggle="modal" data-target="#equipModel">添加设备
                     </button>
                     <DataTable tableTitleList={tableTitleList} dataTableId="table_id_example"/>
                 </div>
+                <EquipModel/>
             </div>
         );
     }
@@ -73,7 +67,7 @@ $(document).ready(function () {
             param.start = data.start;//开始的记录序号
             param.page = (data.start / data.length) + 1;//当前页码
             var postData = JSON.stringify({
-                "funcName": "getEquipList",                       //controller 中的方法名
+                "funcName": "listEquip",                       //controller 中的方法名
                 "serviceName": "equipController",           //controller 注解名称
                 "serialNumber": guid(),                    //请求流水
                 "userAccount": "122222222",                    //用户账户
