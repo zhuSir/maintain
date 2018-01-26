@@ -665,7 +665,7 @@
     };
 
     /**
-     * blank HTML for cursor position
+     * blank html for cursor position
      * - [workaround] old IE only works with &nbsp;
      * - [workaround] IE11 and other browser works with bogus br
      */
@@ -1428,7 +1428,7 @@
     /**
      * @method html
      *
-     * get the HTML contents of node
+     * get the html contents of node
      *
      * @param {jQuery} $node
      * @param {Boolean} [isNewlineOnBlock]
@@ -1481,7 +1481,7 @@
      * assert if a node contains a "note-styletag" class,
      * which implies that's a custom-made style tag node
      *
-     * @param {Node} an HTML DOM node
+     * @param {Node} an html DOM node
      */
     var isCustomStyleTag = function (node) {
       return node && !dom.isText(node) && list.contains(node.classList, 'note-styletag');
@@ -4783,7 +4783,7 @@
     };
 
     /**
-     * paste HTML
+     * paste html
      * @param {String} markup
      */
     this.pasteHTML = this.wrapCommand(function (markup) {

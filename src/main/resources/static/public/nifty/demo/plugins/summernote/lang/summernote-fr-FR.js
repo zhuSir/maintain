@@ -82,7 +82,7 @@
       options: {
         help: 'Aide',
         fullscreen: 'Plein écran',
-        codeview: 'Afficher le code HTML'
+        codeview: 'Afficher le code html'
       },
       paragraph: {
         paragraph: 'Paragraphe',

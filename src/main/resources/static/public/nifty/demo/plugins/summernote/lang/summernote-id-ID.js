@@ -65,7 +65,7 @@
       options: {
         help: 'Bantuan',
         fullscreen: 'Layar penuh',
-        codeview: 'Kode HTML'
+        codeview: 'Kode html'
       },
       paragraph: {
         paragraph: 'Paragraf',

@@ -27,7 +27,7 @@ function page(o) {
             break;
         //我的消息——企业消息
         case 5:
-            window.iframepage.location = "";
+            window.iframepage.location = "../project/html/create-project.html";
             break;
         //我的消息-项目消息
         case 6:

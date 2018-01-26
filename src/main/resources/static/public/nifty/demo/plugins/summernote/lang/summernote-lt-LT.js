@@ -67,7 +67,7 @@
       options: {
         help: 'Pagalba',
         fullscreen: 'Viso ekrano režimas',
-        codeview: 'HTML kodo peržiūra'
+        codeview: 'html kodo peržiūra'
       },
       paragraph: {
         paragraph: 'Pastraipa',

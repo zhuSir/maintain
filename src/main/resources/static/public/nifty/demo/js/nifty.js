@@ -457,7 +457,7 @@
             },
 
             html        : null,
-            // Insert HTML into the notification.  If false, jQuery's text method will be used to insert content into the DOM.
+            // Insert html into the notification.  If false, jQuery's text method will be used to insert content into the DOM.
 
 
             focus       : true,

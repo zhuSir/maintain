@@ -2,7 +2,7 @@
  * @author: Brian Huisman
  * @webSite: http://www.greywyvern.com
  * @version: v1.0.0
- * JS functions to allow natural sorting on bootstrap-table columns
+ * js functions to allow natural sorting on bootstrap-table columns
  * add data-sorter="alphanum" or data-sorter="numericOnly" to any th
  *
  * @update Dennis Hernández <http://djhvscf.github.io/Blog>

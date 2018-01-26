@@ -3,6 +3,12 @@
     height:100%;
     position: absolute;
 }
+.container{
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    float: left;
+}
 .click{
     width:8%;
     min-width: 20px;
@@ -11,11 +17,12 @@
     top:50px;
     right: 10%;
 }
-table{
+.table{
     width:100%;
     height: auto;
     background: #2a85a0;
     float: left;
+    position: absolute;
 }
 table thead{
     width:100%;
@@ -38,8 +45,43 @@ table td{
     text-align: center;
 }
 .create{
-    width: 7%;
+    width: 26%;
     float: right;
     position: relative;
-    margin-right: 8%;
+    margin-right: 35%;
+    min-width: 80px;
+}
+label{
+    width:100%;
+}
+label span{
+    float: left;
+    width: 20%;
+    min-width: 60px;
+    margin-top: 8px;
+}
+.form-control{
+    float: left;
+    width:75%;
+}
+.table tbody .button{
+    float: right;
+    margin-right: 35%;
+    border-top: none;
+    margin-top: 2px;
+}
+.delete{
+    float: left;
+}
+.edit{
+    float: left;
+}
+.qu{
+    float: left;
+}
+.hed{
+    border-bottom: none;
+}
+tbody .list{
+    width:100%;
 }

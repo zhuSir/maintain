@@ -11,11 +11,11 @@
      *  Markdown processing in Javascript done right. We have very particular views
      *  on what constitutes 'right' which include:
      *
-     *  - produces well-formed HTML (this means that em and strong nesting is
+     *  - produces well-formed html (this means that em and strong nesting is
      *    important)
      *
      *  - has an intermediate representation to allow processing of parsed data (We
-     *    in fact have two, both as [JsonML]: a markdown tree and an HTML tree).
+     *    in fact have two, both as [JsonML]: a markdown tree and an html tree).
      *
      *  - is easily extensible to add new dialects without having to rewrite the
      *    entire parsing mechanics
@@ -74,7 +74,7 @@
      *  - md_tree (Markdown.JsonML): parsed markdown tree
      *
      *  Take markdown (either as a string or as a JsonML tree) and run it through
-     *  [[toHTMLTree]] then turn it into a well-formated HTML fragment.
+     *  [[toHTMLTree]] then turn it into a well-formated html fragment.
      **/
     expose.toHTML = function toHTML( source , dialect , options ) {
         var input = expose.toHTMLTree( source , dialect , options );
@@ -89,7 +89,7 @@
      *  - dialect (String | Dialect): the dialect to use, defaults to gruber
      *  - md_tree (Markdown.JsonML): parsed markdown tree
      *
-     *  Turn markdown into HTML, represented as a JsonML tree. If a string is given
+     *  Turn markdown into html, represented as a JsonML tree. If a string is given
      *  to this function, it is first parsed into a markdown tree by calling
      *  [[parse]].
      **/
@@ -97,7 +97,7 @@
         // convert string input to an MD tree
         if ( typeof input ==="string" ) input = this.parse( input, dialect );
 
-        // Now convert the MD tree to an HTML tree
+        // Now convert the MD tree to an html tree
 
         // remove references from the tree
         var attrs = extract_attr( input ),

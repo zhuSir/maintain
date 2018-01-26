@@ -2143,10 +2143,10 @@ var Chartist = {
   }
 
   /**
-   * This method creates a foreignObject (see https://developer.mozilla.org/en-US/docs/Web/SVG/Element/foreignObject) that allows to embed HTML content into a SVG graphic. With the help of foreignObjects you can enable the usage of regular HTML elements inside of SVG where they are subject for SVG positioning and transformation but the Browser will use the HTML rendering capabilities for the containing DOM.
+   * This method creates a foreignObject (see https://developer.mozilla.org/en-US/docs/Web/SVG/Element/foreignObject) that allows to embed html content into a SVG graphic. With the help of foreignObjects you can enable the usage of regular html elements inside of SVG where they are subject for SVG positioning and transformation but the Browser will use the html rendering capabilities for the containing DOM.
    *
    * @memberof Chartist.Svg
-   * @param {Node|String} content The DOM Node, or HTML string that will be converted to a DOM Node, that is then placed into and wrapped by the foreignObject
+   * @param {Node|String} content The DOM Node, or html string that will be converted to a DOM Node, that is then placed into and wrapped by the foreignObject
    * @param {String} [attributes] An object with properties that will be added as attributes to the foreignObject element that is created. Attributes with undefined values will not be added.
    * @param {String} [className] This class or class list will be added to the SVG element
    * @param {Boolean} [insertFirst] Specifies if the foreignObject should be inserted as first child

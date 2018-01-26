@@ -75,7 +75,7 @@
       options: {
         help: 'Hjælp',
         fullscreen: 'Fuld skærm',
-        codeview: 'HTML-Visning'
+        codeview: 'html-Visning'
       },
       paragraph: {
         paragraph: 'Afsnit',

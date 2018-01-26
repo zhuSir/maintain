@@ -60,7 +60,7 @@
                 ///    obj = {
                 ///      'name': String, // The name of the column
                 ///      'value': Object, // The value parsed from the cell using the parsers. This could be a string, a number or whatever the parser outputs.
-                ///      'display': String, // This is the actual HTML from the cell, so if you have images etc you want moved this is the one to use and is the default value used.
+                ///      'display': String, // This is the actual html from the cell, so if you have images etc you want moved this is the one to use and is the default value used.
                 ///      'group': String, // This is the identifier used in the data-group attribute of the column.
                 ///      'groupName': String // This is the actual name of the group the column belongs to.
                 ///    }

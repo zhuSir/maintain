@@ -21,7 +21,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  *
- * Credits: Ideas included from incomplete JS implementation of Olson
+ * Credits: Ideas included from incomplete js implementation of Olson
  * parser, "XMLDAte" by Philippe Goetz (philippe.goetz@wanadoo.fr)
  *
  * Contributions:
@@ -388,7 +388,7 @@
     toUTCString: function () { return this.toGMTString(); },
     civilToJulianDayNumber: function (y, m, d) {
       var a;
-      // Adjust for zero-based JS-style array
+      // Adjust for zero-based js-style array
       m++;
       if (m > 12) {
         a = parseInt(m/12, 10);

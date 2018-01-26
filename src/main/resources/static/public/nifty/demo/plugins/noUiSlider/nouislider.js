@@ -2244,7 +2244,7 @@ function closure ( target, options, originalOptions ){
 		throw new Error("noUiSlider (" + VERSION + "): Slider was already initialized.");
 	}
 
-	// Create the base element, initialise HTML and set classes.
+	// Create the base element, initialise html and set classes.
 	// Add handles and connect elements.
 	addSlider(scope_Target);
 	addElements(options.connect, scope_Base);

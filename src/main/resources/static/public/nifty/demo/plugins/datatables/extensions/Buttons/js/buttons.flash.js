@@ -217,7 +217,7 @@ ZeroClipboard_TableTools.Client.prototype = {
 	},
 
 	getHTML: function(width, height) {
-		// return HTML for movie
+		// return html for movie
 		var html = '';
 		var flashvars = 'id=' + this.id +
 			'&width=' + width +

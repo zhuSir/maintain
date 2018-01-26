@@ -9,7 +9,7 @@
 
 $(document).ready(function() {
 
-    // DROPZONE.JS
+    // DROPZONE.js
     // =================================================================
     // Require Dropzone
     // http://www.dropzonejs.com/
@@ -39,12 +39,12 @@ $(document).ready(function() {
 
 
 
-    // DROPZONE.JS WITH BOOTSTRAP'S THEME
+    // DROPZONE.js WITH BOOTSTRAP'S THEME
     // =================================================================
     // Require Dropzone
     // http://www.dropzonejs.com/
     // =================================================================
-    // Get the template HTML and remove it from the doumenthe template HTML and remove it from the doument
+    // Get the template html and remove it from the doumenthe template html and remove it from the doument
     var previewNode = document.querySelector("#dz-template");
     previewNode.id = "";
     var previewTemplate = previewNode.parentNode.innerHTML;

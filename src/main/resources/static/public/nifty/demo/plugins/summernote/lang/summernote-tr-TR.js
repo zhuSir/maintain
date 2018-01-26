@@ -82,7 +82,7 @@
       options: {
         help: 'Yardım',
         fullscreen: 'Tam ekran',
-        codeview: 'HTML Kodu'
+        codeview: 'html Kodu'
       },
       paragraph: {
         paragraph: 'Paragraf',
