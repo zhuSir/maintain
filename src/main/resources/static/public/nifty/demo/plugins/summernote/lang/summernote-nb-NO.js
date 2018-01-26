@@ -66,7 +66,7 @@
       options: {
         help: 'Hjelp',
         fullscreen: 'Fullskjerm',
-        codeview: 'html-visning'
+        codeview: 'HTML-visning'
       },
       paragraph: {
         paragraph: 'Avsnitt',

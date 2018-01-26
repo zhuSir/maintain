@@ -1199,7 +1199,7 @@
         changeHighlight: function (highlight)  {},
 
         /**
-         * Fetch the html to display as a tooltip
+         * Fetch the HTML to display as a tooltip
          */
         getCurrentRegionTooltip: function () {
             var options = this.options,

@@ -64,7 +64,7 @@
       options: {
         help: 'Pomoc',
         fullscreen: 'Celá obrazovka',
-        codeview: 'html kód'
+        codeview: 'HTML kód'
       },
       paragraph: {
         paragraph: 'Odsek',

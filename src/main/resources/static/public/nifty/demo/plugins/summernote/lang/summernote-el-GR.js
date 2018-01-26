@@ -75,7 +75,7 @@
       options: {
         help: 'Βοήθεια',
         fullscreen: 'Πλήρης οθόνη',
-        codeview: 'Προβολή html'
+        codeview: 'Προβολή HTML'
       },
       paragraph: {
         paragraph: 'Παράγραφος',

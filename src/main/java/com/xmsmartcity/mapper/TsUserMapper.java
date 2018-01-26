@@ -24,4 +24,7 @@ public interface TsUserMapper extends BaseDao<TsUser>{
     //更新用户的公司ID
     int updateUserCompanyInfo(@Param("userId")String userId,@Param("companyID")int companyID,@Param("companyName")String companyName);
 
+    //
+    int deleteGroupUser(int userId);
+
 }

@@ -141,7 +141,7 @@
 
 
 
-    // BOOTBOX - CUSTOM html CONTENTS
+    // BOOTBOX - CUSTOM HTML CONTENTS
     // =================================================================
     // Require Bootbox
     // http://bootboxjs.com/
@@ -149,7 +149,7 @@
     $('#demo-bootbox-custom-h-content').on('click', function(){
         bootbox.dialog({
             title: "That html",
-            message: '<div class="media"><div class="media-left"><img class="media-object img-lg img-circle" src="img/profile-photos/3.png" alt="Profile picture"></div><div class="media-body"><p class="text-semibold text-main">You can also use <strong class="text-primary">html</strong></p>Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin commodo. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla.</div></div>',
+            message: '<div class="media"><div class="media-left"><img class="media-object img-lg img-circle" src="img/profile-photos/3.png" alt="Profile picture"></div><div class="media-body"><p class="text-semibold text-main">You can also use <strong class="text-primary">HTML</strong></p>Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin commodo. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla.</div></div>',
             buttons: {
                 confirm: {
                     label: "Save"
@@ -160,7 +160,7 @@
 
 
 
-    // BOOTBOX - CUSTOM html FORM
+    // BOOTBOX - CUSTOM HTML FORM
     // =================================================================
     // Require Bootbox
     // http://bootboxjs.com/

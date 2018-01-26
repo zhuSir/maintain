@@ -259,7 +259,7 @@
   }
 
 
-  // List of html entities for escaping.
+  // List of HTML entities for escaping.
   var escapeMap = {
     '&': '&amp;',
     '<': '&lt;',
@@ -278,7 +278,7 @@
     '&#x60;': '`'
   };
 
-  // Functions for escaping and unescaping strings to/from html interpolation.
+  // Functions for escaping and unescaping strings to/from HTML interpolation.
   var createEscaper = function(map) {
     var escaper = function(match) {
       return map[match];
@@ -602,7 +602,7 @@
         liIndex--;
 
         if (!this.$element.find('.bs-title-option').length) {
-          // Use native js to prepend option (faster)
+          // Use native JS to prepend option (faster)
           var element = this.$element[0];
           titleOption.className = 'bs-title-option';
           titleOption.innerHTML = this.options.title;
@@ -822,7 +822,7 @@
         title = typeof this.options.title !== 'undefined' ? this.options.title : this.options.noneSelectedText;
       }
 
-      //strip all html tags and trim the result, then unescape any escaped tags
+      //strip all HTML tags and trim the result, then unescape any escaped tags
       this.$button.attr('title', htmlUnescape($.trim(title.replace(/<[^>]*>?/g, ''))));
       this.$button.children('.filter-option').html(title);
 

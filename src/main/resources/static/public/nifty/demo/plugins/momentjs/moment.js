@@ -2277,7 +2277,7 @@ function preprocessRFC2822(s) {
 
 function checkWeekday(weekdayStr, parsedInput, config) {
     if (weekdayStr) {
-        // TODO: Replace the vanilla js Date object with an indepentent day-of-week check.
+        // TODO: Replace the vanilla JS Date object with an indepentent day-of-week check.
         var weekdayProvided = defaultLocaleWeekdaysShort.indexOf(weekdayStr),
             weekdayActual = new Date(parsedInput[0], parsedInput[1], parsedInput[2]).getDay();
         if (weekdayProvided !== weekdayActual) {
@@ -4399,7 +4399,7 @@ function toISOString$1() {
 
     if (!total) {
         // this is the same as C#'s (Noda) and python (isodate)...
-        // but not other js (goog.date)
+        // but not other JS (goog.date)
         return 'P0D';
     }
 

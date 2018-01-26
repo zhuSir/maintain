@@ -18,9 +18,7 @@ var BgDiv = React.createClass({
 });
 
 var DengluBtn = React.createClass({
-
     gotoOther: function (event) {
-
         var mobilephone = $("#phoneInput").val();
         var password = $("#pswInput").val();
 

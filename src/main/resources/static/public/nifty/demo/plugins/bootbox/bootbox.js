@@ -554,7 +554,7 @@
 
     form.on("submit", function(e) {
       e.preventDefault();
-      // Fix for SammyJS (or similar js routing library) hijacking the form post.
+      // Fix for SammyJS (or similar JS routing library) hijacking the form post.
       e.stopPropagation();
       // @TODO can we actually click *the* button object instead?
       // e.g. buttons.confirm.click() or similar
@@ -813,7 +813,7 @@
 
   /**
    * standard locales. Please add more according to ISO 639-1 standard. Multiple language variants are
-   * unlikely to be required. If this gets too large it can be split out into separate js files.
+   * unlikely to be required. If this gets too large it can be split out into separate JS files.
    */
   var locales = {
     br : {

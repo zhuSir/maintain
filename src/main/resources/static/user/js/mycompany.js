@@ -1,7 +1,7 @@
 
 
 
-
+//创建公司的按钮
 var ContentUI=React.createClass({
 
     getInitialState: function() {
@@ -10,18 +10,19 @@ var ContentUI=React.createClass({
         };
     },
     componentDidMount: function() {
-        this.serverRequest = $.post("/user/getCompanyInfo",{companyID:Cookies.get("companyId")}, function (result) {
+        this.serverRequest = $.post("/user/getCompanyInfo",{companyID:"1"}, function (result) {
             this.setState({
                 companyInfo : result
-        });
+            });
         }.bind(this));
 
         if (Cookies.get("companyId")>0)
         {
             $("#creatCompany").hide();
         }
-
     },
+
+
 
     render:function(){
         return(
@@ -58,7 +59,7 @@ var ContentUI=React.createClass({
                         </div>
                     </div>
 
-                    <ul className="list-group top15" id="companyInfo">
+                    <ul className="list-group top15">
                         <li className="list-group-item">公司名称:{this.state.companyInfo.groupName}</li>
                         <li className="list-group-item">公司创建人:{this.state.companyInfo.createName}</li>
                         <li className="list-group-item">公司信息</li>
@@ -94,23 +95,10 @@ var CommitBtnGroup = React.createClass({
             url: "/user/creatcompany",
             data: data,
             success: function(data){
-
-                alert(data.companyID);
-                Cookies.set('companyId', data.companyID, {expires: 7, path: '/'});
-                Cookies.set('companyName', data.companyName, {expires: 7, path: '/'});
-                //SDSADASDASDASDDSADASDASDASDDSADASDASDASDDSADASDASDASDDSADASDASDASDDSADASDASDASDDSADASDASDASDDSADASDASDASD
-                //SDSADASDASDASDDSADASDASDASDDSADASDASDASDDSADASDASDASDDSADASDASDASDDSADASDASDASDDSADASDASDASDDSADASDASDASD
-                //SDSADASDASDASDDSADASDASDASDDSADASDASDASDDSADASDASDASDDSADASDASDASDDSADASDASDASDDSADASDASDASDDSADASDASDASD
-                //SDSADASDASDASDDSADASDASDASDDSADASDASDASDDSADASDASDASDDSADASDASDASDDSADASDASDASDDSADASDASDASDDSADASDASDASD
-                //SDSADASDASDASDDSADASDASDASDDSADASDASDASDDSADASDASDASDDSADASDASDASDDSADASDASDASDDSADASDASDASDDSADASDASDASD
-                //SDSADASDASDASDDSADASDASDASDDSADASDASDASDDSADASDASDASDDSADASDASDASDDSADASDASDASDDSADASDASDASDDSADASDASDASD
-                //SDSADASDASDASDDSADASDASDASDDSADASDASDASDDSADASDASDASDDSADASDASDASDDSADASDASDASDDSADASDASDASDDSADASDASDASD
-                //SDSADASDASDASDDSADASDASDASDDSADASDASDASDDSADASDASDASDDSADASDASDASDDSADASDASDASDDSADASDASDASDDSADASDASDASD
-                //SDSADASDASDASDDSADASDASDASDDSADASDASDASDDSADASDASDASDDSADASDASDASDDSADASDASDASDDSADASDASDASDDSADASDASDASD
-                //SDSADASDASDASDDSADASDASDASDDSADASDASDASDDSADASDASDASDDSADASDASDASDDSADASDASDASDDSADASDASDASDDSADASDASDASD
+                alert("创建成功");
             },
             error:function(err){
-                alert("error");
+                alert("创建失败");
             }
         });
 

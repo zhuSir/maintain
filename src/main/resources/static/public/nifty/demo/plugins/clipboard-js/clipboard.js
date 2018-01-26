@@ -87,7 +87,7 @@ module.exports = delegate;
 
 },{"./closest":1}],3:[function(require,module,exports){
 /**
- * Check if argument is a html element.
+ * Check if argument is a HTML element.
  *
  * @param {Object} value
  * @return {Boolean}
@@ -99,7 +99,7 @@ exports.node = function(value) {
 };
 
 /**
- * Check if argument is a list of html elements.
+ * Check if argument is a list of HTML elements.
  *
  * @param {Object} value
  * @return {Boolean}
@@ -177,7 +177,7 @@ function listen(target, type, callback) {
 }
 
 /**
- * Adds an event listener to a html element
+ * Adds an event listener to a HTML element
  * and returns a remove listener function.
  *
  * @param {HTMLElement} node
@@ -196,7 +196,7 @@ function listenNode(node, type, callback) {
 }
 
 /**
- * Add an event listener to a list of html elements
+ * Add an event listener to a list of HTML elements
  * and returns a remove listener function.
  *
  * @param {NodeList|HTMLCollection} nodeList

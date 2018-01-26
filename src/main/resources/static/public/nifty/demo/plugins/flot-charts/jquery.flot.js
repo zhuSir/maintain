@@ -113,7 +113,7 @@ Licensed under the MIT license.
 
 		this.resize(container.width(), container.height());
 
-		// Collection of html div layers for text overlaid onto the canvas
+		// Collection of HTML div layers for text overlaid onto the canvas
 
 		this.textContainer = null;
 		this.text = {};
@@ -172,7 +172,7 @@ Licensed under the MIT license.
 		context.scale(pixelRatio, pixelRatio);
 	};
 
-	// Clears the entire canvas area, not including any overlaid html text
+	// Clears the entire canvas area, not including any overlaid HTML text
 
 	Canvas.prototype.clear = function() {
 		this.context.clearRect(0, 0, this.width, this.height);
@@ -282,7 +282,7 @@ Licensed under the MIT license.
 	// {
 	//     width: Width of the text's wrapper div.
 	//     height: Height of the text's wrapper div.
-	//     element: The jQuery-wrapped html div containing the text.
+	//     element: The jQuery-wrapped HTML div containing the text.
 	//     positions: Array of positions at which this text is drawn.
 	// }
 	//
@@ -291,7 +291,7 @@ Licensed under the MIT license.
 	// {
 	//     active: Flag indicating whether the text should be visible.
 	//     rendered: Flag indicating whether the text is currently visible.
-	//     element: The jQuery-wrapped html div containing the text.
+	//     element: The jQuery-wrapped HTML div containing the text.
 	//     x: X coordinate at which to draw the text.
 	//     y: Y coordinate at which to draw the text.
 	// }

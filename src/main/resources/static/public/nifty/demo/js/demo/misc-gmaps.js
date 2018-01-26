@@ -41,7 +41,7 @@ $(document).ready(function() {
 			});
 		},
 		infoWindow: {
-			 content: '<div>html Content</div>'
+			 content: '<div>HTML Content</div>'
 		}
 	});
 

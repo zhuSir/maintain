@@ -1,20 +1,18 @@
 package com.xmsmartcity.mapper;
+
 import com.xmsmartcity.pojo.TsFunctionGroup;
 
 import java.util.List;
 
 public interface TsFunctionGroupMapper {
-    int deleteByPrimaryKey(Integer id);
+
+    int deleteByPrimaryKey(String id);
 
     int insert(TsFunctionGroup record);
 
-    int insertBackID(TsFunctionGroup record);
-
-
     int insertSelective(TsFunctionGroup record);
 
-
-    TsFunctionGroup selectByPrimaryKey(Integer id);
+    TsFunctionGroup selectByPrimaryKey(String id);
 
     int updateByPrimaryKeySelective(TsFunctionGroup record);
 
@@ -25,5 +23,8 @@ public interface TsFunctionGroupMapper {
     //获取组列表
     List<TsFunctionGroup> getGroupList(String conpantID);
 
-    String companyInviteMenber(String phone, String companyID);
+    String companyInviteMenber(String phone,String companyID);
+
+
+
 }
