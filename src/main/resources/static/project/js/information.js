@@ -94,12 +94,31 @@ var ContentUI = React.createClass({
     },
     componentDidMount: function() {
         console.log("UI的componentDidMount调用")
-        this.serverRequest = $.post("localhost:8080/project/select","uId:1",  function (result) {
+        var data={
+            uId:1
+        }
+        $.ajax({
+            type: "POST",
+            url: "/project/select",
+            data: data,
+            success: function(data){
+                alert("请求成功");
+                console.log(data)
+
+            },
+            error:function(err){
+                alert(err);
+            }
+        });
+        this.serverRequest = $.post("localhost:8080/project/select",{uId:"1"},  function (result) {
             this.setState({
                 Projects : result
             });
 
         }.bind(this))
+    },
+    componentWillUnmount: function() {
+        this.serverRequest.abort();
     },
     render: function() {
         return (<div className="container">

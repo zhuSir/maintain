@@ -63,6 +63,7 @@ var Mask=React.createClass({
 var Delete=React.createClass({
     delete:function(){
         $('#mdModal').modal('hide')
+        alert(666)
        $(this) .parents().remove();
     },
     render:function(){
@@ -165,29 +166,29 @@ var Edits=React.createClass({
     }
 })
 var Projectlist= React.createClass({
-    getInitialState: function() {
+   /* getInitialState: function() {
         return {
-            groupList : []
+            Projects : {}
         };
     },
     componentDidMount: function() {
-        console.log("Box的componentDidMount调用");
-        this.serverRequest = $.post("/project/select",{uId:"1"}, function (result) {
+        console.log("UI的componentDidMount调用")
+        this.serverRequest = $.post("project/select",{uId:"1"},  function (result) {
             this.setState({
-                groupList : result
+                Projects : result
             });
-        }.bind(this));
-    },
 
+        }.bind(this))
+    },
     componentWillUnmount: function() {
         this.serverRequest.abort();
-    },
+    },*/
     render:function(){
-        var list=this.state.groupList.map(function(item){
+       /* var list=this.state.groupList.map(function(item){
             return (
                 <tr className="listgroup-item">{list.groupName}</tr>
             )
-        })
+        })*/
         var data={
             uId:1
         }
@@ -238,5 +239,5 @@ var Projectlist= React.createClass({
 
 ReactDOM.render(
     <Projectlist />,
-    document.getElementById('pro-list')
+    document.getElementById('example')
 );
