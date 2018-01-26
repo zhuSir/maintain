@@ -10,7 +10,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -62,7 +61,7 @@ public class GroupControllrer {
 
     //获取公司的详情
     @RequestMapping(value="/user/getCompanyInfo",method = RequestMethod.POST)
-    private TsFunctionGroup getcompanyInfo(String companyID){
+    private TsFunctionGroup getcompanyInfo(int companyID){
 
         TsFunctionGroup result  = ser.getcompanyInfo(companyID);
         return result;
@@ -82,8 +81,9 @@ public class GroupControllrer {
      * @return
      */
     @RequestMapping(value="/user/listCompanyMember",method = RequestMethod.POST)
-    private JSONObject listCompanyMember(String companyID){
-        JSONObject result = userService.selectUserList(companyID);
+    private List<Map<String,Object>> listCompanyMember(String companyID){
+        Integer companyId=Integer.valueOf(companyID);
+        List<Map<String,Object>> result = userService.selectUserList(companyID);
         return result;
     }
 

@@ -1,10 +1,7 @@
 package com.xmsmartcity.service;
 
-import com.xmsmartcity.pojo.TpProject;
-import com.xmsmartcity.pojo.TsFunctionGroup;
-
 import java.util.List;
-import java.util.Map;
+import com.xmsmartcity.pojo.TsFunctionGroup;
 
 /**
  * Created by welleast on 2018/1/23.
@@ -25,7 +22,7 @@ public interface UserGroupService extends BaseService<TsFunctionGroup> {
 
     //过去公司的详情，根据id获取，z
 
-    public TsFunctionGroup getcompanyInfo(String ID);
+    public TsFunctionGroup getcompanyInfo(int ID);
 
     //邀请成员
     public String  companyInviteMenber(String phone,String companyID);

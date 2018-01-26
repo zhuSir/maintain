@@ -22,7 +22,7 @@ public interface UserService extends BaseService<TsUser> {
 
     List<Map<String,Object>> selectList(String phone, String name);
 
-    JSONObject selectUserList(String companyID);
+    JSONObject selectUserList(int companyID);
 
     /*
     * phone查询用户

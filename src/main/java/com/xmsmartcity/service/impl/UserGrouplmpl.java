@@ -4,15 +4,14 @@ import com.alibaba.fastjson.JSONObject;
 import com.xmsmartcity.mapper.BaseDao;
 import com.xmsmartcity.mapper.TsFunctionGroupMapper;
 import com.xmsmartcity.mapper.TsUserMapper;
-import com.xmsmartcity.pojo.TsFunctionGroup;
 import com.xmsmartcity.pojo.TsUser;
+import com.xmsmartcity.pojo.TsFunctionGroup;
+
 import com.xmsmartcity.service.UserGroupService;
-import com.xmsmartcity.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.Map;
 
 /**
  * Created by welleast on 2018/1/23.
@@ -34,7 +33,7 @@ public class UserGrouplmpl extends BaseServiceImpl<TsFunctionGroup> implements U
 
     //创建公司
     @Override
-    public String creatGroup(String companyName,String reatUserName,String reatUserID) {
+    public String creatGroup(String companyName,String reatUserName,int reatUserID) {
         TsFunctionGroup group = new TsFunctionGroup();
         group.setGroupName(companyName);
         group.setPid("0");
@@ -44,6 +43,23 @@ public class UserGrouplmpl extends BaseServiceImpl<TsFunctionGroup> implements U
         int result = dao.insert(group);
         if (result == 1) {
             //创建成功
+
+            int updateUserINfo =userdao.updateUserCompanyInfo(reatUserID,group.getId(),companyName);
+            if (updateUserINfo==1)
+            {
+                json.put("code", 0);
+                json.put("info", "创建成功");
+                json.put("companyID",group.getId());
+                json.put("companyName",companyName);
+
+            }else
+            {
+                json.put("code", 1);
+                json.put("info", "创建失败");
+            }
+
+            //修改创建人的个人信息增加
+
             json.put("code", 0);
             json.put("info", "创建成功");
 
@@ -61,7 +77,7 @@ public class UserGrouplmpl extends BaseServiceImpl<TsFunctionGroup> implements U
 
     //创建组
     @Override
-    public String insertGroup(String groupname,String companyID,String reatUserName,String reatUserID) {
+    public String insertGroup(String groupname,String companyID,String reatUserName,int reatUserID) {
 
         TsFunctionGroup group = new TsFunctionGroup();
         group.setGroupName(groupname);
@@ -92,14 +108,13 @@ public class UserGrouplmpl extends BaseServiceImpl<TsFunctionGroup> implements U
         List<TsFunctionGroup> result = dao.getGroupList(id);
         return result;
     }
+
     @Override
-
-
-    public TsFunctionGroup getcompanyInfo(String ID)
-    {
+    public TsFunctionGroup getcompanyInfo(int ID) {
         TsFunctionGroup grou = dao.selectByPrimaryKey(ID);
         return grou;
     }
+
 
     @Override
     public String companyInviteMenber(String phone, String companyID) {

@@ -80,7 +80,7 @@ public class UserServiceImpl extends BaseServiceImpl<TsUser> implements UserServ
     }
 
     @Override
-    public JSONObject selectUserList(String companyID) {
+    public JSONObject selectUserList(int companyID) {
         JSONObject json = new JSONObject();
         List<TsUser> tsUsers = dao.selectUserList(companyID);
         if (null==tsUsers){

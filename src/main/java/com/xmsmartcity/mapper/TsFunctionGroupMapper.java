@@ -1,5 +1,7 @@
 package com.xmsmartcity.mapper;
 
+import java.util.List;
+
 import com.xmsmartcity.pojo.TsFunctionGroup;
 
 public interface TsFunctionGroupMapper {
@@ -14,4 +16,13 @@ public interface TsFunctionGroupMapper {
     int updateByPrimaryKeySelective(TsFunctionGroup record);
 
     int updateByPrimaryKey(TsFunctionGroup record);
+
+    //获取组列表
+    List<TsFunctionGroup> getGroupList(String conpantID);
+
+    String companyInviteMenber(String phone,String companyID);
+
 }
+
+
+
