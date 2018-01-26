@@ -80,8 +80,17 @@ public class UserServiceImpl extends BaseServiceImpl<TsUser> implements UserServ
     }
 
     @Override
-    public List<Map<String, Object>> selectUserList(String companyID) {
-        return dao.selectUserList(companyID);
+    public JSONObject selectUserList(String companyID) {
+        JSONObject json = new JSONObject();
+        List<TsUser> tsUsers = dao.selectUserList(companyID);
+        if (null==tsUsers){
+            json.put("code",1);
+            json.put("data","数据库查询异常");
+        }else {
+            json.put("code",0);
+            json.put("data",tsUsers);
+        }
+        return json;
     }
 
     @Override

@@ -4,7 +4,7 @@ $(function(){
         console.log(ch);
         $('#iframepage').height(ch+200);
     })
-})
+});
 function page(o) {
     var i = Number(o);
     $('window.iframe').css('margin-top','0');

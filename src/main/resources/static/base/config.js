@@ -8,7 +8,9 @@ var config = {
     //用户登陆
     login:  "/userinfo/login",
     //id获取用户
-    getUserById:  "/userinfo/getUserById"
+    getUserById:  "/userinfo/getUserById",
+    //公司id获取用户列表
+    listCompanyMember:  "/user/listCompanyMember"
 
 
 };

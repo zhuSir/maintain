@@ -1,15 +1,13 @@
 package com.xmsmartcity.controller.userInfo;
 
 
+
 import com.alibaba.fastjson.JSONObject;
-import com.xmsmartcity.mapper.TsUserMapper;
 import com.xmsmartcity.pojo.TsFunctionGroup;
-import com.xmsmartcity.pojo.TsUser;
 import com.xmsmartcity.service.UserGroupService;
 import com.xmsmartcity.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.HashMap;
@@ -84,8 +82,8 @@ public class GroupControllrer {
      * @return
      */
     @RequestMapping(value="/user/listCompanyMember",method = RequestMethod.POST)
-    private List<Map<String,Object>> listCompanyMember(String companyID){
-        List<Map<String,Object>> result = userService.selectUserList(companyID);
+    private JSONObject listCompanyMember(String companyID){
+        JSONObject result = userService.selectUserList(companyID);
         return result;
     }
 
