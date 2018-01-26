@@ -33,42 +33,43 @@ public class ProjectController {
     FaultService faultService;
 
     @RequestMapping(value = "/insert")
-    public BaseResponse<TpProject> insertProject(String uId,TpProject project,@Param("startData") String startData, @Param("endDate") String endDate) {
+    public BaseResponse<TpProject> insertProject(String uId, TpProject project, @Param("startData") String startData,
+                                                 @Param("endDate") String endDate) {
         BaseResponse<TpProject> baseResponse = new BaseResponse<>();
         try {
-            if(uId==null||uId.equals("")){
+            if (uId == null || uId.equals("")) {
                 baseResponse.setInfo("参数错误,创建失败");
                 return baseResponse;
             }
-            if(project.getName()==null||"".equals(project.getName())){
+            if (project.getName() == null || "".equals(project.getName())) {
                 baseResponse.setInfo("参数错误,创建失败");
                 return baseResponse;
             }
-            if(project.getDepId()==null||project.getDepId().equals("")){
+            if (project.getDepId() == null || project.getDepId().equals("")) {
                 baseResponse.setInfo("参数错误,创建失败");
                 return baseResponse;
             }
-            if(project.getOwenerUnitId()==null||project.getOwenerUnitId().equals("")){
+            if (project.getOwenerUnitId() == null || project.getOwenerUnitId().equals("")) {
                 baseResponse.setInfo("参数错误,创建失败");
                 return baseResponse;
             }
-            if(project.getConstructUnitId()==null||project.getConstructUnitId().equals("")){
+            if (project.getConstructUnitId() == null || project.getConstructUnitId().equals("")) {
                 baseResponse.setInfo("参数错误,创建失败");
                 return baseResponse;
             }
-            if(startData==null||startData.equals("")){
+            if (startData == null || startData.equals("")) {
                 baseResponse.setInfo("参数错误,创建失败");
                 return baseResponse;
             }
-            if(endDate==null||endDate.equals("")){
+            if (endDate == null || endDate.equals("")) {
                 baseResponse.setInfo("参数错误,创建失败");
                 return baseResponse;
             }
-            if(project.getManagerId()==null||project.getManagerId().equals("")){
+            if (project.getManagerId() == null || project.getManagerId().equals("")) {
                 baseResponse.setInfo("参数错误,创建失败");
                 return baseResponse;
             }
-            if(project.getAuditPersonId()==null||project.getAuditPersonId().equals("")){
+            if (project.getAuditPersonId() == null || project.getAuditPersonId().equals("")) {
                 baseResponse.setInfo("参数错误,创建失败");
                 return baseResponse;
             }
@@ -82,64 +83,65 @@ public class ProjectController {
             timestamp.setTime(sdf.parse(endDate).getTime());
             project.setPlanEndDate(timestamp);
             project.setCreatePersonId(Integer.parseInt(uId));
-            String s = projectService.insertProject(project);
-            if("-1".equals(s)){
+            TpProject tpProject = projectService.insertProject2(project);
+            if (tpProject==null) {
                 baseResponse.setInfo("服务器错误,创建失败");
                 return baseResponse;
             }
-            baseResponse.setCode(Integer.parseInt(s));
-            baseResponse.setData(project);
+            baseResponse.setCode(1);
+            baseResponse.setData(tpProject);
             return baseResponse;
-        }catch (Exception e){
+        } catch (Exception e) {
             baseResponse.setInfo("参数错误,创建失败");
             return baseResponse;
         }
     }
 
     @RequestMapping(value = "/delect")
-    public String delectProject(int id) {
+    public BaseResponse<TpProject> delectProject(int uId, int pId) {
+        BaseResponse<TpProject> baseResponse = new BaseResponse<>();
+        TpProject tpProject = projectService.selectByPrimaryKey(pId);
+        if(tpProject==null){
+            baseResponse.setInfo("无此项目");
+            return baseResponse;
+        }
+        if (tpProject.getCreatePersonId() != uId) {
+            baseResponse.setInfo("无删除权限");
+            return baseResponse;
+        }
         String delectResult = "";
-        delectResult = projectService.delectProject(id);
-        return delectResult;
+        delectResult = projectService.delectProject(pId);
+        if ("-1".equals(delectResult)) {
+            baseResponse.setInfo("删除失败");
+        }
+        baseResponse.setCode(1);
+        baseResponse.setInfo("删除成功");
+        return baseResponse;
     }
 
     @RequestMapping(value = "/update")
-    public BaseResponse<TpProject> updateProject(TpProject project,@Param("startData") String startData, @Param("endDate") String endDate){
+    public BaseResponse<TpProject> updateProject(int uId, int pId, TpProject project, @Param("startData") String startData, @Param("endDate") String endDate) {
         BaseResponse<TpProject> baseResponse = new BaseResponse<>();
         try {
-            if(project.getId()<=0){
-                baseResponse.setInfo("参数错误,修改失败");
+            if (uId <= 0) {
+                baseResponse.setInfo("参数错误");
                 return baseResponse;
             }
-            if(project.getName()==null||"".equals(project.getName())){
-                baseResponse.setInfo("参数错误,修改失败");
+            if (pId <= 0) {
+                baseResponse.setInfo("参数错误");
                 return baseResponse;
             }
-            if(project.getDepId()==null||project.getDepId().equals("")){
-                baseResponse.setInfo("参数错误,修改失败");
+            project.setId(pId);
+            TpProject tpProject = projectService.selectByPrimaryKey(pId);
+            if(tpProject==null){
+                baseResponse.setInfo("无此项目");
                 return baseResponse;
             }
-            if(project.getOwenerUnitId()==null||project.getOwenerUnitId().equals("")){
-                baseResponse.setInfo("参数错误,修改失败");
+            if (tpProject.getCreatePersonId() != uId) {
+                baseResponse.setInfo("无修改权限");
                 return baseResponse;
             }
-            if(project.getConstructUnitId()==null||project.getConstructUnitId().equals("")){
-                baseResponse.setInfo("参数错误,修改失败");
-                return baseResponse;
-            }
-            if(startData==null||startData.equals("")){
-                baseResponse.setInfo("参数错误,修改失败");
-                return baseResponse;
-            }
-            if(endDate==null||endDate.equals("")){
-                baseResponse.setInfo("参数错误,修改失败");
-                return baseResponse;
-            }
-            if(project.getManagerId()==null||project.getManagerId().equals("")){
-                baseResponse.setInfo("参数错误,修改失败");
-                return baseResponse;
-            }
-            if(project.getAuditPersonId()==null||project.getAuditPersonId().equals("")){
+            if (project == null) {
                 baseResponse.setInfo("参数错误,修改失败");
                 return baseResponse;
             }
@@ -148,19 +150,23 @@ public class ProjectController {
             Timestamp timestamp = new Timestamp(date.getTime());
             project.setCreateTime(timestamp);
             project.setUpdateTime(timestamp);
-            timestamp.setTime(sdf.parse(startData).getTime());
-            project.setPlanStartDate(timestamp);
-            timestamp.setTime(sdf.parse(endDate).getTime());
-            project.setPlanEndDate(timestamp);
+            if (startData != null) {
+                timestamp.setTime(sdf.parse(startData).getTime());
+                project.setPlanStartDate(timestamp);
+            }
+            if (endDate != null) {
+                timestamp.setTime(sdf.parse(endDate).getTime());
+                project.setPlanEndDate(timestamp);
+            }
             String s = projectService.updateProject(project);
-            if("-1".equals(s)){
+            if ("-1".equals(s)) {
                 baseResponse.setInfo("服务器错误,修改失败");
                 return baseResponse;
             }
             baseResponse.setCode(1);
-            baseResponse.setData(project);
+            baseResponse.setData(projectService.selectByPrimaryKey(pId));
             return baseResponse;
-        }catch (Exception e){
+        } catch (Exception e) {
             baseResponse.setInfo("参数错误,修改失败");
             return baseResponse;
         }
@@ -176,7 +182,7 @@ public class ProjectController {
                 listBaseResponse.setCode(1);
                 listBaseResponse.setData(tpProjects);
                 return listBaseResponse;
-            }catch (Exception e){
+            } catch (Exception e) {
                 listBaseResponse.setInfo("服务器错误");
                 return listBaseResponse;
             }
