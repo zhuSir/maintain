@@ -640,7 +640,7 @@ $.extend( ColReorder.prototype, {
 
 
 	/* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
-	 * Private methods (they are of course public in JS, but recommended as private)
+	 * Private methods (they are of course public in js, but recommended as private)
 	 * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 
 	/**
@@ -1202,7 +1202,7 @@ ColReorder.defaults = {
 	/**
 	 * Predefined ordering for the columns that will be applied automatically
 	 * on initialisation. If not specified then the order that the columns are
-	 * found to be in the HTML is the order used.
+	 * found to be in the html is the order used.
 	 *  @type array
 	 *  @default null
 	 *  @static

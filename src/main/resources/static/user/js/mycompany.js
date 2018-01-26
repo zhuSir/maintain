@@ -17,8 +17,6 @@ var ContentUI=React.createClass({
         }.bind(this));
     },
 
-
-
     render:function(){
         return(
             <div classNmae="row">
@@ -35,8 +33,6 @@ var ContentUI=React.createClass({
                         <li className="list-group-item">公司信息</li>
                     </ul>
                 </div>
-
-
             </div>
         )
     }

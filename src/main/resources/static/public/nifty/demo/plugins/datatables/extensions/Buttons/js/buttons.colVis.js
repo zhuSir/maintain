@@ -148,7 +148,7 @@ $.extend( DataTable.ext.buttons, {
 			var idx = dt.column( conf.columns ).index();
 			var title = dt.settings()[0].aoColumns[ idx ].sTitle
 				.replace(/\n/g," ")        // remove new lines
-				.replace( /<.*?>/g, "" )   // strip HTML
+				.replace( /<.*?>/g, "" )   // strip html
 				.replace(/^\s+|\s+$/g,""); // trim
 
 			return conf.columnText ?

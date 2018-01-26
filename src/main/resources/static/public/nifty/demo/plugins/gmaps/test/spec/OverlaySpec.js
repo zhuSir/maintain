@@ -1,4 +1,4 @@
-describe("Drawing HTML overlays", function() {
+describe("Drawing html overlays", function() {
   var map_with_overlays, overlay;
 
   beforeEach(function() {

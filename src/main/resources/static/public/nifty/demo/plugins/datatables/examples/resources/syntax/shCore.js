@@ -128,9 +128,9 @@ var sh = {
 
     toolbar: {
         /**
-         * Generates HTML markup for the toolbar.
+         * Generates html markup for the toolbar.
          * @param {Highlighter} highlighter Highlighter instance.
-         * @return {String} Returns HTML markup.
+         * @return {String} Returns html markup.
          */
         getHtml: function(highlighter)
         {
@@ -155,11 +155,11 @@ var sh = {
         },
 
         /**
-         * Generates HTML markup for a regular button in the toolbar.
+         * Generates html markup for a regular button in the toolbar.
          * @param {Highlighter} highlighter Highlighter instance.
          * @param {String} commandName      Command name that would be executed.
          * @param {String} label            Label text to display.
-         * @return {String}                 Returns HTML markup.
+         * @return {String}                 Returns html markup.
          */
         getButtonHtml: function(highlighter, commandName, label)
         {
@@ -442,9 +442,9 @@ function splitLines(block)
 }
 
 /**
- * Generates HTML ID for the highlighter.
+ * Generates html ID for the highlighter.
  * @param {String} highlighterId Highlighter ID.
- * @return {String} Returns HTML ID.
+ * @return {String} Returns html ID.
  */
 function getHighlighterId(id)
 {
@@ -1207,7 +1207,7 @@ sh.Match.prototype.toString = function()
 };
 
 /**
- * Simulates HTML code with a scripting language embedded.
+ * Simulates html code with a scripting language embedded.
  *
  * @param {String} scriptBrushName Brush name of the scripting language.
  */
@@ -1319,7 +1319,7 @@ sh.Highlighter.prototype = {
     /**
      * Shortcut to document.createElement().
      * @param {String} name     Name of the element to create (DIV, A, etc).
-     * @return {HTMLElement}    Returns new HTML element.
+     * @return {HTMLElement}    Returns new html element.
      */
     create: function(name)
     {
@@ -1414,10 +1414,10 @@ sh.Highlighter.prototype = {
     },
 
     /**
-     * Generates HTML markup for a single line of code while determining alternating line style.
+     * Generates html markup for a single line of code while determining alternating line style.
      * @param {Integer} lineNumber  Line number.
-     * @param {String} code Line    HTML markup.
-     * @return {String}             Returns HTML markup.
+     * @param {String} code Line    html markup.
+     * @return {String}             Returns html markup.
      */
     getLineHtml: function(lineIndex, lineNumber, code)
     {
@@ -1438,10 +1438,10 @@ sh.Highlighter.prototype = {
     },
 
     /**
-     * Generates HTML markup for line number column.
-     * @param {String} code         Complete code HTML markup.
+     * Generates html markup for line number column.
+     * @param {String} code         Complete code html markup.
      * @param {Array} lineNumbers   Calculated line numbers.
-     * @return {String}             Returns HTML markup.
+     * @return {String}             Returns html markup.
      */
     getLineNumbersHtml: function(code, lineNumbers)
     {
@@ -1472,7 +1472,7 @@ sh.Highlighter.prototype = {
      * Splits block of text into individual DIV lines.
      * @param {String} code         Code to highlight.
      * @param {Array} lineNumbers   Calculated line numbers.
-     * @return {String}             Returns highlighted code in HTML form.
+     * @return {String}             Returns highlighted code in html form.
      */
     getCodeLinesHtml: function(html, lineNumbers)
     {
@@ -1516,7 +1516,7 @@ sh.Highlighter.prototype = {
     },
 
     /**
-     * Returns HTML for the table title or empty string if title is null.
+     * Returns html for the table title or empty string if title is null.
      */
     getTitleHtml: function(title)
     {
@@ -1527,7 +1527,7 @@ sh.Highlighter.prototype = {
      * Finds all matches in the source code.
      * @param {String} code     Source code to process matches in.
      * @param {Array} matches   Discovered regex matches.
-     * @return {String} Returns formatted HTML with processed mathes.
+     * @return {String} Returns formatted html with processed mathes.
      */
     getMatchesHtml: function(code, matches)
     {
@@ -1569,9 +1569,9 @@ sh.Highlighter.prototype = {
     },
 
     /**
-     * Generates HTML markup for the whole syntax highlighter.
+     * Generates html markup for the whole syntax highlighter.
      * @param {String} code Source code.
-     * @return {String} Returns HTML markup.
+     * @return {String} Returns html markup.
      */
     getHtml: function(code)
     {
@@ -1656,7 +1656,7 @@ sh.Highlighter.prototype = {
     },
 
     /**
-     * Highlights the code and returns complete HTML.
+     * Highlights the code and returns complete html.
      * @param {String} code     Code to highlight.
      * @return {Element}        Returns container DIV element with all markup.
      */
@@ -1669,7 +1669,7 @@ sh.Highlighter.prototype = {
 
         var div = this.create('div');
 
-        // create main HTML
+        // create main html
         div.innerHTML = this.getHtml(code);
 
         // set up click handlers
@@ -1752,7 +1752,7 @@ typeof(exports) != 'undefined' ? exports.SyntaxHighlighter = SyntaxHighlighter :
 
 
 
-// JS brush
+// js brush
 ;(function()
 {
     // CommonJS
@@ -1793,7 +1793,7 @@ typeof(exports) != 'undefined' ? exports.SyntaxHighlighter = SyntaxHighlighter :
 
 
 
-// XML / HTML brush
+// XML / html brush
 ;(function()
 {
     // CommonJS

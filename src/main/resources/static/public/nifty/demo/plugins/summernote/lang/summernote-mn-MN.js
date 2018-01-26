@@ -76,7 +76,7 @@
       options: {
         help: 'Тусламж',
         fullscreen: 'Дэлгэцийг дүүргэх',
-        codeview: 'HTML-Code харуулах'
+        codeview: 'html-Code харуулах'
       },
       paragraph: {
         paragraph: 'Хэсэг',

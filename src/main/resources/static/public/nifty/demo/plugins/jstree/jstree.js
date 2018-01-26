@@ -260,11 +260,11 @@
 		/**
 		 * data configuration
 		 *
-		 * If left as `false` the HTML inside the jstree container element is used to populate the tree (that should be an unordered list with list items).
+		 * If left as `false` the html inside the jstree container element is used to populate the tree (that should be an unordered list with list items).
 		 *
-		 * You can also pass in a HTML string or a JSON array here.
+		 * You can also pass in a html string or a JSON array here.
 		 *
-		 * It is possible to pass in a standard jQuery-like AJAX config and jstree will automatically determine if the response is JSON or HTML and use that to populate the tree.
+		 * It is possible to pass in a standard jQuery-like AJAX config and jstree will automatically determine if the response is JSON or html and use that to populate the tree.
 		 * In addition to the standard jQuery ajax options here you can suppy functions for `data` and `url`, the functions will be run in the current instance's scope and a param will be passed indicating which node is being loaded, the return value of those functions will be used.
 		 *
 		 * The last option is to specify a function, that function will receive the node being loaded as argument and a second param which is a function which should be called with the result.
@@ -425,7 +425,7 @@
 		 */
 		worker : true,
 		/**
-		 * Force node text to plain text (and escape HTML). Defaults to `false`
+		 * Force node text to plain text (and escape html). Defaults to `false`
 		 * @name $.jstree.defaults.core.force_text
 		 */
 		force_text : false,
@@ -1356,7 +1356,7 @@
 			var notTextOrCommentNode = function notTextOrCommentNode () {
 				return this.nodeType !== 3 && this.nodeType !== 8;
 			};
-			// use original HTML
+			// use original html
 			if(!s) {
 				if(obj.id === $.jstree.root) {
 					return this._append_html_data(obj, this._data.core.original_container_html.clone(true), function (status) {
@@ -1458,11 +1458,11 @@
 			}
 		},
 		/**
-		 * appends HTML content to the tree. Used internally.
+		 * appends html content to the tree. Used internally.
 		 * @private
 		 * @name _append_html_data(obj, data)
 		 * @param  {mixed} obj the node to append to
-		 * @param  {String} data the HTML string to parse and append
+		 * @param  {String} data the html string to parse and append
 		 * @trigger model.jstree, changed.jstree
 		 */
 		_append_html_data : function (dom, data, cb) {
@@ -6237,7 +6237,7 @@
 				str  = str.replace(/<li class\='vakata-context-separator'\><\/li\>$/,"");
 				if(is_callback) { str += "</ul>"; }
 				/**
-				 * triggered on the document when the contextmenu is parsed (HTML is built)
+				 * triggered on the document when the contextmenu is parsed (html is built)
 				 * @event
 				 * @plugin contextmenu
 				 * @name context_parse.vakata
@@ -7840,8 +7840,8 @@
 	 * * `max_depth` the maximum number of nesting this node type can have. A value of `1` would mean that the node can have children, but no grandchildren. Do not specify or set to `-1` for unlimited.
 	 * * `valid_children` an array of node type strings, that nodes of this type can have as children. Do not specify or set to `-1` for no limits.
 	 * * `icon` a string - can be a path to an icon or a className, if using an image that is in the current directory use a `./` prefix, otherwise it will be detected as a class. Omit to use the default icon from your theme.
-	 * * `li_attr` an object of values which will be used to add HTML attributes on the resulting LI DOM node (merged with the node's own data)
-	 * * `a_attr` an object of values which will be used to add HTML attributes on the resulting A DOM node (merged with the node's own data)
+	 * * `li_attr` an object of values which will be used to add html attributes on the resulting LI DOM node (merged with the node's own data)
+	 * * `a_attr` an object of values which will be used to add html attributes on the resulting A DOM node (merged with the node's own data)
 	 *
 	 * There are two predefined types:
 	 *

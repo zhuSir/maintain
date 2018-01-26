@@ -4,7 +4,7 @@
 
 /**
  * @summary     DataTables
- * @description Paginate, search and order HTML tables
+ * @description Paginate, search and order html tables
  * @version     1.10.15
  * @file        jquery.dataTables.js
  * @author      SpryMedia Ltd
@@ -62,7 +62,7 @@
 	/**
 	 * DataTables is a plug-in for the jQuery Javascript library. It is a highly
 	 * flexible tool, based upon the foundations of progressive enhancement,
-	 * which will add advanced interaction controls to any HTML table. For a
+	 * which will add advanced interaction controls to any html table. For a
 	 * full list of features please refer to
 	 * [DataTables.net](href="http://datatables.net).
 	 *
@@ -630,11 +630,11 @@
 		
 		/**
 		 * This function will place a new row directly after a row which is currently
-		 * on display on the page, with the HTML contents that is passed into the
+		 * on display on the page, with the html contents that is passed into the
 		 * function. This can be used, for example, to ask for confirmation that a
 		 * particular record should be deleted.
 		 *  @param {node} nTr The table row to 'open'
-		 *  @param {string|node|jQuery} mHtml The HTML to put into the row
+		 *  @param {string|node|jQuery} mHtml The html to put into the row
 		 *  @param {string} sClass Class to give the new TD cell
 		 *  @returns {node} The row opened. Note that if the table row passed in as the
 		 *    first parameter, is not found in the table, this method will silently
@@ -1428,7 +1428,7 @@
 	};
 	
 	
-	// A string without HTML in it can be considered to be HTML still
+	// A string without html in it can be considered to be html still
 	var _isHtml = function ( d ) {
 		return _empty( d ) || typeof d === 'string';
 	};
@@ -1942,7 +1942,7 @@
 	
 	/**
 	 * Array.prototype reduce[Right] method, used for browsers which don't support
-	 * JS 1.6. Done this way to reduce code size, since we iterate either way
+	 * js 1.6. Done this way to reduce code size, since we iterate either way
 	 *  @param {object} settings dataTables settings object
 	 *  @memberof DataTable#oApi
 	 */
@@ -2277,7 +2277,7 @@
 						// If null, then this type can't apply to this column, so
 						// rather than testing all cells, break out. There is an
 						// exception for the last type which is `html`. We need to
-						// scan all rows since it is possible to mix string and HTML
+						// scan all rows since it is possible to mix string and html
 						// types
 						if ( ! detectedType && j !== types.length-1 ) {
 							break;
@@ -2957,7 +2957,7 @@
 	
 	
 	/**
-	 * Build a data source object from an HTML row, reading the contents of the
+	 * Build a data source object from an html row, reading the contents of the
 	 * cells that are in the row.
 	 *
 	 * @param {object} settings DataTables settings object
@@ -3119,7 +3119,7 @@
 				
 				cells.push( nTd );
 	
-				// Need to create the HTML if new, or if a rendering function is defined
+				// Need to create the html if new, or if a rendering function is defined
 				if ( (!nTrIn || oCol.mRender || oCol.mData !== i) &&
 					 (!$.isPlainObject(oCol.mData) || oCol.mData._ !== i+'.display')
 				) {
@@ -3202,7 +3202,7 @@
 	
 	
 	/**
-	 * Create the HTML header for the table
+	 * Create the html header for the table
 	 *  @param {object} oSettings dataTables settings object
 	 *  @memberof DataTable#oApi
 	 */
@@ -3565,7 +3565,7 @@
 	
 	
 	/**
-	 * Add the options to the page HTML for the table
+	 * Add the options to the page html for the table
 	 *  @param {object} oSettings dataTables settings object
 	 *  @memberof DataTable#oApi
 	 */
@@ -4528,7 +4528,7 @@
 						cellData = '';
 					}
 	
-					// If it looks like there is an HTML entity in the string,
+					// If it looks like there is an html entity in the string,
 					// attempt to decode it so sorting works as expected. Note that
 					// we could use a single line of jQuery to do this, but the DOM
 					// method used here is much faster http://jsperf.com/html-decode
@@ -4710,7 +4710,7 @@
 			return;
 		}
 	
-		/* Show the display HTML options */
+		/* Show the display html options */
 		_fnAddOptionsHtml( settings );
 	
 		/* Build and draw the header / footer for the table */
@@ -5073,7 +5073,7 @@
 		}
 	
 		/*
-		 * The HTML structure that we want to generate in this function is:
+		 * The html structure that we want to generate in this function is:
 		 *  div - scroller
 		 *    div - scroll head
 		 *      div - scroll head inner
@@ -6974,7 +6974,7 @@
 				a = __arrayProto.filter.call( this, fn, this );
 			}
 			else {
-				// Compatibility for browsers without EMCA-252-5 (JS 1.6)
+				// Compatibility for browsers without EMCA-252-5 (js 1.6)
 				for ( var i=0, ien=this.length ; i<ien ; i++ ) {
 					if ( fn.call( this, this[i], i, this ) ) {
 						a.push( this[i] );
@@ -7096,7 +7096,7 @@
 				a = __arrayProto.map.call( this, fn, this );
 			}
 			else {
-				// Compatibility for browsers without EMCA-252-5 (JS 1.6)
+				// Compatibility for browsers without EMCA-252-5 (js 1.6)
 				for ( var i=0, ien=this.length ; i<ien ; i++ ) {
 					a.push( fn.call( this, this[i], i ) );
 				}
@@ -7333,7 +7333,7 @@
 	
 	
 	/**
-	 * Selector for HTML tables. Apply the given selector to the give array of
+	 * Selector for html tables. Apply the given selector to the give array of
 	 * DataTables settings objects.
 	 *
 	 * @param {string|integer} [selector] jQuery selector string or integer
@@ -10270,7 +10270,7 @@
 	
 		/**
 		 * Deferred rendering can provide DataTables with a huge speed boost when you
-		 * are using an Ajax or JS data source for the table. This option, when set to
+		 * are using an Ajax or js data source for the table. This option, when set to
 		 * true, will cause DataTables to defer the creation of the table elements for
 		 * each row until they are needed for a draw - saving a significant amount of
 		 * time.
@@ -10685,7 +10685,7 @@
 		 * allows you to modify the table footer on every 'draw' event.
 		 *  @type function
 		 *  @param {node} foot "TR" element for the footer
-		 *  @param {array} data Full table data (as derived from the original HTML)
+		 *  @param {array} data Full table data (as derived from the original html)
 		 *  @param {int} start Index for the current display starting point in the
 		 *    display array
 		 *  @param {int} end Index for the current display ending point in the
@@ -10749,7 +10749,7 @@
 		 * display useful information about the table.
 		 *  @type function
 		 *  @param {node} head "TR" element for the header
-		 *  @param {array} data Full table data (as derived from the original HTML)
+		 *  @param {array} data Full table data (as derived from the original html)
 		 *  @param {int} start Index for the current display starting point in the
 		 *    display array
 		 *  @param {int} end Index for the current display ending point in the
@@ -11234,7 +11234,7 @@
 	
 		/**
 		 * Classes that DataTables assigns to the various components and features
-		 * that it adds to the HTML table. This allows classes to be configured
+		 * that it adds to the html table. This allows classes to be configured
 		 * during initialisation in addition to through the static
 		 * {@link DataTable.ext.oStdClasses} object).
 		 *  @namespace
@@ -11669,7 +11669,7 @@
 			/**
 			 * Details the actions that will be taken when the user types into the
 			 * filtering input text box. The variable "_INPUT_", if used in the string,
-			 * is replaced with the HTML text box for the filtering input allowing
+			 * is replaced with the html text box for the filtering input allowing
 			 * control over where it appears in the string. If "_INPUT_" is not given
 			 * then the input box is appended to the string automatically.
 			 *  @type string
@@ -12018,7 +12018,7 @@
 	
 	
 		/**
-		 * DataTables makes use of renderers when displaying HTML elements for
+		 * DataTables makes use of renderers when displaying html elements for
 		 * a table. These renderers can be added or modified by plug-ins to
 		 * generate suitable mark-up for a site. For example the Bootstrap
 		 * integration plug-in for DataTables uses a paging button renderer to
@@ -12800,7 +12800,7 @@
 		 * The title of this column.
 		 *  @type string
 		 *  @default null <i>Derived from the 'TH' value for this column in the
-		 *    original HTML table.</i>
+		 *    original html table.</i>
 		 *
 		 *  @name DataTable.defaults.column.title
 		 *  @dtopt Columns
@@ -12835,7 +12835,7 @@
 		/**
 		 * The type allows you to specify how the data for this column will be
 		 * ordered. Four types (string, numeric, date and html (which will strip
-		 * HTML tags before ordering)) are currently available. Note that only date
+		 * html tags before ordering)) are currently available. Note that only date
 		 * formats understood by Javascript's Date() object will be accepted as type
 		 * date. For example: "Mar 26, 2008 5:03 PM". May take the values: 'string',
 		 * 'numeric', 'date' or 'html' (by default). Further types can be adding
@@ -14217,7 +14217,7 @@
 			 * Type based search formatting.
 			 *
 			 * The type based searching functions can be used to pre-format the
-			 * data to be search on. For example, it can be used to strip HTML
+			 * data to be search on. For example, it can be used to strip html
 			 * tags or to de-format telephone numbers for numeric only searching.
 			 *
 			 * Note that is a search is not defined for a column of a given type,
@@ -14711,21 +14711,21 @@
 			return _isNumber( d, decimal, true ) ? 'num-fmt'+decimal : null;
 		},
 	
-		// HTML numeric
+		// html numeric
 		function ( d, settings )
 		{
 			var decimal = settings.oLanguage.sDecimal;
 			return _htmlNumeric( d, decimal ) ? 'html-num'+decimal : null;
 		},
 	
-		// HTML numeric, formatted
+		// html numeric, formatted
 		function ( d, settings )
 		{
 			var decimal = settings.oLanguage.sDecimal;
 			return _htmlNumeric( d, decimal, true ) ? 'html-num-fmt'+decimal : null;
 		},
 	
-		// HTML (this is strict checking - there must be html)
+		// html (this is strict checking - there must be html)
 		function ( d, settings )
 		{
 			return _empty( d ) || (typeof d === 'string' && d.indexOf('<') !== -1) ?
@@ -14807,12 +14807,12 @@
 					return __numericReplace( d, decimalPlace, _re_formatted_numeric );
 				},
 	
-				// HTML numeric
+				// html numeric
 				"html-num": function ( d ) {
 					return __numericReplace( d, decimalPlace, _re_html );
 				},
 	
-				// HTML numeric, formatted
+				// html numeric, formatted
 				"html-num-fmt": function ( d ) {
 					return __numericReplace( d, decimalPlace, _re_html, _re_formatted_numeric );
 				}
@@ -14821,7 +14821,7 @@
 				// Add the ordering method
 				_ext.type.order[ key+decimalPlace+'-pre' ] = fn;
 	
-				// For HTML types add a search formatter that will strip the HTML
+				// For html types add a search formatter that will strip the html
 				if ( key.match(/^html\-/) ) {
 					_ext.type.search[ key+decimalPlace ] = _ext.type.search.html;
 				}
@@ -14975,7 +14975,7 @@
 	 *   * `integer` - Number of decimal points to show
 	 *   * `string` (optional) - Prefix.
 	 *   * `string` (optional) - Postfix (/suffix).
-	 * * `text` - Escape HTML to help prevent XSS attacks. It has no optional
+	 * * `text` - Escape html to help prevent XSS attacks. It has no optional
 	 *   parameters.
 	 *
 	 * @example
@@ -14999,7 +14999,7 @@
 					var flo = parseFloat( d );
 	
 					// If NaN then there isn't much formatting that we can do - just
-					// return immediately, escaping any HTML (this was supposed to
+					// return immediately, escaping any html (this was supposed to
 					// be a number after all)
 					if ( isNaN( flo ) ) {
 						return __htmlEscapeEntities( d );

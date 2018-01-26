@@ -68,7 +68,7 @@
       options: {
         help: 'Pomoč',
         fullscreen: 'Celozaslonski način',
-        codeview: 'Pregled HTML kode'
+        codeview: 'Pregled html kode'
       },
       paragraph: {
         paragraph: 'Slogi odstavka',

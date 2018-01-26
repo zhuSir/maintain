@@ -97,7 +97,7 @@
          *
          * By default will store each page in its own cookie.
          * Supports multiple FooTables per page.
-         * Supports JS frameworks that use hashmap URLs (AngularJS, Ember, etc).
+         * Supports js frameworks that use hashmap URLs (AngularJS, Ember, etc).
          *
          * For example take an example application:
          *

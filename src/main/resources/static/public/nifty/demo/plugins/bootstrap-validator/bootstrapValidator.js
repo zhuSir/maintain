@@ -91,7 +91,7 @@ if (typeof jQuery === 'undefined') {
 				};
 
 			this.$form
-				// Disable client side validation in HTML 5
+				// Disable client side validation in html 5
 				.attr('novalidate', 'novalidate')
 				.addClass(this.options.elementClass)
 				// Disable the default submission first
@@ -132,7 +132,7 @@ if (typeof jQuery === 'undefined') {
 					// #746: Check if the button click handler returns false
 					if (!e.isDefaultPrevented()) {
 						var $target = $(e.target),
-							// The button might contain HTML tag
+							// The button might contain html tag
 							$button = $target.is('[type="submit"]') ? $target.eq(0) : $target.parent('[type="submit"]').eq(0);
 
 						// Don't perform validation when clicking on the submit button/input
@@ -166,7 +166,7 @@ if (typeof jQuery === 'undefined') {
 		},
 
 		/**
-		* Parse the validator options from HTML attributes
+		* Parse the validator options from html attributes
 		*
 		* @param {jQuery} $field The field element
 		* @returns {Object}
@@ -224,8 +224,8 @@ if (typeof jQuery === 'undefined') {
 					verbose:       $field.attr('data-bv-verbose'),
 					validators:    validators
 				},
-				emptyOptions    = $.isEmptyObject(opts),        // Check if the field options are set using HTML attributes
-				emptyValidators = $.isEmptyObject(validators);  // Check if the field validators are set using HTML attributes
+				emptyOptions    = $.isEmptyObject(opts),        // Check if the field options are set using html attributes
+				emptyValidators = $.isEmptyObject(validators);  // Check if the field validators are set using html attributes
 
 			if (!emptyValidators || (!emptyOptions && this.options.fields && this.options.fields[field])) {
 				opts.validators = validators;
@@ -1355,7 +1355,7 @@ if (typeof jQuery === 'undefined') {
 			for (var i = 0; i < total; i++) {
 				var $field = fields.eq(i);
 
-				// Try to parse the options from HTML attributes
+				// Try to parse the options from html attributes
 				var opts = this._parseOptions($field);
 				opts = (opts === null) ? options : $.extend(true, options, opts);
 
@@ -2923,7 +2923,7 @@ if (typeof jQuery === 'undefined') {
 		},
 
 		/**
-		* Validate upload file. Use HTML 5 API if the browser supports
+		* Validate upload file. Use html 5 API if the browser supports
 		*
 		* @param {BootstrapValidator} validator The validator plugin instance
 		* @param {jQuery} $field Field element

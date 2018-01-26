@@ -1684,7 +1684,7 @@
       element = el;
     }
     if (element == null) {
-      throw new Error("Invalid `" + name + "` option provided. Please provide a CSS selector or a plain HTML element.");
+      throw new Error("Invalid `" + name + "` option provided. Please provide a CSS selector or a plain html element.");
     }
     return element;
   };
@@ -1713,7 +1713,7 @@
       elements = [els];
     }
     if (!((elements != null) && elements.length)) {
-      throw new Error("Invalid `" + name + "` option provided. Please provide a CSS selector, a plain HTML element or a list of those.");
+      throw new Error("Invalid `" + name + "` option provided. Please provide a CSS selector, a plain html element or a list of those.");
     }
     return elements;
   };
