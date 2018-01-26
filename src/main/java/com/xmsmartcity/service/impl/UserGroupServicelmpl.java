@@ -46,14 +46,14 @@ public class UserGroupServicelmpl extends BaseServiceImpl<TsFunctionGroup> imple
         if (res==1) {
             //创建成功
 
-
-            int updateUserINfo =userdao.updateUserCompanyInfo(reatUserID,group.getId());
-            int aaaaa=3;
+            int updateUserINfo =userdao.updateUserCompanyInfo(reatUserID,group.getId(),companyName);
             if (updateUserINfo==1)
             {
                 json.put("code", 0);
                 json.put("info", "创建成功");
                 json.put("companyID",group.getId());
+                json.put("companyName",companyName);
+
             }else
             {
                 json.put("code", 1);

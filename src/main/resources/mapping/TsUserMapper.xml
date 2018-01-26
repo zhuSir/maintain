@@ -300,9 +300,11 @@
     where  mobilePhone=#{phone} AND companyID=0
   </update>
 
+  <!-- 创建完成公司修改个人信息-->
   <update id="updateUserCompanyInfo" parameterType="map">
       update t_s_user
-    set companyID = #{companyID}
+    set companyID = #{companyID},
+    company_name = #{companyName}
     where  id=#{userId}
    </update>
 
