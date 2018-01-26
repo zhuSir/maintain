@@ -14,7 +14,6 @@ public interface ProjectService extends BaseService<TpProject> {
 
     //新增项目
     public String insertProject(TpProject project);
-    public TpProject insertProject2(TpProject project);
 
     //删除项目
     public String delectProject(int pId);

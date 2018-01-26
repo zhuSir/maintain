@@ -285,7 +285,7 @@ var dpComputableOptions = {
 
 	defaultButtonText: function(dpOptions) {
 		return {
-			// the translations sometimes wrongly contain html entities
+			// the translations sometimes wrongly contain HTML entities
 			prev: stripHtmlEntities(dpOptions.prevText),
 			next: stripHtmlEntities(dpOptions.nextText),
 			today: stripHtmlEntities(dpOptions.currentText)
@@ -1568,7 +1568,7 @@ Class.mixin = function(members) {
 ------------------------------------------------------------------------------------------------------------------------
 Options:
 	- className (string)
-	- content (html string or jQuery element set)
+	- content (HTML string or jQuery element set)
 	- parentEl
 	- top
 	- left
@@ -2516,7 +2516,7 @@ var RowRenderer = Class.extend({
 
 	view: null, // a View object
 	isRTL: null, // shortcut to the view's isRTL option
-	cellHtml: '<td/>', // plain default html used for a cell when no other is available
+	cellHtml: '<td/>', // plain default HTML used for a cell when no other is available
 
 
 	constructor: function(view) {
@@ -2525,7 +2525,7 @@ var RowRenderer = Class.extend({
 	},
 
 
-	// Renders the html for a row, leveraging custom cell-html-renderers based on the `rowType`.
+	// Renders the HTML for a row, leveraging custom cell-HTML-renderers based on the `rowType`.
 	// Also applies the "intro" and "outro" cells, which are specified by the subclass and views.
 	// `row` is an optional row number.
 	rowHtml: function(rowType, row) {
@@ -2547,9 +2547,9 @@ var RowRenderer = Class.extend({
 	},
 
 
-	// Applies the "intro" and "outro" html to the given cells.
+	// Applies the "intro" and "outro" HTML to the given cells.
 	// Intro means the leftmost cell when the calendar is LTR and the rightmost cell when RTL. Vice-versa for outro.
-	// `cells` can be an html string of <td>'s or a jQuery <tr> element
+	// `cells` can be an HTML string of <td>'s or a jQuery <tr> element
 	// `row` is an optional row number.
 	bookendCells: function(cells, rowType, row) {
 		var intro = this.getHtmlRenderer('intro', rowType)(row || 0);
@@ -2566,7 +2566,7 @@ var RowRenderer = Class.extend({
 	},
 
 
-	// Returns an html-rendering function given a specific `rendererName` (like cell, intro, or outro) and a specific
+	// Returns an HTML-rendering function given a specific `rendererName` (like cell, intro, or outro) and a specific
 	// `rowType` (like day, eventSkeleton, helperSkeleton), which is optional.
 	// If a renderer for the specific rowType doesn't exist, it will fall back to a generic renderer.
 	// We will query the View object first for any custom rendering functions, then the methods of the subclass.
@@ -3064,12 +3064,12 @@ var Grid = fc.Grid = RowRenderer.extend({
 
 		if (segs.length) {
 
-			// build a large concatenation of segment html
+			// build a large concatenation of segment HTML
 			for (i = 0; i < segs.length; i++) {
 				html += this.fillSegHtml(type, segs[i]);
 			}
 
-			// Grab individual elements from the combined html string. Use each as the default rendering.
+			// Grab individual elements from the combined HTML string. Use each as the default rendering.
 			// Then, compute the 'el' for each segment.
 			$(html).each(function(i, node) {
 				var seg = segs[i];
@@ -3099,7 +3099,7 @@ var Grid = fc.Grid = RowRenderer.extend({
 	fillSegTag: 'div', // subclasses can override
 
 
-	// Builds the html needed for one fill segment. Generic enought o work with different types.
+	// Builds the HTML needed for one fill segment. Generic enought o work with different types.
 	fillSegHtml: function(type, seg) {
 		var classesMethod = this[type + 'SegClasses']; // custom hooks per-type
 		var stylesMethod = this[type + 'SegStyles']; //
@@ -3131,7 +3131,7 @@ var Grid = fc.Grid = RowRenderer.extend({
 	},
 
 
-	// Used by the `headHtml` method, via RowRenderer, for rendering the html of a day-of-week header cell
+	// Used by the `headHtml` method, via RowRenderer, for rendering the HTML of a day-of-week header cell
 	// TODO: move to another class. not applicable to all Grids
 	headCellHtml: function(cell) {
 		var view = this.view;
@@ -3144,7 +3144,7 @@ var Grid = fc.Grid = RowRenderer.extend({
 	},
 
 
-	// Renders the html for a single-day background cell
+	// Renders the HTML for a single-day background cell
 	bgCellHtml: function(cell) {
 		var view = this.view;
 		var date = cell.start;
@@ -3158,7 +3158,7 @@ var Grid = fc.Grid = RowRenderer.extend({
 	},
 
 
-	// Computes html classNames for a single-day cell
+	// Computes HTML classNames for a single-day cell
 	getDayClasses: function(date) {
 		var view = this.view;
 		var today = view.calendar.getNow().stripTime();
@@ -3273,12 +3273,12 @@ Grid.mixin({
 
 		if (segs.length) { // don't build an empty html string
 
-			// build a large concatenation of event segment html
+			// build a large concatenation of event segment HTML
 			for (i = 0; i < segs.length; i++) {
 				html += this.fgSegHtml(segs[i], disableResizing);
 			}
 
-			// Grab individual elements from the combined html string. Use each as the default rendering.
+			// Grab individual elements from the combined HTML string. Use each as the default rendering.
 			// Then, compute the 'el' for each segment. An el might be null if the eventRender callback returned false.
 			$(html).each(function(i, node) {
 				var seg = segs[i];
@@ -3296,7 +3296,7 @@ Grid.mixin({
 	},
 
 
-	// Generates the html for the default rendering of a foreground event segment. Used by renderFgSegEls()
+	// Generates the HTML for the default rendering of a foreground event segment. Used by renderFgSegEls()
 	fgSegHtml: function(seg, disableResizing) {
 		// subclasses should implement
 	},
@@ -3780,7 +3780,7 @@ Grid.mixin({
 	},
 
 
-	// Generic utility for generating the html classNames for an event segment's element
+	// Generic utility for generating the HTML classNames for an event segment's element
 	getSegClasses: function(seg, isDraggable, isResizable) {
 		var event = seg.event;
 		var classes = [
@@ -4145,7 +4145,7 @@ var DayGrid = Grid.extend({
 	},
 
 
-	// Generates the html for a single row. `row` is the row number.
+	// Generates the HTML for a single row. `row` is the row number.
 	dayRowHtml: function(row, isRigid) {
 		var view = this.view;
 		var classes = [ 'fc-row', 'fc-week', view.widgetContentClass ];
@@ -4175,7 +4175,7 @@ var DayGrid = Grid.extend({
 	},
 
 
-	// Renders the html for a whole-day cell. Will eventually end up in the day-row's background.
+	// Renders the HTML for a whole-day cell. Will eventually end up in the day-row's background.
 	// We go through a 'day' row type instead of just doing a 'bg' row type so that the View can do custom rendering
 	// specifically for whole-day rows, whereas a 'bg' might also be used for other purposes (TimeGrid bg for example).
 	dayCellHtml: function(cell) {
@@ -4525,7 +4525,7 @@ var DayGrid = Grid.extend({
 	},
 
 
-	// Generates the html needed for one row of a fill. Requires the seg's el to be rendered.
+	// Generates the HTML needed for one row of a fill. Requires the seg's el to be rendered.
 	renderFillRow: function(type, seg) {
 		var colCnt = this.colCnt;
 		var startCol = seg.leftCol;
@@ -4650,7 +4650,7 @@ DayGrid.mixin({
 	},
 
 
-	// Builds the html to be used for the default element for an individual segment
+	// Builds the HTML to be used for the default element for an individual segment
 	fgSegHtml: function(seg, disableResizing) {
 		var view = this.view;
 		var event = seg.event;
@@ -5269,7 +5269,7 @@ var TimeGrid = Grid.extend({
 	},
 
 
-	// Renders the basic html skeleton for the grid
+	// Renders the basic HTML skeleton for the grid
 	renderHtml: function() {
 		return '' +
 			'<div class="fc-bg">' +
@@ -5285,14 +5285,14 @@ var TimeGrid = Grid.extend({
 	},
 
 
-	// Renders the html for a vertical background cell behind the slots.
+	// Renders the HTML for a vertical background cell behind the slots.
 	// This method is distinct from 'bg' because we wanted a new `rowType` so the View could customize the rendering.
 	slotBgCellHtml: function(cell) {
 		return this.bgCellHtml(cell);
 	},
 
 
-	// Generates the html for the horizontal "slats" that run width-wise. Has a time axis on a side. Depends on RTL.
+	// Generates the HTML for the horizontal "slats" that run width-wise. Has a time axis on a side. Depends on RTL.
 	slatRowHtml: function() {
 		var view = this.view;
 		var isRTL = this.isRTL;
@@ -5831,7 +5831,7 @@ TimeGrid.mixin({
 	},
 
 
-	// Renders the html for a single event segment's default rendering
+	// Renders the HTML for a single event segment's default rendering
 	fgSegHtml: function(seg, disableResizing) {
 		var view = this.view;
 		var event = seg.event;
@@ -9082,8 +9082,8 @@ var BasicView = fcViews.basic = View.extend({
 	},
 
 
-	// Builds the html skeleton for the view.
-	// The day-grid component will render inside of a container defined by this html.
+	// Builds the HTML skeleton for the view.
+	// The day-grid component will render inside of a container defined by this HTML.
 	renderHtml: function() {
 		return '' +
 			'<table>' +
@@ -9107,7 +9107,7 @@ var BasicView = fcViews.basic = View.extend({
 	},
 
 
-	// Generates the html that will go before the day-of week header cells.
+	// Generates the HTML that will go before the day-of week header cells.
 	// Queried by the DayGrid subcomponent when generating rows. Ordering depends on isRTL.
 	headIntroHtml: function() {
 		if (this.weekNumbersVisible) {
@@ -9121,7 +9121,7 @@ var BasicView = fcViews.basic = View.extend({
 	},
 
 
-	// Generates the html that will go before content-skeleton cells that display the day/week numbers.
+	// Generates the HTML that will go before content-skeleton cells that display the day/week numbers.
 	// Queried by the DayGrid subcomponent. Ordering depends on isRTL.
 	numberIntroHtml: function(row) {
 		if (this.weekNumbersVisible) {
@@ -9135,7 +9135,7 @@ var BasicView = fcViews.basic = View.extend({
 	},
 
 
-	// Generates the html that goes before the day bg cells for each day-row.
+	// Generates the HTML that goes before the day bg cells for each day-row.
 	// Queried by the DayGrid subcomponent. Ordering depends on isRTL.
 	dayIntroHtml: function() {
 		if (this.weekNumbersVisible) {
@@ -9145,7 +9145,7 @@ var BasicView = fcViews.basic = View.extend({
 	},
 
 
-	// Generates the html that goes before every other type of row generated by DayGrid. Ordering depends on isRTL.
+	// Generates the HTML that goes before every other type of row generated by DayGrid. Ordering depends on isRTL.
 	// Affects helper-skeleton and highlight-skeleton rows.
 	introHtml: function() {
 		if (this.weekNumbersVisible) {
@@ -9154,7 +9154,7 @@ var BasicView = fcViews.basic = View.extend({
 	},
 
 
-	// Generates the html for the <td>s of the "number" row in the DayGrid's content skeleton.
+	// Generates the HTML for the <td>s of the "number" row in the DayGrid's content skeleton.
 	// The number row will only exist if either day numbers or week numbers are turned on.
 	numberCellHtml: function(cell) {
 		var date = cell.start;
@@ -9174,7 +9174,7 @@ var BasicView = fcViews.basic = View.extend({
 	},
 
 
-	// Generates an html attribute string for setting the width of the week number column, if it is known
+	// Generates an HTML attribute string for setting the width of the week number column, if it is known
 	weekNumberStyleAttr: function() {
 		if (this.weekNumberWidth !== null) {
 			return 'style="width:' + this.weekNumberWidth + 'px"';
@@ -9490,8 +9490,8 @@ fcViews.agenda = View.extend({ // AgendaView
 	},
 
 
-	// Builds the html skeleton for the view.
-	// The day-grid and time-grid components will render inside containers defined by this html.
+	// Builds the HTML skeleton for the view.
+	// The day-grid and time-grid components will render inside containers defined by this HTML.
 	renderHtml: function() {
 		return '' +
 			'<table>' +
@@ -9520,7 +9520,7 @@ fcViews.agenda = View.extend({ // AgendaView
 	},
 
 
-	// Generates the html that will go before the day-of week header cells.
+	// Generates the HTML that will go before the day-of week header cells.
 	// Queried by the TimeGrid subcomponent when generating rows. Ordering depends on isRTL.
 	headIntroHtml: function() {
 		var date;
@@ -9553,7 +9553,7 @@ fcViews.agenda = View.extend({ // AgendaView
 	},
 
 
-	// Generates the html that goes before the all-day cells.
+	// Generates the HTML that goes before the all-day cells.
 	// Queried by the DayGrid subcomponent when generating rows. Ordering depends on isRTL.
 	dayIntroHtml: function() {
 		return '' +
@@ -9565,13 +9565,13 @@ fcViews.agenda = View.extend({ // AgendaView
 	},
 
 
-	// Generates the html that goes before the bg of the TimeGrid slot area. Long vertical column.
+	// Generates the HTML that goes before the bg of the TimeGrid slot area. Long vertical column.
 	slotBgIntroHtml: function() {
 		return '<td class="fc-axis ' + this.widgetContentClass + '" ' + this.axisStyleAttr() + '></td>';
 	},
 
 
-	// Generates the html that goes before all other types of cells.
+	// Generates the HTML that goes before all other types of cells.
 	// Affects content-skeleton, helper-skeleton, highlight-skeleton for both the time-grid and day-grid.
 	// Queried by the TimeGrid and DayGrid subcomponents when generating rows. Ordering depends on isRTL.
 	introHtml: function() {
@@ -9579,7 +9579,7 @@ fcViews.agenda = View.extend({ // AgendaView
 	},
 
 
-	// Generates an html attribute string for setting the width of the axis, if it is known
+	// Generates an HTML attribute string for setting the width of the axis, if it is known
 	axisStyleAttr: function() {
 		if (this.axisWidth !== null) {
 			 return 'style="width:' + this.axisWidth + 'px"';

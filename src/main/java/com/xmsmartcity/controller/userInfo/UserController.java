@@ -66,6 +66,17 @@ public class UserController {
         return result;
     }
 
+    /**
+     * id获取移除公司
+     * @return
+     */
+    @RequestMapping(value="/deleteGroupUser",method = RequestMethod.POST)
+    private String deleteGroupUser(String userId){
+        Integer id = Integer.valueOf(userId);
+        String result = userService.deleteGroupUser(id);
+        return result;
+    }
+
 
 
 }

@@ -54,7 +54,7 @@ var
 	// Make sure we trim BOM and NBSP (here's looking at you, Safari 5.0 and IE)
 	rtrim = /^[\s\uFEFF\xA0]+|[\s\uFEFF\xA0]+$/g,
 
-	// A simple way to check for html strings
+	// A simple way to check for HTML strings
 	// Prioritize #id over <tag> to avoid XSS via location.hash (#9521)
 	rquickExpr = /^(?:[^#<]*(<[\w\W]+>)[^>]*$|#([\w\-]*)$)/,
 
@@ -109,10 +109,10 @@ jQuery.fn = jQuery.prototype = {
 			return this;
 		}
 
-		// Handle html strings
+		// Handle HTML strings
 		if ( typeof selector === "string" ) {
 			if ( selector.charAt(0) === "<" && selector.charAt( selector.length - 1 ) === ">" && selector.length >= 3 ) {
-				// Assume that strings that start and end with <> are html and skip the regex check
+				// Assume that strings that start and end with <> are HTML and skip the regex check
 				match = [ null, selector, null ];
 
 			} else {
@@ -1544,15 +1544,15 @@ jQuery.extend({
 			internalKey = jQuery.expando,
 			getByName = typeof name === "string",
 
-			// We have to handle DOM nodes and js objects differently because IE6-7
-			// can't GC object references properly across the DOM-js boundary
+			// We have to handle DOM nodes and JS objects differently because IE6-7
+			// can't GC object references properly across the DOM-JS boundary
 			isNode = elem.nodeType,
 
-			// Only DOM nodes need the global jQuery cache; js object data is
+			// Only DOM nodes need the global jQuery cache; JS object data is
 			// attached directly to the object so GC can occur automatically
 			cache = isNode ? jQuery.cache : elem,
 
-			// Only defining an ID for js objects if its cache already exists allows
+			// Only defining an ID for JS objects if its cache already exists allows
 			// the code to shortcut on the same path as a DOM node with no cache
 			id = isNode ? elem[ internalKey ] : elem[ internalKey ] && internalKey;
 
@@ -1575,7 +1575,7 @@ jQuery.extend({
 		if ( !cache[ id ] ) {
 			cache[ id ] = {};
 
-			// Avoids exposing jQuery metadata on plain js objects when the object
+			// Avoids exposing jQuery metadata on plain JS objects when the object
 			// is serialized using JSON.stringify
 			if ( !isNode ) {
 				cache[ id ].toJSON = jQuery.noop;
@@ -2940,7 +2940,7 @@ jQuery.event = {
 			if ( handle ) {
 				handle.apply( cur, data );
 			}
-			// Note that this is a bare js function and not a jQuery handler
+			// Note that this is a bare JS function and not a jQuery handler
 			handle = ontype && cur[ ontype ];
 			if ( handle && jQuery.acceptData( cur ) && handle.apply && handle.apply( cur, data ) === false ) {
 				event.preventDefault();
@@ -6143,7 +6143,7 @@ jQuery.buildFragment = function( args, context, scripts ) {
 	context = !context.nodeType && context[0] || context;
 	context = context.ownerDocument || context;
 
-	// Only cache "small" (1/2 KB) html strings that are associated with the main document
+	// Only cache "small" (1/2 KB) HTML strings that are associated with the main document
 	// Cloning options loses the selected state, so don't cache them
 	// IE 6 doesn't like it when you put <object> or <embed> elements in a fragment
 	// Also, WebKit does not clone 'checked' attributes on cloneNode, so don't cache
@@ -7011,7 +7011,7 @@ function css_defaultDisplay( nodeName ) {
 		);
 
 		// Create a cacheable copy of the iframe document on first call.
-		// IE and Opera will allow us to reuse the iframeDoc without re-writing the fake html
+		// IE and Opera will allow us to reuse the iframeDoc without re-writing the fake HTML
 		// document to it; WebKit & Firefox won't allow reusing the iframe document.
 		if ( !iframeDoc || !iframe.createElement ) {
 			iframeDoc = ( iframe.contentWindow || iframe.contentDocument ).document;

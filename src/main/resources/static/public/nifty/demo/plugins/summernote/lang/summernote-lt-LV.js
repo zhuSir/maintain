@@ -67,7 +67,7 @@
       options: {
         help: 'Palīdzība',
         fullscreen: 'Pa visu ekrānu',
-        codeview: 'html kods'
+        codeview: 'HTML kods'
       },
       paragraph: {
         paragraph: 'Paragrāfs',

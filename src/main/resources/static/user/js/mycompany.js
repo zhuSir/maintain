@@ -20,12 +20,9 @@ var ContentUI=React.createClass({
         {
             $("#creatCompany").hide();
         }
-        if (cookies.get("companyId")==null ||cookies.get("companyId")==0)
-        {
-            $("#companyInfo").hide();
-        }
-
     },
+
+
 
     render:function(){
         return(
@@ -62,7 +59,7 @@ var ContentUI=React.createClass({
                         </div>
                     </div>
 
-                    <ul className="list-group top15" id="companyInfo">
+                    <ul className="list-group top15">
                         <li className="list-group-item">公司名称:{this.state.companyInfo.groupName}</li>
                         <li className="list-group-item">公司创建人:{this.state.companyInfo.createName}</li>
                         <li className="list-group-item">公司信息</li>
@@ -101,7 +98,7 @@ var CommitBtnGroup = React.createClass({
                 alert("创建成功");
             },
             error:function(err){
-                alert("error");
+                alert("创建失败");
             }
         });
 

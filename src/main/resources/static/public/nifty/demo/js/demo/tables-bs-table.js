@@ -129,7 +129,7 @@ $(document).ready(function() {
 
 
 // FORMAT COLUMN
-// Use "data-formatter" on html to format the display of bootstrap table column.
+// Use "data-formatter" on HTML to format the display of bootstrap table column.
 // =================================================================
 
 

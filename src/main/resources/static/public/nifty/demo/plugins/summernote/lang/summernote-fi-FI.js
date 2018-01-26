@@ -66,7 +66,7 @@
       options: {
         help: 'Ohje',
         fullscreen: 'Koko näyttö',
-        codeview: 'html-näkymä'
+        codeview: 'HTML-näkymä'
       },
       paragraph: {
         paragraph: 'Kappale',

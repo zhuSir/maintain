@@ -64,6 +64,7 @@ var Mask=React.createClass({
         )
     }
 })
+
 /*关联项目*/
 var Reinf=React.createClass({
     render:function () {
@@ -71,7 +72,7 @@ var Reinf=React.createClass({
            <div>
                <div className="btn-group guanli">
                    <button type="button" className="btn btn-default dropdown-toggle" data-toggle="dropdown" >
-                       关联公司 <span class="caret"></span>
+                       关联项目 <span class="caret"></span>
                    </button>
                    <ul className="dropdown-menu" role="menu">
                        <li><a href="#"></a></li>
@@ -97,24 +98,10 @@ var ContentUI = React.createClass({
             this.setState({
                 Projects : result
             });
+
         }.bind(this))
     },
     render: function() {
-        var  data={
-            uId:1
-
-        }
-        $.ajax({
-            type: "POST",
-            url: "/project/select",
-            data: data,
-            success: function(data){
-                alert("请求成功");
-            },
-            error:function(err){
-                alert("err");
-            }
-        });
         return (<div className="container">
         <div className="main">
             <h3>项目详情</h3>
@@ -156,7 +143,6 @@ var ContentUI = React.createClass({
             </div>
             <Reinf/>
             <Mask/>
-            <CommitBtnGroup/>
             <div className="admin">
                 <p className="navbar-text">审核人：<span className="auditor">张朝阳</span></p>
                 <p className="navbar-text">审核日期：<span className="auditor-date">2017-12-29</span></p>

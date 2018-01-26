@@ -12,7 +12,7 @@
 
 
 
-    // MAILBOX-COMPOSE.html
+    // MAILBOX-COMPOSE.HTML
     // =================================================================
 
     if ($('#demo-mail-compose').length) {
@@ -58,7 +58,7 @@
 
 
 
-    // MAILBOX-MESSAGE.html
+    // MAILBOX-MESSAGE.HTML
     // =================================================================
 
     // SUMMERNOTE

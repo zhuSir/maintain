@@ -647,7 +647,7 @@ Editableform is linked with one of input types, e.g. 'text', 'select' etc.
     //utils
     $.fn.editableutils = {
         /**
-        * classic js inheritance function
+        * classic JS inheritance function
         */  
         inherit: function (Child, Parent) {
             var F = function() { };
@@ -889,7 +889,7 @@ Editableform is linked with one of input types, e.g. 'text', 'select' etc.
 }(window.jQuery));
 
 /**
-Attaches stand-alone container with editable-form to html element. Element is used only for positioning, value is not stored anywhere.<br>
+Attaches stand-alone container with editable-form to HTML element. Element is used only for positioning, value is not stored anywhere.<br>
 This method applied internally in <code>$().editable()</code>. You should subscribe on it's events (save / cancel) to get profit of it.<br>
 Final realization can be different: bootstrap-popover, jqueryui-tooltip, poshytip, inline-div. It depends on which js file you include.<br>
 Applied as jQuery method.
@@ -1459,7 +1459,7 @@ Applied as jQuery method.
 
 }(window.jQuery));
 /**
-Makes editable any html element on the page. Applied as jQuery method.
+Makes editable any HTML element on the page. Applied as jQuery method.
 
 @class editable
 @uses editableContainer
@@ -2498,7 +2498,7 @@ To create your own input you can inherit from this class.
         
     AbstractInput.defaults = {  
         /**
-        html template of input. Normally you should not change it.
+        HTML template of input. Normally you should not change it.
 
         @property tpl 
         @type string

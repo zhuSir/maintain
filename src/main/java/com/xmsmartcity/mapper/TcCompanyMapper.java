@@ -2,8 +2,6 @@ package com.xmsmartcity.mapper;
 
 import com.xmsmartcity.pojo.TcCompany;
 
-import java.util.List;
-
 public interface TcCompanyMapper {
     int deleteByPrimaryKey(Integer id);
 
@@ -16,6 +14,4 @@ public interface TcCompanyMapper {
     int updateByPrimaryKeySelective(TcCompany record);
 
     int updateByPrimaryKey(TcCompany record);
-
-    List<TcCompany> selectAllCompany(int uId);
 }

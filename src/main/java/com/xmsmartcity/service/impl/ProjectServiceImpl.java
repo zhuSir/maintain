@@ -28,18 +28,7 @@ public class ProjectServiceImpl extends BaseServiceImpl<TpProject> implements Pr
     @Override
     public String insertProject(TpProject project) {
         int insert = dao.insertSelective(project);
-        if (insert == -1)
-            return insert + "";
-        else
-            return project.getId() + "";
-    }
-
-    public TpProject insertProject2(TpProject project){
-        int insert = dao.insertSelective(project);
-        if (insert == -1)
-            return null;
-        else
-            return project;
+        return insert + "";
     }
 
     @Override
@@ -50,13 +39,13 @@ public class ProjectServiceImpl extends BaseServiceImpl<TpProject> implements Pr
 
     @Override
     public String updateProject(TpProject project) {
-        int update = dao.updateByPrimaryKeySelective(project);
+        int update = dao.updateByPrimaryKey(project);
         return update + "";
     }
 
     @Override
-    public List<TpProject> selectAllProject(int id) {
-        List<TpProject> tpProjects = dao.selectAllProject(id);
+    public List<TpProject> selectAllProject(int uId) {
+        List<TpProject> tpProjects = dao.selectAllProject(uId);
         return tpProjects;
     }
 

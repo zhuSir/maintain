@@ -66,7 +66,7 @@
       options: {
         help: 'Hjälp',
         fullscreen: 'Fullskärm',
-        codeview: 'html-visning'
+        codeview: 'HTML-visning'
       },
       paragraph: {
         paragraph: 'Justera text',

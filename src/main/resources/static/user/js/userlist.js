@@ -71,21 +71,10 @@ var BgDiv = React.createClass({
     }
 });
 
-var EditBtn = React.createClass({
-    render: function () {
-        return (
-            <div>
-                <button className="btn btn-info">移除</button>
-            </div>
-        )
-    }
-});
-
 ReactDOM.render(
     <BgDiv />,
     document.getElementById('userList')
 );
-
 
 $(document).ready(function () {
     var companyId = Cookies.get("companyId");
@@ -122,6 +111,7 @@ $(document).ready(function () {
                 "next": '<i className="demo-psi-arrow-right"></i>'
             }
         },
+
         ajax: {
             url: config.listCompanyMember,
             type: "POST",
@@ -130,15 +120,13 @@ $(document).ready(function () {
             },
             dataSrc: ''
         },
-
         columnDefs: [{
             targets: 3,
+            btn:function(){
+                alert("dadd");
+            },
             render: function (data, type, row) {
-                console.log(row);
-                // var id = "'" + row[0] + "'";
-                // var odd = "'" + row[1] + "'";
-                // var money = "'" + row[10] + "'";
-                return '<a type="button"  class="btn btn-info" onclick=""> 移除 </a>';
+                return '<a type="button"  class="btn btn-info" onclick="alert()" data-value =' + data + '> 移除 </a>';
             },
             "data": null
         },
@@ -147,6 +135,7 @@ $(document).ready(function () {
             {data: 'create_name'},
             {data: 'mobilePhone'},
             {data: 'group_name'},
+            {data: 'id'},
         ]
     });
 });

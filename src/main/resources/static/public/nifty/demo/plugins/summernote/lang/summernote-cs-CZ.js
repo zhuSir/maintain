@@ -64,7 +64,7 @@
       options: {
         help: 'Nápověda',
         fullscreen: 'Celá obrazovka',
-        codeview: 'html kód'
+        codeview: 'HTML kód'
       },
       paragraph: {
         paragraph: 'Odstavec',

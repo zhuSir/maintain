@@ -71,7 +71,7 @@
       options: {
         help: 'Hilfe',
         fullscreen: 'Vollbild',
-        codeview: 'html-Code anzeigen'
+        codeview: 'HTML-Code anzeigen'
       },
       paragraph: {
         paragraph: 'Absatz',

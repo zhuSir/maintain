@@ -4,22 +4,24 @@ import com.alibaba.fastjson.JSONObject;
 import com.xmsmartcity.mapper.BaseDao;
 import com.xmsmartcity.mapper.TsFunctionGroupMapper;
 import com.xmsmartcity.mapper.TsUserMapper;
+import com.xmsmartcity.pojo.TsFunctionGroup;
 import com.xmsmartcity.pojo.TsUser;
 import com.xmsmartcity.service.UserGroupService;
+import com.xmsmartcity.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import com.xmsmartcity.pojo.TsFunctionGroup;
+
 import java.util.List;
+import java.util.Map;
 
 /**
  * Created by welleast on 2018/1/23.
  */
 
 @Service("UserGroupService")
-public class UserGroupServicelmpl extends BaseServiceImpl<TsFunctionGroup> implements UserGroupService {
+public class UserGrouplmpl extends BaseServiceImpl<TsFunctionGroup> implements UserGroupService {
 
-    public UserGroupServicelmpl(BaseDao<TsFunctionGroup> dao) {
-
+    public UserGrouplmpl(BaseDao<TsFunctionGroup> dao) {
         super(dao);
     }
 
@@ -29,7 +31,6 @@ public class UserGroupServicelmpl extends BaseServiceImpl<TsFunctionGroup> imple
     @Autowired
     private TsUserMapper userdao;
 
-
     //创建公司
     @Override
     public String creatGroup(String companyName,String reatUserName,String reatUserID) {
@@ -37,19 +38,13 @@ public class UserGroupServicelmpl extends BaseServiceImpl<TsFunctionGroup> imple
         group.setGroupName(companyName);
         group.setPid("0");
         group.setCreateName(reatUserName);//创建人
-        group.setCreateBy(Integer.parseInt(reatUserID));// 创建人
+        group.setCreateBy(reatUserID);// 创建人
         JSONObject json = new JSONObject();
-
-       String id = dao.insertBackID(group);
-
-                String sss= "ddd";
-        if (Integer.parseInt(id)>0) {
+        int result = dao.insert(group);
+        if (result == 1) {
             //创建成功
-            String companyID = id;
             json.put("code", 0);
             json.put("info", "创建成功");
-            json.put("companyID",companyID);
-            //修改创建人的个人信息增加
 
         } else
         {
@@ -71,11 +66,11 @@ public class UserGroupServicelmpl extends BaseServiceImpl<TsFunctionGroup> imple
         group.setGroupName(groupname);
         group.setPid(companyID);
         group.setCreateName(reatUserName);//创建人
-        group.setCreateBy(Integer.parseInt(reatUserID));// 创建人
+        group.setCreateBy(reatUserID);// 创建人
         JSONObject json = new JSONObject();
-        String result = dao.insert(group);
+        int result = dao.insert(group);
 
-        if (Integer.parseInt(result) > 0) {
+        if (result == 1) {
             //创建成功
             json.put("code", 0);
             json.put("info", "创建成功");
@@ -91,12 +86,7 @@ public class UserGroupServicelmpl extends BaseServiceImpl<TsFunctionGroup> imple
         return json.toString();
     }
 
-    @Override
-    public int insertBackID(TsFunctionGroup record) {
-        return 0;
-    }
-
-    @Override
+      @Override
     public List<TsFunctionGroup> getGroupList(String id ) {
         List<TsFunctionGroup> result = dao.getGroupList(id);
         return result;
@@ -106,7 +96,7 @@ public class UserGroupServicelmpl extends BaseServiceImpl<TsFunctionGroup> imple
 
     public TsFunctionGroup getcompanyInfo(String ID)
     {
-        TsFunctionGroup grou = dao.selectByPrimaryKey(Integer.parseInt(ID));
+        TsFunctionGroup grou = dao.selectByPrimaryKey(ID);
         return grou;
     }
 

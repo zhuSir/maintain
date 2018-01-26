@@ -6,6 +6,7 @@ var ModelPushInval = React.createClass({
     render:function() {
         return (
             <div>
+
                 <div className="modal fade" id="myModal1" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
                      aria-hidden="true">
                     <div className="modal-dialog">
@@ -20,6 +21,7 @@ var ModelPushInval = React.createClass({
                             </div>
                             <div className="modal-body">
                                 <input type="text" className="form-control" placeholder="手机号" id="invitPhone"></input>
+
                             </div>
                             <div className="modal-footer">
                                 <button type="button" className="btn btn-default" data-dismiss="modal">关闭
@@ -44,6 +46,8 @@ var CommitBtnInval = React.createClass({
         {
             alert("手机号为空");
             return;
+
+
         }
         $.ajax({
             type: "POST",

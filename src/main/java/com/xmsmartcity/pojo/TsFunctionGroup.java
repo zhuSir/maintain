@@ -3,11 +3,11 @@ package com.xmsmartcity.pojo;
 import java.util.Date;
 
 public class TsFunctionGroup {
-    private Integer id;
+    private String id;
 
     private String groupName;
 
-    private Integer deptId;
+    private String deptId;
 
     private String deptCode;
 
@@ -19,7 +19,7 @@ public class TsFunctionGroup {
 
     private String createName;
 
-    private Integer createBy;
+    private String createBy;
 
     private Date createDate;
 
@@ -33,14 +33,12 @@ public class TsFunctionGroup {
 
     private String sysCompanyCode;
 
-    private Integer fatherId;
-
-    public Integer getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(Integer id) {
-        this.id = id;
+    public void setId(String id) {
+        this.id = id == null ? null : id.trim();
     }
 
     public String getGroupName() {
@@ -51,12 +49,12 @@ public class TsFunctionGroup {
         this.groupName = groupName == null ? null : groupName.trim();
     }
 
-    public Integer getDeptId() {
+    public String getDeptId() {
         return deptId;
     }
 
-    public void setDeptId(Integer deptId) {
-        this.deptId = deptId;
+    public void setDeptId(String deptId) {
+        this.deptId = deptId == null ? null : deptId.trim();
     }
 
     public String getDeptCode() {
@@ -99,12 +97,12 @@ public class TsFunctionGroup {
         this.createName = createName == null ? null : createName.trim();
     }
 
-    public Integer getCreateBy() {
+    public String getCreateBy() {
         return createBy;
     }
 
-    public void setCreateBy(Integer createBy) {
-        this.createBy = createBy;
+    public void setCreateBy(String createBy) {
+        this.createBy = createBy == null ? null : createBy.trim();
     }
 
     public Date getCreateDate() {
@@ -153,13 +151,5 @@ public class TsFunctionGroup {
 
     public void setSysCompanyCode(String sysCompanyCode) {
         this.sysCompanyCode = sysCompanyCode == null ? null : sysCompanyCode.trim();
-    }
-
-    public Integer getFatherId() {
-        return fatherId;
-    }
-
-    public void setFatherId(Integer fatherId) {
-        this.fatherId = fatherId;
     }
 }
