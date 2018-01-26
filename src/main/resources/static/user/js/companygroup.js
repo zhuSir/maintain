@@ -46,6 +46,8 @@ var CommitBtnInval = React.createClass({
         {
             alert("手机号为空");
             return;
+
+
         }
         $.ajax({
             type: "POST",
