@@ -11,7 +11,6 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-import java.util.Map;
 
 /**
  * Created by welleast on 2018/1/23.
@@ -31,7 +30,7 @@ public class GroupControllrer {
      * @return
      */
     @RequestMapping(value="/user/creatcompany",method = RequestMethod.POST)
-    private String creatGroup(String companyName,String reatUserName,String reatUserID){
+    private String creatGroup(String companyName,String reatUserName,int reatUserID){
 
         String resault =  ser.creatGroup(companyName,reatUserName,reatUserID);
 
@@ -43,7 +42,7 @@ public class GroupControllrer {
      * @return
      */
     @RequestMapping(value="/user/creatGroup",method = RequestMethod.POST)
-    private String creatGroup(String groupname,String companyID,String reatUserName,String reatUserID){
+    private String creatGroup(String groupname,String companyID,String reatUserName,int reatUserID){
 
          String resault =  ser.insertGroup(groupname,companyID,reatUserName,reatUserID);
 
@@ -62,7 +61,6 @@ public class GroupControllrer {
     //获取公司的详情
     @RequestMapping(value="/user/getCompanyInfo",method = RequestMethod.POST)
     private TsFunctionGroup getcompanyInfo(int companyID){
-
         TsFunctionGroup result  = ser.getcompanyInfo(companyID);
         return result;
     }
@@ -81,9 +79,8 @@ public class GroupControllrer {
      * @return
      */
     @RequestMapping(value="/user/listCompanyMember",method = RequestMethod.POST)
-    private List<Map<String,Object>> listCompanyMember(String companyID){
-        Integer companyId=Integer.valueOf(companyID);
-        List<Map<String,Object>> result = userService.selectUserList(companyID);
+    private JSONObject listCompanyMember(int companyID){
+        JSONObject result = userService.selectUserList(companyID);
         return result;
     }
 
