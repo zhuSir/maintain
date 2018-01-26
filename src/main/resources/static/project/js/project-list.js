@@ -61,6 +61,10 @@ var Mask=React.createClass({
 })
 /*删除按钮*/
 var Delete=React.createClass({
+    delete:function(){
+        $('#mdModal').modal('hide')
+       $(this) .parents().remove();
+    },
     render:function(){
         return(
             <div>
@@ -73,7 +77,7 @@ var Delete=React.createClass({
                             </div>
                             <div className="modal-footer">
                                 <button type="button" className="btn btn-default qu" data-dismiss="modal">取消</button>
-                                <button type="button" className="btn btn-primary" >确定</button>
+                                <button type="button" className="btn btn-primary" onClick={this.delete}>确定</button>
                             </div>
                         </div>
                     </div>
@@ -83,7 +87,7 @@ var Delete=React.createClass({
     }
 })
 /*编辑项目弹框*/
-var Edit=React.createClass({
+var Edit =React.createClass({
     render:function(){
         return(
             <div>
@@ -119,8 +123,8 @@ var Edit=React.createClass({
     }
 })
 /*创建项目提交操作*/
-var Cofirm=React.createClass({
-    commit:function(){
+var Cofirm =React.createClass({
+    add:function(){
         $('#myModal').modal('hide')
             var name= $(".modal-body form input").val();
             var pname=$('#pstates').val();
@@ -134,27 +138,30 @@ var Cofirm=React.createClass({
 
     },
     render:function(){
-        return <p onClick={this.commit}  className="btn btn-primary" id="commit">
+        return <p onClick={this.add}  className="btn btn-primary" id="commit">
             提交
         </p>
     }
 })
+/*编辑项目操作*/
 var Edits=React.createClass({
-    commit:function(){
-        $('#myModal').modal('hide')
+    edits:function(){
+        $('#meModal').modal('hide')
         var name= $(".modal-body form input").val();
-        var pname=$('#pstates').val();
+        var pname=$('#pname').val();
+        var pstates=$("#pstates").val();
         if(name==0)
         {
             alert("输入框为空，请输入！");
             return;
         }else{
-            $('.state').html(pname);
+            $('.pname').html(pname);
+            $('.state').html(pstates);
         }
 
     },
     render:function(){
-        return <p onClick={this.Edits}  className="btn btn-primary" id="commit">
+        return <p onClick={this.Edits}  className="btn btn-primary" id="edis">
              确定
         </p>
     }
