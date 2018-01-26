@@ -25,6 +25,7 @@ public class UserGrouplmpl extends BaseServiceImpl<TsFunctionGroup> implements U
         super(dao);
     }
 
+
      @Autowired
     private TsFunctionGroupMapper dao;
 
