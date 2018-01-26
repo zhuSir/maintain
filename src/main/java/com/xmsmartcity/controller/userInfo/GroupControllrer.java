@@ -78,14 +78,6 @@ public class GroupControllrer {
         return result;
     }
 
-    //邀请组成员
-    @RequestMapping(value = "/user/invitePeopleGroup",method = RequestMethod.POST)
-    public Object invitePeopleGroup(String phone,String companyID,String groupID){
-
-        Object  result = userService.invitePeopleGroup(phone,companyID,groupID);
-        return result;
-    }
-
     /**
      * 获取公司成员
      * @param companyID
@@ -94,6 +86,14 @@ public class GroupControllrer {
     @RequestMapping(value="/user/listCompanyMember",method = RequestMethod.POST)
     private List<Map<String,Object>> listCompanyMember(String companyID){
         List<Map<String,Object>> result = userService.selectUserList(companyID);
+        return result;
+    }
+
+    //邀请组成员
+    @RequestMapping(value = "/user/invitePeopleGroup",method = RequestMethod.POST)
+    public Object invitePeopleGroup(String phone,String companyID,String groupID){
+
+        Object  result = userService.invitePeopleGroup(phone,companyID,groupID);
         return result;
     }
 
