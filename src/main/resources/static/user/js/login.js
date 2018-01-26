@@ -37,6 +37,13 @@ var DengluBtn = React.createClass({
                 dataType: "json",
                 success: function (res) {
                     if (res.code == 0) {
+                        Cookies.set('userId', res.data.id, {expires: 7, path: '/'});
+                        Cookies.set('phone', res.data.mobilephone, {expires: 7, path: '/'});
+                        Cookies.set('userName', res.data.createName, {expires: 7, path: '/'});
+                        Cookies.set('companyId', res.data.companyid, {expires: 7, path: '/'});
+                        Cookies.set('companyName', res.data.companyName, {expires: 7, path: '/'});
+                        Cookies.set('groupId', res.data.groupid, {expires: 7, path: '/'});
+                        Cookies.set('groupName', res.data.groupName, {expires: 7, path: '/'});
                         window.location.href = "../../base/index.html";
                     } else {
                         alert(res.info);
