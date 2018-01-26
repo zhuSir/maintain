@@ -61,11 +61,11 @@ public class UserServiceImpl extends BaseServiceImpl<TsUser> implements UserServ
             String phone = tsUser.getMobilephone();
             String password = tsUser.getPassword();
             TsUser tsUserReturn = dao.selectUser(phone);
-            if (tsUserReturn != null&&phone.equals(tsUserReturn.getMobilephone())&& password.equals(tsUserReturn.getPassword())){
+            if (tsUserReturn != null && phone.equals(tsUserReturn.getMobilephone()) && password.equals(tsUserReturn.getPassword())) {
                 json.put("code", 0);
-                json.put("data",tsUserReturn);
+                json.put("data", tsUserReturn);
                 json.put("info", "登陆成功");
-            }else {
+            } else {
                 json.put("code", 1);
                 json.put("info", "手机号或密码错误");
             }
@@ -74,9 +74,14 @@ public class UserServiceImpl extends BaseServiceImpl<TsUser> implements UserServ
     }
 
     @Override
-    public List<Map<String, Object>> selectList(String phone,String name) {
-        List<Map<String,Object>> result = dao.selectList(phone,name);
+    public List<Map<String, Object>> selectList(String phone, String name) {
+        List<Map<String, Object>> result = dao.selectList(phone, name);
         return result;
+    }
+
+    @Override
+    public List<Map<String, Object>> selectUserList(String companyID) {
+        return dao.selectUserList(companyID);
     }
 
     @Override
@@ -85,55 +90,52 @@ public class UserServiceImpl extends BaseServiceImpl<TsUser> implements UserServ
     }
 
 
-
     //邀请用户 进入到组
     @Override
     public Object invitePeopleGroup(String phone, String companyID, String groupID) {
-
         JSONObject json = new JSONObject();
-    if (phone==null|| companyID==null|| groupID==null)
-    {
-        json.put("code", 1);
-        json.put("info", "缺少参数");
-    }else
-    {
-        TsUser tsUserReturn = dao.selectUser(phone);
-        if (tsUserReturn==null)
-        {
-            json.put("code", 0);
-            json.put("info", "没有此用户");
-        }else if(tsUserReturn.getCompanyid()>0)
-        {
-            json.put("code", 0);
-            json.put("info", "用户已有公司");
-        }
-        else
-        {
-            int result = dao.invitePeopleGroup(phone,companyID,groupID);
-            if (result==1)
-            {
+        if (phone == null || companyID == null || groupID == null) {
+            json.put("code", 1);
+            json.put("info", "缺少参数");
+        } else {
+            TsUser tsUserReturn = dao.selectUser(phone);
+            if (tsUserReturn == null) {
                 json.put("code", 0);
-                json.put("info", "邀请成功");
-            }
-            else
-            {
-                json.put("code", 1);
-                json.put("info", "邀请失败");
+                json.put("info", "没有此用户");
+            } else if (tsUserReturn.getCompanyid() > 0) {
+                json.put("code", 0);
+                json.put("info", "用户已有公司");
+            } else {
+                int result = dao.invitePeopleGroup(phone, companyID, groupID);
+                if (result == 1) {
+                    json.put("code", 0);
+                    json.put("info", "邀请成功");
+                } else {
+                    json.put("code", 1);
+                    json.put("info", "邀请失败");
+                }
             }
         }
-
-
-
-    }
-
-
         return json;
     }
-
-
 
     @Override
     public TsUser selectUserById(int userId) {
         return dao.selectUserById(userId);
     }
+
+    @Override
+    public String deleteGroupUser(int userId) {
+        JSONObject json = new JSONObject();
+        int deleteState = dao.deleteGroupUser(userId);
+        if (deleteState==0){
+            json.put("code", 1);
+            json.put("info", "移除失败");
+        }else {
+            json.put("code", 0);
+            json.put("info", "移除成功");
+        }
+        return json.toJSONString();
+    }
+
 }

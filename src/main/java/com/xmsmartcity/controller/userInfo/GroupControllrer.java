@@ -86,4 +86,15 @@ public class GroupControllrer {
         return result;
     }
 
+    /**
+     * 获取公司成员
+     * @param companyID
+     * @return
+     */
+    @RequestMapping(value="/user/listCompanyMember",method = RequestMethod.POST)
+    private List<Map<String,Object>> listCompanyMember(String companyID){
+        List<Map<String,Object>> result = userService.selectUserList(companyID);
+        return result;
+    }
+
 }

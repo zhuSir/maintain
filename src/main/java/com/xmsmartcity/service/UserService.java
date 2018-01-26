@@ -21,6 +21,8 @@ public interface UserService extends BaseService<TsUser> {
 
     List<Map<String,Object>> selectList(String phone, String name);
 
+    List<Map<String,Object>> selectUserList(String companyID);
+
     /*
     * phone查询用户
     */
@@ -29,9 +31,13 @@ public interface UserService extends BaseService<TsUser> {
     //邀请用户
     Object invitePeopleGroup(String phone,String companyID,String groupID);
 
-
     /*
     * id查询用户
     */
     TsUser selectUserById(int id);
+
+    /*
+    * id移除组
+    */
+    String deleteGroupUser(int userId);
 }

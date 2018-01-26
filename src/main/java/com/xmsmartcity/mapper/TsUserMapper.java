@@ -16,7 +16,15 @@ public interface TsUserMapper extends BaseDao<TsUser>{
 
     List<Map<String,Object>> selectList(@Param("phone")String mobilePhone,@Param("name") String createName);
 
+    List<Map<String,Object>> selectUserList(@Param("companyID")String companyId);
+
     //邀请用户到组
     int invitePeopleGroup(@Param("phone")String phone,@Param("groupID")String groupID,@Param("companyID")String companyID);
+
+    //更新用户的公司ID
+    int updateUserCompanyInfo(@Param("userId")String userId,@Param("companyID")int companyID);
+
+    //
+    int deleteGroupUser(int userId);
 
 }
