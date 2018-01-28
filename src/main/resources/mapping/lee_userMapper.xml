@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.xmsmartcity.LeeModules.mapper.lee_userMapper">
+
+    <resultMap id="userMap" type="com.xmsmartcity.LeeModules.pojo.Lee_user">
+        <id column="id" property="id" jdbcType="INTEGER" />
+        <result column="phone" property="phone" jdbcType="VARCHAR" />
+        <result column="password" property="password" jdbcType="VARCHAR" />
+    </resultMap>
+
+    <sql id="user">
+      id,phone,password
+    </sql>
+
+    <select id="selectUserByPhone" resultMap="userMap" parameterType="java.lang.String">
+        SELECT
+         <include refid = "user" />
+        FROM lee_user
+        WHERE  phone = #{mobilePhone,jdbcType=VARCHAR}
+    </select>
+
+    <select id="selectUserById" resultMap="userMap" parameterType="java.lang.Integer">
+        select
+        <include refid = "user" />
+        from lee_user
+     where id = #{userid,jdbcType =INTEGER}
+    </select>
+
+    <insert id="addUser" parameterType="com.xmsmartcity.LeeModules.pojo.Lee_user">
+
+        insert into lee_user
+        <trim prefix="(" suffix=")" suffixOverrides="," >
+            <if test="id != null" >
+                id,
+            </if>
+        <if test="phone != null" >
+         phone,
+         </if>
+        <if test="password != null" >
+         password,
+         </if>
+         </trim>
+
+        <trim prefix="values (" suffix=")" suffixOverrides="," >
+              <if test="id != null" >
+                  #{id,jdbcType=INTEGER},
+              </if>
+         <if test="phone != null">
+             #{phone,jdbcType = VARCHAR},
+         </if>
+          <if test="password != null">
+            #{password,jdbcType = VARCHAR},
+          </if>
+          </trim>
+
+    </insert>
+
+    <delete id ="deleteUserByPrimaryKey" parameterType="java.lang.Integer">
+
+        DELETE FROM lee_user
+        WHERE id =  #{id,jdbcType=INTEGER}
+
+    </delete>
+
+    <update id="updateByUser" parameterType="com.xmsmartcity.LeeModules.pojo.Lee_user">
+
+        UPDATE  lee_user
+       set phone = #{phone,jdbcType = VARCHAR},
+        password = #{password,jdbcType = VARCHAR}
+        WHERE id = #{id,jdbcType=INTEGER}
+
+    </update>
+
+
+
+
+</mapper>
+
