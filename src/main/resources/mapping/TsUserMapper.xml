@@ -274,7 +274,7 @@
   </select>
 
   <!--公司id查询用户-->
-  <select id="selectUserList" parameterType="map" resultType="map">
+  <select id="selectUserList" parameterType="java.lang.Integer" resultMap="BaseResultMap">
     select
     <include refid="Base_Column_List"/>
     from t_s_user

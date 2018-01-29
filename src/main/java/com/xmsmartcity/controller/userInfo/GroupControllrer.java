@@ -23,7 +23,7 @@ public class GroupControllrer {
     private   UserGroupService ser;
 
     @Autowired
-    UserService userService;
+    private UserService userService;
 
     /**
      * 创建公司
