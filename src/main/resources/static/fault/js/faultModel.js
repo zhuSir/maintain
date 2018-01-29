@@ -4,6 +4,7 @@ var ProjectList = React.createClass({
             projectList : []
         };
     },
+
     componentDidMount: function() {
         this.serverRequest = $.post("/project/select",{uId:1},function (result) {
             this.setState({
@@ -14,6 +15,7 @@ var ProjectList = React.createClass({
     componentWillUnmount: function() {
         this.serverRequest.abort();
     },
+
     render:function(){
         var list=this.state.projectList.map(function(item){
             return (<option value={item.id}>{item.name}</option>)
