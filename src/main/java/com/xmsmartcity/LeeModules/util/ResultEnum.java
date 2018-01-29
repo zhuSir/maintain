@@ -1,4 +1,4 @@
-package com.xmsmartcity.LeeModules.util;
+package com.xmsmartcity.leeModules.util;
 
 /**
  * Created by lingyun on 2018/1/28.
