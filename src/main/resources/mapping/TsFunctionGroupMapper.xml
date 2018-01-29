@@ -222,7 +222,7 @@
     where id = #{id,jdbcType=INTEGER}
   </update>
 
-  <select id="getGroupList" parameterType="java.lang.String" resultMap="map" >
+  <select id="getGroupList" parameterType="java.lang.String" resultMap="BaseResultMap" >
     select
     id,group_name,dept_id,pid
     from t_s_function_group
