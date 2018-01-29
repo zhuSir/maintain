@@ -5,7 +5,7 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-@MapperScan("com.xmsmartcity.mapper")
+@MapperScan({"com.xmsmartcity.mapper","com.xmsmartcity.LeeModules.mapper"})
 public class MaintainApplication {
 
 	public static void main(String[] args) {
