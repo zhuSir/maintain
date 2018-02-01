@@ -49,9 +49,9 @@ var Mask = React.createClass({
     },
     render: function () {
         var date = new Date(this.state.Projects.planStartDate);
-        var stareDate = date.getFullYear() + "年" + (date.getMonth() + 1) + "月" + date.getDay() + "日";
+        var stareDate = date.getFullYear() + "年" + (date.getMonth() + 1) + "月" + date.getDate() + "日";
         date = new Date(this.state.Projects.planEndDate);
-        var endDate = date.getFullYear() + "年" + (date.getMonth() + 1) + "月" + date.getDay() + "日";
+        var endDate = date.getFullYear() + "年" + (date.getMonth() + 1) + "月" + date.getDate() + "日";
         var bidState;
         switch (this.state.Projects.bidState) {
             case 0:
@@ -81,7 +81,7 @@ var Mask = React.createClass({
             auditDate = "未审核"
         } else {
             date = new Date(this.state.Projects.auditDate);
-            auditDate = date.getFullYear() + "年" + (date.getMonth() + 1) + "月" + date.getDay() + "日";
+            auditDate = date.getFullYear() + "年" + (date.getMonth() + 1) + "月" + date.getDate() + "日";
         }
         return (
             <div>
@@ -169,9 +169,9 @@ var ContentUI = React.createClass({
     render: function () {
 
         var date = new Date(this.state.Projects.planStartDate);
-        var stareDate = date.getFullYear() + "年" + (date.getMonth() + 1) + "月" + date.getDay() + "日";
+        var stareDate = date.getFullYear() + "年" + (date.getMonth() + 1) + "月" + date.getDate() + "日";
         date = new Date(this.state.Projects.planEndDate);
-        var endDate = date.getFullYear() + "年" + (date.getMonth() + 1) + "月" + date.getDay() + "日";
+        var endDate = date.getFullYear() + "年" + (date.getMonth() + 1) + "月" + date.getDate() + "日";
         var bidState;
         switch (this.state.Projects.bidState) {
             case 0:
@@ -201,7 +201,7 @@ var ContentUI = React.createClass({
             auditDate = "未审核"
         } else {
             date = new Date(this.state.Projects.auditDate);
-            auditDate = date.getFullYear() + "年" + (date.getMonth() + 1) + "月" + date.getDay() + "日";
+            auditDate = date.getFullYear() + "年" + (date.getMonth() + 1) + "月" + date.getDate() + "日";
         }
         return (<div className="container">
                 <div className="main">
