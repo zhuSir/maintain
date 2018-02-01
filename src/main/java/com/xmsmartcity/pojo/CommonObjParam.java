@@ -12,7 +12,7 @@ public class CommonObjParam implements Serializable{
 	private String funcName;
 
 	// 调用的服务名
-	private String serviceName;
+	private String controllerName;
 
 	// 请求序列号，允许空
 	private String serialNumber;
@@ -116,12 +116,12 @@ public class CommonObjParam implements Serializable{
 		this.funcName = funcName;
 	}
 
-	public String getServiceName() {
-		return serviceName;
+	public String getControllerName() {
+		return controllerName;
 	}
 
-	public void setServiceName(String serviceName) {
-		this.serviceName = serviceName;
+	public void setControllerName(String controllerName) {
+		this.controllerName = controllerName;
 	}
 
 	public String getUserAccount() {

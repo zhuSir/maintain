@@ -49,7 +49,7 @@ public class CommonController {
         CommonObjReturn json_obj_return = null;
         CommonSecurityObjParam commonSecurityObjParam = null;
         String funcName = "";
-        String serviceName = "";
+        String controllerName = "";
         String accessTocken = "";
         String serialNumber = "";
         String reqTime = "";
@@ -65,7 +65,7 @@ public class CommonController {
                 logger.info("开始处理CommonApi, 提交的参数为：" + JSON.toJSONString(objparam));
                 // 结构体解析与通用参数获取
                 funcName = objparam.getFuncName().toString();
-                serviceName = objparam.getServiceName().toString();
+                controllerName = objparam.getControllerName().toString();
                 serialNumber = objparam.getSerialNumber().toString();
                 reqTime = objparam.getReqTime().toString();
                 userAccount = objparam.getUserAccount();
@@ -121,14 +121,19 @@ public class CommonController {
             objparam.setUserName("");
 
             // 反射跳转
-            json_obj_return = reInvoke(serviceName, funcName, objparam, request, response);
+            json_obj_return = reInvoke(controllerName, funcName, objparam, request, response);
 
             if (json_obj_return != null)
                 return json_obj_return;
-            else
+            else {
                 // 无法获取业务模块的任何返回，很可能的原因是：业务模块出现无法预料的错误，并且没有抛出错误到common层
                 // 这个时候必须做统一的出错处理
-                return AjaxHelper.newFaildForSystemError();
+                ErrorRecord er = new ErrorRecord();
+                er.setCode("sys_0000");
+                er.setComment("系统遇到内部错误，请联系管理员");
+                return AjaxHelper.newFaildForBusinessError(er, null);
+            }
+//                return AjaxHelper.newFaildForSystemError();
 
         } catch (Exception e) {
             logger.error(e);
@@ -159,7 +164,11 @@ public class CommonController {
             // 反射错误，一般是没有对应的controll，或者controller没有注解命名
             logger.error(e);
             e.printStackTrace();
-            return AjaxHelper.newFaildForSystemError();
+            ErrorRecord er = new ErrorRecord();
+            er.setErrStack(ExceptionUtils.getStackTrace(e));
+            er.setCode("sys_0001");
+            er.setComment("无法找到相应方法，请联系管理员");
+            return AjaxHelper.newFaildForBusinessError(er, null);
         }
 
         if (method == null) {
@@ -171,7 +180,11 @@ public class CommonController {
                 // 反射错误，一般是没有对应的controll，或者controller没有注解命名
                 logger.error(e);
                 e.printStackTrace();
-                return AjaxHelper.newFaildForSystemError();
+                ErrorRecord er = new ErrorRecord();
+                er.setErrStack(ExceptionUtils.getStackTrace(e));
+                er.setCode("sys_0001");
+                er.setComment("无法找到相应方法，请联系管理员");
+                return AjaxHelper.newFaildForBusinessError(er, null);
             }
         }
 
@@ -184,7 +197,11 @@ public class CommonController {
                 // 反射错误，一般是没有对应的controll，或者controller没有注解命名
                 logger.error(e);
                 e.printStackTrace();
-                return AjaxHelper.newFaildForSystemError();
+                ErrorRecord er = new ErrorRecord();
+                er.setErrStack(ExceptionUtils.getStackTrace(e));
+                er.setCode("sys_0001");
+                er.setComment("无法找到相应方法，请联系管理员");
+                return AjaxHelper.newFaildForBusinessError(er, null);
             }
         }
 
@@ -206,14 +223,20 @@ public class CommonController {
                             springContextsController.getBean(beanName), objparam, request, response);
                 default:
                     // 请求的方法，参数书写错误，属于编码规范未遵循
-                    return AjaxHelper.newFaildForSystemError();
+                    ErrorRecord er = new ErrorRecord();
+                    er.setCode("sys_0002");
+                    er.setComment("参数有误，请联系管理人员");
+                    return AjaxHelper.newFaildForBusinessError(er, null);
             }
 
         } catch (Exception e) {
             // 转交到业务模块后，业务模块处理出错且没有被业务模块自身catch住
             logger.error(e);
             e.printStackTrace();
-            return AjaxHelper.newFaildForSystemError();
+            ErrorRecord er = new ErrorRecord();
+            er.setCode("sys_0003");
+            er.setComment("系统异常，请联系管理人员");
+            return AjaxHelper.newFaildForBusinessError(er, null);
         }
     }
 

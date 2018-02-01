@@ -50,4 +50,14 @@ public class EquipController {
         commonObjReturn.setResultTime(DateUtils.DateToString(new Date(),DateUtils.formatStr_yyyyMMddHHmmss));
         return commonObjReturn;
     }
+
+    @ResponseBody
+    public CommonObjReturn getEquipById(@RequestBody CommonObjParam objparam, HttpServletRequest request, HttpServletResponse response){
+        List<TeEquip> list=equipService.selectEquipList();
+        CommonObjReturn commonObjReturn=new CommonObjReturn();
+        commonObjReturn.setData(list);
+        commonObjReturn.setResult("true");
+        commonObjReturn.setResultTime(DateUtils.DateToString(new Date(),DateUtils.formatStr_yyyyMMddHHmmss));
+        return commonObjReturn;
+    }
 }
