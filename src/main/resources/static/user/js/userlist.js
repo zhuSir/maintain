@@ -3,9 +3,6 @@ var ModelPush = React.createClass({
     render: function () {
         return (
             <div>
-                <button className="btn btn-success top15" data-toggle="modal" data-target="#myModal1">
-                    邀请成员
-                </button>
                 <div className="modal fade" id="myModal1" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
                      aria-hidden="true">
                     <div className="modal-dialog">
@@ -64,14 +61,14 @@ var BgDiv = React.createClass({
     },
 
     render: function () {
-        var list = this.state.projectList.map(function (item) {
+        var list = this.state.listUser.map(function (item) {
             return (
                 <tr>
-                    <td>张也</td>
-                    <td>15738039217</td>
-                    <td>研发部</td>
+                    <td>{item.createName}</td>
+                    <td>{item.mobilephone}</td>
+                    <td>{item.groupName}</td>
                     <td>
-                        <EditBtn/>
+                        <EditBtn data={item.id}/>
                     </td>
                 </tr>
             )
@@ -94,7 +91,6 @@ var BgDiv = React.createClass({
                     <tbody>
                     {list}
                     </tbody>
-
                 </table>
             </div>
         )
@@ -102,10 +98,28 @@ var BgDiv = React.createClass({
 });
 
 var EditBtn = React.createClass({
+
+    removeCompany: function () {
+        var id = $('#removeCompany').val();
+        alert(id);
+
+        $.post("/userinfo/deleteGroupUser", {userId: id}, function (res) {
+            if (res != "" && res != undefined && res != null) {
+                if (res.code != 0) {
+                    alert(res.info);
+                } else {
+                    this.getDOMNode().remove();
+                }
+            }
+        })
+    },
+
     render: function () {
         return (
-            <div>
-                <button className="btn btn-info">移除</button>
+            <div >
+                <button id="removeCompany" value={this.props.data} type="button" className="btn btn-info"
+                        onClick={this.removeCompany}>移除
+                </button>
             </div>
         )
     }

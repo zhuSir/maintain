@@ -10,7 +10,9 @@ var config = {
     //id获取用户
     getUserById:  "/userinfo/getUserById",
     //公司id获取用户列表
-    listCompanyMember:  "/user/listCompanyMember"
+    listCompanyMember:  "/user/listCompanyMember" ,
+    //id删除公司成员
+    deleteGroupUser:  "/userinfo/deleteGroupUser"
 
 
 };

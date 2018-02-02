@@ -40,5 +40,5 @@ public interface UserService extends BaseService<TsUser> {
     /*
     * id移除组
     */
-    String deleteGroupUser(int userId);
+    JSONObject deleteGroupUser(int userId);
 }

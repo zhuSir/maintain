@@ -134,7 +134,7 @@ public class UserServiceImpl extends BaseServiceImpl<TsUser> implements UserServ
     }
 
     @Override
-    public String deleteGroupUser(int userId) {
+    public JSONObject deleteGroupUser(int userId) {
         JSONObject json = new JSONObject();
         int deleteState = dao.deleteGroupUser(userId);
         if (deleteState==0){
@@ -144,7 +144,7 @@ public class UserServiceImpl extends BaseServiceImpl<TsUser> implements UserServ
             json.put("code", 0);
             json.put("info", "移除成功");
         }
-        return json.toJSONString();
+        return json;
     }
 
 }
