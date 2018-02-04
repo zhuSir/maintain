@@ -25,7 +25,7 @@ public class UserGrouplmpl extends BaseServiceImpl<TsFunctionGroup> implements U
     }
 
 
-     @Autowired
+    @Autowired
     private TsFunctionGroupMapper dao;
 
     @Autowired
@@ -33,7 +33,7 @@ public class UserGrouplmpl extends BaseServiceImpl<TsFunctionGroup> implements U
 
     //创建公司
     @Override
-    public String creatGroup(String companyName,String reatUserName,int reatUserID) {
+    public String creatGroup(String companyName, String reatUserName, int reatUserID) {
         TsFunctionGroup group = new TsFunctionGroup();
         group.setGroupName(companyName);
         group.setPid("0");
@@ -44,16 +44,14 @@ public class UserGrouplmpl extends BaseServiceImpl<TsFunctionGroup> implements U
         if (result == 1) {
             //创建成功
 
-            int updateUserINfo =userdao.updateUserCompanyInfo(reatUserID,group.getId(),companyName);
-            if (updateUserINfo==1)
-            {
+            int updateUserINfo = userdao.updateUserCompanyInfo(reatUserID, group.getId(), companyName);
+            if (updateUserINfo == 1) {
                 json.put("code", 0);
                 json.put("info", "创建成功");
-                json.put("companyID",group.getId());
-                json.put("companyName",companyName);
+                json.put("companyID", group.getId());
+                json.put("companyName", companyName);
 
-            }else
-            {
+            } else {
                 json.put("code", 1);
                 json.put("info", "创建失败");
             }
@@ -63,8 +61,7 @@ public class UserGrouplmpl extends BaseServiceImpl<TsFunctionGroup> implements U
             json.put("code", 0);
             json.put("info", "创建成功");
 
-        } else
-        {
+        } else {
             //创建失败
             json.put("code", 1);
             json.put("info", "创建失败");
@@ -77,36 +74,41 @@ public class UserGrouplmpl extends BaseServiceImpl<TsFunctionGroup> implements U
 
     //创建组
     @Override
-    public String insertGroup(String groupname,String companyID,String reatUserName,int reatUserID) {
-
+    public String insertGroup(String groupname, String companyID, String reatUserName, int reatUserID) {
         TsFunctionGroup group = new TsFunctionGroup();
         group.setGroupName(groupname);
         group.setPid(companyID);
         group.setCreateName(reatUserName);//创建人
         group.setCreateBy(reatUserID);// 创建人
-        JSONObject json = new JSONObject();
         int result = dao.insert(group);
-
-        if (result == 1) {
-            //创建成功
-            json.put("code", 0);
-            json.put("info", "创建成功");
-
-        } else
-        {
-            //创建失败
-            json.put("code", 1);
-            json.put("info", "创建失败");
-
-        }
-
-        return json.toString();
+        return result + "";
     }
 
-      @Override
-    public List<TsFunctionGroup> getGroupList(String id ) {
+    @Override
+    public List<TsFunctionGroup> getGroupList(String id) {
         List<TsFunctionGroup> result = dao.getGroupList(id);
         return result;
+    }
+
+    @Override
+    public TsFunctionGroup getGroup(String companyID, String groupname) {
+       TsFunctionGroup result = dao.getGroup(companyID,groupname);
+        return result;
+    }
+
+    @Override
+    public JSONObject removeGroup(String groupId) {
+        Integer id = Integer.valueOf(groupId);
+        JSONObject json = new JSONObject();
+        int deleteState = dao.deleteByPrimaryKey(id);
+        if (deleteState==0){
+            json.put("code", 1);
+            json.put("info", "移除失败");
+        }else {
+            json.put("code", 0);
+            json.put("info", "移除成功");
+        }
+        return json;
     }
 
     @Override
@@ -125,16 +127,11 @@ public class UserGrouplmpl extends BaseServiceImpl<TsFunctionGroup> implements U
             json.put("info", "却少参数");
         } else {//参数存在，判断是否重复创建
             TsUser userReturn = userdao.selectUser(phone);
-            if (userReturn.getCompanyid()==0)
-            {
+            if (userReturn.getCompanyid() == 0) {
                 //获取人的ID，修改她的公司ID，
-
-
                 json.put("code", 0);
                 json.put("info", "success");
-            }
-            else
-            {
+            } else {
                 //用户有公司
                 json.put("code", 0);
                 json.put("info", "用户有公司");

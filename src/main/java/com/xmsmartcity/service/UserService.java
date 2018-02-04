@@ -24,6 +24,8 @@ public interface UserService extends BaseService<TsUser> {
 
     JSONObject selectUserList(int companyID);
 
+    JSONObject listGroupMember(String groupId);
+
     /*
     * phone查询用户
     */
@@ -40,5 +42,5 @@ public interface UserService extends BaseService<TsUser> {
     /*
     * id移除组
     */
-    String deleteGroupUser(int userId);
+    JSONObject deleteGroupUser(int userId);
 }

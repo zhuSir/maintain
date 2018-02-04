@@ -94,6 +94,20 @@ public class UserServiceImpl extends BaseServiceImpl<TsUser> implements UserServ
     }
 
     @Override
+    public JSONObject listGroupMember(String groupId) {
+        JSONObject json = new JSONObject();
+        List<TsUser> tsUsers = dao.listGroupMember(groupId);
+        if (null==tsUsers){
+            json.put("code",1);
+            json.put("data","数据库查询异常");
+        }else {
+            json.put("code",0);
+            json.put("data",tsUsers);
+        }
+        return json;
+    }
+
+    @Override
     public TsUser selectByPhone(String phone) {
         return dao.selectUser(phone);
     }
@@ -109,10 +123,10 @@ public class UserServiceImpl extends BaseServiceImpl<TsUser> implements UserServ
         } else {
             TsUser tsUserReturn = dao.selectUser(phone);
             if (tsUserReturn == null) {
-                json.put("code", 0);
+                json.put("code", 1);
                 json.put("info", "没有此用户");
             } else if (tsUserReturn.getCompanyid() > 0) {
-                json.put("code", 0);
+                json.put("code", 1);
                 json.put("info", "用户已有公司");
             } else {
                 int result = dao.invitePeopleGroup(phone, companyID, groupID);
@@ -134,7 +148,7 @@ public class UserServiceImpl extends BaseServiceImpl<TsUser> implements UserServ
     }
 
     @Override
-    public String deleteGroupUser(int userId) {
+    public JSONObject deleteGroupUser(int userId) {
         JSONObject json = new JSONObject();
         int deleteState = dao.deleteGroupUser(userId);
         if (deleteState==0){
@@ -144,7 +158,7 @@ public class UserServiceImpl extends BaseServiceImpl<TsUser> implements UserServ
             json.put("code", 0);
             json.put("info", "移除成功");
         }
-        return json.toJSONString();
+        return json;
     }
 
 }

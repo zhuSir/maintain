@@ -25,7 +25,7 @@
     father_id
   </sql>
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
-    select 
+    select
     <include refid="Base_Column_List" />
     from t_s_function_group
     where id = #{id,jdbcType=INTEGER}
@@ -246,4 +246,16 @@
     #{updateDate,jdbcType=TIMESTAMP}, #{sysOrgCode,jdbcType=VARCHAR}, #{sysCompanyCode,jdbcType=VARCHAR},
     #{fatherId,jdbcType=INTEGER})
   </insert>
+
+    <!-- 查询某一组 -->
+    <select id="getGroup" parameterType="map" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from t_s_function_group
+        where
+        pid = #{companyID}
+        AND group_name = #{groupname}
+    </select>
+
+
 </mapper>
