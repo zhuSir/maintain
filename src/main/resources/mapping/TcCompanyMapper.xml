@@ -15,8 +15,6 @@
     <result column="area" property="area" jdbcType="VARCHAR" />
     <result column="addr" property="addr" jdbcType="VARCHAR" />
     <result column="create_person_id" property="createPersonId" jdbcType="INTEGER" />
-    <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
-    <result column="update_time" property="updateTime" jdbcType="TIMESTAMP" />
   </resultMap>
   <sql id="Base_Column_List" >
     id, name, manager_name, manager_phone, level, mark, lat, lng, province, city, area, 
@@ -212,7 +210,7 @@
   </update>
 
   <!--自定义-->
-  <select id="selectAllCompany" parameterType="java.lang.Integer">
+  <select id="selectAllCompany" parameterType="java.lang.Integer" resultMap="BaseResultMap">
     select
     <include refid="Base_Column_List" />
     from t_c_company

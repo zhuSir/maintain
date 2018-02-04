@@ -16,6 +16,7 @@ import java.util.List;
  * @Date: Created on 11:41 2018/1/25
  * @Modified By:
  */
+
 @Service("companyService")
 public class CompanyServiceImpl extends BaseServiceImpl<TcCompany> implements CompanyService {
 
