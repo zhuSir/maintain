@@ -24,6 +24,8 @@ public interface UserService extends BaseService<TsUser> {
 
     JSONObject selectUserList(int companyID);
 
+    JSONObject listGroupMember(String groupId);
+
     /*
     * phone查询用户
     */

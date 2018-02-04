@@ -122,11 +122,29 @@ public class GroupControllrer {
     }
 
     //邀请组成员
-    @RequestMapping(value = "/user/invitePeopleGroup", method = RequestMethod.POST)
-    public Object invitePeopleGroup(String phone, String companyID, String groupID) {
-
+    public CommonObjReturn invitePeopleGroup(@RequestBody CommonObjParam objparam, HttpServletRequest request, HttpServletResponse response) {
+        HashMap map = (HashMap) objparam.getData();
+        String phone = map.get("phone").toString();
+        String companyID = map.get("companyId").toString();
+        String groupID = map.get("groupID").toString();
         Object result = userService.invitePeopleGroup(phone, companyID, groupID);
-        return result;
+        CommonObjReturn commonObjReturn = new CommonObjReturn();
+        commonObjReturn.setData(result);
+        commonObjReturn.setResult("true");
+        commonObjReturn.setResultTime(DateUtils.DateToString(new Date(), DateUtils.formatStr_yyyyMMddHHmmss));
+        return commonObjReturn;
+    }
+
+    //获取组成员
+    public CommonObjReturn listGroupMember(@RequestBody CommonObjParam objparam, HttpServletRequest request, HttpServletResponse response) {
+        HashMap map = (HashMap) objparam.getData();
+        String groupId = map.get("groupId").toString();
+        JSONObject result = userService.listGroupMember(groupId);
+        CommonObjReturn commonObjReturn = new CommonObjReturn();
+        commonObjReturn.setData(result);
+        commonObjReturn.setResult("true");
+        commonObjReturn.setResultTime(DateUtils.DateToString(new Date(), DateUtils.formatStr_yyyyMMddHHmmss));
+        return commonObjReturn;
     }
 
 }
