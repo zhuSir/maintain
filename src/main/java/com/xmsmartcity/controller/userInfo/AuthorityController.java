@@ -50,7 +50,6 @@ public class AuthorityController {
         model.setFault(1);
         model.setLook(1);
         model.setUnlookfault(1);
-        model.setUpdate(1);
 
 
         Integer insertResult =   Authser.insert(model);
