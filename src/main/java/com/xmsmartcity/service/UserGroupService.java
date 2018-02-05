@@ -17,13 +17,16 @@ public interface UserGroupService extends BaseService<TsFunctionGroup> {
     //创建组
     public String insertGroup(String groupname ,String companyID,String reatUserName,int reatUserID);
 
-
-
     //获组列表
     public List<TsFunctionGroup> getGroupList(String sonID);
 
-    //过去公司的详情，根据id获取，z
+    //获组列表某一条
+    public TsFunctionGroup getGroup(String companyID,String groupname);
 
+    //获组列表某一条
+    public JSONObject removeGroup(String groupId);
+
+    //过去公司的详情，根据id获取，z
     public TsFunctionGroup getcompanyInfo(int ID);
 
     //邀请成员

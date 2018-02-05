@@ -1,43 +1,43 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.xmsmartcity.mapper.TsUserMapper" >
-  <resultMap id="BaseResultMap" type="com.xmsmartcity.pojo.TsUser" >
-    <id column="id" property="id" jdbcType="INTEGER" />
-    <result column="email" property="email" jdbcType="VARCHAR" />
-    <result column="mobilePhone" property="mobilephone" jdbcType="VARCHAR" />
-    <result column="signatureFile" property="signaturefile" jdbcType="VARCHAR" />
-    <result column="update_name" property="updateName" jdbcType="VARCHAR" />
-    <result column="update_date" property="updateDate" jdbcType="TIMESTAMP" />
-    <result column="update_by" property="updateBy" jdbcType="INTEGER" />
-    <result column="create_name" property="createName" jdbcType="VARCHAR" />
-    <result column="create_date" property="createDate" jdbcType="TIMESTAMP" />
-    <result column="create_by" property="createBy" jdbcType="INTEGER" />
-    <result column="portrait" property="portrait" jdbcType="VARCHAR" />
-    <result column="imsign" property="imsign" jdbcType="VARCHAR" />
-    <result column="dev_flag" property="devFlag" jdbcType="VARCHAR" />
-    <result column="level" property="level" jdbcType="INTEGER" />
-    <result column="password" property="password" jdbcType="VARCHAR" />
-    <result column="companyID" property="companyid" jdbcType="INTEGER" />
-    <result column="company_name" property="companyName" jdbcType="VARCHAR" />
-    <result column="groupid" property="groupid" jdbcType="INTEGER" />
-    <result column="group_name" property="groupName" jdbcType="VARCHAR" />
-  </resultMap>
-  <sql id="Base_Column_List" >
+<mapper namespace="com.xmsmartcity.mapper.TsUserMapper">
+    <resultMap id="BaseResultMap" type="com.xmsmartcity.pojo.TsUser">
+        <id column="id" property="id" jdbcType="INTEGER"/>
+        <result column="email" property="email" jdbcType="VARCHAR"/>
+        <result column="mobilePhone" property="mobilephone" jdbcType="VARCHAR"/>
+        <result column="signatureFile" property="signaturefile" jdbcType="VARCHAR"/>
+        <result column="update_name" property="updateName" jdbcType="VARCHAR"/>
+        <result column="update_date" property="updateDate" jdbcType="TIMESTAMP"/>
+        <result column="update_by" property="updateBy" jdbcType="INTEGER"/>
+        <result column="create_name" property="createName" jdbcType="VARCHAR"/>
+        <result column="create_date" property="createDate" jdbcType="TIMESTAMP"/>
+        <result column="create_by" property="createBy" jdbcType="INTEGER"/>
+        <result column="portrait" property="portrait" jdbcType="VARCHAR"/>
+        <result column="imsign" property="imsign" jdbcType="VARCHAR"/>
+        <result column="dev_flag" property="devFlag" jdbcType="VARCHAR"/>
+        <result column="level" property="level" jdbcType="INTEGER"/>
+        <result column="password" property="password" jdbcType="VARCHAR"/>
+        <result column="companyID" property="companyid" jdbcType="INTEGER"/>
+        <result column="company_name" property="companyName" jdbcType="VARCHAR"/>
+        <result column="groupid" property="groupid" jdbcType="INTEGER"/>
+        <result column="group_name" property="groupName" jdbcType="VARCHAR"/>
+    </resultMap>
+    <sql id="Base_Column_List">
     id, email, mobilePhone, signatureFile, update_name, update_date, update_by, create_name, 
     create_date, create_by, portrait, imsign, dev_flag, level, password, companyID, company_name, 
     groupid, group_name
   </sql>
-  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
-    select 
-    <include refid="Base_Column_List" />
-    from t_s_user
-    where id = #{id,jdbcType=INTEGER}
-  </select>
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer">
+        select
+        <include refid="Base_Column_List"/>
+        from t_s_user
+        where id = #{id,jdbcType=INTEGER}
+    </select>
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
     delete from t_s_user
     where id = #{id,jdbcType=INTEGER}
   </delete>
-  <insert id="insert" parameterType="com.xmsmartcity.pojo.TsUser" >
+    <insert id="insert" parameterType="com.xmsmartcity.pojo.TsUser">
     insert into t_s_user (id, email, mobilePhone, 
       signatureFile, update_name, update_date, 
       update_by, create_name, create_date, 
@@ -53,188 +53,188 @@
       #{companyid,jdbcType=INTEGER}, #{companyName,jdbcType=VARCHAR}, #{groupid,jdbcType=INTEGER}, 
       #{groupName,jdbcType=VARCHAR})
   </insert>
-  <insert id="insertSelective" parameterType="com.xmsmartcity.pojo.TsUser" >
-    insert into t_s_user
-    <trim prefix="(" suffix=")" suffixOverrides="," >
-      <if test="id != null" >
-        id,
-      </if>
-      <if test="email != null" >
-        email,
-      </if>
-      <if test="mobilephone != null" >
-        mobilePhone,
-      </if>
-      <if test="signaturefile != null" >
-        signatureFile,
-      </if>
-      <if test="updateName != null" >
-        update_name,
-      </if>
-      <if test="updateDate != null" >
-        update_date,
-      </if>
-      <if test="updateBy != null" >
-        update_by,
-      </if>
-      <if test="createName != null" >
-        create_name,
-      </if>
-      <if test="createDate != null" >
-        create_date,
-      </if>
-      <if test="createBy != null" >
-        create_by,
-      </if>
-      <if test="portrait != null" >
-        portrait,
-      </if>
-      <if test="imsign != null" >
-        imsign,
-      </if>
-      <if test="devFlag != null" >
-        dev_flag,
-      </if>
-      <if test="level != null" >
-        level,
-      </if>
-      <if test="password != null" >
-        password,
-      </if>
-      <if test="companyid != null" >
-        companyID,
-      </if>
-      <if test="companyName != null" >
-        company_name,
-      </if>
-      <if test="groupid != null" >
-        groupid,
-      </if>
-      <if test="groupName != null" >
-        group_name,
-      </if>
-    </trim>
-    <trim prefix="values (" suffix=")" suffixOverrides="," >
-      <if test="id != null" >
-        #{id,jdbcType=INTEGER},
-      </if>
-      <if test="email != null" >
-        #{email,jdbcType=VARCHAR},
-      </if>
-      <if test="mobilephone != null" >
-        #{mobilephone,jdbcType=VARCHAR},
-      </if>
-      <if test="signaturefile != null" >
-        #{signaturefile,jdbcType=VARCHAR},
-      </if>
-      <if test="updateName != null" >
-        #{updateName,jdbcType=VARCHAR},
-      </if>
-      <if test="updateDate != null" >
-        #{updateDate,jdbcType=TIMESTAMP},
-      </if>
-      <if test="updateBy != null" >
-        #{updateBy,jdbcType=INTEGER},
-      </if>
-      <if test="createName != null" >
-        #{createName,jdbcType=VARCHAR},
-      </if>
-      <if test="createDate != null" >
-        #{createDate,jdbcType=TIMESTAMP},
-      </if>
-      <if test="createBy != null" >
-        #{createBy,jdbcType=INTEGER},
-      </if>
-      <if test="portrait != null" >
-        #{portrait,jdbcType=VARCHAR},
-      </if>
-      <if test="imsign != null" >
-        #{imsign,jdbcType=VARCHAR},
-      </if>
-      <if test="devFlag != null" >
-        #{devFlag,jdbcType=VARCHAR},
-      </if>
-      <if test="level != null" >
-        #{level,jdbcType=INTEGER},
-      </if>
-      <if test="password != null" >
-        #{password,jdbcType=VARCHAR},
-      </if>
-      <if test="companyid != null" >
-        #{companyid,jdbcType=INTEGER},
-      </if>
-      <if test="companyName != null" >
-        #{companyName,jdbcType=VARCHAR},
-      </if>
-      <if test="groupid != null" >
-        #{groupid,jdbcType=INTEGER},
-      </if>
-      <if test="groupName != null" >
-        #{groupName,jdbcType=VARCHAR},
-      </if>
-    </trim>
-  </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="com.xmsmartcity.pojo.TsUser" >
-    update t_s_user
-    <set >
-      <if test="email != null" >
-        email = #{email,jdbcType=VARCHAR},
-      </if>
-      <if test="mobilephone != null" >
-        mobilePhone = #{mobilephone,jdbcType=VARCHAR},
-      </if>
-      <if test="signaturefile != null" >
-        signatureFile = #{signaturefile,jdbcType=VARCHAR},
-      </if>
-      <if test="updateName != null" >
-        update_name = #{updateName,jdbcType=VARCHAR},
-      </if>
-      <if test="updateDate != null" >
-        update_date = #{updateDate,jdbcType=TIMESTAMP},
-      </if>
-      <if test="updateBy != null" >
-        update_by = #{updateBy,jdbcType=INTEGER},
-      </if>
-      <if test="createName != null" >
-        create_name = #{createName,jdbcType=VARCHAR},
-      </if>
-      <if test="createDate != null" >
-        create_date = #{createDate,jdbcType=TIMESTAMP},
-      </if>
-      <if test="createBy != null" >
-        create_by = #{createBy,jdbcType=INTEGER},
-      </if>
-      <if test="portrait != null" >
-        portrait = #{portrait,jdbcType=VARCHAR},
-      </if>
-      <if test="imsign != null" >
-        imsign = #{imsign,jdbcType=VARCHAR},
-      </if>
-      <if test="devFlag != null" >
-        dev_flag = #{devFlag,jdbcType=VARCHAR},
-      </if>
-      <if test="level != null" >
-        level = #{level,jdbcType=INTEGER},
-      </if>
-      <if test="password != null" >
-        password = #{password,jdbcType=VARCHAR},
-      </if>
-      <if test="companyid != null" >
-        companyID = #{companyid,jdbcType=INTEGER},
-      </if>
-      <if test="companyName != null" >
-        company_name = #{companyName,jdbcType=VARCHAR},
-      </if>
-      <if test="groupid != null" >
-        groupid = #{groupid,jdbcType=INTEGER},
-      </if>
-      <if test="groupName != null" >
-        group_name = #{groupName,jdbcType=VARCHAR},
-      </if>
-    </set>
-    where id = #{id,jdbcType=INTEGER}
-  </update>
-  <update id="updateByPrimaryKey" parameterType="com.xmsmartcity.pojo.TsUser" >
+    <insert id="insertSelective" parameterType="com.xmsmartcity.pojo.TsUser">
+        insert into t_s_user
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                id,
+            </if>
+            <if test="email != null">
+                email,
+            </if>
+            <if test="mobilephone != null">
+                mobilePhone,
+            </if>
+            <if test="signaturefile != null">
+                signatureFile,
+            </if>
+            <if test="updateName != null">
+                update_name,
+            </if>
+            <if test="updateDate != null">
+                update_date,
+            </if>
+            <if test="updateBy != null">
+                update_by,
+            </if>
+            <if test="createName != null">
+                create_name,
+            </if>
+            <if test="createDate != null">
+                create_date,
+            </if>
+            <if test="createBy != null">
+                create_by,
+            </if>
+            <if test="portrait != null">
+                portrait,
+            </if>
+            <if test="imsign != null">
+                imsign,
+            </if>
+            <if test="devFlag != null">
+                dev_flag,
+            </if>
+            <if test="level != null">
+                level,
+            </if>
+            <if test="password != null">
+                password,
+            </if>
+            <if test="companyid != null">
+                companyID,
+            </if>
+            <if test="companyName != null">
+                company_name,
+            </if>
+            <if test="groupid != null">
+                groupid,
+            </if>
+            <if test="groupName != null">
+                group_name,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                #{id,jdbcType=INTEGER},
+            </if>
+            <if test="email != null">
+                #{email,jdbcType=VARCHAR},
+            </if>
+            <if test="mobilephone != null">
+                #{mobilephone,jdbcType=VARCHAR},
+            </if>
+            <if test="signaturefile != null">
+                #{signaturefile,jdbcType=VARCHAR},
+            </if>
+            <if test="updateName != null">
+                #{updateName,jdbcType=VARCHAR},
+            </if>
+            <if test="updateDate != null">
+                #{updateDate,jdbcType=TIMESTAMP},
+            </if>
+            <if test="updateBy != null">
+                #{updateBy,jdbcType=INTEGER},
+            </if>
+            <if test="createName != null">
+                #{createName,jdbcType=VARCHAR},
+            </if>
+            <if test="createDate != null">
+                #{createDate,jdbcType=TIMESTAMP},
+            </if>
+            <if test="createBy != null">
+                #{createBy,jdbcType=INTEGER},
+            </if>
+            <if test="portrait != null">
+                #{portrait,jdbcType=VARCHAR},
+            </if>
+            <if test="imsign != null">
+                #{imsign,jdbcType=VARCHAR},
+            </if>
+            <if test="devFlag != null">
+                #{devFlag,jdbcType=VARCHAR},
+            </if>
+            <if test="level != null">
+                #{level,jdbcType=INTEGER},
+            </if>
+            <if test="password != null">
+                #{password,jdbcType=VARCHAR},
+            </if>
+            <if test="companyid != null">
+                #{companyid,jdbcType=INTEGER},
+            </if>
+            <if test="companyName != null">
+                #{companyName,jdbcType=VARCHAR},
+            </if>
+            <if test="groupid != null">
+                #{groupid,jdbcType=INTEGER},
+            </if>
+            <if test="groupName != null">
+                #{groupName,jdbcType=VARCHAR},
+            </if>
+        </trim>
+    </insert>
+    <update id="updateByPrimaryKeySelective" parameterType="com.xmsmartcity.pojo.TsUser">
+        update t_s_user
+        <set>
+            <if test="email != null">
+                email = #{email,jdbcType=VARCHAR},
+            </if>
+            <if test="mobilephone != null">
+                mobilePhone = #{mobilephone,jdbcType=VARCHAR},
+            </if>
+            <if test="signaturefile != null">
+                signatureFile = #{signaturefile,jdbcType=VARCHAR},
+            </if>
+            <if test="updateName != null">
+                update_name = #{updateName,jdbcType=VARCHAR},
+            </if>
+            <if test="updateDate != null">
+                update_date = #{updateDate,jdbcType=TIMESTAMP},
+            </if>
+            <if test="updateBy != null">
+                update_by = #{updateBy,jdbcType=INTEGER},
+            </if>
+            <if test="createName != null">
+                create_name = #{createName,jdbcType=VARCHAR},
+            </if>
+            <if test="createDate != null">
+                create_date = #{createDate,jdbcType=TIMESTAMP},
+            </if>
+            <if test="createBy != null">
+                create_by = #{createBy,jdbcType=INTEGER},
+            </if>
+            <if test="portrait != null">
+                portrait = #{portrait,jdbcType=VARCHAR},
+            </if>
+            <if test="imsign != null">
+                imsign = #{imsign,jdbcType=VARCHAR},
+            </if>
+            <if test="devFlag != null">
+                dev_flag = #{devFlag,jdbcType=VARCHAR},
+            </if>
+            <if test="level != null">
+                level = #{level,jdbcType=INTEGER},
+            </if>
+            <if test="password != null">
+                password = #{password,jdbcType=VARCHAR},
+            </if>
+            <if test="companyid != null">
+                companyID = #{companyid,jdbcType=INTEGER},
+            </if>
+            <if test="companyName != null">
+                company_name = #{companyName,jdbcType=VARCHAR},
+            </if>
+            <if test="groupid != null">
+                groupid = #{groupid,jdbcType=INTEGER},
+            </if>
+            <if test="groupName != null">
+                group_name = #{groupName,jdbcType=VARCHAR},
+            </if>
+        </set>
+        where id = #{id,jdbcType=INTEGER}
+    </update>
+    <update id="updateByPrimaryKey" parameterType="com.xmsmartcity.pojo.TsUser">
     update t_s_user
     set email = #{email,jdbcType=VARCHAR},
       mobilePhone = #{mobilephone,jdbcType=VARCHAR},
@@ -257,32 +257,40 @@
     where id = #{id,jdbcType=INTEGER}
   </update>
 
-  <!--查询用户-->
-  <select id="selectUser" resultMap="BaseResultMap" parameterType="java.lang.String">
-    select
-    <include refid="Base_Column_List"/>
-    from t_s_user
-    where mobilephone = #{mobilephone,jdbcType=VARCHAR}
-  </select>
+    <!--查询用户-->
+    <select id="selectUser" resultMap="BaseResultMap" parameterType="java.lang.String">
+        select
+        <include refid="Base_Column_List"/>
+        from t_s_user
+        where mobilephone = #{mobilephone,jdbcType=VARCHAR}
+    </select>
 
-  <!--id查询用户-->
-  <select id="selectUserById" resultMap="BaseResultMap" parameterType="java.lang.Integer">
-    select
-    <include refid="Base_Column_List"/>
-    from t_s_user
-    where id = #{id,jdbcType=INTEGER}
-  </select>
+    <!--id查询用户-->
+    <select id="selectUserById" resultMap="BaseResultMap" parameterType="java.lang.Integer">
+        select
+        <include refid="Base_Column_List"/>
+        from t_s_user
+        where id = #{id,jdbcType=INTEGER}
+    </select>
 
-  <!--公司id查询用户-->
-  <select id="selectUserList" parameterType="java.lang.Integer" resultMap="BaseResultMap">
-    select
-    <include refid="Base_Column_List"/>
-    from t_s_user
-    where companyID = #{companyID} AND companyID!=0
-  </select>
+    <!--公司id查询用户-->
+    <select id="selectUserList" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from t_s_user
+        where companyID = #{companyID} AND companyID!=0
+    </select>
 
-  <!-- 查询列表 -->
-  <select id="selectList" parameterType="map" resultType="map">
+    <!--groupid查询用户-->
+    <select id="listGroupMember" parameterType="java.lang.String" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from t_s_user
+        where groupid = #{groupId}
+    </select>
+
+    <!-- 查询列表 -->
+    <select id="selectList" parameterType="map" resultType="map">
     select
     id, email, mobilePhone, signatureFile,update_name, update_date, update_by, create_name,
     create_date, create_by, portrait,imsign, dev_flag, level, password, companyID
@@ -292,24 +300,26 @@
     AND create_name = #{name}
   </select>
 
-  <!-- 邀请人进入的公司-->
-  <update id="invitePeopleGroup" parameterType="map">
+    <!-- 邀请人进入的公司-->
+    <update id="invitePeopleGroup" parameterType="map">
     update t_s_user
     set companyID = #{companyID},
     groupid = #{groupID}
-    where  mobilePhone=#{phone} AND companyID=0
+    where  mobilePhone=#{phone}
+    AND companyID=0
+    OR companyID=#{companyID}
   </update>
 
 
-  <!-- 创建完成公司修改个人信息-->
-  <update id="updateUserCompanyInfo" parameterType="map">
+    <!-- 创建完成公司修改个人信息-->
+    <update id="updateUserCompanyInfo" parameterType="map">
     update t_s_user
     set companyID = #{companyID},
     company_name = #{companyName}
     where  id=#{userId}
   </update>
 
-  <update id="deleteGroupUser" parameterType="java.lang.Integer">
+    <update id="deleteGroupUser" parameterType="java.lang.Integer">
     update t_s_user
     set companyID = 0,
     groupid = 0
