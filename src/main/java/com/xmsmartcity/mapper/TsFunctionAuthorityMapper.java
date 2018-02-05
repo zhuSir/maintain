@@ -1,8 +1,8 @@
 package com.xmsmartcity.mapper;
 
 import com.xmsmartcity.pojo.TsFunctionAuthority;
-
-public interface TsFunctionAuthorityMapper {
+// extends BaseDao<TsUser>
+public interface TsFunctionAuthorityMapper extends BaseDao<TsFunctionAuthority> {
     int deleteByPrimaryKey(Integer id);
 
     int insert(TsFunctionAuthority record);
@@ -14,4 +14,6 @@ public interface TsFunctionAuthorityMapper {
     int updateByPrimaryKeySelective(TsFunctionAuthority record);
 
     int updateByPrimaryKey(TsFunctionAuthority record);
+
+    TsFunctionAuthority selectWithConpanyIDKey(Integer id);
 }

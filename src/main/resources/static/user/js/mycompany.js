@@ -74,7 +74,6 @@ var ContentUI=React.createClass({
 var CommitBtnGroup = React.createClass({
 
     commit:function(){
-        $('#creatCompanyModalgroup').modal('hide')
 
         var name= $("#companypName").val();
         if(name.length==0)
@@ -82,6 +81,8 @@ var CommitBtnGroup = React.createClass({
             alert("请输入名字");
             return;
         }
+        $('#creatCompanyModalgroup').modal('hide')
+
         //String groupname,String companyID,String reatUserName,String reatUserID
         var  data={
             companyName:name,
@@ -91,23 +92,15 @@ var CommitBtnGroup = React.createClass({
 
         $.ajax({
             type: "POST",
-            url: "/user/creatcompany",
             data: data,
-            success: function(data){
+            url: "/user/creatcompany",
+            success: function(res){
 
-                alert(data.companyID);
-                Cookies.set('companyId', data.companyID, {expires: 7, path: '/'});
-                Cookies.set('companyName', data.companyName, {expires: 7, path: '/'});
-                //SDSADASDASDASDDSADASDASDASDDSADASDASDASDDSADASDASDASDDSADASDASDASDDSADASDASDASDDSADASDASDASDDSADASDASDASD
-                //SDSADASDASDASDDSADASDASDASDDSADASDASDASDDSADASDASDASDDSADASDASDASDDSADASDASDASDDSADASDASDASDDSADASDASDASD
-                //SDSADASDASDASDDSADASDASDASDDSADASDASDASDDSADASDASDASDDSADASDASDASDDSADASDASDASDDSADASDASDASDDSADASDASDASD
-                //SDSADASDASDASDDSADASDASDASDDSADASDASDASDDSADASDASDASDDSADASDASDASDDSADASDASDASDDSADASDASDASDDSADASDASDASD
-                //SDSADASDASDASDDSADASDASDASDDSADASDASDASDDSADASDASDASDDSADASDASDASDDSADASDASDASDDSADASDASDASDDSADASDASDASD
-                //SDSADASDASDASDDSADASDASDASDDSADASDASDASDDSADASDASDASDDSADASDASDASDDSADASDASDASDDSADASDASDASDDSADASDASDASD
-                //SDSADASDASDASDDSADASDASDASDDSADASDASDASDDSADASDASDASDDSADASDASDASDDSADASDASDASDDSADASDASDASDDSADASDASDASD
-                //SDSADASDASDASDDSADASDASDASDDSADASDASDASDDSADASDASDASDDSADASDASDASDDSADASDASDASDDSADASDASDASDDSADASDASDASD
-                //SDSADASDASDASDDSADASDASDASDDSADASDASDASDDSADASDASDASDDSADASDASDASDDSADASDASDASDDSADASDASDASDDSADASDASDASD
-                //SDSADASDASDASDDSADASDASDASDDSADASDASDASDDSADASDASDASDDSADASDASDASDDSADASDASDASDDSADASDASDASDDSADASDASDASD
+                alert(res);
+                Cookies.set('companyId', res.companyID, {expires: 7, path: '/'});
+                Cookies.set('companyName', res.companyName, {expires: 7, path: '/'});
+                window.location.reload();
+
             },
             error:function(err){
                 alert("error");
