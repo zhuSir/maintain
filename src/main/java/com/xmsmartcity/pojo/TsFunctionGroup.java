@@ -1,6 +1,7 @@
 package com.xmsmartcity.pojo;
 
 import java.util.Date;
+import java.util.List;
 
 public class TsFunctionGroup {
     private Integer id;
@@ -34,6 +35,15 @@ public class TsFunctionGroup {
     private String sysCompanyCode;
 
     private Integer fatherId;
+    private List AuthorityArr;
+
+    public List getAuthorityArr() {
+        return AuthorityArr;
+    }
+
+    public void setAuthorityArr(List authorityArr) {
+        AuthorityArr = authorityArr;
+    }
 
     public Integer getId() {
         return id;

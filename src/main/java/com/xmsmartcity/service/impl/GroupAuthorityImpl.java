@@ -8,6 +8,8 @@ import com.xmsmartcity.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 /**
  * Created by welleast on 2018/2/5.
  */
@@ -20,8 +22,8 @@ public class GroupAuthorityImpl extends BaseServiceImpl<TsFunctionAuthority> imp
     private TsFunctionAuthorityMapper dao;
 
     @Override
-    public TsFunctionAuthority selectWithConpanyIDKey(Integer id) {
-        TsFunctionAuthority rity = dao.selectWithConpanyIDKey(id);
+    public List selectWithGroupListIDKey(Integer id) {
+        List rity = dao.selectWithGroupListIDKey(id);
 
         return rity;
     }

@@ -39,24 +39,23 @@ public class AuthorityController {
         HashMap map = (HashMap) objparam.getData();
         String sonGroupID = map.get("companyId").toString();
         List<TsFunctionGroup> result = groupser.getGroupList(sonGroupID);
-//        for (TsFunctionGroup group: result)
-//        {
-//
-//
-//        }
+        for (TsFunctionGroup group: result)
+        {
+            List seleteResule = Authser.selectWithGroupListIDKey(group.getId());
+            group.setAuthorityArr(seleteResule);
+
+        }
+        commonObjReturn.setData(result);
+
         TsFunctionAuthority model = new TsFunctionAuthority();
         model.setCompanyid(34);
         model.setGroupid(90);
-        model.setFault(1);
         model.setLook(1);
-        model.setUnlookfault(1);
-
-
-        Integer insertResult =   Authser.insert(model);
-        commonObjReturn.setData(insertResult);
 
 
 
+
+//        Integer insertResult =   Authser.insert(result);
         return commonObjReturn;
 
     }

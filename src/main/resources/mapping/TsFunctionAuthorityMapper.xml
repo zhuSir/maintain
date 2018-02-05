@@ -115,4 +115,14 @@
       unLookFault = #{unlookfault,jdbcType=INTEGER}
     where id = #{id,jdbcType=INTEGER}
   </update>
+
+  <select id="selectWithGroupListIDKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select
+    <include refid="Base_Column_List" />
+    from t_s_function_authority
+    where groupid = #{id,jdbcType=INTEGER}
+  </select>
+
+
+
 </mapper>
