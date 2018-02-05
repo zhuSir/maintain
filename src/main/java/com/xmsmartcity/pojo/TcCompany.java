@@ -1,6 +1,6 @@
 package com.xmsmartcity.pojo;
 
-import java.util.Date;
+import java.sql.Timestamp;
 
 public class TcCompany {
     private Integer id;
@@ -29,9 +29,9 @@ public class TcCompany {
 
     private Integer createPersonId;
 
-    private Date createTime;
+    private Timestamp createTime;
 
-    private Date updateTime;
+    private Timestamp updateTime;
 
     public Integer getId() {
         return id;
@@ -137,19 +137,19 @@ public class TcCompany {
         this.createPersonId = createPersonId;
     }
 
-    public Date getCreateTime() {
+    public Timestamp getCreateTime() {
         return createTime;
     }
 
-    public void setCreateTime(Date createTime) {
+    public void setCreateTime(Timestamp createTime) {
         this.createTime = createTime;
     }
 
-    public Date getUpdateTime() {
+    public Timestamp getUpdateTime() {
         return updateTime;
     }
 
-    public void setUpdateTime(Date updateTime) {
+    public void setUpdateTime(Timestamp updateTime) {
         this.updateTime = updateTime;
     }
 }

@@ -18,9 +18,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.PrintWriter;
-import java.util.Date;
-import java.util.Enumeration;
-import java.util.List;
+import java.util.*;
 
 /**
  *
@@ -43,19 +41,36 @@ public class EquipController {
 
     @ResponseBody
     public CommonObjReturn saveEquip(@RequestBody CommonObjParam objparam, HttpServletRequest request, HttpServletResponse response){
-        TeEquip equip= JSON.parseObject(objparam.getData().toString(),TeEquip.class);
+        TeEquip equip= JSON.parseObject(JSON.toJSONString(objparam.getData()),TeEquip.class);
+        Date now=new Date();
+        equip.setCreatUserId(1);
+        equip.setUpdateUserId(1);
+        equip.setCreatetime(now);
+        equip.setUpdatetime(now);
+        equip.setEquipCode("11111");
         equipService.insertSelective(equip);
         CommonObjReturn commonObjReturn=new CommonObjReturn();
         commonObjReturn.setResult("true");
+        commonObjReturn.setData(equip);
         commonObjReturn.setResultTime(DateUtils.DateToString(new Date(),DateUtils.formatStr_yyyyMMddHHmmss));
         return commonObjReturn;
     }
 
     @ResponseBody
     public CommonObjReturn getEquipById(@RequestBody CommonObjParam objparam, HttpServletRequest request, HttpServletResponse response){
-        List<TeEquip> list=equipService.selectEquipList();
+        HashMap<Object,String> map=(HashMap<Object, String>) objparam.getData();
+        TeEquip equip=equipService.selectByPrimaryKey(Integer.parseInt(map.get("id").toString()));
         CommonObjReturn commonObjReturn=new CommonObjReturn();
-        commonObjReturn.setData(list);
+        commonObjReturn.setData(equip);
+        commonObjReturn.setResult("true");
+        commonObjReturn.setResultTime(DateUtils.DateToString(new Date(),DateUtils.formatStr_yyyyMMddHHmmss));
+        return commonObjReturn;
+    }
+
+    @ResponseBody
+    public CommonObjReturn deleteEquip(@RequestBody CommonObjParam objparam, HttpServletRequest request, HttpServletResponse response){
+        equipService.deleteByPrimaryKey((int)objparam.getData());
+        CommonObjReturn commonObjReturn=new CommonObjReturn();
         commonObjReturn.setResult("true");
         commonObjReturn.setResultTime(DateUtils.DateToString(new Date(),DateUtils.formatStr_yyyyMMddHHmmss));
         return commonObjReturn;
