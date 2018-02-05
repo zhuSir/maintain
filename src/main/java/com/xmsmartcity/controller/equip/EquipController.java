@@ -58,8 +58,7 @@ public class EquipController {
 
     @ResponseBody
     public CommonObjReturn getEquipById(@RequestBody CommonObjParam objparam, HttpServletRequest request, HttpServletResponse response){
-        HashMap<Object,String> map=(HashMap<Object, String>) objparam.getData();
-        TeEquip equip=equipService.selectByPrimaryKey(Integer.parseInt(map.get("id").toString()));
+        TeEquip equip=equipService.selectByPrimaryKey((int)objparam.getData());
         CommonObjReturn commonObjReturn=new CommonObjReturn();
         commonObjReturn.setData(equip);
         commonObjReturn.setResult("true");
@@ -72,6 +71,20 @@ public class EquipController {
         equipService.deleteByPrimaryKey((int)objparam.getData());
         CommonObjReturn commonObjReturn=new CommonObjReturn();
         commonObjReturn.setResult("true");
+        commonObjReturn.setResultTime(DateUtils.DateToString(new Date(),DateUtils.formatStr_yyyyMMddHHmmss));
+        return commonObjReturn;
+    }
+
+    @ResponseBody
+    public CommonObjReturn updateEquip(@RequestBody CommonObjParam objparam, HttpServletRequest request, HttpServletResponse response){
+        TeEquip equip= JSON.parseObject(JSON.toJSONString(objparam.getData()),TeEquip.class);
+        Date now=new Date();
+        equip.setUpdateUserId(1);
+        equip.setUpdatetime(now);
+        equipService.updateByPrimaryKeySelective(equip);
+        CommonObjReturn commonObjReturn=new CommonObjReturn();
+        commonObjReturn.setResult("true");
+        commonObjReturn.setData(equip);
         commonObjReturn.setResultTime(DateUtils.DateToString(new Date(),DateUtils.formatStr_yyyyMMddHHmmss));
         return commonObjReturn;
     }
