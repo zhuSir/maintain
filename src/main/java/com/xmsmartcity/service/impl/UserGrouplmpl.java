@@ -33,7 +33,7 @@ public class UserGrouplmpl extends BaseServiceImpl<TsFunctionGroup> implements U
 
     //创建公司
     @Override
-    public String creatGroup(String companyName,String reatUserName,int reatUserID) {
+    public JSONObject creatGroup(String companyName,String reatUserName,Integer reatUserID) {
         TsFunctionGroup group = new TsFunctionGroup();
         group.setGroupName(companyName);
         group.setPid("0");
@@ -71,7 +71,7 @@ public class UserGrouplmpl extends BaseServiceImpl<TsFunctionGroup> implements U
 
         }
 
-        return json.toString();
+        return json;
     }
 
 

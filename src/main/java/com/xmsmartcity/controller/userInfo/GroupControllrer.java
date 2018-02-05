@@ -3,13 +3,21 @@ package com.xmsmartcity.controller.userInfo;
 
 
 import com.alibaba.fastjson.JSONObject;
+import com.xmsmartcity.pojo.CommonObjParam;
+import com.xmsmartcity.pojo.CommonObjReturn;
 import com.xmsmartcity.pojo.TsFunctionGroup;
 import com.xmsmartcity.service.UserGroupService;
 import com.xmsmartcity.service.UserService;
+import com.xmsmartcity.util.DateUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import java.io.Console;
+import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
 
 /**
@@ -29,12 +37,16 @@ public class GroupControllrer {
      * 创建公司
      * @return
      */
-    @RequestMapping(value="/user/creatcompany",method = RequestMethod.POST)
-    private String creatGroup(String companyName,String reatUserName,int reatUserID){
-
-        String resault =  ser.creatGroup(companyName,reatUserName,reatUserID);
-
-        return resault;
+//    @RequestMapping(value="/user/creatcompany",method = RequestMethod.POST)
+    public CommonObjReturn creatCompany(@RequestBody CommonObjParam objparam, HttpServletRequest request, HttpServletResponse response){
+        HashMap obj = (HashMap) objparam.getData();
+        Integer id =   Integer.parseInt((String) obj.get("createUserId"));
+        CommonObjReturn commonObjReturn=new CommonObjReturn();
+        JSONObject resault =  ser.creatGroup((String)obj.get("groupName"),(String)obj.get("createName"),id);
+        commonObjReturn.setData(resault);
+        commonObjReturn.setResult("true");
+        commonObjReturn.setResultTime(DateUtils.DateToString(new Date(),DateUtils.formatStr_yyyyMMddHHmmss));
+        return commonObjReturn;
     }
 
     /**
@@ -59,13 +71,32 @@ public class GroupControllrer {
     }
 
     //获取公司的详情
-    @RequestMapping(value="/user/getCompanyInfo",method = RequestMethod.POST)
-    private TsFunctionGroup getcompanyInfo(int companyID){
-        TsFunctionGroup result  = ser.getcompanyInfo(companyID);
-        return result;
+//    @RequestMapping(value="/user/getCompanyInfo",method = RequestMethod.POST)
+//    private CommonObjReturn getcompanyInfo(int companyID){
+//        TsFunctionGroup resultg  = ser.getcompanyInfo(companyID);
+//
+//        CommonObjReturn commonObjReturn=new CommonObjReturn();
+//        commonObjReturn.setData(resultg);
+//        commonObjReturn.setResult("true");
+//        commonObjReturn.setResultTime(DateUtils.DateToString(new Date(),DateUtils.formatStr_yyyyMMddHHmmss));
+//        return commonObjReturn;
+//
+//    }
+    public CommonObjReturn getCompanyInfo(@RequestBody CommonObjParam objparam, HttpServletRequest request, HttpServletResponse response) {
+        HashMap obj = (HashMap) objparam.getData();
+        Integer id =   Integer.parseInt((String) obj.get("companyID"));
+        TsFunctionGroup resultg  = ser.getcompanyInfo(id);
+
+
+        CommonObjReturn commonObjReturn=new CommonObjReturn();
+        commonObjReturn.setData(resultg);
+        commonObjReturn.setResult("true");
+        commonObjReturn.setResultTime(DateUtils.DateToString(new Date(),DateUtils.formatStr_yyyyMMddHHmmss));
+        return commonObjReturn;
     }
 
-    @GetMapping(value = "/user/companyInviteMember")
+
+        @GetMapping(value = "/user/companyInviteMember")
     private String companyInviteMenber(String phone,String companyID)
     {
         String  result = ser.companyInviteMenber(phone,companyID);

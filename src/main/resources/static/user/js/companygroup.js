@@ -52,7 +52,7 @@ var CommitBtnInval = React.createClass({
         $.ajax({
             type: "POST",
             url: "/user/invitePeopleGroup",
-            data: {phone:$("#invitPhone").val(),companyID:2,groupID:2},
+            data: {phone:$("#invitPhone").val(),companyID:Cookies.get("companyId"),groupID:2},
             success: function(data){
                 alert(data.info);
             },
@@ -83,7 +83,7 @@ var ListUi=React.createClass({
         };
     },
     componentDidMount: function() {
-        this.serverRequest = $.post("/user/getGroupList",{sonGroupID:"2"}, function (result) {
+        this.serverRequest = $.post("/user/getGroupList",{sonGroupID:Cookies.get("companyId")}, function (result) {
             this.setState({
                 groupList : result
             });
