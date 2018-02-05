@@ -6,12 +6,12 @@
     <result column="companyID" property="companyid" jdbcType="INTEGER" />
     <result column="groupid" property="groupid" jdbcType="INTEGER" />
     <result column="fault" property="fault" jdbcType="INTEGER" />
-    <result column="update" property="update" jdbcType="INTEGER" />
+    <result column="unEdit" property="unedit" jdbcType="INTEGER" />
     <result column="look" property="look" jdbcType="INTEGER" />
     <result column="unLookFault" property="unlookfault" jdbcType="INTEGER" />
   </resultMap>
   <sql id="Base_Column_List" >
-    id, companyID, groupid, fault, update, look, unLookFault
+    id, companyID, groupid, fault, unEdit, look, unLookFault
   </sql>
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
     select 
@@ -25,12 +25,13 @@
   </delete>
   <insert id="insert" parameterType="com.xmsmartcity.pojo.TsFunctionAuthority" >
     insert into t_s_function_authority (id, companyID, groupid, 
-      fault, update, look, 
+      fault, unEdit, look, 
       unLookFault)
     values (#{id,jdbcType=INTEGER}, #{companyid,jdbcType=INTEGER}, #{groupid,jdbcType=INTEGER}, 
-      #{fault,jdbcType=INTEGER}, #{update,jdbcType=INTEGER}, #{look,jdbcType=INTEGER}, 
+      #{fault,jdbcType=INTEGER}, #{unedit,jdbcType=INTEGER}, #{look,jdbcType=INTEGER}, 
       #{unlookfault,jdbcType=INTEGER})
   </insert>
+
   <insert id="insertSelective" parameterType="com.xmsmartcity.pojo.TsFunctionAuthority" >
     insert into t_s_function_authority
     <trim prefix="(" suffix=")" suffixOverrides="," >
@@ -46,8 +47,8 @@
       <if test="fault != null" >
         fault,
       </if>
-      <if test="update != null" >
-        update,
+      <if test="unedit != null" >
+        unEdit,
       </if>
       <if test="look != null" >
         look,
@@ -69,8 +70,8 @@
       <if test="fault != null" >
         #{fault,jdbcType=INTEGER},
       </if>
-      <if test="update != null" >
-        #{update,jdbcType=INTEGER},
+      <if test="unedit != null" >
+        #{unedit,jdbcType=INTEGER},
       </if>
       <if test="look != null" >
         #{look,jdbcType=INTEGER},
@@ -92,8 +93,8 @@
       <if test="fault != null" >
         fault = #{fault,jdbcType=INTEGER},
       </if>
-      <if test="update != null" >
-        update = #{update,jdbcType=INTEGER},
+      <if test="unedit != null" >
+        unEdit = #{unedit,jdbcType=INTEGER},
       </if>
       <if test="look != null" >
         look = #{look,jdbcType=INTEGER},
@@ -109,7 +110,7 @@
     set companyID = #{companyid,jdbcType=INTEGER},
       groupid = #{groupid,jdbcType=INTEGER},
       fault = #{fault,jdbcType=INTEGER},
-      update = #{update,jdbcType=INTEGER},
+      unEdit = #{unedit,jdbcType=INTEGER},
       look = #{look,jdbcType=INTEGER},
       unLookFault = #{unlookfault,jdbcType=INTEGER}
     where id = #{id,jdbcType=INTEGER}
