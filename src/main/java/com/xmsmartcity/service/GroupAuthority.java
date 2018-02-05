@@ -7,6 +7,9 @@ import com.xmsmartcity.pojo.TsFunctionAuthority;
  */
 public interface GroupAuthority extends BaseService<TsFunctionAuthority> {
 
+    Integer insert(TsFunctionAuthority record);
+
+
     TsFunctionAuthority selectWithConpanyIDKey(Integer id);
 
 
