@@ -14,4 +14,6 @@ public interface TsFunctionAuthorityMapper {
     int updateByPrimaryKeySelective(TsFunctionAuthority record);
 
     int updateByPrimaryKey(TsFunctionAuthority record);
+
+    TsFunctionAuthority selectWithConpanyIDKey(Integer id);
 }
