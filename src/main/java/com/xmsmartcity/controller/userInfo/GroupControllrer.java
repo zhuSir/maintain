@@ -60,6 +60,8 @@ public class GroupControllrer {
         String groupname = map.get("groupname").toString();
         String companyID = map.get("companyID").toString();
         String reatUserName = map.get("reatUserName").toString();
+
+
         Integer reatUserID = Integer.valueOf(map.get("reatUserID").toString());
         String result = ser.insertGroup(groupname, companyID, reatUserName, reatUserID);
         if ("1".equals(result)){

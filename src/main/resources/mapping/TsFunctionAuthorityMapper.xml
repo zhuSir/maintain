@@ -122,7 +122,16 @@
     from t_s_function_authority
     where groupid = #{id,jdbcType=INTEGER}
   </select>
+  <delete id="deleteGroupWithID"  parameterType="java.lang.Integer" >
+    delete from t_s_function_authority
+    where groupid = #{id,jdbcType=INTEGER}
+  </delete>
 
-
+  <insert id="insertGroupWithID" parameterType="com.xmsmartcity.pojo.TsFunctionAuthority" >
+    insert into t_s_function_authority (id, groupid,
+    fault)
+    values (#{id,jdbcType=INTEGER}, #{groupid,jdbcType=INTEGER},
+    #{fault,jdbcType=INTEGER})
+  </insert>
 
 </mapper>
