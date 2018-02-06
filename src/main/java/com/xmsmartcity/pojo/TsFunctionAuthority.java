@@ -9,11 +9,13 @@ public class TsFunctionAuthority {
 
     private Integer fault;
 
-    private Integer update;
+    private Integer unedit;
 
     private Integer look;
 
     private Integer unlookfault;
+
+
 
     public Integer getId() {
         return id;
@@ -47,12 +49,12 @@ public class TsFunctionAuthority {
         this.fault = fault;
     }
 
-    public Integer getUpdate() {
-        return update;
+    public Integer getUnedit() {
+        return unedit;
     }
 
-    public void setUpdate(Integer update) {
-        this.update = update;
+    public void setUnedit(Integer unedit) {
+        this.unedit = unedit;
     }
 
     public Integer getLook() {

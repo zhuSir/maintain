@@ -33,7 +33,7 @@ public class UserGrouplmpl extends BaseServiceImpl<TsFunctionGroup> implements U
 
     //创建公司
     @Override
-    public String creatGroup(String companyName, String reatUserName, int reatUserID) {
+    public JSONObject creatGroup(String companyName,String reatUserName,Integer reatUserID) {
         TsFunctionGroup group = new TsFunctionGroup();
         group.setGroupName(companyName);
         group.setPid("0");
@@ -44,14 +44,16 @@ public class UserGrouplmpl extends BaseServiceImpl<TsFunctionGroup> implements U
         if (result == 1) {
             //创建成功
 
-            int updateUserINfo = userdao.updateUserCompanyInfo(reatUserID, group.getId(), companyName);
-            if (updateUserINfo == 1) {
+            int updateUserINfo =userdao.updateUserCompanyInfo(reatUserID,group.getId(),companyName);
+            if (updateUserINfo==1)
+            {
                 json.put("code", 0);
                 json.put("info", "创建成功");
-                json.put("companyID", group.getId());
-                json.put("companyName", companyName);
+                json.put("companyID",group.getId());
+                json.put("companyName",companyName);
 
-            } else {
+            }else
+            {
                 json.put("code", 1);
                 json.put("info", "创建失败");
             }
@@ -61,14 +63,15 @@ public class UserGrouplmpl extends BaseServiceImpl<TsFunctionGroup> implements U
             json.put("code", 0);
             json.put("info", "创建成功");
 
-        } else {
+        } else
+        {
             //创建失败
             json.put("code", 1);
             json.put("info", "创建失败");
 
         }
 
-        return json.toString();
+        return json;
     }
 
 
