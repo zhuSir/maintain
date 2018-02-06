@@ -18,4 +18,8 @@ public interface TcCompanyMapper {
     int updateByPrimaryKey(TcCompany record);
 
     List<TcCompany> selectAllCompany(int uId);
+
+    TcCompany selectCompanyById(Integer id);
+
+    int delectCompany(int id);
 }

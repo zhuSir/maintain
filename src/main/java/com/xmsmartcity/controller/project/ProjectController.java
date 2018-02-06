@@ -69,10 +69,10 @@ public class ProjectController {
                 baseResponse.setInfo("参数错误,创建失败");
                 return baseResponse;
             }
-            if (project.getAuditPersonId() == null || project.getAuditPersonId().equals("")) {
-                baseResponse.setInfo("参数错误,创建失败");
-                return baseResponse;
-            }
+//            if (project.getAuditPersonId() == null || project.getAuditPersonId().equals("")) {
+//                baseResponse.setInfo("参数错误,创建失败");
+//                return baseResponse;
+//            }
             Date date = new Date();
             SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
             Timestamp timestamp = new Timestamp(date.getTime());

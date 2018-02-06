@@ -75,7 +75,7 @@ public class CompanyController {
     @RequestMapping(value = "/delect")
     public BaseResponse<TcCompany> delect(int uId, int cId) {
         BaseResponse<TcCompany> baseResponse = new BaseResponse<>();
-        TcCompany tcCompany = companyService.selectByPrimaryKey(cId);
+        TcCompany tcCompany = companyService.selectCompanyById(cId);
         if (tcCompany == null) {
             baseResponse.setInfo("无此公司");
             return baseResponse;
@@ -85,7 +85,7 @@ public class CompanyController {
             return baseResponse;
         }
         String s = companyService.delectCompany(cId);
-        if (s.equals("-1")) {
+        if (s==null||"-1".equals(s)) {
             baseResponse.setInfo("删除失败");
         }
         baseResponse.setCode(1);
