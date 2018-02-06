@@ -22,4 +22,9 @@ public interface TsFunctionAuthorityMapper extends BaseDao<TsFunctionAuthority> 
 
 
     List selectWithGroupListIDKey(Integer id);
+
+    //删除关联组的权限
+    int deleteGroupWithID(Integer id);
+    //插入关联组的权限
+    int insertGroupWithID(TsFunctionAuthority record);
 }

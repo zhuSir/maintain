@@ -5,11 +5,16 @@ public class TsAuthorityList {
 
     private String name;
 
+
+
     private String other;
+    public Integer key;
 
     public Integer getId() {
         return id;
     }
+
+
 
     public void setId(Integer id) {
         this.id = id;

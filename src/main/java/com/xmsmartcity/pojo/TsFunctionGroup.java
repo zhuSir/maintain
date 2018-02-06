@@ -5,7 +5,7 @@ import java.util.List;
 
 public class TsFunctionGroup {
     private Integer id;
-
+    private String rowKey="1";
     private String groupName;
 
     private Integer deptId;
