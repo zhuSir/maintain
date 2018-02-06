@@ -15,15 +15,18 @@ public interface CompanyService extends BaseService<TcCompany> {
 
     //新增公司
     public String insertCompany(TcCompany company);
+
     public TcCompany insertCompany2(TcCompany company);
 
     //删除公司
-    public String delectCompany(int pId);
+    public String delectCompany(int cId);
 
     //修改公司
     public String updateCompany(TcCompany company);
 
     //查询/搜索 公司
     public List<TcCompany> selectAllCompany(int uId);
+
+    public TcCompany selectCompanyById(int id);
 
 }

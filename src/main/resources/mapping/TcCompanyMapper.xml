@@ -217,4 +217,16 @@
     where create_person_id = #{uId,jdbcType=INTEGER}
   </select>
 
+  <select id="selectCompanyById" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select
+    <include refid="Base_Column_List" />
+    from t_c_company
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+
+  <delete id="delectCompany" parameterType="java.lang.Integer" >
+    delete from t_c_company
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+
 </mapper>

@@ -45,7 +45,8 @@ public class CompanyServiceImpl extends BaseServiceImpl<TcCompany> implements Co
 
     @Override
     public String delectCompany(int cId) {
-        return null;
+        int i = dao.delectCompany(cId);
+        return i + "";
     }
 
     @Override
@@ -58,6 +59,11 @@ public class CompanyServiceImpl extends BaseServiceImpl<TcCompany> implements Co
     public List<TcCompany> selectAllCompany(int uId) {
         List<TcCompany> tcCompanies = dao.selectAllCompany(uId);
         return tcCompanies;
+    }
+
+    @Override
+    public TcCompany selectCompanyById(int id) {
+        return dao.selectCompanyById(id);
     }
 
 }
