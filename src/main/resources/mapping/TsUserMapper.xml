@@ -304,10 +304,12 @@
     <update id="invitePeopleGroup" parameterType="map">
     update t_s_user
     set companyID = #{companyID},
-    groupid = #{groupID}
+    groupid = #{groupID},
+    company_name = #{companyName},
+    group_name = #{groupName}
     where  mobilePhone=#{phone}
     AND companyID=0
-    OR companyID=#{companyID}
+
   </update>
 
 

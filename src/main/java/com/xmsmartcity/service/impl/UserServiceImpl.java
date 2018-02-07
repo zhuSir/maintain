@@ -115,7 +115,7 @@ public class UserServiceImpl extends BaseServiceImpl<TsUser> implements UserServ
 
     //邀请用户 进入到组
     @Override
-    public Object invitePeopleGroup(String phone, String companyID, String groupID) {
+    public Object invitePeopleGroup(String phone, String companyID, String groupID, String companyName,String groupName) {
         JSONObject json = new JSONObject();
         if (phone == null || companyID == null || groupID == null) {
             json.put("code", 1);
@@ -129,8 +129,8 @@ public class UserServiceImpl extends BaseServiceImpl<TsUser> implements UserServ
                 json.put("code", 1);
                 json.put("info", "用户已有公司");
             } else {
-                int result = dao.invitePeopleGroup(phone, companyID, groupID);
-                if (result == 1) {
+                int result = dao.invitePeopleGroup(phone, companyID, groupID,companyName,groupName);
+                if (result >0) {
                     json.put("code", 0);
                     json.put("info", "邀请成功");
                 } else {

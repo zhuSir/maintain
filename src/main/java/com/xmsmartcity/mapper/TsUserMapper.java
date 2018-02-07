@@ -20,7 +20,7 @@ public interface TsUserMapper extends BaseDao<TsUser> {
     List<TsUser> listGroupMember(String groupId);
 
     //邀请用户到组
-    int invitePeopleGroup(@Param("phone")String phone,@Param("companyID")String companyID,@Param("groupID")String groupID);
+    int invitePeopleGroup(@Param("phone")String phone,@Param("companyID")String companyID,@Param("groupID")String groupID,@Param("companyName")String companyName,@Param("groupName")String groupName);
 
     //更新用户的公司ID
     int updateUserCompanyInfo(@Param("userId")int userId,@Param("companyID")int companyID,@Param("companyName")String companyName);

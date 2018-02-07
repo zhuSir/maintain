@@ -153,7 +153,10 @@ public class GroupControllrer {
         String phone = map.get("phone").toString();
         String companyID = map.get("companyId").toString();
         String groupID = map.get("groupID").toString();
-        Object result = userService.invitePeopleGroup(phone, companyID, groupID);
+        String companyName = map.get("companyName").toString();
+        String groupName = map.get("groupName").toString();
+
+        Object result = userService.invitePeopleGroup(phone, companyID, groupID,companyName,groupName);
         CommonObjReturn commonObjReturn = new CommonObjReturn();
         commonObjReturn.setData(result);
         commonObjReturn.setResult("true");

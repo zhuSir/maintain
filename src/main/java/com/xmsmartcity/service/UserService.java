@@ -32,7 +32,7 @@ public interface UserService extends BaseService<TsUser> {
     TsUser selectByPhone(String phone);
 
     //邀请用户
-    Object invitePeopleGroup(String phone,String companyID,String groupID);
+    Object invitePeopleGroup(String phone,String companyID,String groupID,String companyName,String groupName);
 
     /*
     * id查询用户
