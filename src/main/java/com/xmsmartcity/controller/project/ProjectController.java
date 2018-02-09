@@ -78,10 +78,8 @@ public class ProjectController {
             Timestamp timestamp = new Timestamp(date.getTime());
             project.setCreateTime(timestamp);
             project.setUpdateTime(timestamp);
-            timestamp.setTime(sdf.parse(startData).getTime());
-            project.setPlanStartDate(timestamp);
-            timestamp.setTime(sdf.parse(endDate).getTime());
-            project.setPlanEndDate(timestamp);
+            project.setPlanStartDate(new Timestamp(sdf.parse(startData).getTime()));
+            project.setPlanEndDate(new Timestamp(sdf.parse(endDate).getTime()));
             project.setCreatePersonId(Integer.parseInt(uId));
             TpProject tpProject = projectService.insertProject2(project);
             if (tpProject==null) {

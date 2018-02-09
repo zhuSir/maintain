@@ -326,31 +326,31 @@
 
     <!--自定义-->
     <select id="selectProjectByName" resultMap="BaseResultMap" parameterType="java.lang.String">
-    select
-    *
-    from t_p_project
-    where name = #{name,jdbcType=INTEGER}
-  </select>
+        select
+        <include refid="Base_Column_List"/>
+        from t_p_project
+        where name = #{name,jdbcType=INTEGER}
+    </select>
     <!--自定义-->
     <select id="selectAllProject" resultMap="BaseResultMap" parameterType="Integer">
     SELECT
 	A.*,
 	B.group_name,
 	C.username,
-	D.`name` AS owenerUnitName,
-	F.`name` AS constructUnitName,
-	G.username AS createPersonName,
-	H.username AS managerName,
-	I.username AS auditPersonName
+	D.name AS owenerUnitName,
+	F.name AS constructUnitName,
+	G.create_name AS createPersonName,
+	H.create_name AS managerName,
+	I.create_name AS auditPersonName
     FROM
 	t_p_project AS A
     LEFT JOIN t_s_function_group AS B ON A.dep_id = B.id
     LEFT JOIN t_s_base_user AS C ON A.manager_id = C.ID
     LEFT JOIN t_c_company AS D ON A.owener_unit_id = D.id
-    LEFT JOIN t_c_company AS F ON A.`construct_unit_id` = F.id
-    LEFT JOIN t_s_base_user AS G ON A.create_person_id = G.ID
-    LEFT JOIN t_s_base_user AS H ON A.manager_id = H.ID
-    LEFT JOIN t_s_base_user AS I ON A.audit_person_id = I.ID
+    LEFT JOIN t_c_company AS F ON A.construct_unit_id = F.id
+    LEFT JOIN t_s_user AS G ON A.create_person_id = G.ID
+    LEFT JOIN t_s_user AS H ON A.manager_id = H.ID
+    LEFT JOIN t_s_user AS I ON A.audit_person_id = I.ID
     WHERE
 	A.create_person_id = #{uId}
   </select>
