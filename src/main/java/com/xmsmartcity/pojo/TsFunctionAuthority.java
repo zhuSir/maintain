@@ -15,7 +15,15 @@ public class TsFunctionAuthority {
 
     private Integer unlookfault;
 
+    private String key;
 
+    public String getKey() {
+        return key;
+    }
+
+    public void setKey(String key) {
+        this.key = "1";
+    }
 
     public Integer getId() {
         return id;

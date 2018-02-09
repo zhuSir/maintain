@@ -7,6 +7,7 @@ import com.xmsmartcity.pojo.CommonObjParam;
 import com.xmsmartcity.pojo.CommonObjReturn;
 import com.xmsmartcity.pojo.TsFunctionGroup;
 import com.xmsmartcity.pojo.TsUser;
+import com.xmsmartcity.service.GroupAuthority;
 import com.xmsmartcity.service.UserGroupService;
 import com.xmsmartcity.service.UserService;
 import com.xmsmartcity.util.DateUtils;
@@ -86,11 +87,18 @@ public class GroupControllrer {
         return commonObjReturn;
     }
 
+    @Autowired
+    private GroupAuthority Authser;
     //删除子组
     public CommonObjReturn removeGroup(@RequestBody CommonObjParam objparam, HttpServletRequest request, HttpServletResponse response) {
         HashMap map = (HashMap) objparam.getData();
         String sonGroupID = map.get("id").toString();
         JSONObject result = ser.removeGroup(sonGroupID);
+
+        //删除组的权限
+        int deleteReuselt= Authser.deleteGroupWithID(Integer.parseInt(sonGroupID));
+
+
         CommonObjReturn commonObjReturn = new CommonObjReturn();
         commonObjReturn.setData(result);
         commonObjReturn.setResult("true");
@@ -99,17 +107,6 @@ public class GroupControllrer {
     }
 
     //获取公司的详情
-//    @RequestMapping(value="/user/getCompanyInfo",method = RequestMethod.POST)
-//    private CommonObjReturn getcompanyInfo(int companyID){
-//        TsFunctionGroup resultg  = ser.getcompanyInfo(companyID);
-//
-//        CommonObjReturn commonObjReturn=new CommonObjReturn();
-//        commonObjReturn.setData(resultg);
-//        commonObjReturn.setResult("true");
-//        commonObjReturn.setResultTime(DateUtils.DateToString(new Date(),DateUtils.formatStr_yyyyMMddHHmmss));
-//        return commonObjReturn;
-//
-//    }
     public CommonObjReturn getCompanyInfo(@RequestBody CommonObjParam objparam, HttpServletRequest request, HttpServletResponse response) {
         HashMap obj = (HashMap) objparam.getData();
         Integer id =   Integer.parseInt((String) obj.get("companyID"));

@@ -32,4 +32,7 @@ public interface UserGroupService extends BaseService<TsFunctionGroup> {
     //邀请成员
     public String  companyInviteMenber(String phone,String companyID);
 
+
+
+
 }

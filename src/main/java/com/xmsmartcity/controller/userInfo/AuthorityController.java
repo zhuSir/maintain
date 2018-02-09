@@ -5,6 +5,7 @@ import com.xmsmartcity.pojo.*;
 import com.xmsmartcity.service.AuthorityListService;
 import com.xmsmartcity.service.GroupAuthority;
 import com.xmsmartcity.service.UserGroupService;
+import com.xmsmartcity.service.UserService;
 import com.xmsmartcity.util.DateUtils;
 import org.springframework.web.bind.annotation.*;
 
@@ -29,11 +30,13 @@ import java.util.List;
 public class AuthorityController {
     @Autowired
     private UserGroupService groupser;
+    @Autowired
+    private UserService userSer;
 
     @Autowired
     private GroupAuthority Authser;
 
-    //获取子组列表
+    //获取子组列表+各组的权限
     public CommonObjReturn  getGroupAuthorityList(@RequestBody CommonObjParam objparam, HttpServletRequest request, HttpServletResponse response){
         CommonObjReturn commonObjReturn=new CommonObjReturn();
         HashMap map = (HashMap) objparam.getData();
@@ -49,14 +52,10 @@ public class AuthorityController {
             group.setAuthorityArr(arr);
         }
         commonObjReturn.setData(result);
-        TsFunctionAuthority model = new TsFunctionAuthority();
-        model.setCompanyid(34);
-        model.setGroupid(90);
-        model.setLook(1);
         return commonObjReturn;
     }
 
-    //获取组的ID
+    //获取组的权限
     public CommonObjReturn getGroupAu(@RequestBody CommonObjParam objparam, HttpServletRequest request, HttpServletResponse response)
     {
         HashMap map = (HashMap) objparam.getData();
@@ -72,6 +71,26 @@ public class AuthorityController {
         return commonObjReturn;
     }
 
+    //根据用户ID获取组的信息和权限集合
+    public  CommonObjReturn getGroupAuIDWithUserID(@RequestBody CommonObjParam objparam, HttpServletRequest request, HttpServletResponse response)
+    {
+        HashMap map = (HashMap) objparam.getData();
+        Integer userID = Integer.valueOf(map.get("userID").toString());
+        CommonObjReturn commonObjReturn=new CommonObjReturn();
+        TsUser user =  userSer.selectUserById(userID);
+
+        List<TsFunctionAuthority> seleteResule = Authser.selectWithGroupListIDKey(user.getGroupid());
+        ArrayList arr = new ArrayList();
+        for (TsFunctionAuthority model : seleteResule){
+            arr.add(model.getFault());
+        }
+        commonObjReturn.setData(arr);
+
+        return commonObjReturn;
+
+    }
+
+    //设置组的权限
     public  CommonObjReturn setGroupAu(@RequestBody CommonObjParam objparam, HttpServletRequest request, HttpServletResponse response)
     {
         HashMap map = (HashMap) objparam.getData();
