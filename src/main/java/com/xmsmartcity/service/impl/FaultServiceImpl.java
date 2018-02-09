@@ -2,12 +2,15 @@ package com.xmsmartcity.service.impl;
 
 import com.xmsmartcity.mapper.BaseDao;
 import com.xmsmartcity.mapper.TsFaultMapper;
+import com.xmsmartcity.mapper.TsMaintainMapper;
+import com.xmsmartcity.mapper.TsUserMapper;
 import com.xmsmartcity.pojo.TsFault;
+import com.xmsmartcity.pojo.TsMaintain;
+import com.xmsmartcity.pojo.TsUser;
 import com.xmsmartcity.service.FaultService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.Map;
@@ -24,6 +27,12 @@ public class FaultServiceImpl extends BaseServiceImpl<TsFault> implements FaultS
 
     @Autowired
     private TsFaultMapper dao;
+
+    @Autowired
+    private TsUserMapper userDao;
+
+    @Autowired
+    private TsMaintainMapper maintainDao;
 
     @Override
     public List<Map<String,Object>> selectList() {
@@ -46,8 +55,22 @@ public class FaultServiceImpl extends BaseServiceImpl<TsFault> implements FaultS
 
     @Override
     public int saveFaultInfo(TsFault object) {
+        TsUser user = userDao.selectUserById(object.getFaultUserId());
+        if(user != null){
+            object.setCompanyId(user.getCompanyid());
+        }
         object.setCreatetime(new Date());
-        int res = dao.insertSelective(object);
-        return res;
+        int faultId = dao.insertSelective(object);
+        //删除维修单
+        TsMaintain maintain = new TsMaintain();
+        maintain.setCompanyId(object.getCompanyId());
+        maintain.setEquipId(object.getEquipId());
+        maintain.setFaultId(faultId);
+        maintain.setFaultUserId(object.getFaultUserId());
+        maintain.setMaintainType(object.getFaultType());
+        maintain.setRemarkReason(object.getRemarkReason());
+        maintainDao.insertSelective(maintain);
+        return 1;
     }
+
 }
