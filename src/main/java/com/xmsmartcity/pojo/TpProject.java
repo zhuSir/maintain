@@ -6,7 +6,6 @@ import java.sql.Timestamp;
 
 public class TpProject {
 
-    @Nullable
     private Integer id ;
 
     private String name;

@@ -43,8 +43,8 @@ public class ProjectServiceImpl extends BaseServiceImpl<TpProject> implements Pr
     }
 
     @Override
-    public String delectProject(int pId) {
-        int delete = dao.deleteByPrimaryKey(pId);
+    public String delectProject(int id) {
+        int delete = dao.deleteByPrimaryKey(id);
         return delete + "";
     }
 

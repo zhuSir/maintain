@@ -1,15 +1,18 @@
 package com.xmsmartcity.controller.project;
 
-import com.xmsmartcity.pojo.BaseResponse;
-import com.xmsmartcity.pojo.TpProject;
+import com.alibaba.fastjson.JSON;
+import com.xmsmartcity.pojo.*;
 import com.xmsmartcity.service.FaultService;
 import com.xmsmartcity.service.ProjectService;
+import com.xmsmartcity.util.DateUtils;
 import org.apache.ibatis.annotations.Param;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.ResponseBody;
 
-import javax.validation.constraints.NotNull;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import java.sql.Timestamp;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -22,8 +25,7 @@ import java.util.List;
  * @Modified By:
  */
 
-@RestController
-@RequestMapping(value = "/project")
+@Controller
 public class ProjectController {
 
     @Autowired
@@ -32,161 +34,182 @@ public class ProjectController {
     @Autowired
     FaultService faultService;
 
-    @RequestMapping(value = "/insert")
-    public BaseResponse<TpProject> insertProject(String uId, TpProject project, @Param("startData") String startData,
-                                                 @Param("endDate") String endDate) {
-        BaseResponse<TpProject> baseResponse = new BaseResponse<>();
+    @ResponseBody
+    public CommonObjReturn saveProject(@RequestBody CommonObjParam objparam, HttpServletRequest request, HttpServletResponse response) {
+        ProjectRequestBean projectRequestBean = JSON.parseObject(JSON.toJSONString(objparam.getData()), ProjectRequestBean.class);
+        CommonObjReturn commonObjReturn=new CommonObjReturn();
         try {
-            if (uId == null || uId.equals("")) {
-                baseResponse.setInfo("参数错误,创建失败");
-                return baseResponse;
+            if (projectRequestBean.getuId() == null || projectRequestBean.getuId().equals("")) {
+                commonObjReturn.setReason("参数错误,创建失败");
+                commonObjReturn.setResult("false");
+                return commonObjReturn;
             }
-            if (project.getName() == null || "".equals(project.getName())) {
-                baseResponse.setInfo("参数错误,创建失败");
-                return baseResponse;
+            if (projectRequestBean.getName() == null || "".equals(projectRequestBean.getName())) {
+                commonObjReturn.setReason("参数错误,创建失败");
+                commonObjReturn.setResult("false");
+                return commonObjReturn;
             }
-            if (project.getDepId() == null || project.getDepId().equals("")) {
-                baseResponse.setInfo("参数错误,创建失败");
-                return baseResponse;
+            if (projectRequestBean.getDepId() == null || projectRequestBean.getDepId().equals("")) {
+                commonObjReturn.setReason("参数错误,创建失败");
+                commonObjReturn.setResult("false");
+                return commonObjReturn;
             }
-            if (project.getOwenerUnitId() == null || project.getOwenerUnitId().equals("")) {
-                baseResponse.setInfo("参数错误,创建失败");
-                return baseResponse;
+            if (projectRequestBean.getOwenerUnitId() == null || projectRequestBean.getOwenerUnitId().equals("")) {
+                commonObjReturn.setReason("参数错误,创建失败");
+                commonObjReturn.setResult("false");
+                return commonObjReturn;
             }
-            if (project.getConstructUnitId() == null || project.getConstructUnitId().equals("")) {
-                baseResponse.setInfo("参数错误,创建失败");
-                return baseResponse;
+            if (projectRequestBean.getConstructUnitId() == null || projectRequestBean.getConstructUnitId().equals("")) {
+                commonObjReturn.setReason("参数错误,创建失败");
+                commonObjReturn.setResult("false");
+                return commonObjReturn;
             }
-            if (startData == null || startData.equals("")) {
-                baseResponse.setInfo("参数错误,创建失败");
-                return baseResponse;
+            if (projectRequestBean.getStartData() == null || projectRequestBean.getStartData().equals("")) {
+                commonObjReturn.setReason("参数错误,创建失败");
+                commonObjReturn.setResult("false");
+                return commonObjReturn;
             }
-            if (endDate == null || endDate.equals("")) {
-                baseResponse.setInfo("参数错误,创建失败");
-                return baseResponse;
+            if (projectRequestBean.getEndDate() == null || projectRequestBean.getEndDate().equals("")) {
+                commonObjReturn.setReason("参数错误,创建失败");
+                commonObjReturn.setResult("false");
+                return commonObjReturn;
             }
-            if (project.getManagerId() == null || project.getManagerId().equals("")) {
-                baseResponse.setInfo("参数错误,创建失败");
-                return baseResponse;
+            if (projectRequestBean.getManagerId() == null || projectRequestBean.getManagerId().equals("")) {
+                commonObjReturn.setReason("参数错误,创建失败");
+                commonObjReturn.setResult("false");
+                return commonObjReturn;
             }
-//            if (project.getAuditPersonId() == null || project.getAuditPersonId().equals("")) {
-//                baseResponse.setInfo("参数错误,创建失败");
-//                return baseResponse;
-//            }
             Date date = new Date();
             SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
             Timestamp timestamp = new Timestamp(date.getTime());
+            TpProject project = JSON.parseObject(JSON.toJSONString(objparam.getData()), TpProject.class);
             project.setCreateTime(timestamp);
             project.setUpdateTime(timestamp);
-            project.setPlanStartDate(new Timestamp(sdf.parse(startData).getTime()));
-            project.setPlanEndDate(new Timestamp(sdf.parse(endDate).getTime()));
-            project.setCreatePersonId(Integer.parseInt(uId));
+            project.setPlanStartDate(new Timestamp(sdf.parse(projectRequestBean.getStartData()).getTime()));
+            project.setPlanEndDate(new Timestamp(sdf.parse(projectRequestBean.getEndDate()).getTime()));
+            project.setCreatePersonId(projectRequestBean.getuId());
             TpProject tpProject = projectService.insertProject2(project);
             if (tpProject==null) {
-                baseResponse.setInfo("服务器错误,创建失败");
-                return baseResponse;
+                commonObjReturn.setReason("服务器错误,创建失败");
+                commonObjReturn.setResult("false");
+                return commonObjReturn;
             }
-            baseResponse.setCode(1);
-            baseResponse.setData(tpProject);
-            return baseResponse;
+            commonObjReturn.setResult("true");
+            commonObjReturn.setData(tpProject);
+            return commonObjReturn;
         } catch (Exception e) {
-            baseResponse.setInfo("参数错误,创建失败");
-            return baseResponse;
+            commonObjReturn.setReason("参数错误,创建失败");
+            commonObjReturn.setResult("false");
+            return commonObjReturn;
         }
     }
 
-    @RequestMapping(value = "/delect")
-    public BaseResponse<TpProject> delectProject(int uId, int pId) {
-        BaseResponse<TpProject> baseResponse = new BaseResponse<>();
-        TpProject tpProject = projectService.selectByPrimaryKey(pId);
+    @ResponseBody
+    public CommonObjReturn deleteProject(@RequestBody CommonObjParam objparam, HttpServletRequest request, HttpServletResponse response) {
+        ProjectRequestBean projectRequestBean = JSON.parseObject(JSON.toJSONString(objparam.getData()), ProjectRequestBean.class);
+        CommonObjReturn commonObjReturn=new CommonObjReturn();
+        TpProject tpProject = projectService.selectByPrimaryKey(projectRequestBean.getId());
         if(tpProject==null){
-            baseResponse.setInfo("无此项目");
-            return baseResponse;
+            commonObjReturn.setReason("无此项目");
+            commonObjReturn.setResult("false");
+            return commonObjReturn;
         }
-        if (tpProject.getCreatePersonId() != uId) {
-            baseResponse.setInfo("无删除权限");
-            return baseResponse;
+        if (tpProject.getCreatePersonId() != projectRequestBean.getuId()) {
+            commonObjReturn.setReason("无删除权限");
+            commonObjReturn.setResult("false");
+            return commonObjReturn;
         }
         String delectResult = "";
-        delectResult = projectService.delectProject(pId);
+        delectResult = projectService.delectProject(projectRequestBean.getId());
         if ("-1".equals(delectResult)) {
-            baseResponse.setInfo("删除失败");
+            commonObjReturn.setReason("删除失败");
+            commonObjReturn.setResult("false");
+            return commonObjReturn;
         }
-        baseResponse.setCode(1);
-        baseResponse.setInfo("删除成功");
-        return baseResponse;
+        commonObjReturn.setResult("true");
+        commonObjReturn.setReason("删除成功");
+        return commonObjReturn;
     }
 
-    @RequestMapping(value = "/update")
-    public BaseResponse<TpProject> updateProject(int uId, int pId, TpProject project, @Param("startData") String startData, @Param("endDate") String endDate) {
-        BaseResponse<TpProject> baseResponse = new BaseResponse<>();
+    @ResponseBody
+    public CommonObjReturn updateProject(@RequestBody CommonObjParam objparam, HttpServletRequest request, HttpServletResponse response) {
+        ProjectRequestBean projectRequestBean = JSON.parseObject(JSON.toJSONString(objparam.getData()), ProjectRequestBean.class);
+        CommonObjReturn commonObjReturn=new CommonObjReturn();
         try {
-            if (uId <= 0) {
-                baseResponse.setInfo("参数错误");
-                return baseResponse;
+            if (projectRequestBean.getuId() ==null) {
+                commonObjReturn.setReason("参数错误");
+                commonObjReturn.setResult("false");
+                return commonObjReturn;
             }
-            if (pId <= 0) {
-                baseResponse.setInfo("参数错误");
-                return baseResponse;
+            if (projectRequestBean.getId()==null) {
+                commonObjReturn.setReason("参数错误");
+                commonObjReturn.setResult("false");
+                return commonObjReturn;
             }
-            project.setId(pId);
-            TpProject tpProject = projectService.selectByPrimaryKey(pId);
+            TpProject project = JSON.parseObject(JSON.toJSONString(objparam.getData()), TpProject.class);
+            TpProject tpProject = projectService.selectByPrimaryKey(project.getId());
             if(tpProject==null){
-                baseResponse.setInfo("无此项目");
-                return baseResponse;
+                commonObjReturn.setReason("无此项目");
+                commonObjReturn.setResult("false");
+                return commonObjReturn;
             }
-            if (tpProject.getCreatePersonId() != uId) {
-                baseResponse.setInfo("无修改权限");
-                return baseResponse;
+            if (tpProject.getCreatePersonId() != projectRequestBean.getuId()) {
+                commonObjReturn.setReason("无修改权限");
+                commonObjReturn.setResult("false");
+                return commonObjReturn;
             }
             if (project == null) {
-                baseResponse.setInfo("参数错误,修改失败");
-                return baseResponse;
+                commonObjReturn.setReason("参数错误,修改失败");
+                commonObjReturn.setResult("false");
+                return commonObjReturn;
             }
             Date date = new Date();
             SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
             Timestamp timestamp = new Timestamp(date.getTime());
             project.setCreateTime(timestamp);
             project.setUpdateTime(timestamp);
-            if (startData != null) {
-                timestamp.setTime(sdf.parse(startData).getTime());
-                project.setPlanStartDate(timestamp);
+            if (projectRequestBean.getStartData() != null) {
+                project.setPlanStartDate(new Timestamp(sdf.parse(projectRequestBean.getStartData()).getTime()));
             }
-            if (endDate != null) {
-                timestamp.setTime(sdf.parse(endDate).getTime());
-                project.setPlanEndDate(timestamp);
+            if (projectRequestBean.getEndDate() != null) {
+                project.setPlanEndDate(new Timestamp(sdf.parse(projectRequestBean.getEndDate()).getTime()));
             }
             String s = projectService.updateProject(project);
             if ("-1".equals(s)) {
-                baseResponse.setInfo("服务器错误,修改失败");
-                return baseResponse;
+                commonObjReturn.setReason("服务器错误,修改失败");
+                commonObjReturn.setResult("false");
+                return commonObjReturn;
             }
-            baseResponse.setCode(1);
-            baseResponse.setData(projectService.selectByPrimaryKey(pId));
-            return baseResponse;
+            commonObjReturn.setResult("true");
+            commonObjReturn.setData(projectService.selectByPrimaryKey(project.getId()));
+            return commonObjReturn;
         } catch (Exception e) {
-            baseResponse.setInfo("参数错误,修改失败");
-            return baseResponse;
+            commonObjReturn.setReason("参数错误,修改失败");
+            commonObjReturn.setResult("false");
+            return commonObjReturn;
         }
     }
 
-    @RequestMapping(value = "/select")
-    public BaseResponse<List<TpProject>> selectProject(@NotNull String uId) {
-        BaseResponse<List<TpProject>> listBaseResponse = new BaseResponse<>();
+    @ResponseBody
+    public CommonObjReturn listProject(@RequestBody CommonObjParam objparam, HttpServletRequest request, HttpServletResponse response) {
+        Integer uId= JSON.parseObject(JSON.toJSONString(objparam.getData()),ProjectRequestBean.class).getuId();
+        CommonObjReturn commonObjReturn=new CommonObjReturn();
+        commonObjReturn.setResultTime(DateUtils.DateToString(new Date(),DateUtils.formatStr_yyyyMMddHHmmss));
         if (uId != null) {
             try {
-                int userId = Integer.parseInt(uId);
-                List<TpProject> tpProjects = projectService.selectAllProject(userId);
-                listBaseResponse.setCode(1);
-                listBaseResponse.setData(tpProjects);
-                return listBaseResponse;
+                List<TpProject> tpProjects = projectService.selectAllProject(uId);
+                commonObjReturn.setResult("true");
+                commonObjReturn.setData(tpProjects);
+                return commonObjReturn;
             } catch (Exception e) {
-                listBaseResponse.setInfo("服务器错误");
-                return listBaseResponse;
+                commonObjReturn.setResult("false");
+                commonObjReturn.setReason("服务器错误");
+                return commonObjReturn;
             }
         } else {
-            listBaseResponse.setInfo("参数错误");
-            return listBaseResponse;
+            commonObjReturn.setResult("false");
+            commonObjReturn.setReason("参数错误");
+            return commonObjReturn;
         }
     }
 
