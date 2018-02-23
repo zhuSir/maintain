@@ -36,7 +36,7 @@
       #{createtime,jdbcType=TIMESTAMP}, #{equipId,jdbcType=INTEGER}, #{faultUserId,jdbcType=INTEGER}
       )
   </insert>
-  <insert id="insertSelective" parameterType="com.xmsmartcity.pojo.TsFault">
+  <insert id="insertSelective" parameterType="com.xmsmartcity.pojo.TsFault" keyProperty="id">
     insert into t_s_fault
     <trim prefix="(" suffix=")" suffixOverrides=",">
       <if test="id != null">
@@ -96,6 +96,9 @@
         #{faultUserId,jdbcType=INTEGER},
       </if>
     </trim>
+    <selectKey resultType="Integer" order="AFTER" keyProperty="id">
+      SELECT LAST_INSERT_ID() AS id
+    </selectKey>
   </insert>
   <update id="updateByPrimaryKeySelective" parameterType="com.xmsmartcity.pojo.TsFault">
     update t_s_fault
@@ -143,13 +146,12 @@
   <!-- 查询报障单列表 -->
   <select id="selectList" resultType="map">
     SELECT
-        f.fault_code as faultCode,f.fault_type as faultType,f.createtime,f.id as faultId,f.remark_reason remarkReason
-        ,c.`name` as companyId,p.`name` as projectName,u.username,IFNULL(e.equip_name,'') equipName
+        f.id as `key`,f.fault_code as faultCode,f.fault_type as faultType,f.createtime,f.remark_reason remarkReason
+        ,p.`name` as projectName,u.create_name as username,IFNULL(e.equip_name,'') equipName
     FROM
         t_s_fault f
-    INNER JOIN t_c_company c ON f.company_id = c.id
     INNER JOIN t_p_project p ON f.project_id = p.id
-    INNER JOIN t_s_base_user u ON f.fault_user_id = u.id
+    INNER JOIN t_s_user u ON f.fault_user_id = u.id
     LEFT JOIN t_e_equip e ON f.equip_id = e.id
   </select>
 
