@@ -86,7 +86,7 @@ public class ProjectCompanyController {
     }
 
     @ResponseBody
-    public CommonObjReturn delectCompany(@RequestBody CommonObjParam objparam, HttpServletRequest request, HttpServletResponse response) {
+    public CommonObjReturn deleteCompany(@RequestBody CommonObjParam objparam, HttpServletRequest request, HttpServletResponse response) {
         ProjectCompanyBean projectCompanyBean = JSON.parseObject(JSON.toJSONString(objparam.getData()), ProjectCompanyBean.class);
         CommonObjReturn commonObjReturn=new CommonObjReturn();
         TcCompany tcCompany = companyService.selectCompanyById(projectCompanyBean.getId());
