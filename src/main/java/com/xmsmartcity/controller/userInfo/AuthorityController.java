@@ -95,12 +95,14 @@ public class AuthorityController {
     {
         HashMap map = (HashMap) objparam.getData();
         Integer groupID = Integer.valueOf(map.get("groupID").toString());
+        Integer companyID =  Integer.valueOf(map.get("companyID").toString());
         ArrayList<Integer> auID = (ArrayList) map.get("auID");
         int deleteReuselt= Authser.deleteGroupWithID(groupID);
         for (Integer auid :auID){
             TsFunctionAuthority model = new TsFunctionAuthority();
             model.setGroupid(groupID);
             model.setFault(auid);
+            model.setCompanyid(companyID);
             int insertReuselt = Authser.insert(model);
         }
         CommonObjReturn commonObjReturn=new CommonObjReturn();
@@ -121,5 +123,4 @@ public class AuthorityController {
         commonObjReturn.setResultTime(DateUtils.DateToString(new Date(),DateUtils.formatStr_yyyyMMddHHmmss));
         return commonObjReturn;
     }
-
 }
