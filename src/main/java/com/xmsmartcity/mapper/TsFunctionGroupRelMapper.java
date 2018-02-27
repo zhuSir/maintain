@@ -14,4 +14,6 @@ public interface TsFunctionGroupRelMapper {
     int updateByPrimaryKeySelective(TsFunctionGroupRel record);
 
     int updateByPrimaryKey(TsFunctionGroupRel record);
+
+
 }

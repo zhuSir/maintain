@@ -1,9 +1,12 @@
 package com.xmsmartcity.pojo;
 
 import java.util.Date;
+import java.util.List;
 
 public class TsRole {
-    private String id;
+
+
+    private int id;
 
     private String rolecode;
 
@@ -21,12 +24,13 @@ public class TsRole {
 
     private String createBy;
 
-    public String getId() {
+    public int getId() {
         return id;
     }
 
-    public void setId(String id) {
-        this.id = id == null ? null : id.trim();
+    public void setId(int id) {
+
+        this.id = id;
     }
 
     public String getRolecode() {

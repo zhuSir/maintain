@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.xmsmartcity.mapper.TsUser_RoleMapper">
+
+    <!--根据用户查找我们的角色信息-->
+    <select id="selectRoleByUserId" parameterType="int" resultMap="ResultMapRole">
+     select * from
+     t_s_user u, t_s_role r, t_s_user_role ur
+     where
+      u.id = #{id} AND ur.user_id = u.id AND  ur.role_id = r.id
+     </select>
+
+        <!-- 使用resultMap映射实体类和字段之间的一一对应关系 -->
+         <resultMap type="TsUserRole" id="ResultMapRole">
+
+             <id property="id" column="id"/>
+             <!--查找User对象-->
+             <association property="user" column="user_id" javaType="TsUser">
+                 <id property="id" column="id"/>
+                 <result property="mobilephone" column="mobilePhone"/>
+            </association>
+
+             <!--查找role对象-->
+             <association property="role" column="role_id" javaType="TsRole">
+               <id property="id" column="id" />
+               <result property="rolename" column="rolename"/>
+               <result property="rolecode" column="rolecode"/>
+             </association>
+
+         </resultMap>
+
+
+
+    <!--根据角色查找我们的用户信息-->
+    <select id="selectUserInfoByRoleId" parameterType="int" resultMap="ResultMapUser">
+        SELECT *FROM
+        t_s_user u, t_s_role r, t_s_user_role ur
+        WHERE
+        r.id = #{id} AND ur.user_id = u.id AND  ur.role_id = r.id
+    </select>
+
+    <!-- 使用resultMap映射实体类和字段之间的一一对应关系 -->
+    <resultMap type="TsUserRole" id="ResultMapUser">
+
+        <id property="id" column="id"/>
+
+        <!--查找User对象-->
+        <association property="user" column="user_id" javaType="TsUser">
+            <id property="id" column="id"/>
+            <result property="mobilephone" column="mobilePhone"/>
+        </association>
+
+        <!--查找role对象-->
+        <association property="role" column="role_id" javaType="TsRole">
+
+            <id property="id" column="id" />
+            <result property="rolename" column="rolename"/>
+            <result property="rolecode" column="rolecode"/>
+
+        </association>
+    </resultMap>
+</mapper>
+
+
+

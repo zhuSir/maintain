@@ -2,7 +2,7 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.xmsmartcity.mapper.TsRoleMapper" >
   <resultMap id="BaseResultMap" type="com.xmsmartcity.pojo.TsRole" >
-    <id column="ID" property="id" jdbcType="VARCHAR" />
+    <id column="ID" property="id" jdbcType="INTEGER" />
     <result column="rolecode" property="rolecode" jdbcType="VARCHAR" />
     <result column="rolename" property="rolename" jdbcType="VARCHAR" />
     <result column="update_name" property="updateName" jdbcType="VARCHAR" />
@@ -12,26 +12,72 @@
     <result column="create_date" property="createDate" jdbcType="TIMESTAMP" />
     <result column="create_by" property="createBy" jdbcType="VARCHAR" />
   </resultMap>
+
+  <select id="select" parameterType="int" resultMap="selectbyid">
+
+  select *from  role r WHERE r.id = #{id};
+
+  </select>
+
+  <resultMap id="selectbyid" type="TsRole">
+    <id column="id" property="id" />
+    <result property="rolename" column="name" />
+  </resultMap>
+
+  <select id="selectAll" resultMap="roleList">
+  SELECT *FROM  role
+  </select>
+
+  <resultMap id="roleList" type="TsRole">
+    <id column="id" property="id" />
+    <collection property="students" column="id" select="com.xmsmartcity.mapper.StudentMapper.selectz">
+    </collection>
+  </resultMap>
+
+
+
   <sql id="Base_Column_List" >
     ID, rolecode, rolename, update_name, update_date, update_by, create_name, create_date, 
     create_by
   </sql>
-  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
-    select 
+
+  <select id="findAllroles" resultMap="BaseResultMap" >
+    select
     <include refid="Base_Column_List" />
+    from t_s_role
+  </select>
+
+  <select id="findRolesByRoleName" parameterType="java.lang.String" resultMap="BaseResultMap" >
+      select
+    <include refid="Base_Column_List" />
+    from t_s_role
+      where rolename like concat(#{username},'%')
+  </select>
+
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
     from t_s_role
     where ID = #{id,jdbcType=VARCHAR}
   </select>
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+
+  <select id="selectByroleCode" resultMap="BaseResultMap" parameterType="java.lang.String">
+    select
+    <include refid="Base_Column_List" />
+    from t_s_role
+    where rolecode = #{rolecode,jdbcType=VARCHAR}
+  </select>
+
+
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
     delete from t_s_role
-    where ID = #{id,jdbcType=VARCHAR}
+    where ID = #{id}
   </delete>
   <insert id="insert" parameterType="com.xmsmartcity.pojo.TsRole" >
     insert into t_s_role (ID, rolecode, rolename, 
       update_name, update_date, update_by, 
       create_name, create_date, create_by
       )
-    values (#{id,jdbcType=VARCHAR}, #{rolecode,jdbcType=VARCHAR}, #{rolename,jdbcType=VARCHAR}, 
+    values (#{id,jdbcType=INTEGER}, #{rolecode,jdbcType=VARCHAR}, #{rolename,jdbcType=VARCHAR},
       #{updateName,jdbcType=VARCHAR}, #{updateDate,jdbcType=TIMESTAMP}, #{updateBy,jdbcType=VARCHAR}, 
       #{createName,jdbcType=VARCHAR}, #{createDate,jdbcType=TIMESTAMP}, #{createBy,jdbcType=VARCHAR}
       )
@@ -125,7 +171,7 @@
         create_by = #{createBy,jdbcType=VARCHAR},
       </if>
     </set>
-    where ID = #{id,jdbcType=VARCHAR}
+    where ID = #{id,jdbcType=INTEGER}
   </update>
   <update id="updateByPrimaryKey" parameterType="com.xmsmartcity.pojo.TsRole" >
     update t_s_role
@@ -137,6 +183,6 @@
       create_name = #{createName,jdbcType=VARCHAR},
       create_date = #{createDate,jdbcType=TIMESTAMP},
       create_by = #{createBy,jdbcType=VARCHAR}
-    where ID = #{id,jdbcType=VARCHAR}
+    where ID = #{id,jdbcType=INTEGER}
   </update>
 </mapper>

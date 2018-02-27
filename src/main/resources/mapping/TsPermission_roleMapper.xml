@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.xmsmartcity.mapper.TsPermission_roleMapper">
+
+
+    <!--根据权限查看角色-->
+    <select id="selectPermissionByroleId" parameterType="String" resultMap="resultMap1">
+    SELECT *FROM
+           t_s_permission_role pr,t_s_permission p,t_s_role r
+    WHERE
+    p.permission_name = #{name} and pr.permission_id = p.id AND  pr.role_id= r.id
+
+    </select>
+    <resultMap id="resultMap1" type="TsPermission_role">
+      <id property="id" column="id" />
+       <association property="permission" column="permission_id" javaType="TsPermission">
+           <id property="id" column="id" />
+           <result property="perpermissionName" column="permission_name" />
+       </association>
+
+        <association property="role" column="role_id" javaType="TsRole">
+            <id property="id" column="id" />
+            <result property="rolename" column="rolename"/>
+            <result property="rolecode" column="rolecode"/>
+        </association>
+
+    </resultMap>
+
+
+    <!--根据角色查看权限-->
+    <select id="selectRoleByrolePermission" parameterType="String" resultMap="resultMap2">
+
+
+
+    </select>
+    <resultMap id="resultMap2" type="TsPermission_role">
+      <id column="id" property="id" />
+        <association property="permission" column="permission_id" javaType="TsPermission">
+            <id property="id" column="id" />
+            <result property="perpermissionName" column="permission_name" />
+        </association>
+
+        <association property="role" column="role_id" javaType="TsRole">
+            <id property="id" column="id" />
+            <result property="rolename" column="rolename"/>
+            <result property="rolecode" column="rolecode"/>
+        </association>
+
+    </resultMap>
+
+
+
+
+</mapper>
