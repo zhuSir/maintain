@@ -6,6 +6,8 @@
     <result column="name" property="name" jdbcType="VARCHAR" />
     <result column="manager_name" property="managerName" jdbcType="VARCHAR" />
     <result column="manager_phone" property="managerPhone" jdbcType="VARCHAR" />
+    <result column="first_part" property="firstPart" jdbcType="INTEGER" />
+    <result column="second_part" property="secondPart" jdbcType="INTEGER" />
     <result column="level" property="level" jdbcType="VARCHAR" />
     <result column="mark" property="mark" jdbcType="VARCHAR" />
     <result column="lat" property="lat" jdbcType="REAL" />

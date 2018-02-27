@@ -11,6 +11,10 @@ public class TcCompany {
 
     private String managerPhone;
 
+    private Integer firstPart;
+
+    private Integer secondPart;
+
     private String level;
 
     private String mark;
@@ -151,5 +155,21 @@ public class TcCompany {
 
     public void setUpdateTime(Timestamp updateTime) {
         this.updateTime = updateTime;
+    }
+
+    public Integer getFirstPart() {
+        return firstPart;
+    }
+
+    public void setFirstPart(Integer firstPart) {
+        this.firstPart = firstPart;
+    }
+
+    public Integer getSecondPart() {
+        return secondPart;
+    }
+
+    public void setSecondPart(Integer secondPart) {
+        this.secondPart = secondPart;
     }
 }
