@@ -25,18 +25,30 @@ public interface TsRoleMapper {
 
     TsRole selectByroleCode(String rolecode);
 
+
+
+
     /**
      * 全表查询
      * @return
      */
     public List<TsRole> selectAll();
+
+
     /**
      * 根据主键查数据,给多对一用
      * @param id
-     * @return
      */
-
     public TsRole select(Integer id);
+
+    //插入角色
+    void insertRole(TsRole role);
+
+    //更新角色
+    void  updateRole(TsRole role);
+
+    //删除角色
+    void  deleteRoleById(int id);
 
 
 

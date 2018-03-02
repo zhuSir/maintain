@@ -3,52 +3,169 @@
 <mapper namespace="com.xmsmartcity.mapper.TsPermission_roleMapper">
 
 
-    <!--根据权限查看角色-->
-    <select id="selectPermissionByroleId" parameterType="String" resultMap="resultMap1">
-    SELECT *FROM
-           t_s_permission_role pr,t_s_permission p,t_s_role r
+     <!--查看所有权限-->
+    <select id="selectAllPermissions" resultMap="selectAllPermissinons">
+        SELECT *FROM
+        t_s_permission
+    </select>
+    <resultMap id="selectAllPermissinons" type="TsPermission">
+        <id property="id" column="p_id" />
+        <result property="permissionName" column="permission_name" />
+    </resultMap>
+
+
+    <!--根据权限返回权限ID-->
+    <select id="selectPermissionById" parameterMap="String" resultType="int">
+        SELECT id
+        FROM
+        t_s_permission
+        WHERE
+        permission_name = #{permission_name}
+    </select>
+
+
+    <parameterMap id="parameterResulMap" type="TsPermission_role">
+        <parameter property="roleId" />
+        <parameter property="permissionId" />
+    </parameterMap>
+
+
+    <!--根据联及查询角色和权限-->
+    <resultMap id="resultRoles" type="TsRole">
+        <id property="id" column="r_id" />
+        <result property="rolename" column="rolename"/>
+    </resultMap>
+    <resultMap id="rolePermissionsMap" type="TsRole" extends="resultRoles">
+        <collection property="permissions" resultMap="resultPermission"></collection>
+    </resultMap>
+    <resultMap id="resultPermission" type="TsPermission">
+        <id property="id" column="p_id" />
+        <result property="permissionName" column="permission_name" />
+    </resultMap>
+
+    <select id="selectRolePermissions" parameterType="int" parameterMap="rolePermissionsMap">
+     select
+     r.id r_id,r.rolename,p.id p_id,p.permission_name
+     from
+     t_s_permission p, t_s_role r, t_s_permission_role pr
+     where
+      pr.permission_id = p.id
+      AND
+      pr.role_id = r.id
+      </select>
+
+
+    <!--查询role级联查询出所选的permission并且组装成完整的对象-->
+    <select id="getPermissionByIdWithRole" parameterType="int" resultMap="getRoleByIdWithPermissions">
+    select
+     r.id r_id,r.rolename,p.id p_id,p.permission_name
+     from
+     t_s_permission p, t_s_role r, t_s_permission_role pr
+     where
+      pr.permission_id = p.id
+      AND
+      pr.role_id = r.id
+      AND
+      r.id = #{role_id}
+    </select>
+    <resultMap id="getRoleByIdWithPermissions" type="TsRole">
+        <id property="id" column="r_id" />
+        <result property="rolename" column="rolename" />
+        <collection property="permissions" ofType="">
+            <id property="id" column="p_id" />
+            <result property="permissionName" column="permission_name" />
+        </collection>
+    </resultMap>
+
+    <!--查询permission级联查询出所选role并且组装成完整的对象-->
+    <select id="getPermissionByIdWithRole" parameterType="int" resultMap="getRoleByIdWithPermissions">
+        select
+        r.id r_id,r.rolename,p.id p_id,p.permission_name
+        from
+        t_s_permission p, t_s_role r, t_s_permission_role pr
+        where
+        pr.permission_id = p.id
+        AND
+        pr.role_id = r.id
+        AND
+        p.permission_name = #{permission_name}
+    </select>
+    <resultMap id="getRoleByIdWithPermissions" type="TsRole">
+        <id property="id" column="r_id" />
+        <result property="rolename" column="rolename" />
+        <collection property="permissions" ofType="">
+            <id property="id" column="p_id" />
+            <result property="permissionName" column="permission_name" />
+        </collection>
+    </resultMap>
+
+   <!--插入角色和权限关联-->
+    <insert id="insertRolePermission" parameterMap="parameterResulMap">
+        INSERT  INTO   t_s_permission_role(permission_id,role_id)
+        VALUES (#{permission_id},#{role_id})
+    </insert>
+
+    <!--根据ID删除角色的权限信息-->
+    <delete id="deleteRolePermissionById" parameterMap="parameterResulMap">
+      DELETE FROM t_s_permission_role
     WHERE
-    p.permission_name = #{name} and pr.permission_id = p.id AND  pr.role_id= r.id
+    role_id = #{role_id}
+    AND
+    permission_id = #{permission_id}
+    </delete>
 
+    <!--根据用户查询权限信息-->
+    <select id="getRoleByUserIdWithPerission" resultMap="getRoleByUserIdWithPerissionMap">
+     select  p.id p_id,p.permission
+     from
+     t_s_permission p, t_s_role r, t_s_permission_role pr
+     where
+      pr.permission_id = p.id
+      AND
+      pr.role_id = r.id
+      AND r.id
+     in (
+     select r.id
+     from
+     t_s_user u, t_s_role r, t_s_user_role ur
+     where
+      ur.user_id = u.id
+      AND
+      ur.role_id = r.id
+      AND
+      r.id = #{user_id})
     </select>
-    <resultMap id="resultMap1" type="TsPermission_role">
-      <id property="id" column="id" />
-       <association property="permission" column="permission_id" javaType="TsPermission">
-           <id property="id" column="id" />
-           <result property="perpermissionName" column="permission_name" />
-       </association>
-
-        <association property="role" column="role_id" javaType="TsRole">
-            <id property="id" column="id" />
-            <result property="rolename" column="rolename"/>
-            <result property="rolecode" column="rolecode"/>
-        </association>
-
+    <resultMap id="getRoleByUserIdWithPerissionMap" type="TsPermission">
+        <id property="id" column="p_id" />
+        <result property="permissionName" column="permission_name" />
     </resultMap>
 
 
-    <!--根据角色查看权限-->
-    <select id="selectRoleByrolePermission" parameterType="String" resultMap="resultMap2">
-
-
-
+    <!--根据权限查询对应的用户信息-->
+    <select id="getUserPermissionIdWithUser" resultMap="getRoleByPermissionWithUserMap">
+        select  u.id u_id,u.mobilePhone
+        from
+        t_s_user, t_s_role r, t_s_user_role ur
+        where
+        ur.role_id = r.id
+        AND
+        ur.user_id = u.id
+        AND r.id
+        in (
+        select r.id
+        from
+        t_s_permission p, t_s_role r, t_s_permission_role pr
+        where
+        pr.role_id = u.id
+        AND
+        pr.permission_id = p.id
+        AND
+        p.permission_id = #{permission_id})
     </select>
-    <resultMap id="resultMap2" type="TsPermission_role">
-      <id column="id" property="id" />
-        <association property="permission" column="permission_id" javaType="TsPermission">
-            <id property="id" column="id" />
-            <result property="perpermissionName" column="permission_name" />
-        </association>
-
-        <association property="role" column="role_id" javaType="TsRole">
-            <id property="id" column="id" />
-            <result property="rolename" column="rolename"/>
-            <result property="rolecode" column="rolecode"/>
-        </association>
-
+    <resultMap id="getRoleByPermissionWithUserMap" type="TsUser">
+        <id property="id" column="u_id" />
+        <result property="mobilePhone" column="mobilePhone" />
     </resultMap>
-
-
 
 
 </mapper>

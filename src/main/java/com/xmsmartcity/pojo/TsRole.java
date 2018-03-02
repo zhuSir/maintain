@@ -24,6 +24,12 @@ public class TsRole {
 
     private String createBy;
 
+    //角色对应的人员
+    private List<TsUser> users;
+
+    //角色对应的权限
+    private List<TsPermission> permissions;
+
     public int getId() {
         return id;
     }
@@ -95,5 +101,21 @@ public class TsRole {
 
     public void setCreateBy(String createBy) {
         this.createBy = createBy == null ? null : createBy.trim();
+    }
+
+    public List<TsUser> getUsers() {
+        return users;
+    }
+
+    public void setUsers(List<TsUser> users) {
+        this.users = users;
+    }
+
+    public List<TsPermission> getPermissions() {
+        return permissions;
+    }
+
+    public void setPermissions(List<TsPermission> permissions) {
+        this.permissions = permissions;
     }
 }

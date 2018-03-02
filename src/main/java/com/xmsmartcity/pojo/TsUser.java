@@ -1,8 +1,11 @@
 package com.xmsmartcity.pojo;
 
 import java.util.Date;
+import java.util.List;
 
 public class TsUser {
+
+
     private Integer id;
 
     private String email;
@@ -36,6 +39,10 @@ public class TsUser {
     private Integer companyid;
 
     private String companyName;
+
+
+    //用户对应的角色
+    private List<TsRole> roles;
 
     private Integer groupid;
 
@@ -191,5 +198,13 @@ public class TsUser {
 
     public void setGroupName(String groupName) {
         this.groupName = groupName == null ? null : groupName.trim();
+    }
+
+    public List<TsRole> getRoles() {
+        return roles;
+    }
+
+    public void setRoles(List<TsRole> roles) {
+        this.roles = roles;
     }
 }

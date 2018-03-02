@@ -25,8 +25,6 @@ public class RoleController {
 
     @Autowired
     RoleService roleService;
-
-
     /*
     *  查找全部角色成员
      */
@@ -87,7 +85,6 @@ public class RoleController {
         return commonObjReturn;
 
     }
-
 
     /*
     *   添加角色
@@ -157,9 +154,37 @@ public class RoleController {
         CommonObjReturn commonObjReturn = new CommonObjReturn();
         commonObjReturn.setData(userRole);
         commonObjReturn.setResult("true");
-
         commonObjReturn.setResultTime(DateUtils.DateToString(new Date(), DateUtils.formatStr_yyyyMMddHHmmss));
         return commonObjReturn;
     }
+
+    //3、查询拥有某权限的角色
+
+    public CommonObjReturn selectRoleInfoByPermission(@RequestBody CommonObjParam objparam, HttpServletRequest request, HttpServletResponse response){
+
+        HashMap obj = (HashMap)objparam.getData();
+        List<String> pr = roleService.selectRoleByPermissionName(obj.get("permission").toString());
+        CommonObjReturn commonObjReturn = new CommonObjReturn();
+        commonObjReturn.setData(pr);
+        commonObjReturn.setResult("true");
+        commonObjReturn.setResultTime(DateUtils.DateToString(new Date(), DateUtils.formatStr_yyyyMMddHHmmss));
+        return commonObjReturn;
+    }
+
+
+    //4、查询某角色拥有的权限。
+    public CommonObjReturn selectPermissionInfoByRole(@RequestBody CommonObjParam objparam, HttpServletRequest request, HttpServletResponse response){
+
+        HashMap obj = (HashMap)objparam.getData();
+        List<String> pr = roleService.selectPermissionByRoleName(obj.get("rolename").toString());
+        CommonObjReturn commonObjReturn = new CommonObjReturn();
+        commonObjReturn.setData(pr);
+        commonObjReturn.setResult("true");
+        commonObjReturn.setResultTime(DateUtils.DateToString(new Date(), DateUtils.formatStr_yyyyMMddHHmmss));
+        return commonObjReturn;
+    }
+
+
+
 
 }

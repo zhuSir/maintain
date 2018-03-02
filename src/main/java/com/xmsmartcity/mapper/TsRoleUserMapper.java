@@ -3,6 +3,7 @@ package com.xmsmartcity.mapper;
 import com.xmsmartcity.pojo.TsRoleUser;
 
 public interface TsRoleUserMapper {
+
     int deleteByPrimaryKey(String id);
 
     int insert(TsRoleUser record);

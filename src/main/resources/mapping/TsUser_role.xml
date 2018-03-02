@@ -2,63 +2,105 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.xmsmartcity.mapper.TsUser_RoleMapper">
 
-    <!--根据用户查找我们的角色信息-->
-    <select id="selectRoleByUserId" parameterType="int" resultMap="ResultMapRole">
-     select * from
+    <!--根据所有用户查找我们的所有角色信息-->
+    <select id="selectUserRoles" resultMap="ResultMapUser">
+     select
+     u.id u_id,u.mobilePhone,r.id r_id,r.rolename
+     from
      t_s_user u, t_s_role r, t_s_user_role ur
      where
-      u.id = #{id} AND ur.user_id = u.id AND  ur.role_id = r.id
+       ur.user_id = u.id
+      AND
+       ur.role_id = r.id
      </select>
-
-        <!-- 使用resultMap映射实体类和字段之间的一一对应关系 -->
-         <resultMap type="TsUserRole" id="ResultMapRole">
-
-             <id property="id" column="id"/>
-             <!--查找User对象-->
-             <association property="user" column="user_id" javaType="TsUser">
-                 <id property="id" column="id"/>
-                 <result property="mobilephone" column="mobilePhone"/>
-            </association>
-
-             <!--查找role对象-->
-             <association property="role" column="role_id" javaType="TsRole">
-               <id property="id" column="id" />
-               <result property="rolename" column="rolename"/>
-               <result property="rolecode" column="rolecode"/>
-             </association>
-
-         </resultMap>
-
-
-
-    <!--根据角色查找我们的用户信息-->
-    <select id="selectUserInfoByRoleId" parameterType="int" resultMap="ResultMapUser">
-        SELECT *FROM
-        t_s_user u, t_s_role r, t_s_user_role ur
-        WHERE
-        r.id = #{id} AND ur.user_id = u.id AND  ur.role_id = r.id
-    </select>
-
-    <!-- 使用resultMap映射实体类和字段之间的一一对应关系 -->
-    <resultMap type="TsUserRole" id="ResultMapUser">
-
-        <id property="id" column="id"/>
-
-        <!--查找User对象-->
-        <association property="user" column="user_id" javaType="TsUser">
-            <id property="id" column="id"/>
-            <result property="mobilephone" column="mobilePhone"/>
-        </association>
-
-        <!--查找role对象-->
-        <association property="role" column="role_id" javaType="TsRole">
-
-            <id property="id" column="id" />
-            <result property="rolename" column="rolename"/>
-            <result property="rolecode" column="rolecode"/>
-
-        </association>
+    <!--  这里使用了嵌套结果ResultMap的方式进行级联查询,当然也可以使用嵌套查询select -->
+    <!-- 映射一个基本的Student查询结果 -->
+    <resultMap id="userResult" type="TsUser">
+        <id property="id" column="u_id" />
+        <result property="mobilePhone" column="mobilePhone" />
     </resultMap>
+    <!-- 继承上面那个基本的映射,再扩展出级联查询 -->
+    <resultMap id="userResultWithRoles" type="TsUser" extends="userResult">
+        <collection property="roles" resultMap="resultRoles"></collection>
+    </resultMap>
+    <resultMap id="resultRoles" type="TsRole">
+        <id property="id" column="r_id" />
+        <result property="rolename" column="rolename"/>
+    </resultMap>
+
+    <!--根据人员的ID查找我们的相关的角色信息-->
+    <select id="getUserByIdWithRoles" parameterType="int" resultMap="ResultMapUser">
+
+     select
+     u.id u_id,u.mobilePhone,r.id r_id,r.rolename
+     from
+     t_s_user u, t_s_role r, t_s_user_role ur
+     where
+      ur.user_id = u.id
+      AND
+      ur.role_id = r.id
+      AND
+      u.id = #{user_id}
+    </select>
+    <!-- resultMap:映射实体类和字段之间的一一对应的关系 -->
+    <resultMap id="ResultMapUser" type="TsUser">
+        <id property="id" column="u_id" />
+        <result property="mobilePhone" column="mobilePhone" />
+        <collection property="roles" ofType="TsRole">
+            <id property="id" column="r_id" />
+            <result property="rolename" column="rolename"/>
+        </collection>
+
+    </resultMap>
+
+
+    <!--根据人色的ID查找我们相关人员信息-->
+    <select id="getRoleByIdWithUsers" parameterType="int" resultMap="ResultMapRoles" >
+
+     select
+     u.id u_id,u.mobilePhone,r.id r_id,r.rolename
+     from
+     t_s_user u, t_s_role r, t_s_user_role ur
+     where
+      ur.user_id = u.id
+      AND
+      ur.role_id = r.id
+      AND
+      r.id = #{role_id}
+    </select>
+    <resultMap id="ResultMapRoles" type="TsRole">
+      <id property="id" column="role_id" />
+        <result property="roleName" column="rolename" />
+        <collection property="users" ofType="TsUser">
+            <id property="id" column="u_id" />
+            <result property="mobilePhone" column="mobilePhone" />
+        </collection>
+
+    </resultMap>
+
+
+    <!-- 根据User_id删除该用户的角色情况 -->
+    <parameterMap id="parameterUserRoleMap" type="TsUserRole">
+        <parameter property="userId" />
+        <parameter property="roleId" />
+    </parameterMap>
+   <delete id="deleteUserByroleId" parameterMap="parameterUserRoleMap">
+    DELETE FROM t_s_user_role
+    WHERE
+    user_id = #{user_id}
+    AND
+    role_id = #{role_id}
+   </delete>
+
+    <!--插入用户和角色关联-->
+    <insert id="insertUserRole" parameterMap="parameterUserRoleMap">
+        INSERT INTO
+        t_s_user_role
+        VALUES
+        (#{user_id},#{role_id})
+    </insert>
+
+
 </mapper>
 
 

@@ -1,5 +1,7 @@
 package com.xmsmartcity.pojo;
 
+import java.util.List;
+
 /**
  * Created by lingyun on 2018/2/9.
  */
@@ -11,26 +13,30 @@ public class TsUserRole {
 
 
     private int id;
-    private TsRole role;
-    private TsUser user;
+    private int  roleId;
+    private int  userId;
+
     public int getId() {
         return id;
     }
+
     public void setId(int id) {
         this.id = id;
     }
-    public TsRole getRole() {
-        return role;
-    }
-    public void setRole(TsRole role) {
-        this.role = role;
-    }
-    public TsUser getUser() {
-        return user;
-    }
-    public void setUser(TsUser user) {
-        this.user = user;
+
+    public int getUserId() {
+        return userId;
     }
 
+    public void setUserId(int userId) {
+        this.userId = userId;
+    }
 
+    public int getRoleId() {
+        return roleId;
+    }
+
+    public void setRoleId(int roleId) {
+        this.roleId = roleId;
+    }
 }

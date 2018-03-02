@@ -6,8 +6,8 @@ package com.xmsmartcity.pojo;
 public class TsPermission_role {
 
     private Integer id;
-  private  TsPermission permission;
-    private TsRole role;
+     private  int  permissionId;
+    private int roleId;
 
     public Integer getId() {
         return id;
@@ -17,19 +17,19 @@ public class TsPermission_role {
         this.id = id;
     }
 
-    public TsRole getRole() {
-        return role;
+    public int getRoleId() {
+        return roleId;
     }
 
-    public void setRole(TsRole role) {
-        this.role = role;
+    public void setRoleId(int roleId) {
+        this.roleId = roleId;
     }
 
-    public TsPermission getPermission() {
-        return permission;
+    public int getPermissionId() {
+        return permissionId;
     }
 
-    public void setPermission(TsPermission permission) {
-        this.permission = permission;
+    public void setPermissionId(int permissionId) {
+        this.permissionId = permissionId;
     }
 }

@@ -1,18 +1,13 @@
 package com.xmsmartcity.service.impl;
 
-import com.xmsmartcity.mapper.BaseDao;
-import com.xmsmartcity.mapper.TsRoleMapper;
-import com.xmsmartcity.mapper.TsUserMapper;
-import com.xmsmartcity.mapper.TsUser_RoleMapper;
-import com.xmsmartcity.pojo.TpProject;
-import com.xmsmartcity.pojo.TsRole;
-import com.xmsmartcity.pojo.TsUser;
-import com.xmsmartcity.pojo.TsUserRole;
+import com.xmsmartcity.mapper.*;
+import com.xmsmartcity.pojo.*;
 import com.xmsmartcity.service.RoleService;
 import com.xmsmartcity.service.impl.BaseServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -82,9 +77,27 @@ public class RoleServiceImpl extends BaseServiceImpl<TsRole> implements RoleServ
     @Override
     public TsUserRole selectUserInfoByRoleId(int id) {
 
-
         return  user_roleMapper.selectUserInfoByRoleId(id);
 
+    }
 
+
+    @Override
+    public List<String> selectPermissionByRoleName(String roleName) {
+
+        TsUserRole userRole  = user_roleMapper.selectPermissionByroleName(roleName);
+        List<String> listsStrings=new ArrayList<>();
+        for (int i = 0; i < userRole.getPers().size(); i++) {
+
+            TsPermission ts= userRole.getPers().get(i);
+            listsStrings.add(ts.getPermissionName());
+        }
+
+        return  listsStrings;
+    }
+
+    @Override
+    public List<String> selectRoleByPermissionName(String permissionName) {
+        return null;
     }
 }

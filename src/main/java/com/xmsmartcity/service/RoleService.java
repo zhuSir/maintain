@@ -1,4 +1,5 @@
 package com.xmsmartcity.service;
+import com.xmsmartcity.pojo.TsPermission_role;
 import com.xmsmartcity.pojo.TsRole;
 import com.xmsmartcity.pojo.TsUser;
 import com.xmsmartcity.pojo.TsUserRole;
@@ -16,6 +17,10 @@ public interface RoleService extends BaseService<TsRole> {
     TsRole selectByroleCode(String rolecode);
     TsUserRole selectUserInfoByRoleId(int id);
     TsUserRole selectRoleByUserId(int id);
+
+    List<String>  selectPermissionByRoleName(String roleName);
+    List<String>  selectRoleByPermissionName(String permissionName);
+
 
 
 }

@@ -24,6 +24,7 @@
     <result property="rolename" column="name" />
   </resultMap>
 
+
   <select id="selectAll" resultMap="roleList">
   SELECT *FROM  role
   </select>
